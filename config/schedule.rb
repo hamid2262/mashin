@@ -1,10 +1,10 @@
 set :output, "#{path}/log/cron.log"
 
-every 3.hours do
+every "0 1,4,7,10,13,16,19,22 * * *" do
   rake "scrap"
 end
 
-every "0 1,2,4,5,7,8,10,11,13,14,16,17,18,19,20,22,23 * * *" do
+every "0 0,3,6,9,12,15,18,21 * * *" do
   rake "triger_scrap"
 end
 
