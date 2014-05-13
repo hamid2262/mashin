@@ -53,12 +53,11 @@ module ApplicationHelper
   end
 
   def date_human date
-    # if date > DateTime.now - 24.hours
-    #   t "today"
-    # else
+    if date > DateTime.now - 24.hours
+      t "today"
+    else
       "#{time_ago_in_words(date) } #{t("ago")}"
-    # end
-
+    end
   end
 
   def last_search
