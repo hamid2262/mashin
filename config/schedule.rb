@@ -1,15 +1,15 @@
 set :output, "#{path}/log/cron.log"
 
 every "0 1,4,7,10,13,16,19,22 * * *" do
-  # rake "scrap"
+  rake "scrap"
 end
 
 every "0 0,3,6,9,12,15,18,21 * * *" do
-  # rake "triger_scrap"
+  rake "triger_scrap"
 end
 
 every 2.days do
-  # rake "clear_scrapdb"
+  rake "clear_scrapdb"
 end
 
 # Use this file to easily define all of your cron jobs.
