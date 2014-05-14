@@ -8,7 +8,7 @@ every "0 0,3,6,9,12,15,18,21 * * *" do
   rake "triger_scrap"
 end
 
-every 2.days do
+every 1.days, at: '20:00' do
   rake "clear_scrapdb"
 end
 
