@@ -1,0 +1,9 @@
+<% if user_signed_in? %>
+  <%= current_user.email %>
+  <%= link_to t("navbar.session.sign_out"), destroy_user_session_path, method: :delete %>
+  <%#= link_to t(".dashboard"), dashboard_path %>
+<% else %>
+  <%#= render 'popup_signin' %>
+  <%= link_to t("n.sign_in"), user_session_path, class: "text-nav " %>
+  <%= link_to t(".sign_up"), new_user_registration_path, class: "text-nav " %>
+<% end %> 

@@ -1,8 +1,12 @@
 Mashin::Application.routes.draw do
   
-  devise_for :users
   root 'homes#show'
-  
+
+  devise_for :users, :controllers => { registrations: 'users' }
+  devise_scope :user do
+    get "sign_in", to: "devise/sessions#new"
+    get "sign_up", to: "devise/registrations#new"
+  end
   resource :homes, only: [:show]
   resources :searches, only: [:show, :create, :index]
   resources :car_models
