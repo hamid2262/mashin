@@ -21,11 +21,20 @@
   }
   #qoute{
     padding: 0;
-    background: rgba(17, 17, 17, 0.52);
-    color: #FFF;
+    background: rgba(17, 17, 17, 0.35);
     border-radius: 4px;
     padding: 2px 14px 17px;
     margin: 37px 5px;
-    text-shadow: 2px 4px 4px #000;
+    margin-right: 31px;
+    h2{
+      color: #E9E9E9;
+      text-shadow: 2px 2px 8px #000000;
+    }
+    .line2{
+      color: #F1F1F1;
+      text-shadow: 1px 1px 6px #000;
+      font-family: sans-serif !important;
+      font-size: 1.2em;      
+    }
   }
 }

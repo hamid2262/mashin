@@ -1,0 +1,52 @@
+	<%= simple_form_for(resource, 
+		:as => resource_name, 
+		:url => registration_path(resource_name), 
+		:html => { :method => :put, class: 'form-horizontal' },
+	 	:defaults => { 
+	 		:wrapper_html => {
+	 			:class => 'form-group'
+	 		}, 
+	 		:input_html => { 	:class => 'form-control' 	}
+	 	}			) do |f| %>
+
+		<div class="col-sm-3">
+			<%= f.label :email, User.human_attribute_name('email') %>
+		</div>
+		<div class="col-sm-8">
+			<%= f.input :email, label: false , input_html: { disabled: "disabled" } %>
+		</div>
+		
+		<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+			<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+		<% end %>  
+
+		<div class="col-sm-3">
+			<%= f.label :password, t('.new_password') %>
+		</div>
+		<div class="col-sm-8">
+			<%= f.input :password, 
+								 label: false,
+							   # hint: "leave blank if you don't want to change it.",
+							   placeholder: t('.new_password'), 
+							   input_html: { autocomplete: "off" }
+							    %>
+		</div>
+
+		<div class="col-sm-3">
+			<%= f.label :password_confirmation, t(".Password Confirmation") %>
+		</div>
+		<div class="col-sm-8">
+			<%= f.input :password_confirmation, label: false, placeholder: t(".Password Confirmation")  %>
+		</div>
+
+		<div class="col-sm-3">
+			<%= f.label :current_password, t(".Current Password") %>
+		</div>
+		<div class="col-sm-8">
+			<%= f.input :current_password, label: false , placeholder: t(".Current Password")  %>
+		</div>
+		<%= f.hidden_field :tab, :value => "account_settings" %>
+
+		<%= f.button :submit, {class: 'btn  btn-primary col-sm-offset-3'} %>
+		  
+	<% end %>

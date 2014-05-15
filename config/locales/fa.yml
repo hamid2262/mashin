@@ -1,0 +1,10 @@
+fa:
+  devise:
+    passwords:
+      new:
+        Forgot your password?: رمز خود را فراموش کرده اید؟
+        Send me reset password instructions: دستورالعمل های لازم برای بازیابی رمز
+          عبورم را به ایمیل من ارسال کن.
+    sessions:
+      new:
+        sign_in_title: فرم ورود کاربر

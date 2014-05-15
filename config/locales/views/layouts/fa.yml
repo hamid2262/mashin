@@ -8,9 +8,8 @@ fa:
   undifinded: "تماس بگيريد"
   today: امروز
   yesterday: دیروز
-  ago: قبل
   toman: تومان
-
+  no_data: '-'
   brand: برند خودرو
   car_model: مدل
   year: سال ساخت
@@ -26,6 +25,10 @@ fa:
   sefr: صفر کیلومتر
   sell: فروش
   buy: خرید
+  email: پست الکترونیکی
+  password: رمز عبور
+  password_confirmation: تایید رمز عبور
+  ago: قبل
   location: آدرس
   contact_tel: شماره تماس
   created_date: تاریخ آگهی
@@ -34,3 +37,11 @@ fa:
     previous_label: "قبلی"
     next_label: "بعدی"
     page_gap: "&hellip;"
+  gender:
+    female: زن
+    man: مرد
+
+  sign_in: ورود
+  sign_up: ثبت نام    
+  remember_me: مرا به خاطر بسپار
+  forget_password: رمز خود را فراموش کرده ام

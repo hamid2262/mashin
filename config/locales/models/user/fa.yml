@@ -1,0 +1,29 @@
+fa:
+  activerecord:
+    models:
+      user: کاربر
+    attributes:
+      user:
+        first_name: نام
+        last_name: نام خانوادگی
+        gender: جنسیت
+        tel: تلفن
+        details: اطلاعات بیشتر
+        mobile: موبایل
+        address: آدرس
+        age: سن
+        slug: آدرس اینترنتی شما در اتویابی
+        email: ایمیل
+        location: شهر
+        avatar: تصویر پروفایل
+        cover: تصویر سربرگ
+        last_sign_in_at: آخرین ورود در 
+        password: رمز عبور
+        password_confirmation: تایید رمز عبور
+        current_password: رمز عبور قبلی      
+    errors:
+      template:
+        header:
+          one:   "یک خطا مانع ذخیره اطلاعات %{model} شده است "
+          other: "%{count} خطا مانع ذخیره اطلاعات %{model} شده است "
+        body:    "خطا در فیلدهای زیر است: "

@@ -1,0 +1,48 @@
+fa:
+  users:
+    account_settings: تنظیمات حساب کاربری
+    contact_details: اطلاعات تماس
+    edit:
+      account_settings:
+        Current Password: رمز عبور فعلی
+        Password Confirmation: تایید رمز عبور
+        new_password: رمز عبور جدید
+      contact_details:
+        location_placeholder: نام شهرتان را وارد کنید.
+        mobile_placeholder: شماره موبایتان را وارد کنید.
+      page_url:
+        Enter your desired url: لطفا آدر اینترنتی دلخواه تان را وارد کنید
+        Profile Url: آدرس اینترنتی پروفایل
+        change_url_message: 'توجه: آدرس اینترنتی شما در اتویابی آدرسی خواهد بود که
+          به موتورهای جستجوگر کمک خواهد کرد که صفحه شما برای دیگران با استفاده از
+          نامی که انتخاب می کنید، در لیست جستجو ها نمایش داده شود. لطفا در انتخاب
+          آن دقت نمایید. بویژه اینکه آدرس اینترنتی تنها یک بار قابل تغییر است!'
+        your_url_is: 'آدرس اینترنتی شما: '
+      personal_profile:
+        please wait: در حال ثبت. لطفا منتظر بمانید...
+      title: ویرایش پروفایل
+    new:
+      form:
+        password_confirmation: تکرار رمز عبور
+        select_gender: انتخاب جنسیت
+        sign_in: عضو هستم
+        sign_up: ثبت نام
+        title: فرم ثبت نام
+    page_url: آدرس اینترنتی در اتویابی
+    personal_profile: اطلاعات شخصی
+    show:
+      account_settings:
+        goto_change_account_settings: برو به صفحه تغییر رمز عبور
+      contact_details:
+        goto_change_contact_details: برو به صفحه تغییر اطلاعات تماس
+      page_url:
+        change_url_message: 'توجه: آدرس اینترنتی شما در اتویابی آدرسی خواهد بود که
+          به موتورهای جستجوگر کمک خواهد کرد که صفحه شما برای دیگران با استفاده از
+          نامی که انتخاب می کنید، در لیست جستجو ها نمایش داده شود. لطفا در انتخاب
+          آن دقت نمایید. بویژه اینکه آدرس اینترنتی تنها یک بار قابل تغییر است!'
+        goto_change_page_url: برو به صفحه تغییر آدرس اینترنتی
+      personal_profile:
+        goto_change_personal_profile: برو به صفحه تغییر اطلاعات شخصی
+      title: پروفایل
+      user_overview:
+        overview: در یک نگاه

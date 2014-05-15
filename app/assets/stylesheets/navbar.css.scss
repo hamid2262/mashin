@@ -1,0 +1,21 @@
+#top_navbar{
+  .navbar-brand{
+    padding: 5px !important;
+    height: 30px !important;
+    margin-right: -4px;
+    img.logo{
+      height: 30px !important;
+      a{
+        padding: 5px 14px !important;
+        height: 25px !important;
+      }
+    }    
+  }
+  .navbar-nav > li > a {
+    padding-top: 13px !important;
+    padding-bottom: 6px !important;
+  }
+  .navbar {
+    min-height:32px !important
+  }
+}

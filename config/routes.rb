@@ -4,6 +4,7 @@ Mashin::Application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'users' }
   devise_scope :user do
+    resources :users, only: [:show]
     get "sign_in", to: "devise/sessions#new"
     get "sign_up", to: "devise/registrations#new"
   end

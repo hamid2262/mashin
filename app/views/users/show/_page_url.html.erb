@@ -1,0 +1,20 @@
+
+<form class="form-horizontal" role="form">
+	<% unless @user.slug_updated %>
+		<div class="alert alert-danger text-center"><%= t '.change_url_message' %></div>	
+	<% end %>
+  <div class="form-group">
+    <label class="col-sm-4 control-label"><%= User.human_attribute_name("slug") %></label>
+    <div class="col-sm-8">
+      <p class="form-control-static">
+        <strong>
+          <%#= link_to(profile_url(@user.slug), profile_url(@user.slug) ) %>
+        </strong>
+      </p>
+    </div>
+  </div>
+
+	<% unless @user.slug_updated %>
+  	<%= link_to t(".goto_change_page_url"), edit_user_registration_path+'#page_url', class: 'btn btn-link col-sm-offset-4' %>
+  <% end %>
+</form>

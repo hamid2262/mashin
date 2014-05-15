@@ -2,7 +2,7 @@ class UsersController < Devise::RegistrationsController
 
   # layout 'application_user', only: [:show]
   
-  load_and_authorize_resource only: [:index, :show, :update, :edit, :destroy, :refresh]
+  # load_and_authorize_resource only: [:index, :show, :update, :edit, :destroy, :refresh]
 
   before_action :require_login, only: [:index, :show, :update, :edit]
 

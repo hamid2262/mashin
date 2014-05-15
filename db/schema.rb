@@ -161,6 +161,7 @@ ActiveRecord::Schema.define(version: 20140513232522) do
     t.datetime "updated_at"
     t.boolean  "active",                 default: true
     t.string   "slug"
+    t.boolean  "slug_updated",           default: false
     t.boolean  "admin",                  default: false
     t.integer  "age"
     t.boolean  "gender"

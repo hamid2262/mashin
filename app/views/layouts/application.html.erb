@@ -1,19 +1,12 @@
 <%= render 'head' %>
 
-<%= render 'navbar' %>
-
 <div class="container">
-
-  <%= render 'header' %>
-
+  <%= render 'navbar' %>
   <div id="main_container">
-
     <div id="siteContent">
       <%= flash_creator flash %>
       <%= yield %>  
     </div>
-    
   </div>
-
   <%= render 'footer' %>
 </div>

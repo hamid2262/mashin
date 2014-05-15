@@ -83,4 +83,27 @@ module ApplicationHelper
     title.try(:html_safe)
   end
 
+  def user_form_control_static title, field_value, klass1="col-xs-3", klass2="col-xs-9"
+    field_value = t('no_data') if field_value.blank?
+    html = <<-HTML
+      <div class="form-group">
+        <label class="#{klass1} control-label">#{title}</label>
+        <div class="#{klass2}">
+          <p class="form-control-static">
+                                    #{field_value}
+          </p>
+        </div>
+      </div>
+    HTML
+    html.html_safe 
+  end
+
+  def t_gender gender
+    if gender == 'm'
+      t('gender.male')
+    else
+      t('gender.female')
+    end
+  end
+    
 end

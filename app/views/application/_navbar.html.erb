@@ -1,9 +1,32 @@
-<% if user_signed_in? %>
-  <%= current_user.email %>
-  <%= link_to t("navbar.session.sign_out"), destroy_user_session_path, method: :delete %>
-  <%#= link_to t(".dashboard"), dashboard_path %>
-<% else %>
-  <%#= render 'popup_signin' %>
-  <%= link_to t("n.sign_in"), user_session_path, class: "text-nav " %>
-  <%= link_to t(".sign_up"), new_user_registration_path, class: "text-nav " %>
-<% end %> 
+ <div id="top_navbar">
+  <div class=" navbar navbar-default  navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%= root_path %>">
+          <%= image_tag("#{IMAGES_PATH}logo.gif", class: "logo") %>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-left ">
+          <li><%= link_to t(".buy_car"), search_path(1), class: "text-nav" %></li>
+          <li><%= link_to t(".sell_car"), root_path, class: "text-nav" %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "(#{current_user.name})#{t ".my_acount"}", current_user %></li>
+            <li><%= link_to t(".sign_out"), destroy_user_session_path, method: :delete %></li>
+            <%#= link_to t(".dashboard"), dashboard_path %>
+          <% else %>
+            <%#= render 'popup_signin' %>
+            <li><%= link_to t("sign_in"), user_session_path, class: "text-nav " %></li>
+            <li><%= link_to t("sign_up"), new_user_registration_path, class: "text-nav " %></li>
+          <% end %> 
+        </ul>     
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

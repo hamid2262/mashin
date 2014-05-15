@@ -1,15 +1,27 @@
-<h2>Sign in</h2>
+<div id="users_sign_in">
+  <div id="sign_in_form" class="col-sm-6">
+    <h4 class="form-sign-in-up-heading"><%= t('.sign_in_title') %></h4>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class=" col-xs-12">
+        <%= f.input :email, required: false, placeholder: t("email"), autofocus: true, input_html: {class: "form-control input-lg"} %>
+      </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      <div class=" col-xs-12">
+        <%= f.input :password, required: false, placeholder: t("password") , input_html: {class: "form-control input-lg"}%>
+      </div>
+      <div class=" col-xs-12">
+        <%= f.input :remember_me, label: t("remember_me"), as: :boolean if devise_mapping.rememberable? %>
+      </div>
+
+      <div class="col-xs-12">
+        <%= f.button :submit, t("sign_in"), class: "btn btn-warning btn-lg btn-block"  %>
+      </div>
+    <% end %>
+
+    <div class="col-xs-12">
+      <%= link_to t('forget_password'), new_password_path(resource_name), class: "btn btn-link" %>
+      <%= link_to t('sign_up'), new_registration_path(resource_name), class: "btn btn-link pull-left " %>
+    </div>
+
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
