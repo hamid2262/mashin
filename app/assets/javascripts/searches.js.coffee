@@ -19,34 +19,42 @@ jQuery ->
   $('#radius_input').attr('disabled', 'disabled') if $('#location_city').val() == "" 
   $('#radius_input').removeAttr('disabled') if $('#location_city').val() != "" 
   if $('#location_city').val() != "" and $('#radius_input').val() == ""
-    $('#radius_input').removeAttr('disabled').css("background","rgb(255, 227, 77)") 
+    $('#radius_input').removeAttr('disabled').addClass('hint_red_shadow') 
 
   $('#radius_input').change ->
     if $(this).val() == ""
-      $(this).css("background","rgb(255, 227, 77)") 
+      $(this).addClass('hint_red_shadow') 
     else
-      $(this).css("background","#fff") 
+      $(this).removeClass('hint_red_shadow')  
 
   $('#location_city').change ->
     if $(this).val() == ""
       $('#radius_input').attr('disabled', 'disabled').val("شعاع کیلومتری").css("background","#f7f7f7")  
     else
       if $('#radius_input').val() == ""
-        $('#radius_input').removeAttr('disabled').css("background","rgb(255, 227, 77)")  
+        $('#radius_input').removeAttr('disabled').addClass('hint_red_shadow') 
       else
-        $('#radius_input').removeAttr('disabled').css("background","#fff")  
+        $('#radius_input').removeAttr('disabled').removeClass('hint_red_shadow') 
   ##########################
 
   ########################## remove_filter
 
   $('.filter select').change ->
     if $("option:selected", this).val() !=""
-      $(this).addClass("smallwidth")
+      $(this).addClass("with_value")
       $(this).parent().next().removeClass("myhide")
     else
-      $(this).removeClass("smallwidth")
+      $(this).removeClass("with_value")
       $(this).parent().next().addClass("myhide")
 
   $(".remove_filter").click ->
     select = $(this).addClass("myhide").prev().children()
-    select.val("").removeClass("smallwidth")
+    select.val("").removeClass("with_value")
+#-------------------------
+  $(".filter input[type='text']").keyup ->
+    if $(this).val() !=""
+      $(this).addClass("with_value")
+      $(this).parent().next().removeClass("myhide")
+    else
+      $(this).removeClass("with_value")
+      $(this).parent().next().addClass("myhide")

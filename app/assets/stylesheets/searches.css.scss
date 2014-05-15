@@ -1,3 +1,12 @@
+@-moz-document url-prefix() {
+  .remove_filter {
+    top: 16px !important;
+  }
+}
+.hint_red_shadow{
+  border: 1px solid rgba(255, 92, 92, 0.53);
+  box-shadow: 0px 0px 6px rgba(255, 34, 34, 0.26);
+}
 #search_show{
   #search_form{
     font-size: .8em;
@@ -9,20 +18,26 @@
     .filter{
       position: relative;
       .remove_filter{
-        width: 25px;
-        height: 25px;
-        background-color: rgba(255, 255, 255, 0.81);
-        background-image: url("https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/remove.png");
         position: absolute;
-        top: 15px;
-        right: 108px;
-        border: 1px solid #ccc;
+        top: 16px;
+        left: 21px;
+        width: 10px;
+        height: 10px;
+        margin-top: 7px;
+        background-color: white;
+        background-image: url("https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/remove.png");
+        background-position: -1px -1px;
+        background-repeat: no-repeat;
       }  
       .myhide{
         display: none !important;
       }    
-      .smallwidth{
-        width: 94px;
+      .with_value{
+        -moz-appearance: none;
+        text-indent: 0.01px;
+        text-overflow: '';
+        border: 1px solid rgba(66, 139, 202, 0.54);
+        box-shadow: 1px 1px 10px rgba(108, 149, 192, 0.44);
       }
     }
     input[type="submit"]{
