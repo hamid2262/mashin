@@ -36,3 +36,17 @@ jQuery ->
       else
         $('#radius_input').removeAttr('disabled').css("background","#fff")  
   ##########################
+
+  ########################## remove_filter
+
+  $('.filter select').change ->
+    if $("option:selected", this).val() !=""
+      $(this).addClass("smallwidth")
+      $(this).parent().next().removeClass("myhide")
+    else
+      $(this).removeClass("smallwidth")
+      $(this).parent().next().addClass("myhide")
+
+  $(".remove_filter").click ->
+    select = $(this).addClass("myhide").prev().children()
+    select.val("").removeClass("smallwidth")

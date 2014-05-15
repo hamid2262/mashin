@@ -27,4 +27,10 @@ module SearchesHelper
     image_tag(url, class: "img-responsive")
   end
 
+  def remove_filter_buttun val
+    html = "<span class=\"remove_filter "
+    html = html + "myhide" if val.blank?
+    html = html + "\"</span>"
+    html.html_safe 
+  end
 end

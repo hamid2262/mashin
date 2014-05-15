@@ -6,7 +6,25 @@
     padding: 8px;
     border-radius: 3px;
     background: rgba(247, 247, 247, 1);
-
+    .filter{
+      position: relative;
+      .remove_filter{
+        width: 25px;
+        height: 25px;
+        background-color: rgba(255, 255, 255, 0.81);
+        background-image: url("https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/remove.png");
+        position: absolute;
+        top: 15px;
+        right: 108px;
+        border: 1px solid #ccc;
+      }  
+      .myhide{
+        display: none !important;
+      }    
+      .smallwidth{
+        width: 94px;
+      }
+    }
     input[type="submit"]{
       height: 35px;
     }
@@ -18,12 +36,6 @@
     }
     label{
       margin-bottom: 0px
-    }
-    .right{
-      padding-left: 5px;
-    }
-    .left{
-      padding-right: 5px;
     }
   }
   #search_list{
