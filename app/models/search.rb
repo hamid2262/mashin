@@ -17,33 +17,42 @@ class Search < ActiveRecord::Base
     @ads ||= find_ads
   end
 
+  def makes
+    @makes = Make.joins(:ads).group('makes.name')
+    @makes = conditions @makes 
+    @makes = @makes.order('COUNT(ads.make_id) DESC').count
+  end
+
   def count
-    @ads = ads.size
+    ads.count 
   end
 
 private
 
-	def find_ads
-		ads = Ad.all.includes(:car_model, car_model: :make)
-		ads = ads.order(find_order) 
-		
-    ads = ads.where(active: true)
-		
-    ads = ads.where("year >= ?", year_from - 1.months) if year_from.present?
-		ads = ads.where("year <= ?", year_to   + 11.months) if year_to.present?
+  def find_ads
+    ads = Ad.all.includes(:car_model, car_model: :make)
+    ads = ads.order(find_order) 
+    conditions ads
+  end
 
-		ads = ads.where("price >= ?", price_from ) if price_from.present?
-		ads = ads.where("price <= ?", price_to ) if price_to.present?
+  def conditions values
+    values = values.where("active = true")
 
-		ads = ads.where("millage >= ?", millage_from) if millage_from.present?
-		ads = ads.where("millage <= ?", millage_to) if millage_to.present?
+    values = values.where("year >= ?", year_from - 1.months) if year_from.present?
+    values = values.where("year <= ?", year_to   + 11.months) if year_to.present?
+    
+    values = values.where("price >= ?", price_from ) if price_from.present?
+    values = values.where("price <= ?", price_to ) if price_to.present?
 
-		ads = ads.near(find_location, find_radius , :units => :km) if find_location.first 
+    values = values.where("millage >= ?", millage_from) if millage_from.present?
+    values = values.where("millage <= ?", millage_to) if millage_to.present?
+    
+    values = where_near_origin(values, location, find_radius) if location.present? and find_location.first
 
-		ads = ads.where(make_id: make_id) if make_id.present?
-		ads = ads.where(car_model_id: car_model_id) if car_model_id.present?
-		ads
-	end
+    values = values.where(make_id: make_id) if make_id.present?
+    values = values.where(car_model_id: car_model_id) if car_model_id.present?    
+    values
+  end
 
 	def find_order
 		case self.order
@@ -61,6 +70,11 @@ private
 	def find_radius
 		 self.radius ? self.radius : 100
 	end
+
+  def where_near_origin values, location, cycle
+    lat,lng = find_location
+    values.where(" sqrt( power(latitude - ?, 2) + power(longitude - ?, 2) ) < ?", lat, lng, cycle.to_f / 110)
+  end
 
 	def find_location
     myloc = Location.where(name: self.location).first

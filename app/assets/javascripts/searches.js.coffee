@@ -50,6 +50,8 @@ jQuery ->
   $(".remove_filter").click ->
     select = $(this).addClass("myhide").prev().children()
     select.val("").removeClass("with_value")
+    $("#main_search_form").submit()
+
 #-------------------------
   $(".filter input[type='text']").keyup ->
     if $(this).val() !=""
@@ -58,3 +60,14 @@ jQuery ->
     else
       $(this).removeClass("with_value")
       $(this).parent().next().addClass("myhide")
+
+#############################  filter_lists_badge_link   
+  $(".filter_lists_badge_link").click (event)->
+    event.preventDefault()
+    $("form",this ).submit()
+
+  $(".filter_lists .myhidden").hide();
+  $(".filter_lists a.show_more").click (event)->
+    event.preventDefault()
+    $(this).prev().children(".myhidden").slideToggle()
+    $(this).prev().children().toggleClass("smallHeght")

@@ -9,7 +9,14 @@ class SearchesController < ApplicationController
   end
 
   def create
-  	@search = Search.new(search_params)
+    if params[:search][:search_id].present?
+      @old_search = Search.find params[:search][:search_id]
+      @search = @old_search.dup
+      @make = Make.find_by(name: params[:search][:make_name])
+      @search.make_id = @make.id
+    else
+      @search = Search.new(search_params)
+    end
   	@search.year_from = correct_date(search_params[:year_from]) if search_params[:year_from].present?
   	@search.year_to   = correct_date( search_params[:year_to])  if search_params[:year_to].present?
     respond_to do |format|

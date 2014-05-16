@@ -8,8 +8,9 @@ Mashin::Application.routes.draw do
     get "sign_in", to: "devise/sessions#new"
     get "sign_up", to: "devise/registrations#new"
   end
-  resource :homes, only: [:show]
+  
   resources :searches, only: [:show, :create, :index]
+  resource :homes, only: [:show]
   resources :car_models
   resources :locations
 

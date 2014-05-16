@@ -1,8 +1,10 @@
 <% @page_title = title_creator(@search) %>
 <div id="search_show">
-  <div id="search_form" class="col-sm-5 col-md-3">
+  <div id="search_bar" class="col-sm-5 col-md-3">
     <%= render 'search_form' %>
+    <%= render 'searches/filters/makes' %>
   </div>
+
   <div id="search_list" class="col-sm-7 col-md-9">
   	<% if @ads.any? %>
 
@@ -17,7 +19,6 @@
   			</div>
       </a>
   		<% end %>
-
 
      <div class="apple_pagination">
         <%= will_paginate @ads, :container => false,inner_window: 3, outer_window: 0 %>

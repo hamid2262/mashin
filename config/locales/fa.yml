@@ -8,3 +8,4 @@ fa:
     sessions:
       new:
         sign_in_title: فرم ورود کاربر
+  search result: "جستجو  ( %{count} مورد )"

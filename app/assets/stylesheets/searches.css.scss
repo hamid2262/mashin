@@ -8,51 +8,54 @@
   box-shadow: 0px 0px 6px rgba(255, 34, 34, 0.26);
 }
 #search_show{
-  #search_form{
+  #search_bar{
     font-size: .8em;
     font-weight: bold;
     border: 1px solid #eee;
     padding: 8px;
     border-radius: 3px;
     background: rgba(247, 247, 247, 1);
-    .filter{
-      position: relative;
-      .remove_filter{
-        position: absolute;
-        top: 16px;
-        left: 21px;
-        width: 10px;
-        height: 10px;
-        margin-top: 7px;
-        background-color: white;
-        background-image: url("https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/remove.png");
-        background-position: -1px -1px;
-        background-repeat: no-repeat;
-      }  
-      .myhide{
-        display: none !important;
-      }    
-      .with_value{
-        -moz-appearance: none;
-        text-indent: 0.01px;
-        text-overflow: '';
-        border: 1px solid rgba(66, 139, 202, 0.54);
-        box-shadow: 1px 1px 10px rgba(108, 149, 192, 0.44);
+    #search_form{
+      .filter{
+        position: relative;
+        .remove_filter{
+          background-color: #FFFFFF;
+          background-image: url("https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/remove.png");
+          background-position: 4px 4px;
+          background-repeat: no-repeat;
+          cursor: pointer;
+          height: 17px;
+          left: 18px;
+          margin-top: 4px;
+          position: absolute;
+          top: 14px;
+          width: 15px;
+        }  
+        .myhide{
+          display: none !important;
+        }    
+        .with_value{
+          -moz-appearance: none;
+          text-indent: 0.01px;
+          text-overflow: '';
+          border: 1px solid rgba(66, 139, 202, 0.54);
+          box-shadow: 1px 1px 10px rgba(108, 149, 192, 0.44);
+        }
+      }
+      input[type="submit"]{
+        height: 35px;
+      }
+      select, input{
+        padding: 0px 5px;
+        height: 25px;
+        border-radius: 1px;
+        font-size: 1.1em;
+      }
+      label{
+        margin-bottom: 0px
       }
     }
-    input[type="submit"]{
-      height: 35px;
-    }
-    select, input{
-      padding: 0px 5px;
-      height: 25px;
-      border-radius: 1px;
-      font-size: 1.1em;
-    }
-    label{
-      margin-bottom: 0px
-    }
-  }
+  } //#search_form
   #search_list{
     font-size: .9em;
     padding: 0 5px;
@@ -120,6 +123,28 @@
     }
     .search_row:last-child{
       border-bottom: 1px solid #E7E7E7;;
+    }
+  } //#search_list
+
+  .filter_lists{
+    margin-top: 15px;
+    .nav>li>a {
+      padding: 0px 20px 0px 20px;
+    }
+    .show_more{
+      text-align: center;
+      width: 100%;
+      display: inline-block;
+      height: 20px;
+      background: rgba(243, 243, 243, 0.72);
+      padding: 8px 20px 21px;
+    }
+    .smallHeght{
+      height: 25px;
+    }
+    .badge {
+      margin-top: 7px;
+      font-size: 1.2em;
     }
   }
 }

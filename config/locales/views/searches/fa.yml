@@ -14,8 +14,11 @@ fa:
   price_to: تا قیمت
   radius: شهرهای اطراف به شعاع
   radius around the city: شعاع کیلومتری
-  search result: نتایج جستجو (%{count} مورد)
   searches:
+    filters:
+      makes:
+        makes: برند ها
+        more: ادامه برند ها
     search_form:
       millage_from: کارکرد از
       millage_to: کارکرد تا

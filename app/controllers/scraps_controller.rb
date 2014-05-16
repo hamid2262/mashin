@@ -8,7 +8,8 @@ class ScrapsController < ApplicationController
       scrap.url = scrap_url+"ads"
       scrap.save
       scrap.sweep    
-      redirect_to root_path    
     end
+
+    redirect_to root_path    
   end
 end
