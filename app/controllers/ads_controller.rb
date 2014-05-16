@@ -1,4 +1,5 @@
 class AdsController < ApplicationController
+  authorize_resource
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
   # GET /ads

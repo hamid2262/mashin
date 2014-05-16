@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  authorize_resource
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
   # GET /locations

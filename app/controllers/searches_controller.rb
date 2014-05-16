@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  authorize_resource
+
   def index
   	if params[:id]
   		@search = Search.find(params[:id])
