@@ -16,6 +16,8 @@ fa:
   radius around the city: شعاع کیلومتری
   searches:
     filters:
+      car_models:
+        car_models: مدل
       makes:
         makes: برند ها
         more: ادامه برند ها

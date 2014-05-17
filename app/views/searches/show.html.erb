@@ -2,7 +2,10 @@
 <div id="search_show">
   <div id="search_bar" class="col-sm-5 col-md-3">
     <%= render 'search_form' %>
-    <%= render 'searches/filters/makes' %>
+    <div class="filter_sections">
+      <%= render 'searches/filters/makes' %>
+      <%= render 'searches/filters/car_models' %>
+    </div>
   </div>
 
   <div id="search_list" class="col-sm-7 col-md-9">

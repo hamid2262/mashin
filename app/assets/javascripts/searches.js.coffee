@@ -61,13 +61,13 @@ jQuery ->
       $(this).removeClass("with_value")
       $(this).parent().next().addClass("myhide")
 
-#############################  filter_lists_badge_link   
-  $(".filter_lists_badge_link").click (event)->
+#############################  filter_sections_badge_link   
+  $(".filter_sections_badge_link").click (event)->
     event.preventDefault()
     $("form",this ).submit()
 
-  $(".filter_lists .myhidden").hide();
-  $(".filter_lists a.show_more").click (event)->
+  $(".filter_sections .myhidden").hide();
+  $(".filter_sections a.show_more").click (event)->
     event.preventDefault()
     $(this).prev().children(".myhidden").slideToggle()
     $(this).prev().children().toggleClass("smallHeght")

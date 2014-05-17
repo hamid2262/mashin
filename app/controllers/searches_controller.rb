@@ -14,10 +14,10 @@ class SearchesController < ApplicationController
     if params[:search][:search_id].present?
       @old_search = Search.find params[:search][:search_id]
       @search = @old_search.dup
-      @make = Make.find_by(name: params[:search][:make_name])
-      @search.make_id = @make.id
+      @search.dretect_search_field_from_down_filter_sections(params)
     else
       @search = Search.new(search_params)
+      @search.car_model = nil if search_params[:make_id].nil?
     end
   	@search.year_from = correct_date(search_params[:year_from]) if search_params[:year_from].present?
   	@search.year_to   = correct_date( search_params[:year_to])  if search_params[:year_to].present?
@@ -39,7 +39,6 @@ class SearchesController < ApplicationController
   end
 
 private
-
 	def search_params
     params.require(:search).permit(:year_from, :year_to, 
                                    :price_from, :price_to, 

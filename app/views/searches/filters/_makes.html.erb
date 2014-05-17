@@ -1,26 +1,24 @@
-<div class="filter_lists">
-  <% if @search.make_id.nil? and @search.makes.any? %>
-    <div class="panel panel-default">
-      <div class="panel-heading"><h3 class="panel-title"><%= t ".makes" %></h3>
-      </div>
-      <ul class="nav nav-pills nav-stacked">
-        <% @search.makes.each_with_index do |make, index| %>
-          <%=raw index<5 ? "<li>" : "<li class='myhidden'>"  %>
-            <a class="filter_lists_badge_link" href="">
-              <span class="badge pull-left"><%= make[1] %></span> 
-              <%= form_for @search, url: searches_path, method: :post do |f| -%>
-                <%= f.hidden_field :search_id, value: @search.id %>
-                <%= f.hidden_field :make_name, value: make[0]  %>
-                <%= f.submit make[0], class: "btn btn-link" %>
-              <% end %>
-            </a>
-          </li>
-        <% end %>
-
-      </ul>
-      <a href="" class="show_more" ><%= t".more" %></a>
+<% if @search.make_id.nil? and @search.makes.any? %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><%= t ".makes" %></h3>
     </div>
-  <% end %>
-</div>
+    <ul class="nav nav-pills nav-stacked">
+      <% @search.makes.each_with_index do |make, index| %>
+        <%=raw index<5 ? "<li>" : "<li class='myhidden'>"  %>
+          <a class="filter_sections_badge_link" href="">
+            <span class="badge pull-left"><%= make[1] %></span> 
+            <%= form_for @search, url: searches_path, method: :post do |f| -%>
+              <%= f.hidden_field :search_id, value: @search.id %>
+              <%= f.hidden_field :make_name, value: make[0]  %>
+              <%= f.submit make[0], class: "btn btn-link" %>
+            <% end %>
+          </a>
+        </li>
+      <% end %>
 
-
+    </ul>
+    <% if @search.makes.size > 5 %>
+      <a href="" class="show_more" ><%= t".more" %></a>
+    <% end %>
+  </div>
+<% end %>

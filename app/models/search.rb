@@ -17,14 +17,37 @@ class Search < ActiveRecord::Base
     @ads ||= find_ads
   end
 
-  def makes
-    @makes = Make.joins(:ads).group('makes.name')
-    @makes = conditions @makes 
-    @makes = @makes.order('COUNT(ads.make_id) DESC').count
-  end
-
   def count
     ads.count 
+  end
+
+  def makes
+    if make_id.nil?
+      @makes = Make.joins(:ads).group('makes.name')
+      @makes = conditions @makes 
+      @makes = @makes.order('COUNT(ads.make_id) DESC').count
+    end
+  end
+
+  def car_models
+    if car_model_id.nil?
+      @car_models = CarModel.joins(:ads).group('car_models.name')
+      @car_models = conditions @car_models 
+      @car_models = @car_models.order('COUNT(ads.car_model_id) DESC').count
+      @car_models.sort_by { |name, count| count }.reverse
+    end
+  end
+
+  def dretect_search_field_from_down_filter_sections params
+    make_name      = params[:search][:make_name]
+    car_model_name = params[:search][:car_model_name]
+    if make_name.present? 
+      make = Make.find_by(name: make_name)
+      self.make_id = make.id    
+    elsif car_model_name.present?
+      car_model = CarModel.find_by(name: car_model_name)
+      self.car_model_id = car_model.id 
+    end
   end
 
 private
@@ -50,7 +73,7 @@ private
     values = where_near_origin(values, location, find_radius) if location.present? and find_location.first
 
     values = values.where(make_id: make_id) if make_id.present?
-    values = values.where(car_model_id: car_model_id) if car_model_id.present?    
+    values = values.where(car_model_id: car_model_id) if car_model_id.present? and make_id.present?   
     values
   end
 

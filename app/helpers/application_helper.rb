@@ -106,4 +106,7 @@ module ApplicationHelper
     end
   end
     
+  def check_for_blank val
+    val.present? ? val : "گوناگون"
+  end
 end
