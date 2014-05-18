@@ -1,0 +1,9 @@
+<div class="fields">
+  <div class="text"><small><%= t "#{name}" %>:</small> <%= field.name %></div>
+  <%= form_for @search, url: searches_path, method: :post do |f| -%>
+    <%= f.hidden_field :search_id, value: @search.id %>
+    <%= f.hidden_field :remove, value: true %>
+    <%= f.hidden_field "#{name}_id".to_sym, value: field.id  %>
+    <%= f.submit "X", class: "btn btn-link" %>
+  <% end %>
+</div>

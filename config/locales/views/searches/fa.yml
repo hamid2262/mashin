@@ -1,6 +1,6 @@
 fa:
   brand: برند
-  car_model: مدل خودرو
+  car_model: مدل
   cheap: ارزانترین
   enter the search city name: شهر مورد جستجو
   expencive: گرانترین
@@ -16,8 +16,12 @@ fa:
   radius around the city: شعاع کیلومتری
   searches:
     filters:
+      body_colors:
+        body_colors: رنگ بدنه
       car_models:
         car_models: مدل
+      internal_colors:
+        internal_colors: رنگ داخلی
       makes:
         makes: برند ها
         more: ادامه برند ها

@@ -4,7 +4,8 @@ task :cleardb => :environment do
     AdOtherField.delete_all
     Ad.delete_all
     CarModel.delete_all
-    Color.delete_all
+    InternalColor.delete_all
+    BodyColor.delete_all
     ImageUrl.delete_all
     Location.delete_all
     Make.delete_all

@@ -11,8 +11,8 @@ class Ad < ActiveRecord::Base
   belongs_to :car_model
   belongs_to :make
   belongs_to :scrap
-  belongs_to :internal_color, class_name: "Color", foreign_key: "internal_color_id"
-  belongs_to :body_color, class_name: "Color", foreign_key: "body_color_id"
+  belongs_to :internal_color
+  belongs_to :body_color
 
   def internal_color_name
     Rails.cache.fetch([:internal_color, internal_color_id, :name], expires_in: 150.minutes) do 

@@ -5,27 +5,22 @@
     <div class="filter_sections">
       <%= render 'searches/filters/makes' %>
       <%= render 'searches/filters/car_models' %>
+      <%= render 'searches/filters/body_colors' %>
+      <%= render 'searches/filters/internal_colors' %>
     </div>
   </div>
 
   <div id="search_list" class="col-sm-7 col-md-9">
   	<% if @ads.any? %>
-
-      <div class="apple_pagination">
-        <%= will_paginate @ads, :container => false,inner_window: 3, outer_window: 0 %>
-      </div>
+      <%= render 'list_of_filtered' %>
+      <%= render 'paginate' %>
 
   		<% @ads.each do |ad| %>
-      <a href="<%= ad_path(ad) %>" >
-  			<div class="search_row">
-  				<%= render 'ad', ad: ad %>
-  			</div>
+      <a class="search_row" href="<%= ad_path(ad) %>" >
+  			<%= render 'ad', ad: ad %>
       </a>
   		<% end %>
-
-     <div class="apple_pagination">
-        <%= will_paginate @ads, :container => false,inner_window: 3, outer_window: 0 %>
-      </div>
+      <%= render 'paginate' %>
     <% else %>
       <p id="err_msg"><%= t".no_resault_message" %></p>
   	<% end %>

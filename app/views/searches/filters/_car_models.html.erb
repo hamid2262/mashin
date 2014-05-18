@@ -4,21 +4,12 @@
     </div>
     <ul class="nav nav-pills nav-stacked">
       <% @search.car_models.each_with_index do |car_model, index| %>
-        <%=raw index<5 ? "<li>" : "<li class='myhidden'>"  %>
-          <a class="filter_sections_badge_link" href="">
-            <span class="badge pull-left"><%= car_model[1] %></span> 
-            <%= form_for @search, url: searches_path, method: :post do |f| -%>
-              <%= f.hidden_field :search_id, value: @search.id %>
-              <%= f.hidden_field :car_model_name, value: car_model[0]  %>
-              <%= f.submit check_for_blank(car_model[0]), class: "btn btn-link" %>
-            <% end %>
-          </a>
-        </li>
+        <%= render partial: 'searches/filters/row', 
+          locals:{ value: car_model, name: "car_model", index: index} %>
       <% end %>
-
     </ul>
     <% if @search.car_models.size > 5 %>
-      <a href="" class="show_more" ><%= t".more" %></a>
+      <a href="" class="show_more" ><%= t"see more" %></a>
     <% end %>
   </div>
 <% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518012319) do
+ActiveRecord::Schema.define(version: 20140518021729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,14 +73,6 @@ ActiveRecord::Schema.define(version: 20140518012319) do
 
   add_index "car_models", ["make_id"], name: "index_car_models_on_make_id", using: :btree
   add_index "car_models", ["name"], name: "index_car_models_on_name", using: :btree
-
-  create_table "colors", id: false, force: true do |t|
-    t.integer  "id"
-    t.string   "name"
-    t.boolean  "visible"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "image_urls", force: true do |t|
     t.integer  "ad_id"
@@ -148,6 +140,8 @@ ActiveRecord::Schema.define(version: 20140518012319) do
     t.integer  "radius"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "body_color_id"
+    t.integer  "internal_color_id"
   end
 
   create_table "users", force: true do |t|

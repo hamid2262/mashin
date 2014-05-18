@@ -188,13 +188,13 @@ private
 
   def body_color_id row
     body_color_name = row.at_css(".base_fields .body_color").text
-    body_color = Color.find_or_create_by(name: body_color_name)
+    body_color = BodyColor.find_or_create_by(name: body_color_name)
     body_color.id
   end
 
   def internal_color_id row
     internal_color_name = row.at_css(".base_fields .internal_color").text
-    internal_color = Color.find_or_create_by(name: internal_color_name)
+    internal_color = InternalColor.find_or_create_by(name: internal_color_name)
     internal_color.id
   end
 

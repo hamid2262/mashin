@@ -11,6 +11,7 @@ fa:
   toman: تومان
   no_data: '-'
   brand: برند خودرو
+  make: برند
   car_model: مدل
   year: سال ساخت
   price: قیمت

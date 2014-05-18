@@ -1,0 +1,5 @@
+<% unless @ads.size < 15 %>
+  <div class="apple_pagination">
+    <%= will_paginate @ads, :container => false,inner_window: 3, outer_window: 0 %>
+  </div>
+<% end %>

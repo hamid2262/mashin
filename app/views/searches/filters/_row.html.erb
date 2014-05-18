@@ -1,0 +1,10 @@
+<%=raw index<5 ? "<li>" : "<li class='myhidden'>"  %>
+  <a class="filter_sections_badge_link" href="">
+    <span class="badge pull-left"><%= value[1] %></span> 
+    <%= form_for @search, url: searches_path, method: :post do |f| -%>
+      <%= f.hidden_field :search_id, value: @search.id %>
+      <%= f.hidden_field "#{name}_name".to_sym, value: value[0]  %>
+      <%= f.submit check_for_blank(value[0]), class: "btn btn-link" %>
+    <% end %>
+  </a>
+</li>

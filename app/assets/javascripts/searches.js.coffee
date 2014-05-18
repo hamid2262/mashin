@@ -66,6 +66,7 @@ jQuery ->
     event.preventDefault()
     $("form",this ).submit()
 
+#############################  filter_sections_see_more   
   $(".filter_sections .myhidden").hide();
   $(".filter_sections a.show_more").click (event)->
     event.preventDefault()

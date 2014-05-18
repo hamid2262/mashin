@@ -1,0 +1,17 @@
+<% if @search.make_id.present? and @search.body_color_id.nil? and @search.body_colors.any? %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><%= t ".body_colors" %></h3>
+    </div>
+    <ul class="nav nav-pills nav-stacked">
+      <% @search.body_colors.each_with_index do |body_color, index| %>
+        <%= render partial: 'searches/filters/row', 
+          locals:{ value: body_color, name: "body_color", index: index} %>
+      <% end %>
+    </ul>
+    <% if @search.body_colors.size > 5 %>
+      <a href="" class="show_more" ><%= t"see more" %></a>
+    <% end %>
+  </div>
+<% end %>
+
+

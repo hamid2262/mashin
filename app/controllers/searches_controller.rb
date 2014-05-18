@@ -14,7 +14,11 @@ class SearchesController < ApplicationController
     if params[:search][:search_id].present?
       @old_search = Search.find params[:search][:search_id]
       @search = @old_search.dup
-      @search.dretect_search_field_from_down_filter_sections(params)
+      if params[:search][:remove]
+        @search.top_filter_list_remove_link(params)
+      else
+        @search.dretect_search_field_from_down_filter_sections(params)
+      end
     else
       @search = Search.new(search_params)
       @search.car_model = nil if search_params[:make_id].nil?
