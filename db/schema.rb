@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140513232522) do
+ActiveRecord::Schema.define(version: 20140518012319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,13 @@ ActiveRecord::Schema.define(version: 20140513232522) do
   add_index "ads", ["active", "latitude", "longitude", "make_id", "usage_type", "year", "price"], name: "index_ads_on_active_lat_make_usage_year_price", using: :btree
   add_index "ads", ["user_id"], name: "index_ads_on_user_id", using: :btree
 
+  create_table "body_colors", force: true do |t|
+    t.string   "name"
+    t.boolean  "visible",    default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "car_models", force: true do |t|
     t.string   "name"
     t.integer  "make_id"
@@ -67,14 +74,13 @@ ActiveRecord::Schema.define(version: 20140513232522) do
   add_index "car_models", ["make_id"], name: "index_car_models_on_make_id", using: :btree
   add_index "car_models", ["name"], name: "index_car_models_on_name", using: :btree
 
-  create_table "colors", force: true do |t|
+  create_table "colors", id: false, force: true do |t|
+    t.integer  "id"
     t.string   "name"
-    t.boolean  "visible",    default: true
+    t.boolean  "visible"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "colors", ["name"], name: "index_colors_on_name", using: :btree
 
   create_table "image_urls", force: true do |t|
     t.integer  "ad_id"
@@ -84,6 +90,13 @@ ActiveRecord::Schema.define(version: 20140513232522) do
   end
 
   add_index "image_urls", ["ad_id"], name: "index_image_urls_on_ad_id", using: :btree
+
+  create_table "internal_colors", force: true do |t|
+    t.string   "name"
+    t.boolean  "visible",    default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "locations", force: true do |t|
     t.string   "name"

@@ -1,0 +1,29 @@
+<h1>Listing internal_colors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Visible</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @internal_colors.each do |internal_color| %>
+      <tr>
+        <td><%= internal_color.name %></td>
+        <td><%= internal_color.visible %></td>
+        <td><%= link_to 'Show', internal_color %></td>
+        <td><%= link_to 'Edit', edit_internal_color_path(internal_color) %></td>
+        <td><%= link_to 'Destroy', internal_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Internal color', new_internal_color_path %>

@@ -1,0 +1,29 @@
+<h1>Listing body_colors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Visible</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @body_colors.each do |body_color| %>
+      <tr>
+        <td><%= body_color.name %></td>
+        <td><%= body_color.visible %></td>
+        <td><%= link_to 'Show', body_color %></td>
+        <td><%= link_to 'Edit', edit_body_color_path(body_color) %></td>
+        <td><%= link_to 'Destroy', body_color, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Body color', new_body_color_path %>

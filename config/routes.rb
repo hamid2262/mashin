@@ -1,5 +1,5 @@
 Mashin::Application.routes.draw do
-  
+
   root 'homes#show'
 
   devise_for :users, :controllers => { registrations: 'users' }
@@ -9,20 +9,20 @@ Mashin::Application.routes.draw do
     get "sign_up", to: "devise/registrations#new"
   end
   
-  resources :searches, only: [:show, :create, :index]
   resource :homes, only: [:show]
+  resources :searches, only: [:show, :create, :index]
   resources :car_models
   resources :locations
-
+  resources :body_colors
+  resources :internal_colors
   resources :makes
-
+  resources :ads 
   resources :scraps, only: [:show, :index] do
     collection do
       post "scrap" 
     end
   end
 
-  resources :ads 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

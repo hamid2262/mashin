@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @internal_color.name %>
+</p>
+
+<p>
+  <strong>Visible:</strong>
+  <%= @internal_color.visible %>
+</p>
+
+<%= link_to 'Edit', edit_internal_color_path(@internal_color) %> |
+<%= link_to 'Back', internal_colors_path %>
