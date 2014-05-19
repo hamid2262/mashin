@@ -56,16 +56,33 @@
       }
     }
     .filter_sections{
+      margin-top: 15px;
       .panel-heading{
         padding: 6px 15px;
         h3{
           font-size: 13px;
         }
       }
-      margin-top: 15px;
-      .nav>li>a {
-        padding: 0px 20px 0px 20px;
-        font-size: 10px;
+      .filter_list_row{
+        border-bottom: 1px solid rgba(245, 245, 245, 0.88);
+        .filter_sections_badge_link {
+          padding: 0px 15px 0px 15px;
+          font-size: 10px;
+          height: 20px;
+          form{
+            input{
+              font-size: 10px;
+              padding: 3px 0;
+            }
+          }
+        }
+        // .smallHeght{
+        //   height: 21px;
+        // }
+        .badge {
+          margin-top: 2px;
+          padding: 2px 5px;
+        }
       }
       .show_more{
         text-align: center;
@@ -79,12 +96,6 @@
           box-shadow: 0px 0 2px #aaa;
           background: #EEE;
         }        
-      }
-      .smallHeght{
-        height: 25px;
-      }
-      .badge {
-        margin-top: 7px;
       }
     }
   } //#search_bar
@@ -132,6 +143,9 @@
           display: inline-block;
           margin-left: 4px;
         }
+      }
+      .value{
+        display: inline-block;
       }
       form{
         height: 12px;

@@ -71,4 +71,3 @@ jQuery ->
   $(".filter_sections a.show_more").click (event)->
     event.preventDefault()
     $(this).prev().children(".myhidden").slideToggle()
-    $(this).prev().children().toggleClass("smallHeght")

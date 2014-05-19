@@ -48,4 +48,8 @@ module SearchesHelper
     end
   end
 
+  def extract_city location
+    location.split(",").first
+  end
+
 end

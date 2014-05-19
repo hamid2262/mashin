@@ -9,14 +9,16 @@
 		} do |f| -%>
 		<%= error_messages_for(@search) %>
 		<div class="row">
-
+    	<!-- make -->
 			<div class="col-xs-6 filter">
 				<%= f.association :make, 
-										label: t("brand"), 
+										label: t("make"), 
 										collection: makes, 
 										input_html: {id: "make_id", class: "form-control #{with_value_class f.object.make}"} %>
 				<%= remove_filter_buttun f.object.make_id %>
 			</div>
+
+			<!-- car_model -->
 			<div class="col-xs-6 filter">
 				<%= f.input :car_model_id, 
 										label: t("car_model"), 
@@ -30,6 +32,7 @@
 		</div>
 
 		<div class="row">
+		  <!-- year_from -->
 			<div class="col-xs-6 filter">
 				<%= f.input :year_from, 
 										label: t("year_from") , 
@@ -38,6 +41,8 @@
 										input_html:{class: "form-control #{with_value_class f.object.year_from}"}  %>
 				<%= remove_filter_buttun f.object.year_from %>
 			</div>
+
+			<!-- year_to -->
 			<div class="col-xs-6 filter">
 				<%= f.input :year_to, 
 										label: t("year_to"), 
@@ -49,6 +54,7 @@
 		</div>
 
 		<div class="row">
+		  <!-- price_from -->
 			<div class="col-xs-6 filter">
 				<%= f.input :price_from, 
 										label: t("price_from"), 
@@ -56,6 +62,8 @@
 										input_html:{class: "form-control #{with_value_class f.object.price_from}"} %>
 				<%= remove_filter_buttun f.object.price_from %>
 			</div>
+
+			<!-- price_to -->
 			<div class="col-xs-6 filter">
 				<%= f.input :price_to, 
 										label: t("price_to"), 
@@ -66,16 +74,19 @@
 		</div>
 
 		<div class="row">
+		  <!-- millage_from -->
 			<div class="col-xs-6 filter ">
 				<%= f.input :millage_from, 
-										label: t(".millage_from"), 
+										label: t("millage_from"), 
 										collection: km_range,
 										input_html:{class: "form-control #{with_value_class f.object.millage_from}"} %>
 				<%= remove_filter_buttun f.object.millage_from %>
 			</div>
+
+			<!-- millage_to -->
 			<div class="col-xs-6 filter">
 				<%= f.input :millage_to, 
-										label: t(".millage_to"), 
+										label: t("millage_to"), 
 										collection: km_range,
 										input_html:{class: "form-control #{with_value_class f.object.millage_to}"} %>
 				<%= remove_filter_buttun f.object.millage_to %>
@@ -84,15 +95,18 @@
 
 
 		<div class="row">
+		  <!-- location -->
 			<div class="col-xs-12 filter">
 				<%= f.input :location, 
 										label: t("location"),
-										placeholder: t("enter the search city name"), 
+										placeholder: t("enter the search city name"),
 										input_html: {id: "location_city", class: "form-control #{with_value_class f.object.location}"} %>
 				<%= remove_filter_buttun f.object.location %>
 			</div>
 		</div>
+
 		<div class="row">
+		  <!-- radius -->
 			<div class="col-xs-6 col-sm-6 filter">
 				<%= f.input :radius, label: t("radius"),
 										prompt: t("radius around the city"),
@@ -101,6 +115,7 @@
 				<%= remove_filter_buttun f.object.radius, "_text" %>
 			</div>
 
+			<!-- order -->
 			<div class="col-xs-6 col-sm-6 filter">
 				<%= f.input :order, 
 										label: t("order"), 

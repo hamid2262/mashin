@@ -13,8 +13,8 @@
   </div>
 
   <div id="search_list" class="col-sm-7 col-md-9">
+    <%= render 'searches/search_list/list_of_filtered' %>
   	<% if @ads.any? %>
-      <%= render 'searches/search_list/list_of_filtered' %>
       <%= render 'shared/paginate', items: @ads %>
 
   		<% @ads.each do |ad| %>

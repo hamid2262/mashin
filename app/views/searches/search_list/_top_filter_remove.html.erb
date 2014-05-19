@@ -1,9 +1,20 @@
 <div class="fields">
   <div class="text">
-    <% if name == "body_color" or  name == "internal_color" %>
+    <% if name == "location" or
+          name == "radius" or
+          name == "year_from" or
+          name == "year_to"  or
+          name == "price_from"  or
+          name == "price_to"  or
+          name == "millage_from"  or
+          name == "millage_to"  or
+          name == "body_color"  or
+          name == "internal_color" or
+          name == "order" 
+    %>
       <small><%= t "#{name}" %>:</small>     
     <% end %>
-    <%= label1 %>
+    <div class="value"><%= label1 %></div>
   </div>
   <%= form_for @search, url: searches_path, method: :post do |f| -%>
     <%= f.hidden_field :search_id, value: @search.id %>

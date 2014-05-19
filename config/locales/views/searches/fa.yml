@@ -9,9 +9,11 @@ fa:
   location: شهر
   milion_toman: میلیون تومان
   new: به روز ترین
-  order: ترتیب نمایش آگهی ها
+  order: ترتیب نمایش
   price_from: قیمت از
   price_to: تا قیمت
+  millage_from: کارکرد از
+  millage_to: کارکرد تا
   radius: شهرهای اطراف به شعاع
   radius around the city: شعاع کیلومتری
   remove_filter: حذف محدود کننده
@@ -33,8 +35,6 @@ fa:
         makes: برند ها
         more: ادامه برند ها
     search_form:
-      millage_from: کارکرد از
-      millage_to: کارکرد تا
     show:
       no_resault_message: موردی با این مشخصات یافت نشد!
   searching: در حال جستجو ...

@@ -1,23 +1,52 @@
-<% if @search.make_id or
-  @search.car_model_id or
-  @search.fuel or 
-  @search.girbox != nil or
-  @search.body_color_id or
-  @search.internal_color_id
+<% if 
+      @search.location.present? or
+      @search.radius or
+      @search.make_id or
+      @search.car_model_id or
+      @search.fuel or 
+      @search.girbox != nil or
+      @search.year_from or
+      @search.year_to or
+      @search.price_from or
+      @search.price_to or
+      @search.millage_from or
+      @search.millage_to or
+      @search.body_color_id or
+      @search.internal_color_id or
+      @search.order 
  %>
   <div id="top_filter_section" class="">
+    <!-- location -->
+    <% if @search.location.present? %>
+      <%= render 'searches/search_list/top_filter_remove',
+         field: @search.location, 
+         label1: extract_city(@search.location), 
+         value: @search.location , name: "location" %>
+    <% end %>
+
+    <!-- radius -->
+    <% if @search.radius %>
+      <%= render 'searches/search_list/top_filter_remove',
+         field: @search.radius, 
+         label1: "#{@search.radius} #{t("km")}", 
+         value: @search.radius , name: "radius" %>
+    <% end %>
+
+    <!-- make -->
     <% if @search.make_id %>
       <%= render 'searches/search_list/top_filter_remove',
          field: @search.make, label1: @search.make.name, 
          value: @search.make.id , name: "make" %>
     <% end %>
 
+    <!-- car_model -->
     <% if @search.car_model_id and @search.make_id %>
       <%= render 'searches/search_list/top_filter_remove', 
         field: @search.car_model, label1: @search.car_model.name, 
         value: @search.car_model.id , name: "car_model" %>
     <% end %>
 
+    <!-- girbox -->
     <% unless @search.girbox.nil? %>
       <%= render 'searches/search_list/top_filter_remove', 
          field: @search.girbox, 
@@ -25,22 +54,78 @@
          value: @search.girbox , name: "girbox" %>
     <% end %>
 
+    <!-- fuel -->
     <% if @search.fuel %>
       <%= render 'searches/search_list/top_filter_remove', 
          field: @search.fuel, label1: FUEL_ARR[@search.fuel], 
          value: @search.fuel , name: "fuel" %>
     <% end %>
 
+    <!-- year_from -->
+    <% if @search.year_from %>
+      <%= render 'searches/search_list/top_filter_remove', 
+         field: @search.year_from, label1: JalaliDate.new(@search.year_from).year, 
+         value: @search.year_from , name: "year_from" %>
+    <% end %>
+
+    <!-- year_to -->
+    <% if @search.year_to %>
+      <%= render 'searches/search_list/top_filter_remove', 
+         field: @search.year_to, label1: JalaliDate.new(@search.year_to).year, 
+         value: @search.year_to , name: "year_to" %>
+    <% end %>
+
+    <!-- price_from -->
+    <% if @search.price_from %>
+      <%= render 'searches/search_list/top_filter_remove', 
+         field: @search.price_from, 
+         label1: number_to_human(@search.price_from), 
+         value: @search.price_from , name: "price_from" %>
+    <% end %>
+
+    <!-- price_to -->
+    <% if @search.price_to %>
+      <%= render 'searches/search_list/top_filter_remove', 
+         field: @search.price_to, 
+         label1: number_to_human(@search.price_to), 
+         value: @search.price_to , name: "price_to" %>
+    <% end %>
+
+    <!-- millage_from -->
+    <% if @search.millage_from %>
+      <%= render 'searches/search_list/top_filter_remove', 
+         field: @search.millage_from, 
+         label1: number_to_human(@search.millage_from), 
+         value: @search.millage_from , name: "millage_from" %>
+    <% end %>
+
+    <!-- millage_to -->
+    <% if @search.millage_to %>
+      <%= render 'searches/search_list/top_filter_remove', 
+         field: @search.millage_to, 
+         label1: number_to_human(@search.millage_to), 
+         value: @search.millage_to , name: "millage_to" %>
+    <% end %>
+
+    <!-- body_color -->
     <% if @search.body_color_id %>
       <%= render 'searches/search_list/top_filter_remove',
          field: @search.body_color, label1: @search.body_color.name, 
          value: @search.body_color.id , name: "body_color" %>
     <% end %>
 
+    <!-- internal_color -->
     <% if @search.internal_color_id %>
       <%= render 'searches/search_list/top_filter_remove',
          field: @search.internal_color, label1: @search.internal_color.name, 
          value: @search.internal_color.id , name: "internal_color" %>
+    <% end %>
+
+    <!-- order -->
+    <% if @search.order.present? %>
+      <%= render 'searches/search_list/top_filter_remove',
+         field: @search.order, label1: t(@search.order), 
+         value: @search.order , name: "order" %>
     <% end %>
 
   </div>

@@ -99,22 +99,40 @@ class Search < ActiveRecord::Base
   end
 
   def top_filter_list_remove_link params
+    location            = params[:search][:location_id]
+    radius              = params[:search][:radius_id]
     make_id             = params[:search][:make_id]
     car_model_id        = params[:search][:car_model_id]
-    fuel_id             = params[:search][:fuel_id]
+    fuel                = params[:search][:fuel_id]
     girbox_id           = params[:search][:girbox_id]
+    year_from           = params[:search][:year_from_id]
+    year_to             = params[:search][:year_to_id]
+    price_from          = params[:search][:price_from_id]
+    price_to            = params[:search][:price_to_id]
+    millage_from        = params[:search][:millage_from_id]
+    millage_to          = params[:search][:millage_to_id]
     body_color_id       = params[:search][:body_color_id]
     internal_color_id   = params[:search][:internal_color_id]
+    order               = params[:search][:order_id]
+    
     if make_id.present?
       self.make_id = nil
       self.car_model_id = nil
     end
-
+    self.location          = nil if location.present?
+    self.radius            = nil if radius.present?
     self.car_model_id      = nil if car_model_id.present?
-    self.fuel              = nil if fuel_id.present?
+    self.fuel              = nil if fuel.present?
     self.girbox            = nil if girbox_id != nil
+    self.year_from         = nil if year_from.present?
+    self.year_to           = nil if year_to.present?
+    self.price_from        = nil if price_from.present?
+    self.price_to          = nil if price_to.present?
+    self.millage_from      = nil if millage_from.present?
+    self.millage_to        = nil if millage_to.present?
     self.body_color_id     = nil if body_color_id.present?
     self.internal_color_id = nil if internal_color_id.present?
+    self.order             = nil if order.present?
   end
 
 private
