@@ -5,6 +5,8 @@
     <div class="filter_sections">
       <%= render 'searches/filters/makes' %>
       <%= render 'searches/filters/car_models' %>
+      <%= render 'searches/filters/fuels' %>
+      <%= render 'searches/filters/girboxes' %>
       <%= render 'searches/filters/body_colors' %>
       <%= render 'searches/filters/internal_colors' %>
     </div>
@@ -12,15 +14,15 @@
 
   <div id="search_list" class="col-sm-7 col-md-9">
   	<% if @ads.any? %>
-      <%= render 'list_of_filtered' %>
-      <%= render 'paginate' %>
+      <%= render 'searches/search_list/list_of_filtered' %>
+      <%= render 'shared/paginate', items: @ads %>
 
   		<% @ads.each do |ad| %>
       <a class="search_row" href="<%= ad_path(ad) %>" >
-  			<%= render 'ad', ad: ad %>
+  			<%= render 'searches/search_list/ad', ad: ad %>
       </a>
   		<% end %>
-      <%= render 'paginate' %>
+      <%= render 'shared/paginate', items: @ads %>
     <% else %>
       <p id="err_msg"><%= t".no_resault_message" %></p>
   	<% end %>

@@ -21,7 +21,6 @@ fa:
   body_color: رنگ بدنه
   internal_color: رنگ داخلی
   details: توضیحات
-  fuel: نوع سوخت
   vehicle: خودرو
   sefr: صفر کیلومتر
   sell: فروش
@@ -46,3 +45,9 @@ fa:
   sign_up: ثبت نام    
   remember_me: مرا به خاطر بسپار
   forget_password: رمز خود را فراموش کرده ام
+
+  fuel: نوع سوخت
+  benzin: بنزین
+  doganesuz: دوگانه سوز
+  hybrid: هایبرید
+  diesel: دیزل

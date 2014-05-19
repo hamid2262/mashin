@@ -41,5 +41,6 @@ $(function() {
   t = $('ul.nav a[href="#' + $.trim(t) + '"]');
   t && t.tab('show'); 
 
+  $('.tooltip_bottom').tooltip()
 });
 

@@ -21,7 +21,7 @@ module SearchesHelper
         url = IMAGES_PATH+"default_auto_thumb.gif"
       end
 
-    else                                                 #from our web site
+    else                                               #from our web site
       
     end
     image_tag(url, class: "img-responsive")
@@ -36,6 +36,16 @@ module SearchesHelper
 
   def with_value_class val
     "with_value" if val.present?
+  end
+
+  def appropriate_filter_row_name val, name
+    if name == "fuel"
+      FUEL_ARR[val]
+    elsif name == "girbox"
+      GIRBOX_ARR[val ? 1 : 0]
+    else
+      val.present? ? val : "گوناگون"
+    end
   end
 
 end

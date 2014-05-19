@@ -81,7 +81,6 @@
     height: 33px;
   }
   #top_filter_section{
-    overflow: hidden;
     border-bottom: 1px solid #E4E4E4;
     padding: 0px 0px 3px 1px;
     position: fixed;
@@ -119,6 +118,8 @@
         color: #2E1B92;
         small{
           color: #857E7E;
+          display: inline-block;
+          margin-left: 4px;
         }
       }
       form{

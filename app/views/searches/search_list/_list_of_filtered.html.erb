@@ -1,0 +1,50 @@
+<% if @search.make_id or
+  @search.car_model_id or
+  @search.fuel or 
+  @search.girbox != nil or
+  @search.body_color_id or
+  @search.internal_color_id
+ %>
+  <div id="top_filter_section" class="">
+    <% if @search.make_id %>
+      <%= render 'searches/search_list/top_filter_remove',
+         field: @search.make, label1: @search.make.name, 
+         value: @search.make.id , name: "make" %>
+    <% end %>
+
+    <% if @search.car_model_id and @search.make_id %>
+      <%= render 'searches/search_list/top_filter_remove', 
+        field: @search.car_model, label1: @search.car_model.name, 
+        value: @search.car_model.id , name: "car_model" %>
+    <% end %>
+
+    <% unless @search.girbox.nil? %>
+      <%= render 'searches/search_list/top_filter_remove', 
+         field: @search.girbox, 
+         label1: GIRBOX_ARR[@search.girbox ? 1 : 0], 
+         value: @search.girbox , name: "girbox" %>
+    <% end %>
+
+    <% if @search.fuel %>
+      <%= render 'searches/search_list/top_filter_remove', 
+         field: @search.fuel, label1: FUEL_ARR[@search.fuel], 
+         value: @search.fuel , name: "fuel" %>
+    <% end %>
+
+    <% if @search.body_color_id %>
+      <%= render 'searches/search_list/top_filter_remove',
+         field: @search.body_color, label1: @search.body_color.name, 
+         value: @search.body_color.id , name: "body_color" %>
+    <% end %>
+
+    <% if @search.internal_color_id %>
+      <%= render 'searches/search_list/top_filter_remove',
+         field: @search.internal_color, label1: @search.internal_color.name, 
+         value: @search.internal_color.id , name: "internal_color" %>
+    <% end %>
+
+  </div>
+  <div id="space_for_top_filter" class="col-xs-12">
+    
+  </div>
+<% end %>

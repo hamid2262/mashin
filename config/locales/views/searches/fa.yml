@@ -20,6 +20,12 @@ fa:
         body_colors: رنگ بدنه
       car_models:
         car_models: مدل
+      fuels:
+        fuels: سوخت
+      girbox:
+        girbox: گیربکس
+      girboxes:
+        girbox: گیربکس
       internal_colors:
         internal_colors: رنگ داخلی
       makes:
@@ -28,6 +34,11 @@ fa:
     search_form:
       millage_from: کارکرد از
       millage_to: کارکرد تا
+    search_list:
+      fuel_top_filter_remove:
+        remove_filter: حذف محدود کننده
+      top_filter_remove:
+        remove_filter: حذف محدود کننده
     show:
       no_resault_message: موردی با این مشخصات یافت نشد!
   searching: در حال جستجو ...
