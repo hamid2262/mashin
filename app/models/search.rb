@@ -116,10 +116,13 @@ class Search < ActiveRecord::Base
     order               = params[:search][:order_id]
     
     if make_id.present?
-      self.make_id = nil
+      self.make_id      = nil
       self.car_model_id = nil
     end
-    self.location          = nil if location.present?
+    if location.present?
+      self.location     = nil 
+      self.radius       = nil
+    end
     self.radius            = nil if radius.present?
     self.car_model_id      = nil if car_model_id.present?
     self.fuel              = nil if fuel.present?

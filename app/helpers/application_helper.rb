@@ -21,9 +21,8 @@ module ApplicationHelper
   	a = (1000..10000).step(1000).map{|s| [ ("#{number_to_human s} #{t("kilometer")}") , s]}
   	b = ((20000..100000).step(10000)).map{|s| [("#{number_to_human s} #{t("kilometer")}") , s]}
   	c = ((200000..1000000).step(100000)).map{|s| [("#{number_to_human s} #{t("kilometer")}") , s]}
-  	last = ((2000000..4000000).step(100000)).map{|s| [("#{number_to_human s} #{t("kilometer")}") , s]}
 
-  	a.concat(b).concat(c).concat(last)
+  	a.concat(b).concat(c)
   end
 
   def price_range

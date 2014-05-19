@@ -38,7 +38,8 @@
 										label: t("year_from") , 
 										collection: year_range, 
 										selected: @search.year_from_shamsi,
-										input_html:{class: "form-control #{with_value_class f.object.year_from}"}  %>
+										input_html:{
+											class: "select_from form-control #{with_value_class f.object.year_from}"}  %>
 				<%= remove_filter_buttun f.object.year_from %>
 			</div>
 
@@ -48,7 +49,8 @@
 										label: t("year_to"), 
 										collection: year_range, 
 										selected: @search.year_to_shamsi,
-										input_html:{class: "form-control #{with_value_class f.object.year_to}"} %>
+										input_html:{
+											class: "select_to form-control #{with_value_class f.object.year_to}"} %>
 				<%= remove_filter_buttun f.object.year_to %>
 			</div>
 		</div>
@@ -59,7 +61,8 @@
 				<%= f.input :price_from, 
 										label: t("price_from"), 
 										collection: price_range,
-										input_html:{class: "form-control #{with_value_class f.object.price_from}"} %>
+										input_html:{
+											class: "select_from form-control #{with_value_class f.object.price_from}"} %>
 				<%= remove_filter_buttun f.object.price_from %>
 			</div>
 
@@ -68,7 +71,7 @@
 				<%= f.input :price_to, 
 										label: t("price_to"), 
 										collection: price_range,
-										input_html:{class: "form-control #{with_value_class f.object.price_to}"} %>
+										input_html:{class: "select_to form-control #{with_value_class f.object.price_to}"} %>
 				<%= remove_filter_buttun f.object.price_to %>
 			</div>
 		</div>
@@ -79,7 +82,8 @@
 				<%= f.input :millage_from, 
 										label: t("millage_from"), 
 										collection: km_range,
-										input_html:{class: "form-control #{with_value_class f.object.millage_from}"} %>
+										input_html:{
+											class: "select_from form-control #{with_value_class f.object.millage_from}"} %>
 				<%= remove_filter_buttun f.object.millage_from %>
 			</div>
 
@@ -88,7 +92,8 @@
 				<%= f.input :millage_to, 
 										label: t("millage_to"), 
 										collection: km_range,
-										input_html:{class: "form-control #{with_value_class f.object.millage_to}"} %>
+										input_html:{
+											class: "select_to form-control #{with_value_class f.object.millage_to}"} %>
 				<%= remove_filter_buttun f.object.millage_to %>
 			</div>
 		</div>

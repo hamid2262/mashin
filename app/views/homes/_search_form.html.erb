@@ -8,45 +8,79 @@
 	<%= error_messages_for(@search) %>
 	<div class="row">
 		<div class="col-xs-6 right">
-			<%= f.association :make, label: t("brand"), collection: makes, input_html: {id: "make_id"} %>			
+			<%= f.association :make, 
+					label: t("brand"), 
+					collection: makes, 
+					input_html: {id: "make_id"} %>			
 		</div>
 		<div class="col-xs-6 left">
-			<%= f.input :car_model_id, label: t("car_model"), collection: makes, as: :grouped_select, group_method: :car_models, prompt: "", input_html: {id: "car_model_id"}  %>
+			<%= f.input :car_model_id, 
+					label: t("car_model"), 
+					collection: makes, 
+					as: :grouped_select, 
+					group_method: :car_models, 
+					prompt: "", 
+					input_html: {id: "car_model_id"}  %>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-xs-6 right">
-			<%= f.input :year_from, label: t("year_from") , collection: year_range, selected: @search.year_from_shamsi  %>
+			<%= f.input :year_from, 
+					label: t("year_from") , 
+					collection: year_range, 
+					selected: @search.year_from_shamsi, 
+					input_html:{class: "select_from form-control"} %>
 		</div>
 		<div class="col-xs-6 left">
-			<%= f.input :year_to, label: t("year_to"), collection: year_range, selected: @search.year_to_shamsi %>
+			<%= f.input :year_to, 
+					label: t("year_to"), 
+					collection: year_range, 
+					selected: @search.year_to_shamsi, 
+					input_html:{class: "select_to form-control"} %>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-xs-6 right">
-			<%= f.input :price_from, label: t("price_from"), collection: price_range %>
+			<%= f.input :price_from, 
+					label: t("price_from"), 
+					collection: price_range, 
+					input_html:{class: "select_from form-control"} %>
 		</div>
 		<div class="col-xs-6 left">
-			<%= f.input :price_to, label: t("price_to"), collection: price_range %>
+			<%= f.input :price_to, 
+					label: t("price_to"), 
+					collection: price_range, 
+					input_html:{class: "select_to form-control"} %>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-xs-12">
-			<%= f.input :location, label: t("location"),placeholder: t("enter the search city name"), input_html: {id: "location_city"} %>
+			<%= f.input :location, 
+					label: t("location"),
+					placeholder: t("enter the search city name"), 
+					input_html: {id: "location_city"} %>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-xs-6 col-sm-6 right">
-			<%= f.input :radius, label: t("radius"),prompt: t("radius around the city"),collection: [10,20,50,100,200].map{|s| ["#{s} #{t("km")}", s]} %>
+			<%= f.input :radius, 
+					label: t("radius"),
+					prompt: t("radius around the city"),
+					collection: [10,20,50,100,200].map{|s| ["#{s} #{t("km")}", s]} %>
 		</div>
 
 		<div class="col-xs-6 left">
-			<%= f.input :order, label: t("order"), collection: ['new', 'cheap', 'expencive', 'year'].map{|s| [t("#{s}"), s]} %>
+			<%= f.input :order, 
+					label: t("order"), 
+					collection: ['new', 'cheap', 'expencive', 'year'].map{|s| [t("#{s}"), s]} %>
 		</div>
 	</div>
-	<%= f.submit t("search result", count: f.object.count), data: { disable_with: t('searching') }, class: "btn btn-primary btn-block" %>
+	<%= f.submit t("search result", 
+			count: f.object.count), 
+			data: { disable_with: t('searching') }, 
+			class: "btn btn-primary btn-block" %>
 <% end %>
 
