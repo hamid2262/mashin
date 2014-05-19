@@ -1,6 +1,8 @@
 <div class="fields">
   <div class="text">
-    <small><%= t "#{name}" %>:</small> 
+    <% if name == "body_color" or  name == "internal_color" %>
+      <small><%= t "#{name}" %>:</small>     
+    <% end %>
     <%= label1 %>
   </div>
   <%= form_for @search, url: searches_path, method: :post do |f| -%>
@@ -8,7 +10,7 @@
     <%= f.hidden_field :remove, value: true %>
     <%= f.hidden_field "#{name}_id".to_sym, value: value  %>
     <%= f.submit "X", class: "btn btn-link tooltip_bottom",
-      title: t(".remove_filter") , id: "element",
+      title: t("remove_filter") , id: "element",
       data: {toggle: "tooltip", placement: "bottom"} %>
   <% end %>
 </div>

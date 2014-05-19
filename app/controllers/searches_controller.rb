@@ -49,7 +49,9 @@ private
                                    :millage_from, :millage_to,
                                    :make_id, :car_model_id,
                                    :location, :radius,
-                                   :order
+                                   :order,
+                                   :girbox, :fuel,
+                                   :body_color_id, :internal_color_id
                                    )
   end
 

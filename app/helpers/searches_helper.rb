@@ -28,9 +28,9 @@ module SearchesHelper
   end
 
   def remove_filter_buttun val, klass=""
-    html = "<span class=\"remove_filter "
+    html = "<span class=\"tooltip_bottom remove_filter "
     html = html + "myhide" if val.blank?
-    html = html + "\"</span>"
+    html = html + " data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"#{t"remove_filter"}\"\"</span>"
     html.html_safe 
   end
 

@@ -56,9 +56,16 @@
       }
     }
     .filter_sections{
+      .panel-heading{
+        padding: 6px 15px;
+        h3{
+          font-size: 13px;
+        }
+      }
       margin-top: 15px;
       .nav>li>a {
         padding: 0px 20px 0px 20px;
+        font-size: 10px;
       }
       .show_more{
         text-align: center;
@@ -66,14 +73,18 @@
         display: inline-block;
         height: 20px;
         background: rgba(243, 243, 243, 0.72);
-        padding: 8px 20px 21px;
+        padding: 6px 20px 18px;
+        border-top: 1px solid #E9E9E9;
+        &:hover {
+          box-shadow: 0px 0 2px #aaa;
+          background: #EEE;
+        }        
       }
       .smallHeght{
         height: 25px;
       }
       .badge {
         margin-top: 7px;
-        font-size: 1.2em;
       }
     }
   } //#search_bar

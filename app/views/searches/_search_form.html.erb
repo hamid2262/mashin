@@ -113,5 +113,11 @@
 										count: f.object.count), 
 										data: { disable_with: t("searching") }, class: "btn btn-primary btn-block " %>
 		
+	
+    <%= f.hidden_field :girbox, value: f.object.girbox  %>
+    <%= f.hidden_field :fuel, value: f.object.fuel  %>
+    <%= f.hidden_field :internal_color_id, value: f.object.internal_color_id  %>
+    <%= f.hidden_field :body_color_id, value: f.object.body_color_id  %>
+
 	<% end %>
 </div>
