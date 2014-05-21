@@ -1,65 +1,154 @@
-<%= form_for(@ad) do |f| %>
-  <% if @ad.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this ad from being saved:</h2>
+<% makes = Make.includes(:car_models).order(:name) %>
+<%= simple_form_for @ad, 
+  # url: ads_path, 
+  html: { method: :post, id: "new_ad_form" },
+  defaults:{
+    wrapper_html: { class: 'form-group' }, 
+    input_html:   { class: 'form-control ' }
+    # , label_html:   { class: '' }
+  } do |f| %>
+  <%= error_messages_for(@ad) %>
 
-      <ul>
-      <% @ad.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-sm-3 ">
+      <%= f.association :make, 
+          label: t("brand"), 
+          collection: makes, 
+          input_html: {id: "make_id"} %>      
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <div class="col-sm-1 "></div>
+    
+    <div class="col-sm-3 ">
+      <%= f.input :car_model_id, 
+          label: t("car_model"), 
+          collection: makes, 
+          as: :grouped_select, 
+          group_method: :car_models, 
+          prompt: "", 
+          input_html: {id: "car_model_id"}  %>
+    </div>
+    <div class="col-sm-1 "></div>
+
+    <div id="year_format" class="col-sm-1 ">
+      <div class="input select optional ad_make form-group">
+        <%= f.label t("year") %>
+        <%=  f.collection_radio_buttons :year_format, 
+          [[true, t('shamsi')] ,[false, t('miladi')]], 
+          :first, :last, 
+          checked: "true" %>
+      </div>
+    </div>
+    <div class="col-xs-2 ">
+      <%= f.input :year, 
+        label: false , 
+        collection: year_range("shamsi"), 
+        wrapper_html: {class: "year_shamsi"}, 
+        input_html:{class: "form-control year_nolabel"} %>
+      <%= f.input :year, 
+        label: false , 
+        collection: year_range("miladi"), 
+        wrapper_html: {class: "year_miladi"}, 
+        input_html:{class: "form-control year_nolabel"} %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :car_model_id %><br>
-    <%= f.text_field :car_model_id %>
+
+ 
+  <div class="row">
+    <div class="col-sm-3 ">
+      <div class="input select optional ad_make form-group">
+        <%= f.label t("millage") %>
+        <%= f.text_field :millage, 
+          class: "currencies form-control" %>
+          <span class="unit"><%= t "kilometer" %></span>
+      </div>
+    </div>
+
+    <div class="col-sm-1 "></div>
+    <div class="col-sm-3 ">
+      <%= f.input :fuel, 
+          label: t("fuel"), 
+          collection: FUEL_ARR.each_with_index.map { |item, index| [item, index] }, 
+          prompt: t(".please slect fuel type") %>
+    </div>
+
+    <div class="col-sm-1 "></div>
+    <div class="col-sm-3 ">
+      <%= f.input :girbox, 
+          label: t("girbox"), 
+          collection: GIRBOX_ARR.each_with_index.map { |item, index| [item, index] }, 
+          prompt: t(".please select girbox type") %>
+    </div>
+
   </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.date_select :year %>
+
+  <div class="row">
+    <div class="col-sm-3 ">
+      <%= f.association :body_color, 
+          label: t("body_color"), 
+          input_html: {id: "make_id"} %>      
+    </div>
+
+    <div class="col-sm-1 "></div>
+
+    <div class="col-sm-3 ">
+      <%= f.association :internal_color, 
+          label: t("internal_color"), 
+          input_html: {id: "make_id"} %>      
+    </div>
+
+  </div>  
+  <hr>
+
+ <div class="row">
+  <div class="col-sm-3 ">
+    <%= f.input :location, 
+      label: t("location"),
+      placeholder: t(".enter the city"),
+      input_html: {
+        id: "location_city", 
+        class: "form-control #{with_value_class f.object.location}",
+        value:  f.object.location || current_user.location
+      } %>
+    </div>
+
+  <div class="col-sm-1 "></div>
+  <div class="col-sm-3 ">
+    <%= f.simple_fields_for :ad_other_field do |s| %>
+      <%#= render 'subtrip_fields', f: s %>
+      <%= s.input :tel, 
+        label: t("tel"),
+        input_html: { value: current_user.location } 
+      %>
+    <% end %>
+
+    </div>
+
   </div>
-  <div class="field">
-    <%= f.label :details %><br>
-    <%= f.text_area :details %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.number_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :millage %><br>
-    <%= f.number_field :millage %>
-  </div>
-  <div class="field">
-    <%= f.label :expration %><br>
-    <%= f.date_select :expration %>
-  </div>
-  <div class="field">
-    <%= f.label :fuel_type %><br>
-    <%= f.text_field :fuel_type %>
-  </div>
-  <div class="field">
-    <%= f.label :girbox %><br>
-    <%= f.text_field :girbox %>
-  </div>
-  <div class="field">
-    <%= f.label :body_color_id %><br>
-    <%= f.number_field :body_color_id %>
-  </div>
-  <div class="field">
-    <%= f.label :internal_color_id %><br>
-    <%= f.number_field :internal_color_id %>
-  </div>
-  <div class="field">
-    <%= f.label :active %><br>
-    <%= f.check_box :active %>
-  </div>
+
+
+  <div class="row">
+    <div class="col-sm-7 ">
+      <%= f.input :fuel, 
+          label: t("details"), as: :text,
+          input_html: {rows: 6 } %>
+    </div>
+  </div>  
+
+  <div class="row">
+    <div class="col-sm-3 ">
+      <div class="input select optional ad_make form-group">
+        <%= f.label t("price") %>
+        <%= f.text_field :price, 
+          class: "currencies form-control" %>
+          <span class="unit"><%= t "toman" %></span>
+      </div>
+    </div>
+    <div class="col-sm-1 "></div>
+  </div>  
+
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t(".submit ad") , class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -1,5 +1,7 @@
 class AdsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   authorize_resource
+
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
 
   # GET /ads
@@ -17,6 +19,8 @@ class AdsController < ApplicationController
   # GET /ads/new
   def new
     @ad = Ad.new
+    @ad.build_ad_other_field
+
   end
 
   # GET /ads/1/edit
@@ -27,7 +31,8 @@ class AdsController < ApplicationController
   # POST /ads.json
   def create
     @ad = Ad.new(ad_params)
-
+    @ad.user = current_user
+    @ad.active = false
     respond_to do |format|
       if @ad.save
         format.html { redirect_to @ad, notice: 'Ad was successfully created.' }
@@ -71,6 +76,7 @@ class AdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ad_params
-      params.require(:ad).permit(:user_id, :carmodel_id, :body_color_id, :internal_color_id, :year, :price, :millage, :fuel, :girbox,  :expration, :active, :details)
+      params.require(:ad).permit(:make_id, :car_model_id, :year, :price, :millage, :fuel, :girbox, :body_color_id, :internal_color_id, :location, :details,
+        ad_other_field_attributes: [:id, :tel])
     end
 end

@@ -36,10 +36,22 @@ module ApplicationHelper
   end
 
   def year_range
-  	a = [[ "", ""]]
+    a = [[ "", ""]]
     this_year = JalaliDate.new(Date.today).year
-  	b = ( (this_year).downto(1330) ).map{|s| [ s, s]}
-  	a.concat b
+    b = ( (this_year).downto(1330) ).map{|s| [ s, s]}
+    a.concat b
+  end
+
+  def year_range format="shamsi"
+    a = []
+    if format == "shamsi"
+      this_year = JalaliDate.new(Date.today).year
+      b = ( (this_year).downto(this_year-70) ).map{|s| [ s, s+621]}    
+    else
+      this_year = Date.today.year
+      b = ( (this_year).downto(this_year-70) ).map{|s| [ s, s]}    
+    end
+    a.concat b
   end
 
   def error_messages_for(object)

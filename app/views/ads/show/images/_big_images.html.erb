@@ -1,4 +1,4 @@
-<% if @ad.big_images.any? %>
+<% if @ad.big_images and @ad.big_images.any? %>
   <% @ad.big_images.each do |img| %>
     <div class="big_image">
       <%= ad_image @ad, img %>

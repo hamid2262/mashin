@@ -1,11 +1,13 @@
 class Ad < ActiveRecord::Base
-  default_scope { where(active: true) }
+  # default_scope { where(active: true) }
 
   geocoded_by :location
-  # after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
+  after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
   
-	has_one    :ad_other_field
-	has_many   :image_urls
+	has_one    :ad_other_field, dependent: :destroy
+  accepts_nested_attributes_for :ad_other_field, allow_destroy: true
+
+	has_many   :image_urls, dependent: :destroy
 
   belongs_to :user
   belongs_to :car_model

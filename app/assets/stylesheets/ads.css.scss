@@ -125,3 +125,32 @@
   border: 3px solid #7D70DD !important;
   padding: 2px !important;
 }
+
+#ad_new{
+  #new_ad_form{
+    #year_format{
+      padding-left: 0;    
+      span{
+        display: inline-block;
+        width: 100%;
+        float: left;
+        height: 16px;
+        padding-right: 13px;
+        input{
+          font-size: 8px;
+          height: 10px;
+          float: left;
+        }
+      }
+    }
+    .year_nolabel{
+      margin-top: 25px;
+    }
+    .unit{
+      position: absolute;
+      left: 22px;
+      top: 37px;
+      font-size: 11px;
+    }
+  }
+}
