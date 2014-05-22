@@ -1,10 +1,10 @@
 fa:
   ads:
     form:
-      enter the city : شهر بازدید خودرو
+      enter the city: شهر بازدید خودرو
       please select girbox type: نوع گیربکس را انتخاب کنید
       please slect fuel type: نوع سوخت را انتخاب کنید
-      submit ad: ثبت مشخصات خودرو
+      submit ad: ثبت مشخصات خودرو (ادامه)
     new:
       ad_registeration_form: فرم ثبت مشخصات خودرو
     show:

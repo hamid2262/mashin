@@ -1,0 +1,51 @@
+//////////for error fields////////////
+.field_with_errors{
+  input{
+    border: 1px solid #FC6C6C;
+    box-shadow: 0px 0px 11px rgba(255, 85, 85, 0.38);
+    &:focus {
+      border: 1px solid #FC6C6C;
+      box-shadow: 0px 0px 11px rgba(255, 85, 85, 0.38);
+    }
+  }
+  label{
+    color: #F00;
+
+  }
+  span{
+    float: left;
+    color: red;
+  } 
+}
+////////////////////////////
+
+form{
+  .input>label{
+    margin-bottom: 1px;
+  }
+  label.error{
+    color: #F00;
+    font-size: 12px;
+    position: absolute;
+    left: 16px;    
+  }
+}
+
+.phones, .currencies{
+  direction: ltr;
+}
+
+.unit{
+  position: absolute;
+  left: 16px;
+  top: 22px;
+  font-size: 11px;
+  color: #aaa;
+  border: 1px solid #DADADA;
+  padding: 8px 2px 7px;
+  background: #ECECEC;
+}
+
+.numbers_with_unit{
+  padding-left: 40px !important;
+}

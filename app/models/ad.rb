@@ -1,12 +1,21 @@
 class Ad < ActiveRecord::Base
   # default_scope { where(active: true) }
-
+  attr_accessor :year_shamsi
   geocoded_by :location
   after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
-  
+  before_validation :adjust_date, on: :create
+
+  scope :active, -> { where(status: 3) }
+
+  # validates :girbox, :inclusion => {:in => [true, false]}
+  validates :make_id, presence: true
+  validates :car_model_id, presence: true
+  validates :fuel, presence: true
+  validates :price, presence: true
+  # validates :year, presence: true
+
 	has_one    :ad_other_field, dependent: :destroy
   accepts_nested_attributes_for :ad_other_field, allow_destroy: true
-
 	has_many   :image_urls, dependent: :destroy
 
   belongs_to :user
@@ -15,6 +24,10 @@ class Ad < ActiveRecord::Base
   belongs_to :scrap
   belongs_to :internal_color
   belongs_to :body_color
+
+  def year_shamsi
+    :year_shamsi
+  end
 
   def internal_color_name
     Rails.cache.fetch([:internal_color, internal_color_id, :name], expires_in: 150.minutes) do 
@@ -67,4 +80,9 @@ class Ad < ActiveRecord::Base
     end
   end
 
+private
+  def adjust_date
+    self.year = "#{@year_shamsi}-5-5" if @year_shamsi
+    self.year = "#{@year}-5-5" if @year
+  end
 end

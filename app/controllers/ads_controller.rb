@@ -3,6 +3,7 @@ class AdsController < ApplicationController
   authorize_resource
 
   before_action :set_ad, only: [:show, :edit, :update, :destroy]
+  before_action :adjust_fields, only: [:create, :update]
 
   # GET /ads
   # GET /ads.json
@@ -20,7 +21,6 @@ class AdsController < ApplicationController
   def new
     @ad = Ad.new
     @ad.build_ad_other_field
-
   end
 
   # GET /ads/1/edit
@@ -32,7 +32,7 @@ class AdsController < ApplicationController
   def create
     @ad = Ad.new(ad_params)
     @ad.user = current_user
-    @ad.active = false
+    @ad.status = 0
     respond_to do |format|
       if @ad.save
         format.html { redirect_to @ad, notice: 'Ad was successfully created.' }
@@ -76,7 +76,18 @@ class AdsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ad_params
-      params.require(:ad).permit(:make_id, :car_model_id, :year, :price, :millage, :fuel, :girbox, :body_color_id, :internal_color_id, :location, :details,
-        ad_other_field_attributes: [:id, :tel])
+      params.require(:ad).permit(:make_id, :car_model_id, 
+                                  :year, :year_format, :year_shamsi,
+                                  :price, 
+                                  :millage, :fuel, :girbox, 
+                                  :body_color_id, :internal_color_id, 
+                                  :damaged, :location, :details,
+                                   ad_other_field_attributes: [:id, :tel])
     end
+
+    def adjust_fields
+      ad_params[:price].gsub!(/\D/, "")
+      ad_params[:millage].gsub!(/\D/, '')
+    end
+
 end

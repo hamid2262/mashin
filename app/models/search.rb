@@ -147,7 +147,7 @@ private
   end
 
   def conditions values
-    values = values.where("active = true")
+    values = values.where("status = 3") 
 
     values = values.where("ads.year >= ?", year_from - 1.months) if year_from.present?
     values = values.where("ads.year <= ?", year_to   + 11.months) if year_to.present?

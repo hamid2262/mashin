@@ -128,29 +128,57 @@
 
 #ad_new{
   #new_ad_form{
-    #year_format{
-      padding-left: 0;    
+    select, input[type="text"], textarea{
+      border-radius: 2px;
+      font-size: 12px;
+      padding: 3px 5px 3px 9px;     
+    }
+    input[type="submit"]{
+      margin-top: 20px;
+    }
+    #usage_type{
       span{
         display: inline-block;
         width: 100%;
-        float: left;
-        height: 16px;
-        padding-right: 13px;
+        margin: 3px 0px 2px 0px;;
+        color: #aaa;
+        label{
+          padding: 0 8px;
+          float: right;
+        }
         input{
-          font-size: 8px;
-          height: 10px;
+          height: 17px;
+          float: right;
+          margin: 0;
+        }
+      }
+    }
+    .year-group{
+      z-index: 1000;
+      #year_format{
+        padding-left: 0;
+        position: absolute;
+        left: 15px;
+        top: 0px;   
+        span{
           float: left;
+          padding-right: 15px;
+          font-size: 12px;
+          margin-top: 3px;
+          input{
+            font-size: 8px;
+            height: 10px ;
+            float: right;
+            margin-top: 3px;
+          }
         }
       }
     }
     .year_nolabel{
-      margin-top: 25px;
+      // margin-bottom: 17px;
     }
-    .unit{
-      position: absolute;
-      left: 22px;
-      top: 37px;
-      font-size: 11px;
+    .problem-margin-top{
+      margin-top: 15px;
     }
   }
 }

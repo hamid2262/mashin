@@ -35,11 +35,15 @@ module AdsHelper
   end
 
   def girbox_human ad
-    ad.girbox? ? GIRBOX_ARR[ (ad.girbox ? 1 : 0)] : "-"
+    GIRBOX_ARR[ (ad.girbox ? 1 : 0)]
   end
 
   def usage_type_human ad
     ad.usage_type.present? ? USAGE_ARR[ ad.usage_type ] : "-"
+  end
+
+  def damaged_human ad
+    ad.damaged.present? ? DAMAGED[ ad.damaged ] : "-"
   end
 
   def fuel_human ad
@@ -47,13 +51,15 @@ module AdsHelper
   end
 
   def ad_show_car_detail_row col1=4, col2=8, title, val
-    html = <<-HTML
-      <div class="row">
-        <div class="col-xs-#{col1}">#{t title}</div>
-        <div class="col-xs-#{col2}">#{val}</div>
-      </div>
-    HTML
-    html.html_safe 
+    if val.present?
+      html = <<-HTML
+        <div class="row">
+          <div class="col-xs-#{col1}">#{t title}</div>
+          <div class="col-xs-#{col2}">#{val}</div>
+        </div>
+      HTML
+      html.html_safe 
+    end
   end
 
   def ad_image ad, img
@@ -65,14 +71,14 @@ module AdsHelper
   end
   
   def ad_tel ad
-    if ad.user_id
-      ad.user.mobile
-    else
-      if ad.ad_other_field.source_url.include? "takhtegaz.com"
+    if ad.ad_other_field.try(:tel).present?
+      if ad.ad_other_field.source_url and ad.ad_other_field.source_url.include? "takhtegaz.com"
         link_to t("see_from_reference"), ad.ad_other_field.source_url, target: "_blank"
       else
         ad.ad_other_field.tel  
-      end
+      end      
+    elsif ad.user_id
+       ad.user.mobile
     end
   end
 end

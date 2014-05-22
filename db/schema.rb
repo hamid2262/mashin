@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140518021729) do
+ActiveRecord::Schema.define(version: 20140521231527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,15 +46,20 @@ ActiveRecord::Schema.define(version: 20140518021729) do
     t.integer  "fuel"
     t.integer  "usage_type",        default: 0
     t.boolean  "girbox",            default: false
-    t.boolean  "active",            default: false
     t.text     "details"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status",            default: 3
+    t.integer  "damaged"
   end
 
-  add_index "ads", ["active", "latitude", "longitude", "fuel", "price"], name: "index_ads_on_active_lat_fuel_price", using: :btree
-  add_index "ads", ["active", "latitude", "longitude", "make_id", "car_model_id", "price"], name: "index_ads_on_active_lat_make_model_price", using: :btree
-  add_index "ads", ["active", "latitude", "longitude", "make_id", "usage_type", "year", "price"], name: "index_ads_on_active_lat_make_usage_year_price", using: :btree
+  add_index "ads", ["status", "damaged"], name: "index_ads_on_status_damaged", using: :btree
+  add_index "ads", ["status", "latitude", "longitude", "fuel", "price"], name: "index_ads_on_status_lat_fuel_price", using: :btree
+  add_index "ads", ["status", "latitude", "longitude", "make_id", "car_model_id", "price"], name: "index_ads_on_status_lat_make_model_price", using: :btree
+  add_index "ads", ["status", "latitude", "longitude", "make_id", "usage_type", "year", "price"], name: "index_ads_on_status_lat_make_usage_year_price", using: :btree
+  add_index "ads", ["status", "make_id", "car_model_id", "price"], name: "index_ads_on_status_make_model_price", using: :btree
+  add_index "ads", ["status", "make_id", "usage_type", "year", "price"], name: "index_ads_on_status_make_usage_year_price", using: :btree
+  add_index "ads", ["status", "price", "fuel"], name: "index_ads_on_status_fuel_price", using: :btree
   add_index "ads", ["user_id"], name: "index_ads_on_user_id", using: :btree
 
   create_table "body_colors", force: true do |t|
@@ -132,7 +137,6 @@ ActiveRecord::Schema.define(version: 20140518021729) do
     t.boolean  "image_has"
     t.integer  "usage_type"
     t.boolean  "exchange"
-    t.boolean  "damaged"
     t.integer  "fuel"
     t.string   "location"
     t.float    "latitude"
@@ -142,6 +146,7 @@ ActiveRecord::Schema.define(version: 20140518021729) do
     t.datetime "updated_at"
     t.integer  "body_color_id"
     t.integer  "internal_color_id"
+    t.integer  "damaged"
   end
 
   create_table "users", force: true do |t|

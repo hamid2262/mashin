@@ -42,5 +42,8 @@ $(function() {
   t && t.tab('show'); 
 
   $('.tooltip_bottom').tooltip()
+
+  $(".validate-form").validate();
+  
 });
 

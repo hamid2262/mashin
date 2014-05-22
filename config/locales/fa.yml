@@ -1,4 +1,5 @@
 fa:
+  damaged: رنگ شدگی
   devise:
     passwords:
       new:
@@ -8,12 +9,14 @@ fa:
     sessions:
       new:
         sign_in_title: فرم ورود کاربر
+  forget_password: رمز خود را فراموش کرده ام
+  how_looks: وضعیت ظاهری
   miladi: میلادی
+  remember_me: مرا به خاطر بسپار
   search result: جستجو  ( %{count} مورد )
   see more: ادامه
   shamsi: شمسی
-  sign_up_new: کاربر جدید هستید؟(ثبت نام)
   sign_in: ورود
-  sign_up: ثبت نام    
-  remember_me: مرا به خاطر بسپار
-  forget_password: رمز خود را فراموش کرده ام
+  sign_up: ثبت نام
+  sign_up_new: کاربر جدید هستید؟(ثبت نام)
+  tel: تلفن تماس
