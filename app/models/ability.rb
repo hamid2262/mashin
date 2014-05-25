@@ -16,7 +16,6 @@ class Ability
         ad.user == user
       end
       can [:new, :create, :edit, :update, :show, :destroy, :index], Image do |img|
-        raise
         img.ad.user == user
       end
 
