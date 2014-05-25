@@ -99,7 +99,7 @@ private
         location:          @ad_hash[:location],
         latitude:          @ad_hash[:latitude], 
         longitude:         @ad_hash[:longitude], 
-        active:            true
+        status:            2
       )
       ad.save
       ad

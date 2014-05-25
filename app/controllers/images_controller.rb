@@ -21,6 +21,9 @@ class ImagesController < ApplicationController
 
   def create
     @image = Image.create(image_params)
+    ad = @image.ad
+    ad.status = 1
+    ad.save
   end
 
   def update

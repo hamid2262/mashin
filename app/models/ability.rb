@@ -10,15 +10,14 @@ class Ability
       can [:show, :edit, :update], User do |u|
         user == u
       end
-      
-      can [:new, :create, :edit, :update, :show, :destroy, :index], Image
 
       can [:show, :new, :create], Ad
-      can [:destroy], Ad do |ad|
+      can [:edit, :update, :destroy], Ad do |ad|
         ad.user == user
       end
-      can [:edit, :update], Ad do |ad|
-        (ad.status < 3) && (ad.user == user) 
+      can [:new, :create, :edit, :update, :show, :destroy, :index], Image do |img|
+        raise
+        img.ad.user == user
       end
 
     else

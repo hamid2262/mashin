@@ -65,7 +65,8 @@
               <div class="input select optional form-group">
                 <%= f.label t("millage") %>
                 <%= f.text_field :millage, 
-                  class: "currencies numbers_with_unit limit11digit form-control" %>
+                  class: "currencies numbers_with_unit limit11digit form-control",
+                    value: f.object.millage.try(:to_i) || nil %>
                   <span class="unit"><%= t "kilometer" %></span>
               </div>
             </div>
@@ -134,7 +135,9 @@
               <div class="input select optional form-group">
                 <%= f.label t("price") %>
                 <%= f.text_field :price, value: f.object.price.to_i, 
-                  class: "currencies numbers_with_unit limit11digit required form-control" %>
+                  class: "currencies numbers_with_unit limit11digit required form-control",
+                    value: f.object.price.try(:to_i) || nil
+                   %>
                   <span class="unit"><%= t "toman" %></span>
               </div>
             </div>

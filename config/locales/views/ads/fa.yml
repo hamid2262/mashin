@@ -11,10 +11,14 @@ fa:
     new:
       ad_registeration_form: فرم ثبت مشخصات خودرو
     show:
-      back_to_search: برگشت
       car_details:
         car_details: مشخصات خودرو
       recommended_ads:
         recommended_ads: خودروهای مشابه
+      title:
+        back_to_search: برگشت
+        verification status: آین آگهی در حال بررسی است. بعد از تایید، قابل دسترس در
+          لیست جستجوها خواهد بود.
+        verified: 'این آگهی تایید شده است. '
       user_overview:
         seller_details: مشخصات فروشنده

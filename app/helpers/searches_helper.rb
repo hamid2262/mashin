@@ -11,19 +11,19 @@ module SearchesHelper
   end
 
   def thumb_image ad
-    if ad.user_id.nil?                                 # from other sites
+      
       if ad.ad_other_field.thumb_img.present?          # if in other site ad has thumbnail
-        url = ad.ad_other_field.thumb_img        
-      elsif ad.image_urls.first 
-        url = ad.image_urls.first.url
+        thumb = ad.ad_other_field.thumb_img        
       else
-        url = IMAGES_PATH+"default_auto_thumb.gif"
+        if ad.user_id.nil?                                 
+          thumb = ad.image_urls.first.url  if ad.image_urls.any?
+        else
+          thumb = ad.images.first.name.url(:thumb) if ad.images.any?
+        end
       end
 
-    else                                               #from our web site
-      
-    end
-    image_tag(url, class: "img-responsive")
+    thumb = IMAGES_PATH+"default_auto_thumb.gif" unless thumb
+    image_tag(thumb, class: "img-responsive")
   end
 
   def remove_filter_buttun val, klass=""

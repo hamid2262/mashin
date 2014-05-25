@@ -16,6 +16,8 @@ fa:
   images:
     image:
       new photo: عکس جدید
+    index:
+      return to ad: صفحه آگهی
   miladi: میلادی
   remember_me: مرا به خاطر بسپار
   search result: جستجو  ( %{count} مورد )

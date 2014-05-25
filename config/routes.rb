@@ -19,6 +19,10 @@ Mashin::Application.routes.draw do
   resources :makes
   resources :ads do
     resources :images
+    collection do
+      get "unverifieds"
+      get "verify"
+    end
   end
   resources :scraps, only: [:show, :index] do
     collection do

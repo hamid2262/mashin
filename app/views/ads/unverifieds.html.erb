@@ -36,7 +36,7 @@
         <td><%= ad.internal_color_id %></td>
         <td><%= ad.status %></td>
         <td><%= link_to 'Show', ad %></td>
-        <td><%= link_to 'Edit', edit_ad_path(ad) %></td>
+        <td><%= link_to 'verify', verify_ads_path(id: ad.id) %></td>
         <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

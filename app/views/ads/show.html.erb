@@ -2,18 +2,7 @@
 <div id="ad_show">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <%= link_to last_search do %>
-        <div class="back_to_search pull-left btn btn-link">
-          <span><%= t(".back_to_search") %></span>
-          <span class="glyphicon glyphicon-backward"></span>
-        </div>
-      <% end %>
-      <h2 class="title">
-        <%= ad_title @ad %>
-        <% if can? :edit, @ad %>
-          <%= link_to "(#{t('edit')})",  edit_ad_path(@ad), class: "btn btn-primary" %>
-        <% end %>        
-      </h2>
+      <%= render 'ads/show/title' %>
     </div>
 
     <div id="main-panel-body" class="panel-body">

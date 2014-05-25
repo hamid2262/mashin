@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140522004923) do
     t.text     "details"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "status",            default: 3
+    t.integer  "status",            default: 2
     t.integer  "damaged"
   end
 
@@ -89,11 +89,11 @@ ActiveRecord::Schema.define(version: 20140522004923) do
   add_index "image_urls", ["ad_id"], name: "index_image_urls_on_ad_id", using: :btree
 
   create_table "images", force: true do |t|
+    t.integer  "ad_id"
     t.string   "name_file_name"
     t.string   "name_content_type"
     t.integer  "name_file_size"
     t.datetime "name_updated_at"
-    t.integer  "ad_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
