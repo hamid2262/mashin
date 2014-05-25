@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  before_action :load_search, only: :create
   load_and_authorize_resource
 
   def index
@@ -58,4 +59,9 @@ private
   def correct_date year
 	  JalaliDate.new(year.to_i,1,1).to_g 
   end
+
+  def load_search
+    @search = Search.new(search_params)
+  end
+
 end 

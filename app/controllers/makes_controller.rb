@@ -1,4 +1,5 @@
 class MakesController < ApplicationController
+  before_action :load_make, only: :create
   load_and_authorize_resource
   before_action :set_make, only: [:show, :edit, :update, :destroy]
 
@@ -72,4 +73,9 @@ class MakesController < ApplicationController
     def make_params
       params.require(:make).permit(:name, :year_format)
     end
+
+    def load_make
+      @make = Make.new(make_params)
+    end
+
 end

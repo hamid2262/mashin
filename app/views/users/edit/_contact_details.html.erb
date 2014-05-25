@@ -32,9 +32,9 @@
 	</div>
 	<div class="col-sm-8">
 		<% if f.object.location.blank? %>
-			<%= f.input :location, label: false, input_html: {id: 'search_subtrip_origin_address'}, wrapper_html: { class: 'form-group has-error' }, placeholder: t(".location_placeholder")  %>
+			<%= f.input :location, label: false, input_html: {id: 'location_city'}, wrapper_html: { class: 'form-group has-error' }, placeholder: t(".location_placeholder")  %>
 		<% else %>		
-			<%= f.input :location, label: false, input_html: {id: 'search_subtrip_origin_address'}, placeholder: t(".location_placeholder")  %>
+			<%= f.input :location, label: false, input_html: {id: 'location_city'}, placeholder: t(".location_placeholder")  %>
 		<% end %>
 	</div>	
 

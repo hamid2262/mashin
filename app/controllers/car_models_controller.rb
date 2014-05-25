@@ -1,4 +1,5 @@
 class CarModelsController < ApplicationController
+  before_action :load_car_model, only: :create
   load_and_authorize_resource
   before_action :set_car_model, only: [:show, :edit, :update, :destroy]
 
@@ -72,4 +73,9 @@ class CarModelsController < ApplicationController
     def car_model_params
       params.require(:car_model).permit(:name, :make_id)
     end
+
+    def load_car_model
+      @car_model = CarModel.new(car_model_params)
+    end
+
 end

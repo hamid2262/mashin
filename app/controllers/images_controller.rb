@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  before_action :load_image, only: :create
   load_and_authorize_resource
   before_action :set_image, only: [:show, :edit, :update, :destroy]
   # before_action :set_ad, only: [:create, :index]
@@ -58,4 +59,9 @@ class ImagesController < ApplicationController
     def image_params
       params.require(:image).permit(:name, :ad_id)
     end
+
+    def load_image
+      @image = Image.new(image_params)
+    end
+
 end

@@ -1,4 +1,5 @@
 class BodyColorsController < ApplicationController
+  before_action :load_body_color, only: :create
   load_and_authorize_resource
   before_action :set_body_color, only: [:show, :edit, :update, :destroy]
 
@@ -71,5 +72,9 @@ class BodyColorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def body_color_params
       params.require(:body_color).permit(:name, :visible)
+    end
+
+    def load_body_color
+      @body_color = BodyColor.new(body_color_params)
     end
 end

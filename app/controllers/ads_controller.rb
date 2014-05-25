@@ -1,5 +1,7 @@
 class AdsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
+  before_action :load_ad, only: :create
   load_and_authorize_resource
 
   before_action :set_ad, only: [:verify, :show, :edit, :update, :destroy]
@@ -101,6 +103,10 @@ class AdsController < ApplicationController
         my_ad_params[:year] =  "#{my_ad_params[:year_miladi]}-5-5"
       end
       my_ad_params
+    end
+
+    def load_ad
+      @ad = Ad.new(ad_params)
     end
 
 end

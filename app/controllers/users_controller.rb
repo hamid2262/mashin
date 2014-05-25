@@ -1,4 +1,5 @@
 class UsersController < Devise::RegistrationsController
+  before_action :load_user, only: :create
   load_and_authorize_resource 
 
   before_action :require_login, only: [:index, :show, :update, :edit]
@@ -95,6 +96,10 @@ private
   def needs_password?(user, params)
     # user.email != params[:email] ||
       params[:password].present?
+  end
+
+  def load_user
+    @user = User.new(user_params)
   end
 
 end

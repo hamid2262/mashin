@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  before_action :load_location, only: :create
   load_and_authorize_resource
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
@@ -79,4 +80,9 @@ class LocationsController < ApplicationController
     def location_params
       params.require(:location).permit(:name, :latitude, :longitude, :locked)
     end
+
+    def load_location
+      @location = Location.new(location_params)
+    end
+
 end

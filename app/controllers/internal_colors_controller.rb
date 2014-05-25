@@ -1,4 +1,5 @@
 class InternalColorsController < ApplicationController
+  before_action :load_internal_color, only: :create
   load_and_authorize_resource
   before_action :set_internal_color, only: [:show, :edit, :update, :destroy]
 
@@ -72,4 +73,9 @@ class InternalColorsController < ApplicationController
     def internal_color_params
       params.require(:internal_color).permit(:name, :visible)
     end
+
+    def load_internal_color
+      @internal_color = InternalColor.new(internal_color_params)
+    end
+
 end
