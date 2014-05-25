@@ -28,12 +28,18 @@ $ ->
         e.preventDefault()
 
   ###########  add '/' to currency 
+  $(".currencies").click ->
+    $(this).select()
+    value = $(this).val()
+    value = value.replace(/[^0-9]+/g, "");  
+    $(this).val( value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1/") ); 
+
   $(".currencies").keyup ->
     value = $(this).val()
     value = value.replace(/[^0-9]+/g, "");  
     $(this).val( value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1/") ); 
 
-  ###########  add '/' to currency 
+  ###########  remove non-number chars from phones
   $(".phones").keyup ->
     value = $(this).val()
     value = value.replace(/([^0-9 \- ,_+()])/g, "");  

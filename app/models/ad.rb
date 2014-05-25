@@ -1,9 +1,8 @@
 class Ad < ActiveRecord::Base
   # default_scope { where(active: true) }
-  attr_accessor :year_shamsi
+  attr_accessor :year_shamsi, :year_miladi
   geocoded_by :location
   after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
-  before_validation :adjust_date, on: :create
 
   scope :active, -> { where(status: 3) }
 
@@ -16,7 +15,9 @@ class Ad < ActiveRecord::Base
 
 	has_one    :ad_other_field, dependent: :destroy
   accepts_nested_attributes_for :ad_other_field, allow_destroy: true
-	has_many   :image_urls, dependent: :destroy
+	
+  has_many   :image_urls, dependent: :destroy
+  has_many   :images, dependent: :destroy
 
   belongs_to :user
   belongs_to :car_model
@@ -26,7 +27,11 @@ class Ad < ActiveRecord::Base
   belongs_to :body_color
 
   def year_shamsi
-    :year_shamsi
+    self.year.year if self.year
+  end
+
+  def year_miladi
+    self.year.year if self.year
   end
 
   def internal_color_name
@@ -73,16 +78,17 @@ class Ad < ActiveRecord::Base
   end
 
   def big_images
-    if self.user_id.nil?
-      self.image_urls
-    else
-      # self.images
-    end
+    self.user_id.nil? ? self.image_urls : self.images
+  end
+
+  def thumb_images
+    self.user_id.nil? ? self.image_urls : self.images
+  end
+
+  def image_upload_disabled
+    self.images.size >= 8 ? true  : false
   end
 
 private
-  def adjust_date
-    self.year = "#{@year_shamsi}-5-5" if @year_shamsi
-    self.year = "#{@year}-5-5" if @year
-  end
+
 end

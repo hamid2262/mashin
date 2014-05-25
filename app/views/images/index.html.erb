@@ -1,0 +1,14 @@
+<h1>a</h1>
+<%= link_to "go to ad" , @ad %>
+<%= render 'form' %>
+
+<% if @ad.images.any? %>
+  <div id="">
+    <% @ad.images.each do |img| %>
+      <div class="col-xs-3 ">
+        <%= link_to 'Delete', [@ad, img], method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= ad_image @ad, img %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

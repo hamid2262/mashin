@@ -12,7 +12,6 @@ module SearchesHelper
 
   def thumb_image ad
     if ad.user_id.nil?                                 # from other sites
-      
       if ad.ad_other_field.thumb_img.present?          # if in other site ad has thumbnail
         url = ad.ad_other_field.thumb_img        
       elsif ad.image_urls.first 

@@ -1,5 +1,5 @@
 class ScrapsController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
   def index
     if Rails.env.production?
       system "rake scrap --trace 2>&1 >> #{Rails.root}/log/rake.log &"

@@ -1,0 +1,13 @@
+<div id="my_ads">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title col-xs-8">
+        <%= t (".my ads") %>
+      </h3>
+    </div>
+  <div class="panel-body">
+    <% current_user.ads.each do |ad| %>
+      <%= link_to ad_title(ad), ad %>
+    <% end %>
+  </div>
+</div>

@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode, if: ->(obj){ obj.location.present? and obj.location_changed? }
   
+  has_many :ads
+
   def is_admin?
     true if self.admin? || self.email == 'hamid2262@yahoo.com'  
   end

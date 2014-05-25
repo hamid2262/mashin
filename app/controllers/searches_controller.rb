@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
 
   def index
   	if params[:id]

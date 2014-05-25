@@ -27,6 +27,8 @@ install dalli for cache
 sudo apt-get install memcached
 gem install memcached
 
+sudo apt-get install imagemagick
+
 from bama
 RAILS_ENV=production bundle exec rake scrap
 

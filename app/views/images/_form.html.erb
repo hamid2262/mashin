@@ -1,0 +1,19 @@
+<div class="col-xs-6">
+  <%= form_for [@ad, @image], html: { multipart: true } do |f| %>
+    <%=  error_messages_for(@image) %>
+
+    <div class="actions">
+      <div id="choose_file" class="btn btn-success ">
+        <%= f.file_field :name, multiple: true, disabled: @ad.image_upload_disabled, 
+        name: 'image[name]', class: "pull-left" %>
+        <span class="glyphicon glyphicon-plus pull-right"></span>    
+
+      </div>
+      <%= f.hidden_field :ad_id, value: @ad.id %>
+      <%#= f.submit %>  
+    </div>
+  <% end %>
+</div>
+
+<div id="new_added_images"></div>
+<%= render 'images/upload_and_progressbar_area' %>

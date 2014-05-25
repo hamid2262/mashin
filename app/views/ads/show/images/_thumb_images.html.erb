@@ -1,9 +1,7 @@
-<% if @ad.image_urls.any? %>
-  <div id="thumbs">
-    <% @ad.image_urls.each do |img| %>
-      <div class="col-xs-3 thumb">
-        <%= ad_image @ad, img %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<div id="thumbs">
+  <% @ad.thumb_images.each do |img| %>
+    <div class="col-xs-3 thumb">
+      <%= ad_image @ad, img %>
+    </div>
+  <% end %>
+</div>

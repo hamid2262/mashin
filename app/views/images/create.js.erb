@@ -1,0 +1,7 @@
+<%  if @image.new_record? %>
+  alert("failed uploding: <%= j @image.errors.full_messages.join(', ').html_safe %>  ");
+<% else %>
+  if ($('#new_added_images') !== undefined) {
+    $('#new_added_images').prepend("<%=j render partial: 'images/image', locals: { image: @image } %>");
+  }
+<% end %>

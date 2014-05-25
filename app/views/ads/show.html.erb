@@ -1,34 +1,38 @@
 <% @page_title = title_creator(@ad) %>
-<div id="ad_show" class="panel panel-default">
+<div id="ad_show">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= link_to last_search do %>
+        <div class="back_to_search pull-left btn btn-link">
+          <span><%= t(".back_to_search") %></span>
+          <span class="glyphicon glyphicon-backward"></span>
+        </div>
+      <% end %>
+      <h2 class="title">
+        <%= ad_title @ad %>
+        <% if can? :edit, @ad %>
+          <%= link_to "(#{t('edit')})",  edit_ad_path(@ad), class: "btn btn-primary" %>
+        <% end %>        
+      </h2>
+    </div>
 
-  <div class="panel-heading">
-
-    <%= link_to last_search do %>
-      <div class="back_to_search pull-left btn btn-link">
-        <span><%= t(".back_to_search") %></span>
-        <span class="glyphicon glyphicon-backward"></span>
+    <div id="main-panel-body" class="panel-body">
+      <div id="image_section" class="col-sm-5 internal-section">
+        <%= render 'ads/show/image_section' %>
       </div>
-    <% end %>
-    <h2 class="title">
-      <%= ad_title @ad %>
-    </h2>
-  </div>
 
-  <div id="main-panel-body" class="panel-body">
-    <div id="image_section" class="col-sm-5 internal-section">
-      <%= render 'ads/show/image_section' %>
+      <div id="car_details" class="col-sm-4 internal-section">
+        <%= render 'ads/show/car_details' %>
+      </div>
+
+      <div id="user_overview" class="col-sm-3 internal-section">
+        <%= render 'ads/show/user_overview' %>
+      </div>
     </div>
 
-    <div id="car_details" class="col-sm-4 internal-section">
-      <%= render 'ads/show/car_details' %>
-    </div>
-
-    <div id="user_overview" class="col-sm-3 internal-section">
-      <%= render 'ads/show/user_overview' %>
+    <div id="recommended_ads-panel-body" class="panel-body">
+      <%= render 'ads/show/recommended_ads' %>
     </div>
   </div>
 
-  <div id="recommended_ads-panel-body" class="panel-body">
-    <%= render 'ads/show/recommended_ads' %>
-  </div>
 </div>

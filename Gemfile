@@ -7,7 +7,9 @@ gem 'rails', '4.0.2'
 
 gem 'devise'
 gem "cancan", "~> 1.6.10"
-gem "paperclip", "~> 3.5.2"
+gem 'cancancan', '~> 1.8'
+
+gem "paperclip", "~> 4.1.1"
 gem 'aws-sdk'
 gem "geocoder", "~> 1.1.8"
 gem 'gmaps4rails'
@@ -33,14 +35,6 @@ gem 'dalli'
 # for heroku
 gem 'rails_12factor', group: :production
 
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
-
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -53,6 +47,14 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+gem 'jquery-fileupload-rails', '~> 0.4.1'
+
+group :assets do
+  gem 'sass-rails', '~> 4.0.0'
+  gem 'uglifier', '>= 1.3.0'
+  gem 'coffee-rails', '~> 4.0.0'
+end
 
 group :development do
   gem 'rack-mini-profiler'

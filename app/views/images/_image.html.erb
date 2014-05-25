@@ -1,0 +1,7 @@
+<div class="col-sm-12">
+  <div class="new_photo" >
+    <span class="pull-right"><%= t ".new photo" %></span>
+    <%= link_to t('delete'), [@image.ad, @image], method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= image_tag(@image.name(:medium), class: 'thumb img-responsive')  %>
+  </div>
+</div>

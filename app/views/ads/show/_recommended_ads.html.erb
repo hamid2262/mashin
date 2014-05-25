@@ -4,25 +4,27 @@
   </div>
 
   <div class="wrapper-panel panel-body">
-    <% @recommended_ads.each do |ad| %>
-      <div class="recommended_ad  col-sm-3 col-xs-6">
-        <div class="panel panel-default">
-          <%= link_to ad do %>
-            <div class="panel-body">
+    <% if @recommended_ads %>
+      <% @recommended_ads.each do |ad| %>
+        <div class="recommended_ad  col-sm-3 col-xs-6">
+          <div class="panel panel-default">
+            <%= link_to ad do %>
+              <div class="panel-body">
 
-              <div class="col-sm-6">
-                <div class="row"><%= thumb_image ad  %></div>
+                <div class="col-sm-6">
+                  <div class="row"><%= thumb_image ad  %></div>
+                </div>
+                <div class="col-sm-6">
+                  <p><%= ad.make_name %></p>
+                  <p><%= ad.car_model_name %></p>
+                  <p><%= appropriate_year(ad) %></p>
+                  <p><%= price_human(ad.price) %></p>
+                </div>
               </div>
-              <div class="col-sm-6">
-                <p><%= ad.make_name %></p>
-                <p><%= ad.car_model_name %></p>
-                <p><%= appropriate_year(ad) %></p>
-                <p><%= price_human(ad.price) %></p>
-              </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    <% end %>  
   </div>
 </div>

@@ -23,10 +23,8 @@ module AdsHelper
   end
 
   def appropriate_year(ad)
-    if ad.usage_type == 1
-      t("sefr")
-    elsif ad.year
-      if ad.make.try(:year_format)==true or ad.year_format==true
+    if ad.year
+      if ad.year_format==true
         JalaliDate.new(ad.year).year
       else
         ad.year.year 
@@ -62,11 +60,19 @@ module AdsHelper
     end
   end
 
-  def ad_image ad, img
+  def ad_image ad, img, style=:medium
     if ad.user_id.nil?
       image_tag img.url, class: "img-responsive", alt: "#{t"sell"} #{t"vehicle"} #{img.ad.make_name} #{img.ad.car_model_name}"
     else
-      "آگهی خودمان"      
+      image_tag img.name.url(style), class: "img-responsive", alt: "#{t"sell"} #{t"vehicle"} #{img.ad.make_name} #{img.ad.car_model_name}"
+    end
+  end
+  
+  def ad_thumb ad, img
+    if ad.user_id.nil?
+      image_tag img.url, class: "img-responsive", alt: "#{t"sell"} #{t"vehicle"} #{img.ad.make_name} #{img.ad.car_model_name}"
+    else
+      image_tag img.name.url(:thumb), class: "img-responsive", alt: "#{t"sell"} #{t"vehicle"} #{img.ad.make_name} #{img.ad.car_model_name}"
     end
   end
   

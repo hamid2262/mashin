@@ -1,5 +1,5 @@
 class InternalColorsController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
   before_action :set_internal_color, only: [:show, :edit, :update, :destroy]
 
   # GET /internal_colors

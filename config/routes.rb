@@ -1,5 +1,6 @@
 Mashin::Application.routes.draw do
 
+
   root 'homes#show'
 
   devise_for :users, :controllers => { registrations: 'users' }
@@ -16,7 +17,9 @@ Mashin::Application.routes.draw do
   resources :body_colors
   resources :internal_colors
   resources :makes
-  resources :ads 
+  resources :ads do
+    resources :images
+  end
   resources :scraps, only: [:show, :index] do
     collection do
       post "scrap" 

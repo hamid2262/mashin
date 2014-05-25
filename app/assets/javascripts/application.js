@@ -15,6 +15,10 @@
 //= require jquery.validate
 //= require localization/messages_fa
 //= require jquery_ujs
+
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
+
 //= require bootstrap.min
 //= require underscore-min
 //= require gmaps/google
@@ -41,9 +45,9 @@ $(function() {
   t = $('ul.nav a[href="#' + $.trim(t) + '"]');
   t && t.tab('show'); 
 
-  $('.tooltip_bottom').tooltip()
+  $('.tooltip_bottom').tooltip();
 
   $(".validate-form").validate();
-  
+
 });
 

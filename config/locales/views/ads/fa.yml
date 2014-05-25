@@ -1,5 +1,8 @@
 fa:
   ads:
+    edit:
+      ad_edit_form: ویرایش آگهی
+      return to ad: بازگشت به صفحه آگهی
     form:
       enter the city: شهر بازدید خودرو
       please select girbox type: نوع گیربکس را انتخاب کنید

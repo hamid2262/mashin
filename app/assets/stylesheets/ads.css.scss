@@ -21,6 +21,7 @@
 }
 
 #ad_show{
+  clear: both;
   .title{
     margin: 0;
     font-size: 1.7em;
@@ -126,7 +127,7 @@
   padding: 2px !important;
 }
 
-#ad_new{
+#ad_form{
   #new_ad_form{
     select, input[type="text"], textarea{
       border-radius: 2px;
@@ -162,7 +163,7 @@
         top: 0px;   
         span{
           float: left;
-          padding-right: 15px;
+          padding-right: 3px;
           font-size: 12px;
           margin-top: 3px;
           input{
@@ -179,6 +180,59 @@
     }
     .problem-margin-top{
       margin-top: 15px;
+    }
+  }
+}
+
+#ad_edit{
+  .ad_image{
+    .delete{
+      color: #FC0000;
+      border: 2px solid #f00;
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      a{
+        color: #FC0000;
+      }
+    }
+    img{
+      border: 2px solid #DADADA;
+      padding: 3px;
+      border-radius: 4px; 
+    }
+
+  }
+}
+
+form#new_image{
+  #choose_file{
+    background-image: url("https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/add_image.png");
+    background-position: center center;
+    background-repeat: no-repeat;  
+    color: #fff;
+    width: 100%;
+    .glyphicon{
+      position: absolute;
+      top: 10px;
+      right: 28px;
+    }
+    input#image_name{
+      text-indent: 2159px;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+    }
+  }
+}
+
+#new_added_images{
+  .new_photo{
+    padding: 10px 0 22px 0;
+    align-content: center;
+    text-align: center;
+    img{
+      margin: auto;
     }
   }
 }

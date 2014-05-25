@@ -43,7 +43,7 @@ module ApplicationHelper
   end
 
   def year_range format="shamsi"
-    a = []
+    a = [[ "", ""]]
     if format == "shamsi"
       this_year = JalaliDate.new(Date.today).year
       b = ( (this_year).downto(this_year-70) ).map{|s| [ s, s+621]}    
@@ -60,7 +60,7 @@ module ApplicationHelper
   end
 
   def price_human amount
-    (amount != 0) ? number_to_human(amount, precision: 6, separator: "/")  : t("undifinded")
+    (amount != 0) ? number_to_human(amount, precision: 4, separator: "/")  : t("undifinded")
   end
 
   def date_human date

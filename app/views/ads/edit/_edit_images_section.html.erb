@@ -1,0 +1,23 @@
+<%= render 'images/form' %>
+<hr>
+<br>
+
+<% if @ad.images.any? %>
+  <div class="row">
+    <% @ad.images.each_with_index do |img, index| %>
+      <div class="ad_image col-xs-3 ">
+        <div class="delete btn btn-xs btn-default ">
+          <%= link_to  [@ad, img], method: :delete, data: { confirm: 'Are you sure?' }, class: "pull-right" do %>
+          <span class="pull-right"><%= t('delete') %></span>
+          <span class="glyphicon glyphicon-remove pull-right"></span>       
+          <% end %> 
+        </div>
+        <%= ad_image @ad, img %>
+      </div>
+      <% if ((index+1) % 4) == 0  %>
+        </div>
+        <div class="row">
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

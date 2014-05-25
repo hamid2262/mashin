@@ -1,5 +1,6 @@
 fa:
   damaged: رنگ شدگی
+  delete: حذف
   devise:
     passwords:
       new:
@@ -9,8 +10,12 @@ fa:
     sessions:
       new:
         sign_in_title: فرم ورود کاربر
+  edit: ویرایش
   forget_password: رمز خود را فراموش کرده ام
   how_looks: وضعیت ظاهری
+  images:
+    image:
+      new photo: عکس جدید
   miladi: میلادی
   remember_me: مرا به خاطر بسپار
   search result: جستجو  ( %{count} مورد )

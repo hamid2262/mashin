@@ -14,7 +14,7 @@ class CreateAds < ActiveRecord::Migration
       t.float    :longitude
 
       t.date     :year
-      t.boolean  :year_format # shamsi true miladi false
+      t.boolean  :year_format # shamsi=true miladi=false
 
       t.decimal  :price
       t.integer  :millage

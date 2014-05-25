@@ -1,5 +1,5 @@
 class MakesController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
   before_action :set_make, only: [:show, :edit, :update, :destroy]
 
   # GET /makes
