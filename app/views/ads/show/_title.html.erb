@@ -4,16 +4,19 @@
     <span class="glyphicon glyphicon-backward"></span>
   </div>
 <% end %>
+
 <h2 class="title">
   <%= ad_title @ad %>
   <% if can? :edit, @ad %>
     <%= link_to t('edit'),  edit_ad_path(@ad), class: "btn btn-primary" %>
-
     <% if @ad.status < 2 %>
       <span class="small"><%= t ".verification status" %></span>
     <% else %>
       <span class="small"><%= t ".verified" %></span>    
     <% end %>
-  
   <% end %>        
 </h2>
+
+<% if can? :destroy, @ad %>
+  <%= link_to t('delete'), @ad, method: :delete %>
+<% end %>

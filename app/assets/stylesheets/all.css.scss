@@ -49,3 +49,8 @@ form{
 .numbers_with_unit{
   padding-left: 40px !important;
 }
+
+// input of forms make 100%
+.input .select{
+  width: 100%;
+}

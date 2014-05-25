@@ -12,7 +12,7 @@ class Ability
       end
 
       can [:show, :new, :create], Ad
-      can [:edit, :update, :destroy], Ad do |ad|
+      can [:edit, :update], Ad do |ad|
         ad.user == user
       end
       can [:new, :create, :edit, :update, :show, :destroy, :index], Image do |img|

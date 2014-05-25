@@ -21,6 +21,11 @@
 					group_method: :car_models, 
 					prompt: "", 
 					input_html: {id: "car_model_id"}  %>
+
+			<%#= f.label :car_model_id, "Car _Model _Id" %>
+			<%#= f.grouped_collection_select :car_model_id, makes,
+				:car_models,:name, :id, :name, {}, {id: "car_model_id"}
+			 %>
 		</div>
 	</div>
 
