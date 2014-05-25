@@ -41,7 +41,7 @@ GEM
       activesupport
       uniform_notifier (~> 1.6.0)
     callsite (0.0.11)
-    cancancan (1.8.0)
+    cancan (1.6.10)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -210,7 +210,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bullet
-  cancancan (~> 1.8)
+  cancan (~> 1.6.10)
   capistrano (~> 2.15.5)
   coffee-rails (~> 4.0.0)
   dalli

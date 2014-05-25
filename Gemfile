@@ -6,8 +6,8 @@ gem 'rails', '4.0.2'
 # Use postgresql as the database for Active Record
 
 gem 'devise'
-# gem "cancan", "~> 1.6.10"
-gem 'cancancan', '~> 1.8'
+gem "cancan", "~> 1.6.10"
+# gem 'cancancan', '~> 1.8'
 
 gem "paperclip", "~> 4.1.1"
 gem 'aws-sdk'
