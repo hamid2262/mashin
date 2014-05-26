@@ -62,14 +62,14 @@ class Ad < ActiveRecord::Base
     ads = Ad.all
     ads = ads.where(car_model_id: self.car_model_id)
     ads = ads.where.not(id: self.id)
-    ads = ads.where("created_at > ?", 10.days.ago)
+    ads = ads.where("updated_at > ?", 10.days.ago)
     ads = ads.order("RANDOM()")
     ads = ads.limit(count)
     if ads.size < 4
       ids = (ads.ids << self.id)
       ads2 = Ad.where(make_id: self.make_id)
       ads2 = ads2.where.not(id: ids)
-      ads2 = ads2.where("created_at > ?", 10.days.ago)
+      ads2 = ads2.where("updated_at > ?", 10.days.ago)
       ads2 = ads2.order("RANDOM()")
       ads2 = ads2.limit(count - ads.size)
       ads = ads.concat ads2
