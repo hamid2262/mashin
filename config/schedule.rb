@@ -1,6 +1,6 @@
 set :output, "#{path}/log/cron.log"
 
-every "0 1,4,7,10,13,16,19,22 * * *" do
+every 1.minutes do
   rake "scrap"
 end
 

@@ -3,12 +3,12 @@ class Scrap < ActiveRecord::Base
   has_many   :ads
 
   def sweep
-    @terminate = false
-    begin 
+    # @terminate = false
+    # begin 
       doc = Nokogiri::HTML(open(self.url))
       single_page_sweep(doc)
-      break if @terminate 
-    end while true 
+      # break if @terminate 
+    # end while true 
   end
 
 private
@@ -16,7 +16,7 @@ private
   def single_page_sweep(doc)
     if doc.css('.ads').any?
       doc.css('.ads').each do |row|
-        sleep 7
+        # sleep 7
         delete_path = row.at_css(".base_fields .show a")["href"]
         if skip_condition? row
           open(delete_path) # just for deletation
@@ -30,8 +30,8 @@ private
         extract_and_build_images(ad, row)
         open(delete_path) # just for deletation
       end
-    else
-      @terminate = true
+    # else
+    #   @terminate = true
     end
   end
     
@@ -83,7 +83,7 @@ private
   end
 
   def create_ad 
-      ad = self.ads.build(
+      ad = Ad.create!(
         make_id:           @ad_hash[:make_id], 
         car_model_id:      @ad_hash[:car_model_id], 
         price:             @ad_hash[:price], 
@@ -101,7 +101,6 @@ private
         longitude:         @ad_hash[:longitude], 
         status:            2
       )
-      ad.save
       ad
   end
 

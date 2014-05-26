@@ -6,7 +6,6 @@ task :scrap => :environment do
   require 'nokogiri'
   scrap = Scrap.new
   scrap.url = scrap_url+"ads"
-  scrap.save
   scrap.sweep
 end
 
