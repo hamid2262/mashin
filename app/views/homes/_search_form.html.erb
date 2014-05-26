@@ -36,14 +36,14 @@
 			<%= f.input :year_from, 
 					label: t("year_from") , 
 					collection: year_range, 
-					selected: @search.year_from_shamsi, 
+					selected: (@search.year_from.year if @search.year_from), 
 					input_html:{class: "select_from form-control"} %>
 		</div>
 		<div class="col-xs-6 left">
 			<%= f.input :year_to, 
 					label: t("year_to"), 
 					collection: year_range, 
-					selected: @search.year_to_shamsi, 
+					selected: (@search.year_to.year if @search.year_to), 
 					input_html:{class: "select_to form-control"} %>
 		</div>
 	</div>

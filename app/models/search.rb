@@ -7,14 +7,6 @@ class Search < ActiveRecord::Base
   belongs_to :body_color
 	belongs_to :internal_color
 
-	def year_from_shamsi
-		year_from ? JalaliDate.new(year_from).year : ""
-	end
-
-	def year_to_shamsi
-		year_to   ? JalaliDate.new(year_to).year : ""
-	end
-
   def ads
     @ads ||= find_ads
   end
@@ -152,8 +144,8 @@ private
     values = values.where("ads.year >= ?", year_from - 1.months) if year_from.present?
     values = values.where("ads.year <= ?", year_to   + 11.months) if year_to.present?
     
-    values = values.where("ads.price >= ?", price_from ) if price_from.present?
-    values = values.where("ads.price <= ?", price_to ) if price_to.present?
+    values = values.where.not("ads.price = 0").where("ads.price >= ?", price_from ) if price_from.present?
+    values = values.where.not("ads.price = 0").where("ads.price <= ?", price_to ) if price_to.present?
 
     values = values.where("ads.millage >= ?", millage_from) if millage_from.present?
     values = values.where("ads.millage <= ?", millage_to) if millage_to.present?

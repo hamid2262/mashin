@@ -57,7 +57,7 @@ private
   end
 
   def correct_date year
-	  JalaliDate.new(year.to_i,1,1).to_g 
+    DateTime.parse("#{year.to_i}-05-01")
   end
 
   def load_search
