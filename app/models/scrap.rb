@@ -108,7 +108,11 @@ private
     flag = false
     url = row.css('.source_url').text
     flag = true if url.blank?
-    flag = true if AdOtherField.where(source_url: url).first
+    ad_others = AdOtherField.where(source_url: url).first
+    if ad_others
+      ad_others.ad.touch
+      flag = true
+    end
     flag
   end
 

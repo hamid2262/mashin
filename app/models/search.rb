@@ -180,7 +180,7 @@ private
 		when "expencive"
 			"price DESC"
 		else
-			"created_at DESC"
+			"updated_at DESC"
 		end
 	end
 
