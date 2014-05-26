@@ -22,13 +22,19 @@
                   input_html: {id: "make_id"} %>      
             </div>    
             <div class="col-sm-12 ">
-              <%= f.input :car_model_id, 
+              <%#= f.input :car_model_id, 
                   label: t("car_model"), 
                   collection: makes, 
                   as: :grouped_select, 
                   group_method: :car_models, 
                   prompt: "", 
                   input_html: {id: "car_model_id"}  %>
+              <div class="input grouped_select required ad_car_model_id form-group">
+                <%= f.label :car_model_id, t("car_model"), class: "grouped_select required" %>
+                <%= f.grouped_collection_select :car_model_id, makes,
+                  :car_models,:name, :id, :name, {}, {id: "car_model_id", class: "grouped_select required form-control car_model_en"}
+                 %>
+              </div>
             </div>
             <div class="col-sm-12 ">
               <%= f.association :body_color, 

@@ -4,3 +4,6 @@ fa:
       qoute1: ' اتویابی، مرجع خرید و فروش خودرو'
       qoute2: با محیطی ساده و کاربردی، شما را در خرید و فروش خودرو یاری میکند.
       qoute3: null
+    statistic:
+      count: '%{count} خودرو'
+      number of today's ads: 'آگهی های امروز:'

@@ -20,13 +20,20 @@
 
 			<!-- car_model -->
 			<div class="col-xs-6 filter">
-				<%= f.input :car_model_id, 
+				<%#= f.input :car_model_id, 
 										label: t("car_model"), 
 										collection: makes, 
 										as: :grouped_select, 
 										group_method: :car_models, 
 										prompt: "", 
 										input_html: {id: "car_model_id", class: "form-control #{with_value_class f.object.car_model}"}  %>
+				<div class="input grouped_select optional form-group">
+					<%= f.label :car_model_id, t("car_model"), class: "grouped_select optional" %>
+					<%= f.grouped_collection_select :car_model_id, makes,
+						:car_models,:name, :id, :name, {}, {id: "car_model_id", class: "grouped_select optional form-control with_value car_model_en"}
+					 %>
+				</div>
+
 				<%= remove_filter_buttun f.object.car_model_id %>
 			</div>
 		</div>

@@ -1,0 +1,10 @@
+<%= t".number of today's ads" %>
+<%= t(".count",count: @ad_count) %>
+<br>
+<% @makes.each do |make| %>
+    <%= form_for Search.new do |f| -%>
+      <%= f.hidden_field :make_id, value: Make.make_id(make[0]) %>
+      <%= f.submit "#{make[0]} (#{make[1]})",class: "btn btn-link" %>
+    <% end %>
+
+<% end %>

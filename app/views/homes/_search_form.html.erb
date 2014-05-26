@@ -13,19 +13,21 @@
 					collection: makes, 
 					input_html: {id: "make_id"} %>			
 		</div>
-		<div class="col-xs-6 left">
-			<%= f.input :car_model_id, 
+		<!-- <div class="col-xs-6 left"> -->
+			<%#= f.input :car_model_id, 
 					label: t("car_model"), 
 					collection: makes, 
 					as: :grouped_select, 
 					group_method: :car_models, 
 					prompt: "", 
 					input_html: {id: "car_model_id"}  %>
-
-			<%#= f.label :car_model_id, "Car _Model _Id" %>
-			<%#= f.grouped_collection_select :car_model_id, makes,
-				:car_models,:name, :id, :name, {}, {id: "car_model_id"}
-			 %>
+		<div class="col-xs-6 left">		
+			<div class="input select optional search_make form-group">
+				<%= f.label :car_model_id, t("car_model") %>
+				<%= f.grouped_collection_select :car_model_id, makes,
+					:car_models,:name, :id, :name, {}, {id: "car_model_id", class: "select optional form-control car_model_en"}
+				 %>
+			</div>
 		</div>
 	</div>
 
