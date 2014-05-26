@@ -25,6 +25,10 @@ private
         @ad_hash = {}
         extract_base_fields(row)
         ad = create_ad
+        if ad.nil?
+          open(delete_path) # just for deletation
+          next
+        end
         extract_other_fields(row)
         build_ad_other_field_record(ad)
         extract_and_build_images(ad, row)
@@ -83,6 +87,7 @@ private
   end
 
   def create_ad 
+    begin
       ad = Ad.create!(
         make_id:           @ad_hash[:make_id], 
         car_model_id:      @ad_hash[:car_model_id], 
@@ -101,7 +106,10 @@ private
         longitude:         @ad_hash[:longitude], 
         status:            2
       )
-      ad
+    rescue
+      return nil
+    end
+    ad
   end
 
   def skip_condition? row
