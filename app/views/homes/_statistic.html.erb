@@ -1,5 +1,6 @@
 <%= t".number of today's ads" %>
-<%= t(".count",count: @ad_count) %>
+<span id="vehicle_count"><%= @ad_count %></span>
+<%= t "vehicle" %>
 <br>
 <% @makes.each do |make| %>
     <%= form_for Search.new do |f| -%>

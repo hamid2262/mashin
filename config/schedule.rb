@@ -1,14 +1,14 @@
 set :output, "#{path}/log/cron.log"
 
-every "1,4,7,10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58 * * * *" do
+every 2.minutes do
   rake "scrap_bama"
 end
 
-every "2,14,26,38,50 * * * *" do
+every 15.minutes do
   rake "scrap_takhtegaz"
 end
 
-every "0,6,12,18,24,30,36,42,48,54 * * * *" do
+every 6.minutes do
   rake "scrap_tejarat"
 end
 
