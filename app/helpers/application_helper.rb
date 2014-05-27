@@ -84,6 +84,7 @@ module ApplicationHelper
     else
       title = ad.ad_other_field.title
       title.gsub! "فروش", "" if title
+      title.gsub! "مدل", " ،" if title
     end
     title.try(:html_safe)
   end
