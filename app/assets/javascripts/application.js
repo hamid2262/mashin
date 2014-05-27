@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
+// require jquery.turbolinks
 //= require jquery.validate
 //= require localization/messages_fa
 //= require jquery_ujs
@@ -24,7 +24,7 @@
 //= require gmaps/google
 
 //= require_tree .
-//= require turbolinks
+// require turbolinks
 
 $(function() {
 
