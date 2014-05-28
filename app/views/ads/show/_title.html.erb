@@ -9,14 +9,6 @@
   <%= ad_title @ad %>
   <% if can? :edit, @ad %>
     <%= link_to t('edit'),  edit_ad_path(@ad), class: "btn btn-primary" %>
-    <% if @ad.status < 2 %>
-      <span class="small"><%= t ".verification status" %></span>
-    <% else %>
-      <span class="small"><%= t ".verified" %></span>    
-    <% end %>
+    <span class="size12 <%= @ad.status_human %>"><%= t "#{@ad.status_human}" %></span>
   <% end %>        
 </h2>
-
-<% if can? :destroy, @ad %>
-  <%= link_to t('delete'), @ad, method: :delete %>
-<% end %>

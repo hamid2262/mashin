@@ -48,18 +48,6 @@ module AdsHelper
     ad.fuel.present? ? FUEL_ARR[ ad.fuel ] : "-"
   end
 
-  def ad_show_car_detail_row col1=4, col2=8, title, val
-    if val.present?
-      html = <<-HTML
-        <div class="row">
-          <div class="col-xs-#{col1}">#{t title}</div>
-          <div class="col-xs-#{col2}">#{val}</div>
-        </div>
-      HTML
-      html.html_safe 
-    end
-  end
-
   def ad_image ad, img, style=:medium
     if ad.user_id.nil?
       image_tag img.url, class: "img-responsive", alt: "#{t"sell"} #{t"vehicle"} #{img.ad.make_name} #{img.ad.car_model_name}"

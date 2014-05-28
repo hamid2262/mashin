@@ -1,4 +1,6 @@
 fa:
+  Are you sure?: آیا از حذف این رکورد مطمین هستید؟
+  actions: عملیاتها
   damaged: رنگ شدگی
   delete: حذف
   devise:
@@ -12,13 +14,16 @@ fa:
         sign_in_title: فرم ورود کاربر
   edit: ویرایش
   forget_password: رمز خود را فراموش کرده ام
+  home: خانه
   how_looks: وضعیت ظاهری
   images:
     image:
       new photo: عکس جدید
     index:
       return to ad: صفحه آگهی
+  last_update: آخرین بروزرسانی
   miladi: میلادی
+  name: نام
   remember_me: مرا به خاطر بسپار
   search result: جستجو  ( %{count} مورد )
   see more: ادامه
@@ -27,3 +32,22 @@ fa:
   sign_up: ثبت نام
   sign_up_new: کاربر جدید هستید؟(ثبت نام)
   tel: تلفن تماس
+
+  actived: فعال
+  expired: منقضی شده
+  incomplete: بدون عکس
+  not_verified: منتظر تایید
+  rejected: رد شده
+  info_problem rejected: رد شده- ایراد در اطلاعات
+  image_problem rejected: رد شده- ایراد در عکس ها
+  tel_problem rejected: رد شده- ایراد در تلفن تماس
+  info_problem : ایراد در اطلاعات
+  image_problem : ایراد در عکس ها
+  tel_problem : ایراد در تلفن تماس
+  sold: فروخته شد
+  status: وضعیت
+  times: بار
+  title: عنوان
+  verify: تایید
+  updated_times: حداکثر بروزرسانی
+  viewed: بازدید

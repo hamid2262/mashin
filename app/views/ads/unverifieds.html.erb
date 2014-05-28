@@ -1,49 +1,33 @@
-
-<h1>Listing ads</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Model</th>
-      <th>Year</th>
-      <th>Details</th>
-      <th>Price</th>
-      <th>Millage</th>
-      <th>Fuel type</th>
-      <th>Girbox</th>
-      <th>Body color</th>
-      <th>Internal color</th>
-      <th>status</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @ads.each do |ad| %>
+<div id="unverified">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= ad.user %></td>
-        <td><%= ad.car_model_id %></td>
-        <td><%= ad.year %></td>
-        <td><%= ad.details %></td>
-        <td><%= ad.price %></td>
-        <td><%= ad.millage %></td>
-        <td><%= ad.fuel %></td>
-        <td><%= ad.girbox %></td>
-        <td><%= ad.body_color_id %></td>
-        <td><%= ad.internal_color_id %></td>
-        <td><%= ad.status %></td>
-        <td><%= link_to 'Show', ad %></td>
-        <td><%= link_to 'verify', verify_ads_path(id: ad.id) %></td>
-        <td><%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= t "name" %></th>
+        <th><%= t "title" %></th>
+        <th><%= t "details" %></th>
+        <th><%= t "price" %></th>
+        <th><%= t "status" %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Ad', new_ad_path %>
-
+    <tbody>
+      <% @ads.each do |ad| %>
+        <tr>
+          <td><%= link_to ad.user.name , ad.user %></td>
+          <td><%= ad_title ad %></td>
+          <td><%= ad.details %></td>
+          <td><%= price_human ad.price %></td>
+          <td><%= t"#{ad.status_human}" %></td>
+          <td><%= link_to t('verify'), verify_ads_path(id: ad.id, code: 2) %></td>
+          <td><%= link_to t('info_problem'), verify_ads_path(id: ad.id, code: 30) %></td>
+          <td><%= link_to t('image_problem'), verify_ads_path(id: ad.id, code: 31) %></td>
+          <td><%= link_to t('tel_problem'), verify_ads_path(id: ad.id, code: 32) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

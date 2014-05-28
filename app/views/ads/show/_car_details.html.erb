@@ -3,18 +3,18 @@
     <h3 class="panel-title"><%= t ".car_details" %></h3>
   </div>
   <div class="panel-body">
-    <%#= ad_show_car_detail_row "brand", @ad.make.name %>
-    <%#= ad_show_car_detail_row "car_model", @ad.car_model.name %>
-    <%= ad_show_car_detail_row "price", price_human(@ad.price) %>
-    <%= ad_show_car_detail_row "year", appropriate_year(@ad) %>
-    <%= ad_show_car_detail_row "millage", number_to_currency(@ad.millage,unit: t("kilometer"), delimiter: "/") %>
-    <%= ad_show_car_detail_row "fuel", fuel_human(@ad)  %>
-    <%= ad_show_car_detail_row "usage_type", usage_type_human(@ad) %>
-    <%= ad_show_car_detail_row "girbox", girbox_human(@ad) %>
-    <%= ad_show_car_detail_row "body_color", @ad.body_color_name %>    
-    <%= ad_show_car_detail_row "internal_color", @ad.internal_color_name %>
-    <%= ad_show_car_detail_row "how_looks", damaged_human(@ad) %>
-    <%= ad_show_car_detail_row "details", @ad.details %>
+    <%#= two_column_title_value "brand", @ad.make.name %>
+    <%#= two_column_title_value "car_model", @ad.car_model.name %>
+    <%= two_column_title_value "price", price_human(@ad.price) %>
+    <%= two_column_title_value "year", appropriate_year(@ad) %>
+    <%= two_column_title_value "millage", number_to_currency(@ad.millage,unit: t("kilometer"), delimiter: "/") %>
+    <%= two_column_title_value "fuel", fuel_human(@ad)  %>
+    <%= two_column_title_value "usage_type", usage_type_human(@ad) %>
+    <%= two_column_title_value "girbox", girbox_human(@ad) %>
+    <%= two_column_title_value "body_color", @ad.body_color_name %>    
+    <%= two_column_title_value "internal_color", @ad.internal_color_name %>
+    <%= two_column_title_value "how_looks", damaged_human(@ad) %>
+    <%= two_column_title_value "details", @ad.details %>
   </div>
 </div>
 

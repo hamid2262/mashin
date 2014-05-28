@@ -15,18 +15,31 @@ class AdsController < ApplicationController
   end
 
   def verify
-    @ad.status = 2
-    @ad.save
+    @ad.verifying params[:code]
     redirect_to :back
   end
 
   def show
     @recommended_ads = @ad.recommended_ads 4
+    @ad.view_counter_increment(current_user)
   end
 
   def new
     @ad = Ad.new
     @ad.build_ad_other_field
+  end
+
+  def touch
+    ad = Ad.find(params[:id])
+    ad.updated_times_decrement
+    redirect_to :back
+  end
+
+  def sold
+    ad = Ad.find(params[:id])
+    ad.status = 40
+    ad.save
+    redirect_to :back
   end
 
   def edit
@@ -52,6 +65,7 @@ class AdsController < ApplicationController
     @ad.status = 1
     respond_to do |format|
       if @ad.update(my_ad_params)
+        @ad.updated_times_decrement
         format.html { redirect_to @ad, notice: 'Ad was successfully updated.' }
         format.json { head :no_content }
       else
@@ -64,7 +78,7 @@ class AdsController < ApplicationController
   def destroy
     @ad.destroy
     respond_to do |format|
-      format.html { redirect_to ads_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end

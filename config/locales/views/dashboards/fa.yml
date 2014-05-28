@@ -1,0 +1,9 @@
+fa:
+  dashboards:
+    my_ads:
+      action_nav:
+        edit_ad: ویرایش
+        remove_ad: حذف آگهی
+        sold_ad: فروخته شد
+        touch_ad: بروزرسانی
+      my ads: آگهی های من

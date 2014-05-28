@@ -11,10 +11,27 @@ class Ability
         user == u
       end
 
+      can [:show], Dashboard
+
+      #######  Ad
       can [:show, :new, :create], Ad
-      can [:edit, :update], Ad do |ad|
+      can [:destroy], Ad do |ad|
         ad.user == user
       end
+
+      can [:sold], Ad do |ad|
+        ad.user == user and ad.status == 2
+      end
+
+      can [:edit, :update], Ad do |ad|
+        ad.user == user and  [0, 1, 2, 30,31,32, 5].include?(ad.status) and ad.ad_other_field.updated_times > 0
+      end
+
+      can [:touch], Ad do |ad|
+        ad.user == user and ad.ad_other_field.updated_times > 0 and ad.status == 2
+      end
+      #######
+
       can [:new, :create, :edit, :update, :show, :destroy, :index], Image do |img|
         img.ad.user == user
       end

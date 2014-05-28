@@ -1,0 +1,27 @@
+<div class="actions">
+	<ul class="nav navbar-nav navbar-right pull-left">
+		<li class="dropdown">
+			<a class="title" href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<%= t("actions") %>
+			</a>
+			<ul class="dropdown-menu dropdown-menu-left">
+	  		<% if can? :edit, ad %>
+					<li><%= link_to t(".edit_ad"), edit_ad_path(ad) %></li>
+				<% end %>
+
+	  		<% if can? :touch, ad %>
+					<li><%= link_to t(".touch_ad"), touch_ad_path(ad) %></li>
+				<% end %>
+
+				<% if can? :sold, ad %>
+					<li><%= link_to t(".sold_ad"), sold_ad_path(ad) %></li>
+				<% end %>
+
+				<% if can? :destroy, ad %>
+					<li><%= link_to t(".remove_ad"), ad, method: :delete, data: { confirm: t('Are you sure?') } %></li>
+				<% end %>
+
+			</ul>
+		</li>
+	</ul>  
+</div>

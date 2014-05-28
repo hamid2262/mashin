@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522004923) do
+ActiveRecord::Schema.define(version: 20140528042430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20140522004923) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
+    t.integer  "viewed",        default: 0
+    t.integer  "updated_times", default: 5
   end
 
   add_index "ad_other_fields", ["ad_id"], name: "index_ad_other_fields_on_ad_id", using: :btree

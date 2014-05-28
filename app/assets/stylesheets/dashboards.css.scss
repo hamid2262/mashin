@@ -1,0 +1,42 @@
+#dashboard_show{
+  #my_ads{
+    background: #F8F8F8;
+    .panel-title{
+      font-size: 11px;
+    }
+    .content{
+      position: relative;
+      font-size: 11px;
+      padding: 11px;
+      .row{
+        margin: 0px;
+        padding: 2px 0px;
+      }
+      .row>div{
+        padding: 2px;
+      }
+      .actions{
+        position: absolute;
+        z-index: 100;
+        left: 10px;
+        top: 10px;
+        .dropdown-menu{
+          text-align: left;
+          min-width: inherit;
+          padding: 0;
+          a{
+            font-size: 10px;
+            padding: 1px 7px
+          }
+        }
+        a.title{
+          background: #428bca;
+          border: 1px solid #4A51F0;
+          padding: 1px 4px;
+          border-radius: 2px;
+          color: #FFFFFF;
+        }
+      }      
+    }
+  }
+}

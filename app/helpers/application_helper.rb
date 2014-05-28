@@ -112,4 +112,16 @@ module ApplicationHelper
     end
   end
     
+  def two_column_title_value col1=4, col2=8, title, val
+    if val.present?
+      html = <<-HTML
+        <div class="row">
+          <div class="col-xs-#{col1}">#{t title}</div>
+          <div class="col-xs-#{col2}">#{val}</div>
+        </div>
+      HTML
+      html.html_safe 
+    end
+  end
+
 end

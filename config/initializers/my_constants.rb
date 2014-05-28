@@ -9,3 +9,5 @@ DAMAGED  = ["بدون رنگ " ,"رنگ شدگی جزیی", "رنگ شدگی ۲�
 IMAGES_PATH = "https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/"
 
 SCRAP_URL = "http://obscure-woodland-9401.herokuapp.com/"
+
+STATUS = [" بدون عکس", "منتظر تایید", "فعال", "رد شده", "فروخته شده", "منقضی شده"]

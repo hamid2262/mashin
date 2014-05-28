@@ -89,6 +89,64 @@ class Ad < ActiveRecord::Base
     self.images.size >= 8 ? true  : false
   end
 
+  def view_counter_increment current_user
+    unless self.user == current_user
+      self.ad_other_field.viewed = self.ad_other_field.viewed + 1
+      self.ad_other_field.save
+    end
+  end
+
+  def status_human
+    case self.status
+    when 0
+      "incomplete"
+    when 1
+      "not_verified"
+    when 2
+      "actived"
+    when 30 
+      "info_problem rejected"
+    when 31
+      "image_problem rejected"
+    when 32
+      "tel_problem rejected"
+    when 40
+      "sold" 
+    when 50
+      "expired"
+    end
+  end
+
+  def status_human_short
+    case self.status
+    when 0
+      "incomplete"
+    when 1
+      "not_verified"
+    when 2
+      "actived"
+    when 30 , 31,32
+      "rejected"
+    when 40
+      "sold" 
+    when 50
+      "expired"
+    end
+  end
+
+  def updated_times_decrement
+    if self.ad_other_field.updated_times > 0
+      self.touch
+      self.ad_other_field.updated_times = self.ad_other_field.updated_times - 1
+      self.save
+    end
+  end
+
+  def verifying code
+    self.status = code.to_i
+    self.save
+  end
+
 private
 
 end

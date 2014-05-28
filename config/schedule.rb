@@ -4,12 +4,12 @@ every 2.minutes do
   rake "scrap_bama"
 end
 
-every 15.minutes do
-  rake "scrap_takhtegaz"
-end
-
 every 6.minutes do
   rake "scrap_tejarat"
+end
+
+every 15.minutes do
+  rake "scrap_takhtegaz"
 end
 
 #############################3

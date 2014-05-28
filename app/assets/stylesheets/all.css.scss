@@ -58,3 +58,36 @@ form{
 .car_model_en{
   font-family: verdana !important;
 }
+
+.panel-heading{
+  overflow: hidden;
+}
+
+// for auto open menu on hover
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;    
+}
+
+// for ads status
+.size12{
+  font-size: 12px;
+}
+.incomplete{
+  color: rgb(241, 228, 69);
+}
+.not_verified{
+  color: rgb(241, 228, 69);
+}
+.actived{
+  color: rgb(92, 184, 92);
+}
+.rejected{
+  color: rgb(255, 6, 6);
+}
+.sold, .expired{
+  color: rgba(0, 6, 6, .3);
+  td,a{
+    color: rgba(0, 6, 6, .3);
+    opacity: .7;
+  }
+}
