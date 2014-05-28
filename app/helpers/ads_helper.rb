@@ -77,14 +77,10 @@ module AdsHelper
   end
   
   def ad_tel ad
-    if ad.ad_other_field.try(:tel).present?
-      if ad.ad_other_field.source_url and ad.ad_other_field.source_url.include? "takhtegaz.com"
-        link_to t("see_from_reference"), ad.ad_other_field.source_url, target: "_blank"
-      else
-        ad.ad_other_field.tel  
-      end      
-    elsif ad.user_id
-       ad.user.mobile
+    if ad.ad_other_field.source_url and ad.ad_other_field.source_url.include? "takhtegaz.com"
+      return link_to t("see_from_reference"), ad.ad_other_field.source_url, target: "_blank"
+    else
+      ad.ad_other_field.tel  
     end
   end
 end

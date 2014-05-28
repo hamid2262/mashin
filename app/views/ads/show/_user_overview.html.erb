@@ -3,6 +3,7 @@
     <h3 class="panel-title"><%= t ".seller_details" %></h3>
   </div>
   <div class="panel-body">
+    <%= ad_show_car_detail_row 5,7, "name", @ad.user.name if @ad.user %>
     <%= ad_show_car_detail_row 5,7, "location", @ad.location %>
     <%= ad_show_car_detail_row 5,7, "contact_tel", ad_tel(@ad) %>
     <%= ad_show_car_detail_row 5,7, ".created_date", date_human(@ad.created_at) %>

@@ -4,7 +4,8 @@ class AddStatusToAds < ActiveRecord::Migration
     # 0 information entered
     # 1: image uploaded 
     # 2: verified and active
-    # 3: expired
+    # 3: sold
+    # 4: expired
     remove_column :ads, :active
   end
   def down

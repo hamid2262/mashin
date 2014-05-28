@@ -29,8 +29,9 @@ gem install memcached
 
 sudo apt-get install imagemagick
 
-from bama
-RAILS_ENV=production bundle exec rake scrap
 
+RAILS_ENV=production bundle exec rails c
+
+RAILS_ENV=production bundle exec
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

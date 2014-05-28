@@ -156,7 +156,7 @@
               <%= s.input :tel, 
                 label: t("tel"),
                 input_html: { 
-                  value: f.object.ad_other_field.tel || current_user.location, 
+                  value: f.object.ad_other_field.tel || current_user.mobile, 
                   class: "required form-control phones" } 
               %>
             <% end %>

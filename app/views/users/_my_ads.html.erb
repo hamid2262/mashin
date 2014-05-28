@@ -6,7 +6,7 @@
       </h3>
     </div>
   <div class="panel-body">
-    <% current_user.ads.each do |ad| %>
+    <% @user.ads.each do |ad| %>
       <%= link_to ad_title(ad), ad %>
     <% end %>
   </div>

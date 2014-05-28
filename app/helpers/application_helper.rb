@@ -76,7 +76,7 @@ module ApplicationHelper
   end
 
   def ad_title ad
-    if ad.make_id and ad.ad_other_field.source_url and ad.ad_other_field.source_url.include? "www.bama.ir"
+    if (ad.make_id and ad.ad_other_field.source_url and ad.ad_other_field.source_url.include? "www.bama.ir") or ad.user
       title = " "
       title = "<span class='pull-right title_element'>#{ad.make_name}، &nbsp;</span>"  if ad.make_name
       title = title + " <span class='pull-right title_element'>#{ad.car_model_name}،&nbsp;</span>" if ad.car_model_name.present?     
