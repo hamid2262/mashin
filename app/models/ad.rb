@@ -77,6 +77,10 @@ class Ad < ActiveRecord::Base
     ads
   end
 
+  def city
+    self.location.split( ",").first if self.location
+  end
+
   def big_images
     self.user_id.nil? ? self.image_urls : self.images
   end

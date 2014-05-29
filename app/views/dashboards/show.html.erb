@@ -3,8 +3,16 @@
   <div class="col-sm-2">
   </div>
 
-  <div class="col-sm-7">
-    <%= render 'ads' %>
+  <div id="ads_list" class="col-sm-7">
+    <% if @ads.any? %>
+      <%= render 'shared/paginate', items: @ads %>
+
+      <%= render 'ads' %>
+
+      <%= render 'shared/paginate', items: @ads %>
+    <% else %>
+      <p id="err_msg"><%= t".no_resault_message" %></p>
+    <% end %>
   </div>
 
   <div id="my_ads" class="col-sm-3">

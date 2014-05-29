@@ -1,6 +1,10 @@
 #dashboard_show{
   #my_ads{
     background: #F8F8F8;
+    padding: 0 2px;
+    #title{
+      text-align: center;
+    }
     .panel-title{
       font-size: 11px;
     }
@@ -39,4 +43,99 @@
       }      
     }
   }
+  #ads_list{
+    border: 1px solid #E4E2E2;
+    background: #F7F7F7;   
+    padding: 0; 
+    font-size: .9em;
+    a{
+      color: #696969;
+    }
+    #err_msg{
+      width: 300px;
+      margin: 71px auto;
+      font-size: 1.9em;
+      color: #6D2020;
+    }
+    .row{
+      margin-right: 0;
+      margin-left: 0;
+    }
+    .ad_row{
+      display: block;
+      height: 80px;
+      padding-right: 6px;
+      background: rgba(247, 247, 247, 0.57);
+      margin: 1px;
+      border-top: 1px solid #F7F7F7;
+      border-bottom: 1px solid #EEE;
+      border-left: 1px solid #FFFFFF;
+      border-right: 1px solid #FFFFFF;
+      clear: both;
+      font-size: .9em;
+      &:hover {
+        background: #fff;
+        border-left: 1px solid #F1F1F1;
+        border-right: 1px solid #F1F1F1;
+      }
+      
+      .ad_col{
+        padding: 10px 0;
+      }    
+      .thumb-title{
+        .thumb{
+          float: right;
+          margin-left: 7px;
+          img{
+            width: 82px;
+            height: 57px;
+            border: 1px solid #e0e0e0;
+            padding: 1px;
+          }
+        }
+        .title{
+          margin-bottom: 4px;
+          overflow: hidden;
+          font-size: 1.2em;
+          .title_element{
+            height: 10px;
+          }
+        }
+        .truncate{
+          color: #8A8A8A;
+          padding-left: 40px;
+        }        
+      }  
+      .date, .price, .city{
+        padding-top: 28px;
+      }
+      .date{
+        font-size: 0.9em;
+        div{
+        }
+      }
+      .price{
+        padding-left: 6px;
+        .amount{
+          float: left;
+          padding-left: 4px;
+        }
+      }
+    }
+    .ad_row:last-child{
+      border-bottom: 1px solid #E7E7E7;;
+    }
+  } //#search_list
+
+
+
+
+
+
+
+
+
+
+
+
 }

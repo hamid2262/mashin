@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
 
-  has_attached_file :name, :styles => { :medium => "440x300>", :thumb => "100x70>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :name, :styles => { :medium => "440x300#", :thumb => "120x90#" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :name, :content_type => /\Aimage\/.*\Z/
 
   belongs_to :ad
