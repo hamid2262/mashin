@@ -12,6 +12,12 @@ class Dashboard
     @ads ||= find_ads
   end
 
+  def makes
+    makes = Make.joins(:ads).group('makes.name')
+    # makes = conditions makes 
+    makes.order('COUNT(ads.make_id) DESC').count
+  end
+
 private
 
   def find_ads

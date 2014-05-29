@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140528042430) do
+ActiveRecord::Schema.define(version: 20140529215117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,17 +19,13 @@ ActiveRecord::Schema.define(version: 20140528042430) do
   create_table "ad_other_fields", force: true do |t|
     t.integer  "ad_id"
     t.string   "tel"
-    t.string   "source_url"
-    t.string   "thumb_img"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title"
     t.integer  "viewed",        default: 0
     t.integer  "updated_times", default: 5
   end
 
   add_index "ad_other_fields", ["ad_id"], name: "index_ad_other_fields_on_ad_id", using: :btree
-  add_index "ad_other_fields", ["source_url"], name: "index_ad_other_fields_on_source_url", using: :btree
 
   create_table "ads", force: true do |t|
     t.integer  "user_id"
@@ -53,6 +49,9 @@ ActiveRecord::Schema.define(version: 20140528042430) do
     t.datetime "updated_at"
     t.integer  "status",            default: 2
     t.integer  "damaged"
+    t.string   "thumb_img"
+    t.string   "source_url"
+    t.string   "title"
   end
 
   add_index "ads", ["status", "damaged"], name: "index_ads_on_status_damaged", using: :btree
@@ -128,6 +127,16 @@ ActiveRecord::Schema.define(version: 20140528042430) do
   end
 
   add_index "makes", ["name"], name: "index_makes_on_name", using: :btree
+
+  create_table "preferences", force: true do |t|
+    t.integer  "user_id"
+    t.string   "filter_name"
+    t.integer  "filter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "preferences", ["user_id", "filter_name", "filter_id"], name: "index_preferences_on_user_id_and_filter_name_and_filter_id", using: :btree
 
   create_table "scraps", force: true do |t|
     t.integer  "count"

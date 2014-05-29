@@ -1,0 +1,12 @@
+<% if @search.girbox.nil? and @search.girboxes.any? %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><%= t ".girbox" %></h3>
+    </div>
+    <ul class="nav nav-pills nav-stacked">
+      <% @search.girboxes.each_with_index do |girbox, index| %>
+        <%= render partial: 'searches/filters/row', 
+          locals:{ value: girbox, name: "girbox",  index: index } %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

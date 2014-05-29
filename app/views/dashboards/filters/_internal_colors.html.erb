@@ -1,0 +1,17 @@
+<% if @search.car_model_id? and @search.internal_color_id.nil? and @search.internal_colors.any? %>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title"><%= t ".internal_colors" %></h3>
+    </div>
+    <ul class="nav nav-pills nav-stacked">
+      <% @search.internal_colors.each_with_index do |internal_color, index| %>
+        <%= render partial: 'searches/filters/row', 
+          locals:{ value: internal_color, name: "internal_color", index: index} %>
+      <% end %>
+    </ul>
+    <% if @search.internal_colors.size > 5 %>
+      <a href="" class="show_more" ><%= t"see more" %></a>
+    <% end %>
+  </div>
+<% end %>
+
+

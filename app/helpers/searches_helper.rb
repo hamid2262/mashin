@@ -11,14 +11,12 @@ module SearchesHelper
   end
 
   def thumb_image ad
-      
-      if ad.ad_other_field.thumb_img.present?          # if in other site ad has thumbnail
-        thumb = ad.ad_other_field.thumb_img        
+      if ad.thumb_img.present?          # if in other site ad has thumbnail
+        thumb = ad.thumb_img        
       else
-        if ad.user_id.nil?                                 
-          thumb = ad.image_urls.first.url  if ad.image_urls.any?
-        else
-          thumb = ad.images.first.name.url(:thumb) if ad.images.any?
+        if ad.user_id                                 
+          images = ad.images
+          thumb = images.first.name.url(:thumb) if images.any?
         end
       end
 

@@ -38,7 +38,7 @@ private
     #   @terminate = true
     end
   end
-    
+
   def extract_base_fields(row)
     @ad_hash[:make_id]           = make row
     @ad_hash[:car_model_id]      = car_model row
@@ -54,16 +54,16 @@ private
     @ad_hash[:year_format] = year_format row
     @ad_hash[:price]       = price row
     @ad_hash[:millage]     = millage row
-    @ad_hash[:details]     = details row 
+    @ad_hash[:details]     = details row
     @ad_hash[:fuel]        = fuel row
     @ad_hash[:usage_type]  = usage_type row
     @ad_hash[:girbox]      = girbox row
+    @ad_hash[:thumb_img]  = thumb_img row
   end
 
   def extract_other_fields(row)
     @ad_hash[:title]      = title row
     @ad_hash[:tel]        = tel row
-    @ad_hash[:thumb_img]  = thumb_img row
     @ad_hash[:source_url] = source_url row
   end
 
@@ -80,7 +80,6 @@ private
       ad.build_ad_other_field(
         title:       @ad_hash[:title],
         source_url:  @ad_hash[:source_url],
-        thumb_img:   @ad_hash[:thumb_img],
         tel:         @ad_hash[:tel]
       )
       ad.save  
@@ -104,6 +103,7 @@ private
         location:          @ad_hash[:location],
         latitude:          @ad_hash[:latitude], 
         longitude:         @ad_hash[:longitude], 
+        thumb_img:         @ad_hash[:thumb_img],
         status:            2
       )
     rescue

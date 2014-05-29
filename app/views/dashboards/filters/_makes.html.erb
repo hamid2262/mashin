@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title"><%= t ".makes" %></h3>
+  </div>
+  <ul class="nav nav-pills nav-stacked">
+    <% @dashboard.makes.each_with_index do |make, index| %>
+      <%= render 'dashboards/filters/row', value: make, name: "Make",  index: index %>
+    <% end %>
+
+  </ul>
+  <% if @dashboard.makes.size > 5 %>
+    <a href="" class="show_more" ><%= t".more" %></a>
+  <% end %>
+</div>

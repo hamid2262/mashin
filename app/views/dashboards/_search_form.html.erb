@@ -1,0 +1,151 @@
+<% makes = Make.includes(:car_models).order(:name) %>
+<div id="search_form">
+	<%= simple_form_for @search, url: searches_path, 
+		html: {method: :post,	id: "main_search_form"},
+		defaults:{
+		  wrapper_html: { class: 'form-group' }, 
+		  input_html:   { class: 'form-control ' }
+		  # , label_html:   { class: '' }
+		} do |f| -%>
+		<%= error_messages_for(@search) %>
+		<div class="row">
+    	<!-- make -->
+			<div class="col-xs-6 filter">
+				<%= f.association :make, 
+										label: t("make"), 
+										collection: makes, 
+										input_html: {id: "make_id", class: "form-control #{with_value_class f.object.make}"} %>
+				<%= remove_filter_buttun f.object.make_id %>
+			</div>
+
+			<!-- car_model -->
+			<div class="col-xs-6 filter">
+				<%#= f.input :car_model_id, 
+										label: t("car_model"), 
+										collection: makes, 
+										as: :grouped_select, 
+										group_method: :car_models, 
+										prompt: "", 
+										input_html: {id: "car_model_id", class: "form-control #{with_value_class f.object.car_model}"}  %>
+				<div class="input grouped_select optional form-group">
+					<%= f.label :car_model_id, t("car_model"), class: "grouped_select optional" %>
+					<%= f.grouped_collection_select :car_model_id, makes,
+						:car_models,:name, :id, :name, {}, {id: "car_model_id", class: "grouped_select optional form-control with_value car_model_en"}
+					 %>
+				</div>
+
+				<%= remove_filter_buttun f.object.car_model_id %>
+			</div>
+		</div>
+
+		<div class="row">
+		  <!-- year_from -->
+			<div class="col-xs-6 filter">
+				<%= f.input :year_from, 
+										label: t("year_from") , 
+										collection: year_range, 
+										selected: (@search.year_from.year if @search.year_from),
+										input_html:{
+											class: "select_from form-control #{with_value_class f.object.year_from}"}  %>
+
+				<%= remove_filter_buttun f.object.year_from %>
+			</div>
+
+			<!-- year_to -->
+			<div class="col-xs-6 filter">
+				<%= f.input :year_to, 
+										label: t("year_to"), 
+										collection: year_range, 
+										selected: (@search.year_to.year if @search.year_to),
+										input_html:{
+											class: "select_to form-control #{with_value_class f.object.year_to}"} %>
+				<%= remove_filter_buttun f.object.year_to %>
+			</div>
+		</div>
+
+		<div class="row">
+		  <!-- price_from -->
+			<div class="col-xs-6 filter">
+				<%= f.input :price_from, 
+										label: t("price_from"), 
+										collection: price_range,
+										input_html:{
+											class: "select_from form-control #{with_value_class f.object.price_from}"} %>
+				<%= remove_filter_buttun f.object.price_from %>
+			</div>
+
+			<!-- price_to -->
+			<div class="col-xs-6 filter">
+				<%= f.input :price_to, 
+										label: t("price_to"), 
+										collection: price_range,
+										input_html:{class: "select_to form-control #{with_value_class f.object.price_to}"} %>
+				<%= remove_filter_buttun f.object.price_to %>
+			</div>
+		</div>
+
+		<div class="row">
+		  <!-- millage_from -->
+			<div class="col-xs-6 filter ">
+				<%= f.input :millage_from, 
+										label: t("millage_from"), 
+										collection: km_range,
+										input_html:{
+											class: "select_from form-control #{with_value_class f.object.millage_from}"} %>
+				<%= remove_filter_buttun f.object.millage_from %>
+			</div>
+
+			<!-- millage_to -->
+			<div class="col-xs-6 filter">
+				<%= f.input :millage_to, 
+										label: t("millage_to"), 
+										collection: km_range,
+										input_html:{
+											class: "select_to form-control #{with_value_class f.object.millage_to}"} %>
+				<%= remove_filter_buttun f.object.millage_to %>
+			</div>
+		</div>
+
+
+		<div class="row">
+		  <!-- location -->
+			<div class="col-xs-12 filter">
+				<%= f.input :location, 
+										label: t("location"),
+										placeholder: t("enter the search city name"),
+										input_html: {id: "location_city", class: "form-control #{with_value_class f.object.location}"} %>
+				<%= remove_filter_buttun f.object.location %>
+			</div>
+		</div>
+
+		<div class="row">
+		  <!-- radius -->
+			<div class="col-xs-6 col-sm-6 filter">
+				<%= f.input :radius, label: t("radius"),
+										prompt: t("radius around the city"),
+										collection: [10,20,50,100,200].map{|s| ["#{s} #{t("km")}", s]}, 
+										input_html:{id: "radius_input", class: "form-control #{with_value_class f.object.radius}"} %>
+				<%= remove_filter_buttun f.object.radius, "_text" %>
+			</div>
+
+			<!-- order -->
+			<div class="col-xs-6 col-sm-6 filter">
+				<%= f.input :order, 
+										label: t("order"), 
+										collection: ['new', 'cheap', 'expencive', 'year'].map{|s| [t("#{s}"), s]},
+										input_html:{class: "form-control #{with_value_class f.object.order}"} %>
+				<%= remove_filter_buttun f.object.order %>
+			</div>
+		</div>
+		<%= f.submit t("search result", 
+										count: f.object.count), 
+										data: { disable_with: t("searching") }, class: "btn btn-primary btn-block " %>
+		
+	
+    <%= f.hidden_field :girbox, value: f.object.girbox  %>
+    <%= f.hidden_field :fuel, value: f.object.fuel  %>
+    <%= f.hidden_field :internal_color_id, value: f.object.internal_color_id  %>
+    <%= f.hidden_field :body_color_id, value: f.object.body_color_id  %>
+
+	<% end %>
+</div>

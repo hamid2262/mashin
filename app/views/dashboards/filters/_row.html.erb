@@ -1,0 +1,11 @@
+<% name == "CarModel" ? klass="car_model_en" : klass="" %>
+<%=raw index<5 ? "<li class='filter_list_row'>" : "<li class='filter_list_row myhidden'>"  %>
+  <a class="filter_sections_badge_link" href="">
+    <span class="badge pull-left"><%= value[1] %></span> 
+    <%= form_for Preference.new, url: preferences_path, method: :post do |f| -%>
+      <%= f.hidden_field :model_name, value: name %>
+      <%= f.hidden_field :filter_name, value: value[0]   %>
+      <%= f.submit appropriate_filter_row_name(value[0], name), class: "btn btn-link #{klass}" %>
+    <% end %>
+  </a>
+</li>

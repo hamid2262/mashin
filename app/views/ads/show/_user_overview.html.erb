@@ -11,7 +11,7 @@
       <%= two_column_title_value 5,7, ".updated_date", date_human(@ad.updated_at) %>     
     <% end %>
     <% unless @ad.user_id %>
-      <%= link_to "source", @ad.ad_other_field.source_url, class: "source_url"  %>
+      <%= link_to "source", @ad.source_url, class: "source_url"  %>
     <% end %>
   </div>
 </div>

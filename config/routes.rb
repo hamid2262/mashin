@@ -18,6 +18,7 @@ Mashin::Application.routes.draw do
   resources :body_colors
   resources :internal_colors
   resources :makes
+  resources :preferences, only: [:create, :destroy]
   
   resources :ads do
     resources :images

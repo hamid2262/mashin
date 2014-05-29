@@ -1,6 +1,15 @@
 <div id="dashboard_show">
 
-  <div class="col-sm-2">
+  <div id="dashboard_bar" class="col-sm-2">
+    <%#= render 'search_form' %>
+    <div class="filter_sections">
+      <%= render 'dashboards/filters/makes' %>
+      <%#= render 'dashboards/filters/car_models' %>
+      <%#= render 'dashboards/filters/fuels' %>
+      <%#= render 'dashboards/filters/girboxes' %>
+      <%#= render 'dashboards/filters/body_colors' %>
+      <%#= render 'dashboards/filters/internal_colors' %>
+    </div>
   </div>
 
   <div id="ads_list" class="col-sm-7">
