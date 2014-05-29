@@ -13,7 +13,7 @@ every 15.minutes do
 end
 
 #############################3
-every "0 0,2,4,6,8,10,12,14,16,18,20,22 * * *" do
+every 10.minutes do
   rake "triger_bama_scrap"
 end
 
