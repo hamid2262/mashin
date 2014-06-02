@@ -110,11 +110,11 @@ private
   end
 
   def year_from_filter
-    JalaliDate.new(range_filter("YearFrom") ,5,1).to_g
+    JalaliDate.new(range_filter("YearFrom") ,5,1).to_g if range_filter("YearFrom")
   end
 
   def year_to_filter
-    JalaliDate.new(range_filter("YearTo") ,5,1).to_g
+    JalaliDate.new(range_filter("YearTo") ,5,1).to_g   if range_filter("YearTo")
   end
     
   def preferences
