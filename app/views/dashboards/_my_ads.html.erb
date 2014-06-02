@@ -1,8 +1,6 @@
 <div id="my_ads">
   <h5> <%= t (".my ads") %> </h5>
   <div class="panel-group" id="accordion">
-    <% @dashboard.my_ads.each do |ad| %>
-      <%= render 'dashboards/my_ads/ad', ad:ad %>
-    <% end %>
+    <%= render partial: 'dashboards/my_ads/ad', collection: @dashboard.my_ads %>
   </div>
 </div>

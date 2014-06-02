@@ -8,7 +8,7 @@ every 3.minutes do
   rake "scrap_tejarat"
 end
 
-every 15.minutes do
+every 30.minutes do
   rake "scrap_takhtegaz"
 end
 
@@ -17,11 +17,11 @@ every 5.minutes do
   rake "triger_bama_scrap"
 end
 
-every 15.minutes do
+every 30.minutes do
   rake "triger_tejarat_scrap"
 end
 
-every 15.minutes do
+every 1.hour do
   rake "triger_takhtegaz_scrap"
 end
 

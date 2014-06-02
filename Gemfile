@@ -49,6 +49,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'jquery-fileupload-rails', '~> 0.4.1'
+gem 'jquery-ui-rails'
 
 group :assets do
   gem 'sass-rails', '~> 4.0.0'

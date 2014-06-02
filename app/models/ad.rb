@@ -60,6 +60,7 @@ class Ad < ActiveRecord::Base
 
   def recommended_ads count
     ads = Ad.all
+    ads = ads.where(status: 2) 
     ads = ads.where(car_model_id: self.car_model_id)
     ads = ads.where.not(id: self.id)
     ads = ads.where("updated_at > ?", 10.days.ago)

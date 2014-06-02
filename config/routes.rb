@@ -18,8 +18,11 @@ Mashin::Application.routes.draw do
   resources :body_colors
   resources :internal_colors
   resources :makes
-  resources :preferences, only: [:create, :destroy]
-  
+  resources :preferences, only: [:create, :destroy] do
+    post "range_filters", on: :collection
+    post "non_model_filters", on: :collection
+  end
+
   resources :ads do
     resources :images
     collection do

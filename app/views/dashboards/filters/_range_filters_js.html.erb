@@ -1,0 +1,43 @@
+<% if range_filter == "price" %>
+  <% extra = "و بالاتر" %>
+  <% below = "" %>
+<% elsif range_filter == "year" %>
+  <% extra = "" %>
+  <% below = " و پایینتر" %>
+<% end %>
+<script>
+$(function() {
+  $( "#slider-range-<%= range_filter %>" ).slider({
+    range: true,
+    min: <%= ("MIN_#{range_filter.upcase}").constantize %>,
+    max: <%= ("MAX_#{range_filter.upcase}").constantize %>,
+    values: [ 
+              <%= @dashboard.send("#{range_filter}_from")  %>, 
+              <%= @dashboard.send("#{range_filter}_to")    %> 
+            ],
+    slide: function( event, ui ) {
+      if (ui.values[ 0 ] == "<%= MIN_YEAR %>"  ) { prepend = "<%= below %> " } else{prepend = ""};
+      if (ui.values[ 1 ] == "<%= MAX_PRICE %>" ) { unit = "<%= unit %>"+"<%= extra %>" } else{unit = "<%= unit %>"};
+      
+      $( "#low_amount_<%= range_filter %>" ).val(   ui.values[ 0 ]+ prepend +" <%= unit %>" );
+      $( "#high_amount_<%= range_filter %>" ).val(  ui.values[ 1 ]+ unit );
+    }
+  });
+
+  val0 = $( "#slider-range-<%= range_filter %>" ).slider( "values", 0 )
+  val1 = $( "#slider-range-<%= range_filter %>" ).slider( "values", 1 )
+  if (val0 == "<%= MIN_YEAR %>"  ) { prepend = "<%= below %>" } else{prepend = ""};
+  if (val1 == "<%= MAX_PRICE %>" ) { unit = "<%= unit %>"+" <%= extra %>" } else{unit = "<%= unit %>"};
+
+  $( "#low_amount_<%= range_filter %>" ).val(  $( "#slider-range-<%= range_filter %>" ).slider( "values", 0 )+ prepend + " <%= unit %> " );
+  $( "#high_amount_<%= range_filter %>" ).val( $( "#slider-range-<%= range_filter %>" ).slider( "values", 1 )+ unit );
+
+  $( "#slider-range-<%= range_filter %>" ).on( "slidechange", function( event, ui ) {
+    $('#<%= range_filter %>_from').val( $( "#slider-range-<%= range_filter %>" ).slider( "values", 0 ) );
+    $('#<%= range_filter %>_to').val( $( "#slider-range-<%= range_filter %>" ).slider( "values", 1 ) );
+    $('#range_form_<%= range_filter %>').submit();
+  } );
+});
+</script>
+
+<!-- //" <%#= unit %> <%#= extra %>" -->

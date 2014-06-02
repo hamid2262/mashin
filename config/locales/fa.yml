@@ -51,3 +51,8 @@ fa:
   verify: تایید
   updated_times: حداکثر بروزرسانی
   viewed: بازدید
+  bodycolor: رنگ بدنه
+  internalcolor: رنگ داخلی
+  carmodel: مدل
+  price_unit: میلیون
+  year_unit: ''

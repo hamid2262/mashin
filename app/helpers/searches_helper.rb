@@ -10,20 +10,6 @@ module SearchesHelper
     txt
   end
 
-  def thumb_image ad
-      if ad.thumb_img.present?          # if in other site ad has thumbnail
-        thumb = ad.thumb_img        
-      else
-        if ad.user_id                                 
-          images = ad.images
-          thumb = images.first.name.url(:thumb) if images.any?
-        end
-      end
-
-    thumb = IMAGES_PATH+"default_auto_thumb.gif" unless thumb
-    image_tag(thumb, class: "img-responsive")
-  end
-
   def remove_filter_buttun val, klass=""
     html = "<span class=\"tooltip_bottom remove_filter "
     html = html + "myhide" if val.blank?

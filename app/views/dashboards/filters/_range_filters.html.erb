@@ -1,0 +1,16 @@
+<%= render partial: 'dashboards/filters/range_filters_js', locals: {range_filter: range_filter, unit: t("#{range_filter}_unit")} %>
+<div id="" class="range_filter panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= t "#{range_filter}" %></h3>
+  </div>
+  <div class="panel-body">
+      <input type="text" id="high_amount_<%= range_filter %>" class="high_amount amount pull-right">
+      <input type="text" id="low_amount_<%= range_filter %>" class="low_amount amount pull-left">
+    <div id="slider-range-<%= range_filter %>" class="slider-range"></div>
+  </div>
+</div>
+<%= form_for :pereference, url: range_filters_preferences_path, html:{:id => "range_form_#{range_filter}"}  do |f| -%>
+  <%= hidden_field_tag :range_from,"", id: "#{range_filter}_from" %>
+  <%= hidden_field_tag :range_to,"", id: "#{range_filter}_to" %>
+  <%= hidden_field_tag :range_name, range_filter.camelcase %>
+<% end %>

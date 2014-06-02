@@ -1,3 +1,4 @@
+$css_image_path : "https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/css/";
 #dashboard_show{
   #my_ads{
     background: #F8F8F8;
@@ -51,52 +52,56 @@
     padding: 8px 8px 0px 8px;
     border-radius: 3px;
     background: rgba(247, 247, 247, 1);
-    // #dashboard_form{
-    //   .filter{
-    //     position: relative;
-    //     .remove_filter{
-    //       background-color: #FFFFFF;
-    //       background-image: url("https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/remove.png");
-    //       background-position: 4px 4px;
-    //       background-repeat: no-repeat;
-    //       cursor: pointer;
-    //       height: 17px;
-    //       left: 18px;
-    //       margin-top: 4px;
-    //       position: absolute;
-    //       top: 14px;
-    //       width: 15px;
-    //     }  
-    //     .myhide{
-    //       display: none !important;
-    //     }    
-    //     .with_value{
-    //       -moz-appearance: none;
-    //       text-indent: 0.01px;
-    //       text-overflow: '';
-    //       border: 1px solid rgba(66, 139, 202, 0.54);
-    //       box-shadow: 1px 1px 10px rgba(108, 149, 192, 0.44);
-    //     }
-    //   }
-    //   input[type="submit"]{
-    //     height: 35px;
-    //   }
-    //   select, input{
-    //     padding: 0px 5px;
-    //     height: 25px;
-    //     border-radius: 1px;
-    //     font-size: 1.1em;
-    //   }
-    //   label{
-    //     margin-bottom: 0px
-    //   }
-    // }
+
     .filter_sections{
       margin-top: 15px;
       .panel-heading{
         padding: 6px 15px;
         h3{
           font-size: 13px;
+        }
+      }
+      .range_filter{
+        .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+          border: 1px solid #6974AD;
+          background: #428bca;        
+          border-radius: 4px;        }
+
+        .ui-widget-header {
+          background: #599fe0 url("#{$css_image_path}ui-bg_diagonals-small_75_599fe0_40x40.png") 50% 50% repeat;
+        }
+
+        input.amount{
+          border: 0;
+          color: #333;
+          font-weight: bold;
+          width: 50%;
+          margin-top: -13px;
+          margin-bottom: 10px;
+          margin-left: -10px;
+          margin-right: -10px;
+        }
+        .low_amount{
+          text-align: left;
+        }
+        .slider-range {
+        top: 9px;
+        }        
+      }
+      .filtered_elements{
+        .filtered_element{
+          border-width: 1px 0;
+          border-radius: 0;
+          padding-top: 1px;
+          padding-bottom: 1px;
+          border-color: #F0F0F0;
+          .glyphicon-ok{
+            color: #0DA81F;
+          }
+          .glyphicon-remove{
+            color: #D16363;
+            padding-left: 5px;
+          }
         }
       }
       .filter_list_row{

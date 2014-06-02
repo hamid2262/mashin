@@ -1,0 +1,9 @@
+<li class='filter_list_row'>
+  <a class="filter_sections_badge_link" href="">
+    <%= form_for Preference.new, url: non_model_filters_preferences_path, method: :post do |f| -%>
+      <%= f.hidden_field :filter_name, value: name %>
+      <%= f.hidden_field :filter_id, value: array.index(element)   %>
+      <%= f.submit element, class: "btn btn-link" %>
+    <% end %>
+  </a>
+</li>

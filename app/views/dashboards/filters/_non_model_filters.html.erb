@@ -1,0 +1,32 @@
+<% elements = @dashboard.non_models_elements(non_model_filter_name) %>
+<% filtered_elements = @dashboard.non_models_filtered_elements(non_model_filter_name) %>
+<% array = (non_model_filter_name+"_ARR").constantize %>
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title"><%= t "#{non_model_filter_name.downcase}" %></h3>
+  </div>
+
+  <ul class="filtered_elements list-group">
+      <% filtered_elements.each do |element| %>
+        <li class="filtered_element list-group-item">
+          <%= element %> 
+          <span class="glyphicon glyphicon-ok "></span>
+          <%= link_to "", 
+              preference_path(array.index(element), model_name: non_model_filter_name),
+              method: :delete, 
+              class: "glyphicon glyphicon-remove pull-left" %>
+        </li>        
+    <% end %>
+  </ul>
+
+  <ul class="nav nav-pills nav-stacked">
+    <%  elements.each_with_index do |element, index| %>
+      <%= render 'dashboards/filters/non_model_filters_row', 
+          element: element, 
+          name: non_model_filter_name,  
+          array: array %>
+    <% end %>
+  </ul>
+  <% if elements.size > 5 %>
+    <a href="" class="show_more" ><%= t"see more" %></a>
+  <% end %>
+</div>

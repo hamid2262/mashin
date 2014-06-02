@@ -1,14 +1,18 @@
 <div id="dashboard_show">
 
   <div id="dashboard_bar" class="col-sm-2">
-    <%#= render 'search_form' %>
     <div class="filter_sections">
-      <%= render 'dashboards/filters/makes' %>
-      <%#= render 'dashboards/filters/car_models' %>
-      <%#= render 'dashboards/filters/fuels' %>
+      <%= render 'dashboards/filters/range_filters', range_filter: "price" %>
+      <%= render 'dashboards/filters/range_filters', range_filter: "year" %>
+      <%= render 'dashboards/filters/model_elements', filter_model_name: 'Make' %>
+      <% if  @dashboard.filtered_elements('Make').present?  %>
+        <%= render 'dashboards/filters/model_elements', filter_model_name: 'CarModel' %>
+      <% end %>
+      <%= render 'dashboards/filters/non_model_filters', non_model_filter_name: 'FUEL' %>
+      <%= render 'dashboards/filters/non_model_filters', non_model_filter_name: 'GIRBOX' %>
       <%#= render 'dashboards/filters/girboxes' %>
-      <%#= render 'dashboards/filters/body_colors' %>
-      <%#= render 'dashboards/filters/internal_colors' %>
+      <%= render 'dashboards/filters/model_elements', filter_model_name: 'BodyColor' %>
+      <%= render 'dashboards/filters/model_elements', filter_model_name: 'InternalColor' %>
     </div>
   </div>
 
@@ -16,7 +20,7 @@
     <% if @ads.any? %>
       <%= render 'shared/paginate', items: @ads %>
 
-      <%= render 'ads' %>
+      <%= render partial: 'ad', collection: @ads %>
 
       <%= render 'shared/paginate', items: @ads %>
     <% else %>
@@ -29,4 +33,5 @@
   </div>
 
 </div>
+
 

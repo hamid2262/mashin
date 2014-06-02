@@ -1,0 +1,34 @@
+<% filtered_elements = @dashboard.filtered_elements(filter_model_name) %>
+<% elements = @dashboard.elements(filter_model_name) %>
+<div class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title"><%= t "#{filter_model_name.downcase}" %></h3>
+  </div>
+
+  <ul class="filtered_elements list-group">
+    <% if filtered_elements %>
+      <% filtered_elements.each do |element| %>
+        <li class="filtered_element list-group-item">
+          <%= element.name %> 
+          <span class="glyphicon glyphicon-ok "></span>
+          <%= link_to "", 
+            preference_path(element.id, model_name: filter_model_name),
+            method: :delete, 
+            class: "glyphicon glyphicon-remove pull-left" %>
+        </li>        
+      <% end %>
+    <% end %>
+  </ul>
+
+  <ul class="nav nav-pills nav-stacked">
+    <%  elements.each_with_index do |element, index| %>
+      <%= render 'dashboards/filters/model_elements_row', 
+            value: element, 
+            name: filter_model_name,  
+            index: index, 
+            filtered_elements_size: filtered_elements.size %>
+    <% end %>
+  </ul>
+  <% if elements.size > 5 %>
+    <a href="" class="show_more" ><%= t"see more" %></a>
+  <% end %>
+</div>

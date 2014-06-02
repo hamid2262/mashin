@@ -15,6 +15,7 @@
 //= require jquery.validate
 //= require localization/messages_fa
 //= require jquery_ujs
+//= require jquery.ui.slider
 
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
@@ -27,7 +28,6 @@
 //= require turbolinks
 
 $(function() {
-
   // update url by tab changing
   $('.nav-tabs a').click(function (e) {
     $(this).tab('show');
@@ -48,6 +48,4 @@ $(function() {
   $('.tooltip_bottom').tooltip();
 
   $(".validate-form").validate();
-
 });
-

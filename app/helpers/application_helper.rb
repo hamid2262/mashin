@@ -89,6 +89,21 @@ module ApplicationHelper
     title.try(:html_safe)
   end
 
+  def thumb_image ad
+      if ad.thumb_img.present?          # if in other site ad has thumbnail
+        thumb = ad.thumb_img        
+      else
+        if ad.user_id                                 
+          images = ad.images
+          thumb = images.first.name.url(:thumb) if images.any?
+        end
+      end
+
+    thumb = IMAGES_PATH+"default_auto_thumb.gif" unless thumb
+    image_tag(thumb, class: "img-responsive")
+  end
+
+
   def user_form_control_static title, field_value, klass1="col-xs-3", klass2="col-xs-9"
     field_value = t('no_data') if field_value.blank?
     html = <<-HTML
