@@ -73,7 +73,7 @@ private
 
   def find_ads
     ads = Ad.all.includes(:car_model, car_model: :make)
-    # ads = ads.order(find_order) 
+    ads = ads.order(find_order) 
     main_ads_condition ads
   end
 
@@ -127,16 +127,17 @@ private
   end
 
   def find_order
-    case "self.order"
-    when 'year'
-      "year DESC"
-    when "cheap"
-      "price ASC"
-    when "expencive"
-      "price DESC"
-    else
-      "updated_at DESC"
-    end
+    # case "self.order"
+    # when 'year'
+    #   "year DESC"
+    # when "cheap"
+    #   "price ASC"
+    # when "expencive"
+    #   "price DESC"
+    # else
+    #   "updated_at DESC"
+    # end
+    "updated_at DESC"
   end
 
 end
