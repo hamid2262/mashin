@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529215117) do
+ActiveRecord::Schema.define(version: 20140603003709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140529215117) do
     t.datetime "updated_at"
     t.integer  "viewed",        default: 0
     t.integer  "updated_times", default: 5
+    t.string   "source_url"
   end
 
   add_index "ad_other_fields", ["ad_id"], name: "index_ad_other_fields_on_ad_id", using: :btree
@@ -75,8 +76,11 @@ ActiveRecord::Schema.define(version: 20140529215117) do
     t.integer  "make_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "visible",    default: true
+    t.integer  "deligate"
   end
 
+  add_index "car_models", ["deligate"], name: "index_car_models_on_deligate", using: :btree
   add_index "car_models", ["make_id"], name: "index_car_models_on_make_id", using: :btree
   add_index "car_models", ["name"], name: "index_car_models_on_name", using: :btree
 
@@ -124,8 +128,11 @@ ActiveRecord::Schema.define(version: 20140529215117) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "year_format"
+    t.boolean  "visible",     default: true
+    t.integer  "deligate"
   end
 
+  add_index "makes", ["deligate"], name: "index_makes_on_deligate", using: :btree
   add_index "makes", ["name"], name: "index_makes_on_name", using: :btree
 
   create_table "preferences", force: true do |t|
