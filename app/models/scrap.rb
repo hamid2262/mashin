@@ -16,7 +16,6 @@ private
   def single_page_sweep(doc)
     if doc.css('.ads').any?
       doc.css('.ads').each do |row|
-        # sleep 7
         delete_path = row.at_css(".base_fields .show a")["href"]
         if skip_condition? row
           open(delete_path) # just for deletation
@@ -59,10 +58,11 @@ private
     @ad_hash[:usage_type]  = usage_type row
     @ad_hash[:girbox]      = girbox row
     @ad_hash[:thumb_img]  = thumb_img row
+    @ad_hash[:title]      = title row
+    @ad_hash[:source_url] = source_url row
   end
 
   def extract_other_fields(row)
-    @ad_hash[:title]      = title row
     @ad_hash[:tel]        = tel row
     @ad_hash[:source_url] = source_url row
   end
@@ -78,7 +78,6 @@ private
 
   def build_ad_other_field_record ad
       ad.build_ad_other_field(
-        title:       @ad_hash[:title],
         source_url:  @ad_hash[:source_url],
         tel:         @ad_hash[:tel]
       )
@@ -104,6 +103,8 @@ private
         latitude:          @ad_hash[:latitude], 
         longitude:         @ad_hash[:longitude], 
         thumb_img:         @ad_hash[:thumb_img],
+        title:             @ad_hash[:title],
+        source_url:        @ad_hash[:source_url],
         status:            2
       )
     rescue
