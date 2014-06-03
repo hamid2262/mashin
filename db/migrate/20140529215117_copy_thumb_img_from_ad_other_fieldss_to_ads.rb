@@ -10,11 +10,13 @@ class CopyThumbImgFromAdOtherFieldssToAds < ActiveRecord::Migration
   end
 
   def down
-    execute "update ads set source_url=NULL,\
-                                 title=NULL,\
-                                 thumb_img=NULL"
     add_column    :ad_other_fields, :source_url, :string
     add_column    :ad_other_fields, :title, :string
     add_column    :ad_other_fields, :thumb_img, :string
+
+    execute "update ad_other_fields set source_url=(select source_url from ads where ad_other_fields.ad_id=ads.id),\
+                                             title=(select title      from ads where ad_other_fields.ad_id=ads.id),\
+                                         thumb_img=(select thumb_img  from ads where ad_other_fields.ad_id=ads.id)"
+ 
   end
 end
