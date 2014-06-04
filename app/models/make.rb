@@ -21,13 +21,10 @@ class Make < ActiveRecord::Base
 
 private
   def find_car_models
-    arr = self.car_models.select(:deligate).map(&:deligate).uniq
-    CarModel.where(id: arr).order(name: :asc) 
+     self.car_models.where("id = deligate").order(name: :asc) 
   end
 
   def self.find_makes
-    makes = Make.select("makes.deligate").group(:deligate)
-    makes = makes.map{|m| m.deligate}
-    Make.where(id: makes).includes(:car_models).order(:name)
+    Make.where("id = deligate").order(name: :asc) 
   end
 end
