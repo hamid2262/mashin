@@ -16,6 +16,13 @@
     padding-bottom: 6px !important;
   }
   .navbar {
-    min-height:32px !important
+    min-height:32px !important;
+    .text-nav {
+      color: #3b5b80 !important;
+      text-shadow: 0px 0px 5px #E4E4E4;
+      .glyphicon{
+        top: 4px;
+      }
+    }
   }
 }

@@ -11,4 +11,23 @@ class Make < ActiveRecord::Base
     end
   end
 
+  def self.for_menus
+    @makes ||= find_makes
+  end
+
+  def deligated_car_models
+    @car_models ||= find_car_models
+  end
+
+private
+  def find_car_models
+    arr = self.car_models.select(:deligate).map(&:deligate).uniq
+    CarModel.where(id: arr).order(name: :asc) 
+  end
+
+  def self.find_makes
+    makes = Make.select("makes.deligate").group(:deligate)
+    makes = makes.map{|m| m.deligate}
+    Make.where(id: makes).includes(:car_models).order(:name)
+  end
 end

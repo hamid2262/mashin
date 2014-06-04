@@ -1,20 +1,12 @@
-<%= form_for(@make) do |f| %>
-  <% if @make.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@make.errors.count, "error") %> prohibited this make from being saved:</h2>
-
-      <ul>
-      <% @make.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= simple_form_for(@make) do |f| %>
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-    <%= f.label :year_format, "Year _Format" %>
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+
+    <%= f.input :deligate, collection: Make.order(:name).map{|m| [m.name,m.id]} %>
+    <%= f.input :visible, as: :boolean %>
+
+    <%= f.label :year_format, "Year _Format" %><br>
     <p>shamsi: <%= f.radio_button :year_format, :true %></p>
     <p>miladi: <%= f.radio_button :year_format, :false %></p>
   </div>

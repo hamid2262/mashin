@@ -17,7 +17,7 @@
     <tbody>
       <% @ads.each do |ad| %>
         <tr>
-          <td><%= link_to ad.user.name , ad.user %></td>
+          <td><%= link_to ad.user.try(:name) , ad.user %></td>
           <td><%= ad_title ad %></td>
           <td><%= ad.details %></td>
           <td><%= price_human ad.price %></td>

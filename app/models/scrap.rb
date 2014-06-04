@@ -3,16 +3,11 @@ class Scrap < ActiveRecord::Base
   has_many   :ads
 
   def sweep
-    # @terminate = false
-    # begin 
-      doc = Nokogiri::HTML(open(self.url))
-      single_page_sweep(doc)
-      # break if @terminate 
-    # end while true 
+    doc = Nokogiri::HTML(open(self.url))
+    single_page_sweep(doc)
   end
 
 private
-  
   def single_page_sweep(doc)
     if doc.css('.ads').any?
       doc.css('.ads').each do |row|
@@ -33,8 +28,6 @@ private
         extract_and_build_images(ad, row)
         open(delete_path) # just for deletation
       end
-    # else
-    #   @terminate = true
     end
   end
 

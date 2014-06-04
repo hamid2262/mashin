@@ -1,23 +1,31 @@
 <h1>Listing makes</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
-      <th>shamsi</th>
+      <th>id</th>
+      <th>deligate</th>
       <th></th>
-      <th></th>
+      <th>year_format</th>
+      <th>visible</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @makes.each do |make| %>
-      <tr>
+      <tr style="background: <%= "rgb(255, 248, 161)" if make.id != make.deligate %>">
         <td><%= make.name %></td>
-        <td>
-          <%= year_format_human make %>
+        <td><%= make.id %></td>
+        <td >
+          <%= make.deligate %> - 
+          <% deligate = Make.where(id: make.deligate).first %> 
+          <%= deligate.name if deligate.present? %>
         </td>
+        <td><%= Ad.where(make_id: make.id).count %> </td>
+        <td><%= year_format_human make %> </td>
+        <td><%= make.visible %> </td>
         <td><%= link_to 'Show', make %></td>
         <td><%= link_to 'Edit', edit_make_path(make) %></td>
         <td><%= link_to 'Destroy', make, method: :delete, data: { confirm: 'Are you sure?' } %></td>

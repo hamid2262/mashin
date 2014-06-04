@@ -1,4 +1,3 @@
-<% makes = Make.includes(:car_models).order(:name) %>
 <div id="search_form">
 	<%= simple_form_for @search, url: searches_path, 
 		html: {method: :post,	id: "main_search_form"},
@@ -12,28 +11,25 @@
     	<!-- make -->
 			<div class="col-xs-6 filter">
 				<%= f.association :make, 
-										label: t("make"), 
-										collection: makes, 
-										input_html: {id: "make_id", class: "form-control #{with_value_class f.object.make}"} %>
+					label: t("make"), 
+					collection: Make.for_menus, 
+					input_html: {id: "make_id", class: "form-control #{with_value_class f.object.make}"} %>
 				<%= remove_filter_buttun f.object.make_id %>
 			</div>
-
 			<!-- car_model -->
 			<div class="col-xs-6 filter">
-				<%#= f.input :car_model_id, 
-										label: t("car_model"), 
-										collection: makes, 
-										as: :grouped_select, 
-										group_method: :car_models, 
-										prompt: "", 
-										input_html: {id: "car_model_id", class: "form-control #{with_value_class f.object.car_model}"}  %>
 				<div class="input grouped_select optional form-group">
 					<%= f.label :car_model_id, t("car_model"), class: "grouped_select optional" %>
-					<%= f.grouped_collection_select :car_model_id, makes,
-						:car_models,:name, :id, :name, {}, {id: "car_model_id", class: "grouped_select optional form-control with_value car_model_en"}
+					<%= f.grouped_collection_select :car_model_id, 
+						Make.for_menus,
+						:deligated_car_models,
+						:name, 
+						:id, 
+						:name, 
+						{}, 
+						{id: "car_model_id", class: "grouped_select optional form-control with_value car_model_en"}
 					 %>
 				</div>
-
 				<%= remove_filter_buttun f.object.car_model_id %>
 			</div>
 		</div>

@@ -1,28 +1,50 @@
-<h1>Listing car_models</h1>
-
-<table>
+<%= render 'shared/paginate', items: @car_models %>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
       <th>Make</th>
-      <th></th>
-      <th></th>
+      <th>CarModel</th>
+      <th>id</th>
+      <th>deligate</th>
+      <th>Count</th>
+      <th>visible</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @car_models.each do |car_model| %>
-      <tr>
+      <tr style="background: <%= "rgb(255, 248, 161)" if car_model.id != car_model.deligate %>">
+        <td><%= car_model.make.name %></td>
         <td><%= car_model.name %></td>
-        <td><%= car_model.make %></td>
-        <td><%= link_to 'Show', car_model %></td>
-        <td><%= link_to 'Edit', edit_car_model_path(car_model) %></td>
-        <td><%= link_to 'Destroy', car_model, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= car_model.id %></td>
+        <td><%= car_model.deligate %></td>
+        <td>
+          <%= simple_form_for car_model do |f| %>
+            <%= f.input :deligate, 
+                  collection: car_model.make.car_models.order(:name).map{|m| ["#{m.name} --- #{m.deligate}",m.deligate]},
+                  label: false,
+                  wrapper_html:{class: "col-xs-6"}
+            %>
+            <div class="col-xs-2">
+              <%= f.submit %>   
+            </div>
+          <% end %>
+        </td>
+        <td><%= Ad.where(car_model_id: car_model.id).count %> </td>
+
+        <td><%= car_model.visible %></td>
+        <td>
+            <%= link_to 'Show', car_model %>
+            <%= link_to 'Edit', edit_car_model_path(car_model) %>
+            <%= link_to 'Destroy', car_model, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= render 'shared/paginate', items: @car_models %>
 
 <br>
 

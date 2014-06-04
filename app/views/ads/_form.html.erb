@@ -1,9 +1,7 @@
-<% makes = Make.includes(:car_models).order(:name) %>
 <div id="ad_form" class="col-sm-10 col-sm-offset-1">
   <div class="panel panel-default">
     <div class="panel-heading"><%= title %></div>
     <div class="panel-body">
-
       <%= simple_form_for @ad, 
         html: {  id: "new_ad_form", class: "validate-form" },
         defaults:{
@@ -12,27 +10,26 @@
           # , label_html:   { class: '' }
         } do |f| %>
         <%= error_messages_for(@ad) %>
-
         <div class="row">
           <div class="col-sm-3">
             <div class="col-sm-12 ">
               <%= f.association :make, 
-                  label: t("brand"), 
-                  collection: makes, 
-                  input_html: {id: "make_id"} %>      
+                label: t("brand"), 
+                collection: Make.for_menus, 
+                input_html: {id: "make_id"} 
+              %>      
             </div>    
             <div class="col-sm-12 ">
-              <%#= f.input :car_model_id, 
-                  label: t("car_model"), 
-                  collection: makes, 
-                  as: :grouped_select, 
-                  group_method: :car_models, 
-                  prompt: "", 
-                  input_html: {id: "car_model_id"}  %>
               <div class="input grouped_select required ad_car_model_id form-group">
                 <%= f.label :car_model_id, t("car_model"), class: "grouped_select required" %>
-                <%= f.grouped_collection_select :car_model_id, makes,
-                  :car_models,:name, :id, :name, {}, {id: "car_model_id", class: "grouped_select required form-control car_model_en"}
+                <%= f.grouped_collection_select :car_model_id, 
+                  Make.for_menus,
+                  :deligated_car_models,
+                  :name, 
+                  :id, 
+                  :name, 
+                  {}, 
+                  {id: "car_model_id", class: "grouped_select required form-control car_model_en"}
                  %>
               </div>
             </div>
@@ -40,30 +37,28 @@
               <%= f.association :body_color, 
                   label: t("body_color") %>      
             </div>
-
           </div>
 
           <div class="col-sm-3">
             <div class="col-sm-12 ">
               <%= f.input :fuel, 
-                  label: t("fuel"), 
-                  collection: FUEL_ARR.each_with_index.map { |item, index| [item, index] } %>
+                label: t("fuel"), 
+                collection: FUEL_ARR.each_with_index.map { |item, index| [item, index] } %>
             </div>
 
             <div class="col-sm-12 ">
               <%= f.input :girbox, 
-                  label: t("girbox"), 
-                  collection: GIRBOX_ARR.each_with_index.map { |item, index| [item, index] },
-                  input_html:{class: "form-control required"} ,
-                  selected:  f.object.girbox ? 1 : 0   
-                   %>
+                label: t("girbox"), 
+                collection: GIRBOX_ARR.each_with_index.map { |item, index| [item, index] },
+                input_html:{class: "form-control required"} ,
+                selected:  f.object.girbox ? 1 : 0   
+                 %>
             </div>
 
             <div class="col-sm-12 ">
               <%= f.association :internal_color, 
                   label: t("internal_color") %>      
             </div>
-
           </div>
 
           <div class="col-sm-3">
@@ -75,8 +70,7 @@
                     value: f.object.millage.try(:to_i) || nil %>
                   <span class="unit"><%= t "kilometer" %></span>
               </div>
-            </div>
-            
+            </div>            
             <div class="col-xs-12 year-group">
               <div id="year_format" class="">
                 <%=  f.collection_radio_buttons :year_format, 
@@ -99,7 +93,6 @@
                 selected: f.object.year_miladi
                  %>
             </div>
-
             <div class="col-sm-12 problem-margin-top">
               <%= f.input :damaged, 
                   label: t("damaged"), 
@@ -107,7 +100,6 @@
                   prompt: ""
               %>
             </div>
-
           </div>  
 
           <div id="usage_type" class="col-sm-3 ">
@@ -119,14 +111,13 @@
                 checked: f.object.try(:usage_type) %>
             </div>
           </div>
-
         </div>
 
         <hr>
 
         <div class="row">
-         <div class="col-sm-3">
-          <div class="col-sm-12 ">
+          <div class="col-sm-3">
+            <div class="col-sm-12 ">
             <%= f.input :location, 
               label: t("location"),
               placeholder: t(".enter the city"),
@@ -146,11 +137,10 @@
                   <span class="unit"><%= t "toman" %></span>
               </div>
             </div>
-
           </div>
 
-         <div class="col-sm-3">
-          <div class="col-sm-12 ">
+          <div class="col-sm-3">
+            <div class="col-sm-12 ">
             <%= f.simple_fields_for :ad_other_field do |s| %>
               <%= s.input :tel, 
                 label: t("tel"),
@@ -165,18 +155,15 @@
             </div>
           </div>
 
-         <div class="col-sm-6">
-          <div class="col-sm-12 ">
+          <div class="col-sm-6">
+            <div class="col-sm-12 ">
             <%= f.input :details, 
               label: t("details"), as: :text,
               input_html: {rows: 6 } %>
             </div>
           </div>
-
         </div>
-
       <% end %>
-
     </div>
   </div>
 </div>

@@ -1,4 +1,3 @@
-<% makes = Make.includes(:car_models).order(:name) %>
 <%= simple_form_for @search, url: searches_path, method: :post, 
 	defaults:{
 	  wrapper_html: { class: 'form-group' }, 
@@ -10,15 +9,20 @@
 		<div class="col-xs-6 right">
 			<%= f.association :make, 
 					label: t("brand"), 
-					collection: Make.visible.sorted, 
+					collection: Make.for_menus, 
 					input_html: {id: "make_id"} %>			
 		</div>
 
 		<div class="col-xs-6 left">		
 			<div class="input select optional search_make form-group">
 				<%= f.label :car_model_id, t("car_model") %>
-				<%= f.grouped_collection_select :car_model_id, makes.visible,
-					:car_models,:name, :id, :name, {}, {id: "car_model_id", class: "select optional form-control car_model_en"}	%>
+				<%= f.grouped_collection_select :car_model_id, 
+					Make.for_menus,
+					:deligated_car_models,
+					:name, :id, 
+					:name, 
+					{}, 
+					{id: "car_model_id", class: "select optional form-control car_model_en"}	%>
 			</div>
 		</div>
 	</div>

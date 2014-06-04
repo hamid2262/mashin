@@ -6,7 +6,7 @@ class CarModelsController < ApplicationController
   # GET /car_models
   # GET /car_models.json
   def index
-    @car_models = CarModel.all
+    @car_models = CarModel.includes(:make).order("makes.name,car_models.name").page(params[:page]).per_page(30)
   end
 
   # GET /car_models/1
@@ -44,7 +44,7 @@ class CarModelsController < ApplicationController
   def update
     respond_to do |format|
       if @car_model.update(car_model_params)
-        format.html { redirect_to @car_model, notice: 'Car model was successfully updated.' }
+        format.html { redirect_to :back }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -71,7 +71,7 @@ class CarModelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_model_params
-      params.require(:car_model).permit(:name, :make_id)
+      params.require(:car_model).permit(:name, :make_id, :deligate, :visible)
     end
 
     def load_car_model
