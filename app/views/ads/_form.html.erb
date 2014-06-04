@@ -22,15 +22,9 @@
             <div class="col-sm-12 ">
               <div class="input grouped_select required ad_car_model_id form-group">
                 <%= f.label :car_model_id, t("car_model"), class: "grouped_select required" %>
-                <%= f.grouped_collection_select :car_model_id, 
-                  Make.for_menus,
-                  :deligated_car_models,
-                  :name, 
-                  :id, 
-                  :name, 
-                  {}, 
-                  {id: "car_model_id", class: "grouped_select required form-control car_model_en"}
-                 %>
+                <%= f.select :car_model_id, 
+                  cached_makes_for_select,{}, 
+                  {id: "car_model_id", class: "select optional form-control car_model_en"}  %>
               </div>
             </div>
             <div class="col-sm-12 ">

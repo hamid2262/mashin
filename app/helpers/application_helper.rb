@@ -16,7 +16,19 @@ module ApplicationHelper
 	 	end 
 	 	message.html_safe
 	end
-  
+
+  def cached_makes_for_select
+    Rails.cache.fetch([:select_makes], expires_in: 120.minutes) do 
+      option_groups_from_collection_for_select(
+        Make.for_menus, 
+        :deligated_car_models, 
+        :name, 
+        :id, 
+        :name
+      )
+    end
+  end
+
   def km_range
   	a = (1000..10000).step(1000).map{|s| [ ("#{number_to_human s} #{t("kilometer")}") , s]}
   	b = ((20000..100000).step(10000)).map{|s| [("#{number_to_human s} #{t("kilometer")}") , s]}

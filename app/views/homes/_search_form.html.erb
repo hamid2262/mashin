@@ -16,13 +16,11 @@
 		<div class="col-xs-6 left">		
 			<div class="input select optional search_make form-group">
 				<%= f.label :car_model_id, t("car_model") %>
-				<%= f.grouped_collection_select :car_model_id, 
-					Make.for_menus,
-					:deligated_car_models,
-					:name, :id, 
-					:name, 
+				<%= f.select :car_model_id, 
+					cached_makes_for_select,
 					{}, 
-					{id: "car_model_id", class: "select optional form-control car_model_en"}	%>
+					{id: "car_model_id", class: "select optional form-control car_model_en"}
+				%>
 			</div>
 		</div>
 	</div>
@@ -81,8 +79,7 @@
 					collection: ['new', 'cheap', 'expencive', 'year'].map{|s| [t("#{s}"), s]} %>
 		</div>
 	</div>
-	<%= f.submit t("search result", 
-			count: f.object.count), 
+	<%= f.submit t("search result", count:  @all_ads_count), 
 			data: { disable_with: t('searching') }, 
 			class: "btn btn-primary btn-block" %>
 <% end %>
