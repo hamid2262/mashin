@@ -3,11 +3,16 @@ class AdminsController < ApplicationController
   load_and_authorize_resource
   
   def show
-    @admin = Admin.new#(current_user)
+    @admin = Admin.new
   end
 
   def searches
-    @admin = Admin.new#(current_user)
+    @admin = Admin.new
     @searches = @admin.searches.page(params[:page]).per_page(15)
+  end
+
+  def users
+    @admin = Admin.new
+    @users = @admin.users.page(params[:page]).per_page(15)    
   end
 end

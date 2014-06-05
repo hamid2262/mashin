@@ -1,6 +1,5 @@
-<div id="unverified">
+<div id="" class="eng_fonts">
   <%= render 'shared/paginate', items: @searches %>
-
   <table class="table">
     <thead>
       <tr>
@@ -15,7 +14,7 @@
         <tr>
           <td><%= search.id%></td>
           <td><%= search.user.name  if search.user %></td>
-          <td><%= search.ip %></td>
+          <td><%= search.user_location %></td>
           <td><%= search.make.name if search.make%></td>
           <td><%= search.car_model.name if search.car_model%></td>
           <td><%= price_human search.price_from %></td>
@@ -30,5 +29,4 @@
     </tbody>
   </table>
   <%= render 'shared/paginate', items: @searches %>
-
 </div>

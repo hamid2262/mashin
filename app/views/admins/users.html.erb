@@ -1,0 +1,31 @@
+<div id="" class="eng_fonts">
+  <%= render 'shared/paginate', items: @users %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>email</th>
+        <th>tel</th>
+        <th>sign_in_count</th>
+        <th>last_sign_in_at</th>
+        <th>created_at</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.name  %></td>
+          <td><%= user.email  %></td>
+          <td><%= user.tel  %>, <%= user.mobile  %></td>
+          <td><%= user.sign_in_count  %></td>
+          <td><%= time_ago_in_words user.last_sign_in_at %></td>
+          <td><%= time_ago_in_words user.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render 'shared/paginate', items: @users %>
+</div>

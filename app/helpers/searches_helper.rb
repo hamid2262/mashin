@@ -35,4 +35,5 @@ module SearchesHelper
     location.split(",").first
   end
 
+
 end
