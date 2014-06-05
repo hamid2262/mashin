@@ -10,9 +10,12 @@
         </a>
       </h6>
     </div>
-    <div id="collapse<%= ad.id %>" class="panel-collapse collapse <%= "in" if @dashboard.my_ads.first == ad %> content">
+    <div id="collapse<%= ad.id %>" class="panel-collapse collapse <%= "in" if ad_counter < 3 %> content">
       <%= render 'dashboards/my_ads/action_nav', ad: ad %>        
       <%= two_column_title_value 4, 7, "title", link_to(ad_title(ad), ad) %>
+      <div class="<%= ad.status_human_short %>">
+        <%= two_column_title_value 4, 7, "status", t("#{ad.status_human}") %>
+      </div>
       <%= two_column_title_value 4, 7, "viewed", ad.ad_other_field.viewed %>
       <%= two_column_title_value 4, 7, "updated_times", 
           "#{ad.ad_other_field.updated_times} #{t "times"}" %>

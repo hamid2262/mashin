@@ -1,6 +1,9 @@
 fa:
   Are you sure?: آیا از حذف این رکورد مطمین هستید؟
   actions: عملیاتها
+  actived: فعال
+  bodycolor: رنگ بدنه
+  carmodel: مدل
   damaged: رنگ شدگی
   delete: حذف
   devise:
@@ -13,6 +16,7 @@ fa:
       new:
         sign_in_title: فرم ورود کاربر
   edit: ویرایش
+  expired: منقضی شده
   forget_password: رمز خود را فراموش کرده ام
   home: خانه
   how_looks: وضعیت ظاهری
@@ -21,9 +25,12 @@ fa:
       new photo: عکس جدید
     index:
       return to ad: صفحه آگهی
+  incomplete: بدون عکس
+  internalcolor: رنگ داخلی
   last_update: آخرین بروزرسانی
   miladi: میلادی
   name: نام
+  price_unit: میلیون
   remember_me: مرا به خاطر بسپار
   search result: جستجو  ( %{count} مورد )
   see more: ادامه
@@ -31,28 +38,22 @@ fa:
   sign_in: ورود
   sign_up: ثبت نام
   sign_up_new: کاربر جدید هستید؟(ثبت نام)
-  tel: تلفن تماس
-
-  actived: فعال
-  expired: منقضی شده
-  incomplete: بدون عکس
-  not_verified: منتظر تایید
-  rejected: رد شده
-  info_problem rejected: رد شده- ایراد در اطلاعات
-  image_problem rejected: رد شده- ایراد در عکس ها
-  tel_problem rejected: رد شده- ایراد در تلفن تماس
-  info_problem : ایراد در اطلاعات
-  image_problem : ایراد در عکس ها
-  tel_problem : ایراد در تلفن تماس
   sold: فروخته شد
   status: وضعیت
+  tel: تلفن تماس
+  rejected: رد شده
+  not_verified: منتظر تایید
+  price_problem: ایراد در قیمت
+  image_problem: ایراد در عکس ها
+  image_problem rejected: رد شده- ایراد در عکس ها
+  tel_problem: ایراد در تلفن تماس
+  tel_problem rejected: رد شده- ایراد در تلفن تماس
+  price_problem rejected: رد شده- ایراد در قیمت
+  info_problem: ایراد در اطلاعات
+  info_problem rejected: رد شده- ایراد در اطلاعات
   times: بار
   title: عنوان
-  verify: تایید
   updated_times: حداکثر بروزرسانی
+  verify: تایید
   viewed: بازدید
-  bodycolor: رنگ بدنه
-  internalcolor: رنگ داخلی
-  carmodel: مدل
-  price_unit: میلیون
   year_unit: ''

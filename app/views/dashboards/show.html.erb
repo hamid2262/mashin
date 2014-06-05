@@ -17,11 +17,9 @@
   </div>
 
   <div id="ads_list" class="col-sm-7">
-    <% if @ads.any? %>
+    <% if @ads.present? %>
       <%= render 'shared/paginate', items: @ads %>
-
       <%= render partial: 'ad', collection: @ads %>
-
       <%= render 'shared/paginate', items: @ads %>
     <% else %>
       <p id="err_msg"><%= t".no_resault_message" %></p>

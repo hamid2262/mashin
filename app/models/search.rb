@@ -5,7 +5,8 @@ class Search < ActiveRecord::Base
 	belongs_to :make
   belongs_to :car_model
   belongs_to :body_color
-	belongs_to :internal_color
+  belongs_to :internal_color
+	belongs_to :user
 
   def ads
     @ads ||= find_ads

@@ -121,6 +121,8 @@ class Ad < ActiveRecord::Base
       "image_problem rejected"
     when 32
       "tel_problem rejected"
+    when 33
+      "price_problem rejected"
     when 40
       "sold" 
     when 50
@@ -136,7 +138,7 @@ class Ad < ActiveRecord::Base
       "not_verified"
     when 2
       "actived"
-    when 30 , 31,32
+    when 30, 31, 32, 33
       "rejected"
     when 40
       "sold" 
@@ -156,6 +158,10 @@ class Ad < ActiveRecord::Base
   def verifying code
     self.status = code.to_i
     self.save
+  end
+
+  def self.unverified_count
+    Ad.where("status < 2").count
   end
 
 private

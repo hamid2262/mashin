@@ -7,6 +7,7 @@ class AddStatusToAds < ActiveRecord::Migration
     # 30:  genral rejected 
     # 31:  image problem rejected 
     # 32:  tel problem rejected
+    # 33:  price problem rejected
     # 4:  sold
     # 5:  expired
     remove_column :ads, :active

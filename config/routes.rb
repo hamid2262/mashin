@@ -35,6 +35,12 @@ Mashin::Application.routes.draw do
     end
   end
 
+  resource  :admin, only: [:show] do
+    collection do
+      get "searches"
+    end
+  end
+
   resources :scraps, only: [:show, :index] do
     collection do
       post "scrap" 

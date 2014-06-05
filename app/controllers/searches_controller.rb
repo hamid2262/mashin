@@ -26,6 +26,12 @@ class SearchesController < ApplicationController
     end
   	@search.year_from = correct_date(search_params[:year_from]) if search_params[:year_from].present?
   	@search.year_to   = correct_date( search_params[:year_to])  if search_params[:year_to].present?
+    
+    req = request
+    if req
+      @search.ip = "#{req.location.country} - #{req.location.city} - #{request.location.ip}"
+    end
+    @search.user = current_user if current_user
     respond_to do |format|
       if @search.save
         cookies[:last_search] = @search.id

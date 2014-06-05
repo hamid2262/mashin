@@ -17,10 +17,8 @@
 			<div class="input select optional search_make form-group">
 				<%= f.label :car_model_id, t("car_model") %>
 				<%= f.select :car_model_id, 
-					cached_makes_for_select,
-					{}, 
-					{id: "car_model_id", class: "select optional form-control car_model_en"}
-				%>
+					cached_makes_for_select,{}, 
+					{id: "car_model_id", class: "select optional form-control car_model_en"}  %>
 			</div>
 		</div>
 	</div>

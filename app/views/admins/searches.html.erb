@@ -1,0 +1,34 @@
+<div id="unverified">
+  <%= render 'shared/paginate', items: @searches %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t "name" %></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @searches.each do |search| %>
+        <tr>
+          <td><%= search.id%></td>
+          <td><%= search.user.name  if search.user %></td>
+          <td><%= search.ip %></td>
+          <td><%= search.make.name if search.make%></td>
+          <td><%= search.car_model.name if search.car_model%></td>
+          <td><%= price_human search.price_from %></td>
+          <td><%= price_human search.price_to %></td>
+          <td><%= search.year_from.year if search.year_from %></td>
+          <td><%= search.year_to.year if search.year_to  %></td>
+          <td><%= search.location %></td>
+          <td><%= search.radius %></td>
+          <td><%= time_ago_in_words search.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= render 'shared/paginate', items: @searches %>
+
+</div>
