@@ -28,6 +28,9 @@ class SearchesController < ApplicationController
   	@search.year_to   = correct_date( search_params[:year_to])  if search_params[:year_to].present?
     
     @search.user_location = guest_user_location 
+    @search.user_ip = user_ip 
+    @search.referer = request.referer 
+    
     @search.user = current_user if current_user
 
     respond_to do |format|
@@ -68,15 +71,20 @@ private
     @search = Search.new(search_params)
   end
 
+  def user_ip
+    unless session[:user_ip]
+      session[:user_ip] = request.try(:location).try(:ip)
+    end
+    session[:user_ip]
+  end
 
   def guest_user_location
     unless session[:guest_user_ip]
       session[:guest_user_country] = request.try(:location).try(:country)
       session[:guest_user_city]    = request.try(:location).try(:city)
-      session[:guest_user_ip]      = request.try(:location).try(:ip)
     end
-    if session[:guest_user_country]  and session[:guest_user_city] and session[:guest_user_ip]
-      session[:guest_user_country] + "-" +session[:guest_user_city]+ "-" +session[:guest_user_ip]      
+    if session[:guest_user_country] and session[:guest_user_city]
+      session[:guest_user_country] + "-" +session[:guest_user_city]     
     end
   end
 
