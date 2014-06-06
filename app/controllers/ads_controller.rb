@@ -10,10 +10,6 @@ class AdsController < ApplicationController
     @ads = Ad.limit(10)
   end
 
-  def unverifieds
-    @ads = Ad.where("status < 2").limit(20)
-  end
-
   def verify
     @ad.verifying params[:code]
     redirect_to :back

@@ -1,6 +1,21 @@
 <div id="" class="eng_fonts">
   <%= render 'shared/paginate', items: @searches %>
-  <table class="table">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <td> id </td>
+        <td> name </td>
+        <td> user_location </td>
+        <td> referer </td>
+        <td> make.name </td>
+        <td> car_model </td>
+        <td> price </td>
+        <td> year </td>
+        <td> location </td>
+        <td> radius </td>
+        <td> created_at </td>
+      </tr>
+    </thead>
 
     <tbody>
       <% @searches.each do |search| %>
@@ -8,13 +23,17 @@
           <td><%= search.id %></td>
           <td><%= search.user.name  if search.user %></td>
           <td><%= search.user_location %>-<%= search.user_ip %></td>
-          <td><%= search.referer %></td>
+          <td><%= search.referer[7,25] if search.referer %></td>
           <td><%= search.make.name if search.make%></td>
           <td><%= search.car_model.name if search.car_model%></td>
-          <td><%= price_human search.price_from %></td>
-          <td><%= price_human search.price_to %></td>
-          <td><%= search.year_from.year if search.year_from %></td>
-          <td><%= search.year_to.year if search.year_to  %></td>
+          <td>
+            <%= price_human search.price_from %>
+            <%= price_human search.price_to %>
+          </td>
+          <td>
+            <%= search.year_from.year if search.year_from %>
+            <%= search.year_to.year if search.year_to  %>
+          </td>
           <td><%= search.location %></td>
           <td><%= search.radius %></td>
           <td><%= time_ago_in_words search.created_at %></td>

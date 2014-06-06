@@ -26,7 +26,6 @@ Mashin::Application.routes.draw do
   resources :ads do
     resources :images
     collection do
-      get "unverifieds"
       get "verify"
     end
     member do
@@ -39,6 +38,7 @@ Mashin::Application.routes.draw do
     collection do
       get "searches"
       get "users"
+      get "unverified_ads"
     end
   end
 

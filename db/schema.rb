@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140605230351) do
+ActiveRecord::Schema.define(version: 20140606085342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,7 +179,11 @@ ActiveRecord::Schema.define(version: 20140605230351) do
     t.integer  "damaged"
     t.string   "user_location",     limit: 250
     t.integer  "user_id"
+    t.string   "referer"
+    t.string   "user_ip"
   end
+
+  add_index "searches", ["user_ip"], name: "index_searches_on_user_ip", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false

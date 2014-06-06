@@ -1,14 +1,23 @@
 <div id="home_show">
-  <div id="search_form" class="col-sm-5 col-md-4">
-    <%= render 'search_form' %>
+  <div class="row">
+    <div id="search_form" class="col-sm-5 col-md-4">
+      <%= render 'search_form' %>
+    </div>
+
+    <div id="qoute" class="col-sm-6 col-md-5 transparent hidden-xs hidden-sm">
+      <%= render 'qoute' %>
+    </div>
   </div>
 
-  <div id="qoute" class="col-sm-6 col-md-5 transparent">
-    <%= render 'qoute' %>
-  </div>
+  <div class="row">
+    <div id="my_last_searches" class="col-sm-4 col-md-4">
+      <%= render 'my_last_searches' %>    
+    </div>
 
-  <div id="todays_ads" class="col-sm-6 col-md-5 transparent">
-    <%= render 'statistic' %>    
+    <!-- <div class="col-sm-1"> </div> -->
+    <div id="todays_ads" class="col-sm-7">
+      <%= render 'statistic' %>    
+    </div>
   </div>
 </div>
 

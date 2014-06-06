@@ -1,7 +1,8 @@
-<%= t".number of today's ads" %>
-<span id="vehicle_count"><%= @today_ad_count %></span>
-<%= t "vehicle" %>
-<br>
+<h3>
+  <%= t".number of today's ads" %>
+  <span id="vehicle_count"><%= @today_ad_count %></span>
+  <%= t "vehicle" %>
+</h3>
 <% @makes.each do |make| %>
     <%= form_for Search.new do |f| -%>
       <%= f.hidden_field :make_id, value: Make.make_id(make[0]) %>

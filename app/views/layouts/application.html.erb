@@ -4,6 +4,10 @@
   <%= render 'navbar' %>
   <div id="main_container">
     <div id="siteContent">
+<% if current_user and current_user.is_admin?  %>
+  <p class="eng_fonts"><%= session[:user_referer] %>  </p>  
+<% end %>
+
       <%= flash_creator flash %>
       <%= yield %>  
     </div>
