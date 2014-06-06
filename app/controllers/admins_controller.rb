@@ -7,7 +7,7 @@ class AdminsController < ApplicationController
   end
 
   def searches
-    @searches = @admin.searches.page(params[:page]).per_page(15)
+    @searches = @admin.searches(params[:user_ip]).page(params[:page]).per_page(15)
   end
 
   def users

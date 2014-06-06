@@ -1,3 +1,6 @@
+<% if params[:user_ip].present? %>
+  <%= link_to "<<back", searches_admin_path %>
+<% end %>
 <div id="" class="eng_fonts">
   <%= render 'shared/paginate', items: @searches %>
   <table class="table table-bordered">
@@ -20,9 +23,15 @@
     <tbody>
       <% @searches.each do |search| %>
         <tr>
-          <td><%= search.id %></td>
-          <td><%= search.user.name  if search.user %></td>
-          <td><%= search.user_location %>-<%= search.user_ip %></td>
+          <td><%= link_to search.id, search_path(search) %></td>
+          <td><%= link_to search.user.name, user_path(search.user)  if search.user %></td>
+          <td>
+            <% if search.user_ip.present? %>
+              <%= link_to  searches_admin_path(user_ip: search.user_ip) do %>
+                <%= search.user_location %>-<%= search.user_ip %>
+              <% end %>
+            <% end %>
+          </td>
           <td><%= search.referer[7,25] if search.referer %></td>
           <td><%= search.make.name if search.make%></td>
           <td><%= search.car_model.name if search.car_model%></td>
