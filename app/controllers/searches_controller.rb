@@ -57,7 +57,7 @@ private
                                    :order,
                                    :girbox, :fuel,
                                    :body_color_id, :internal_color_id
-                                   )
+                                  )
   end
 
   def correct_date year
@@ -70,13 +70,13 @@ private
 
 
   def guest_user_location
-    if session[:guest_user_country]
-      session[:guest_user_country] + "-" +session[:guest_user_city]+ "-" +session[:guest_user_ip]
-    else
-      session[:guest_user_country] = request.location.country
-      session[:guest_user_city]    = request.location.city
-      session[:guest_user_ip]      = request.location.ip
-      session[:guest_user_country] + "-" +session[:guest_user_city]+ "-" +session[:guest_user_ip]
+    unless session[:guest_user_ip]
+      session[:guest_user_country] = request.try(:location).try(:country)
+      session[:guest_user_city]    = request.try(:location).try(:city)
+      session[:guest_user_ip]      = request.try(:location).try(:ip)
+    end
+    if session[:guest_user_country]  and session[:guest_user_city] and session[:guest_user_ip]
+      session[:guest_user_country] + "-" +session[:guest_user_city]+ "-" +session[:guest_user_ip]      
     end
   end
 
