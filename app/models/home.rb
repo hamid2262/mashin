@@ -13,6 +13,6 @@ class Home
   end
 
   def self.beginning_of_today
-    Time.zone.now.beginning_of_day()
+    Time.zone.now.beginning_of_day() #- 5.days
   end
 end

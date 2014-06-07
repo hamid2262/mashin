@@ -47,28 +47,28 @@
     }
   }
   #todays_ads{
-    background: #6F6866;
+    background: #F8F8F8;
     text-shadow: 0px 0px 7px #FFFFFF;
     font-size: 16px;
     margin-right: 20px;
     overflow: hidden;
     padding: 4px 34px 20px;
     h3{
-      color: #101063;
+      color: #275B88;
+      text-shadow: 0px 0px 2px #858585;
     }
     #vehicle_count{
-      color: rgba(216, 216, 216, 0.79);
-      font-size: 18px;
-      text-shadow: 0px 0px 0px #FFFFFF;
+      color: rgba(255, 6, 6, 1);
+      font-size: 21px;
+      text-shadow: 1px 0px 1px #E01515;
     }
     form.new_search {
       float: right;
       input{
-        color: #C7C9FF;
-        text-shadow: 1px 1px 6px #000;
-        padding: 7px 9px 4px 0px;
+        color: #5C5C5C;
+        padding: 7px 9px 5px 0px;
         transition: background .3s;
-        width: 73px;
+        width: 76px;
         text-align: right;
         font-size: 11px;
         &:hover {

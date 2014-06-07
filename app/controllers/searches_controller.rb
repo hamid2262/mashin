@@ -27,10 +27,9 @@ class SearchesController < ApplicationController
   	@search.year_from = correct_date(search_params[:year_from]) if search_params[:year_from].present?
   	@search.year_to   = correct_date( search_params[:year_to])  if search_params[:year_to].present?
     
-    @search.user_location = guest_user_location 
-    @search.user_ip = session[:user_ip] 
-    @search.referer = session[:user_referer] 
-
+    @search.user_location = guest_user_location
+    @search.user_ip = session[:user_ip]
+    @search.referer = session[:user_referer]
     @search.user = current_user if current_user
 
     respond_to do |format|
