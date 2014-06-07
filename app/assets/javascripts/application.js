@@ -27,7 +27,39 @@
 //= require_tree .
 //= require turbolinks
 
+  // jQuery.fn.submitOnChange(){
+  //   $('#ajax_submit').trigger("click");
+  // }
+
 $(function() {
+
+////////////// AJAX mainsearch
+  $('#main_search_form #location_city').focusout(function () {
+    field_name = $(this).attr("name")
+    field_name = field_name.replace("search[",'')
+    field_name = field_name.replace("]",'')
+
+    field_value = $(this).val()
+
+    $("#filter_name_ajax").val(field_name)
+    $("#filter_value_ajax").val(field_value)
+    $('#ajax_submit').submit();
+  })
+
+  $('#main_search_form select').change(function () {
+    field_name = $(this).attr("name")
+    field_name = field_name.replace("search[",'')
+    field_name = field_name.replace("]",'')
+
+    field_value = $(this).val()
+
+    $("#filter_name_ajax").val(field_name)
+    $("#filter_value_ajax").val(field_value)
+    $('#ajax_submit').submit();
+  })
+//////////////////\\\\\\\\\\\\\\\
+
+
   // update url by tab changing
   $('.nav-tabs a').click(function (e) {
     $(this).tab('show');

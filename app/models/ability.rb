@@ -41,7 +41,7 @@ class Ability
       can [:new, :create], User
     end
       
-    can [:new, :create, :show], Search
+    can [:new, :create, :show, :ajax], Search
     can :read, Home
     can :show, Ad
   end

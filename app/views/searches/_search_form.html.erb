@@ -129,9 +129,8 @@
 		</div>
 		<%= f.submit t("search result", 
 										count: f.object.count), 
-										data: { disable_with: t("searching") }, class: "btn btn-primary btn-block " %>
+										data: { disable_with: t("searching") }, class: "btn btn-primary btn-block ", id: "main_search_submit" %>
 		
-	
     <%= f.hidden_field :girbox, value: f.object.girbox  %>
     <%= f.hidden_field :fuel, value: f.object.fuel  %>
     <%= f.hidden_field :internal_color_id, value: f.object.internal_color_id  %>
@@ -139,3 +138,12 @@
 
 	<% end %>
 </div>
+
+
+<%= form_tag(ajax_searches_path, method: :post, remote: true,  id: "ajax_submit") do %>
+  <%= hidden_field_tag :filter_name, "", id: "filter_name_ajax" %>
+  <%= hidden_field_tag :filter_value, "", id: "filter_value_ajax" %>
+  <%= hidden_field_tag :search_id, @search.id %>
+<% end %>
+
+<!-- , remote: true -->

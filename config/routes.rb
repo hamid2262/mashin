@@ -12,7 +12,11 @@ Mashin::Application.routes.draw do
 
   resource  :homes, only: [:show]
   resource  :dashboard, only: [:show]
-  resources :searches, only: [:show, :create, :index]
+  resources :searches, only: [:show, :create, :index] do
+    collection do
+      post "ajax"
+    end
+  end
   resources :car_models
   resources :locations
   resources :body_colors
