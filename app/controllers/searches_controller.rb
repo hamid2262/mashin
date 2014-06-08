@@ -1,10 +1,11 @@
 class SearchesController < ApplicationController
   before_action :load_search, only: :create
+  skip_before_filter :verify_authenticity_token, :only => :create
   load_and_authorize_resource
 
   def index
     @search = Search.create
-    @ads = Ad.page(params[:page]).per_page(15)
+    @ads = @search.ads.page(params[:page]).per_page(15)
     render "show"
   end
 

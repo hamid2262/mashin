@@ -23,10 +23,13 @@ Things you may want to cover:
 
 * ...
 
-install dalli for cache
+* install dalli for cache
 sudo apt-get install memcached
+sudo apt-get install libsasl2
+sudo apt-get install libsasl2-dev
 gem install memcached
 
+* install image magic
 sudo apt-get install imagemagick
 
 
