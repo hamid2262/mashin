@@ -26,6 +26,16 @@ class Ad < ActiveRecord::Base
   belongs_to :internal_color
   belongs_to :body_color
 
+  def to_param    
+    address = id
+    address = "#{address}" + "-#{make_name}"   if make_name
+    address = "#{address}" + "-#{car_model_name}".gsub(" ","")   if car_model_name
+    address = "#{address}" + "-#{FUEL_ARR[fuel]}".gsub(" ","-")   unless fuel==0
+    address = "#{address}" + "-#{GIRBOX_ARR[girbox ? 1 : 0]}".gsub(" ","-")  if girbox
+    address = "#{address}" + "-#{location}"   if location
+    address
+  end
+
   def year_shamsi
     self.year.year if self.year
   end

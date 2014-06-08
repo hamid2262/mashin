@@ -22,18 +22,22 @@
 
 #ad_show{
   clear: both;
-  .title{
-    margin: 0;
-    font-size: 1.7em;
-    color: #525252;
-    overflow: hidden;
+  #main-panel-heading{
+    padding-bottom: 0;
+    .title{
+      margin: 0;
+      font-size: 1.7em;
+      color: #525252;
+      overflow: hidden;
+    }
+    .back_to_search{
+      padding-top: 2px;
+      padding-left: 0px;
+      color: #5A5A5A;
+      font-size: 1.2em;
+    }
   }
-  .back_to_search{
-    padding-top: 2px;
-    padding-left: 0px;
-    color: #5A5A5A;
-    font-size: 1.2em;
-  }
+  
   .no_background{
     background-color: transparent;
   }
