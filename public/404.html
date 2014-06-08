@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>صفحه مورد نظر موجود نمی نیست. (404)</title>
+  <meta charset="utf-8"> 
   <style>
   body {
     background-color: #EFEFEF;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
+    direction: rtl;
   }
 
   div.dialog {
@@ -44,15 +46,28 @@
     color: #666;
     box-shadow:0 3px 8px rgba(50, 50, 50, 0.17);
   }
+  a{
+    text-decoration: none;
+    color: #0068A3;
+    font-size: 1.4em;
+    font-weight: bold;    
+  }
+  .links{
+    margin: 0 24px;
+  }
+  
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
+    <h1>صفحه مورد نظر شما موجود نمی نیست.</h1>
+    <p>احتمالا اشتباهی تایپی در آدرس صفحه مورد نظر بوده و یا صفحه مورد نظر حذف و یا انتقال پیدا است.</p>
   </div>
-  <p>If you are the application owner check the logs for more information.</p>
+  <p id="links">
+    <a href="/" class=" links" >خانه اتویابی </a>
+    <a href="javascript:history.back()" class=" links">بازگشت</a>
+  </p>
 </body>
 </html>

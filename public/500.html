@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa">
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>با عرض پوزش، اشکالی رخ شده است.(500)</title>
+  <meta charset="utf-8"> 
   <style>
   body {
     background-color: #EFEFEF;
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
+    direction: rtl;
   }
 
   div.dialog {
@@ -33,7 +35,7 @@
   body > p {
     width: 33em;
     margin: 0 auto 1em;
-    padding: 1em 0;
+    padding: 1.2em 0;
     background-color: #F7F7F7;
     border: 1px solid #CCC;
     border-right-color: #999;
@@ -44,14 +46,27 @@
     color: #666;
     box-shadow:0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  a{
+    text-decoration: none;
+    color: #0068A3;
+    font-size: 1.4em;
+    font-weight: bold;    
+  }
+  .links{
+    margin: 0 24px;
+  }
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/500.html -->
   <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
+    <h1>با عرض پوزش، اشکالی در ارتباط با سرور ایجاد شده است.</h1>
   </div>
-  <p>If you are the application owner check the logs for more information.</p>
+  <p id="links">
+    <a href="/" class=" links" >خانه</a>
+    <a href="javascript:history.back()" class=" links">بازگشت</a>
+  </p>
 </body>
 </html>
