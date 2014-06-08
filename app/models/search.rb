@@ -8,6 +8,16 @@ class Search < ActiveRecord::Base
   belongs_to :internal_color
 	belongs_to :user
 
+  def to_param    
+    address = "#{id}-خرید-اتومبیل"
+    address = "#{address}" + "-#{make_name}".gsub(" ","-")    if make_name
+    address = "#{address}" + "-#{car_model_name}".gsub(" ","-")   if car_model_name
+    address = "#{address}" + "-#{FUEL_ARR[fuel]}".gsub(" ","-")   if fuel and fuel!=0
+    address = "#{address}" + "-#{GIRBOX_ARR[girbox ? 1 : 0]}".gsub(" ","-")  if girbox
+    address = "#{address}" + "-#{location}".gsub(" ","-")   if location.present?
+    address
+  end
+
   def ads
     @ads ||= find_ads
   end
@@ -130,6 +140,19 @@ class Search < ActiveRecord::Base
     self.internal_color_id = nil if internal_color_id.present?
     self.order             = nil if order.present?
   end
+
+  def car_model_name
+    Rails.cache.fetch([:car_model, car_model_id, :name], expires_in: 150.minutes) do 
+      car_model.try(:name)
+    end
+  end
+
+  def make_name
+    Rails.cache.fetch([:make, make_id, :name], expires_in: 150.minutes) do 
+      make.try(:name)
+    end
+  end
+
 
 private
 

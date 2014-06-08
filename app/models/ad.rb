@@ -30,7 +30,7 @@ class Ad < ActiveRecord::Base
     address = id
     address = "#{address}" + "-#{make_name}"   if make_name
     address = "#{address}" + "-#{car_model_name}".gsub(" ","")   if car_model_name
-    address = "#{address}" + "-#{FUEL_ARR[fuel]}".gsub(" ","-")   unless fuel==0
+    address = "#{address}" + "-#{FUEL_ARR[fuel]}".gsub(" ","-")  if fuel and fuel!=0
     address = "#{address}" + "-#{GIRBOX_ARR[girbox ? 1 : 0]}".gsub(" ","-")  if girbox
     address = "#{address}" + "-#{location}"   if location
     address
@@ -63,13 +63,13 @@ class Ad < ActiveRecord::Base
   end
 
   def car_model_name
-    Rails.cache.fetch([:car_model, car_model_id, :name], expires_in: 5.minutes) do 
+    Rails.cache.fetch([:car_model, car_model_id, :name], expires_in: 150.minutes) do 
       car_model.try(:name)
     end
   end
 
   def make_name
-    Rails.cache.fetch([:make, make_id, :name], expires_in: 5.minutes) do 
+    Rails.cache.fetch([:make, make_id, :name], expires_in: 150.minutes) do 
       make.try(:name)
     end
   end
