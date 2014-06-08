@@ -25,7 +25,7 @@ gem 'will_paginate'
 # gem 'will_paginate-bootstrap', '~> 1.0.0'
 # gem 'ckeditor', '~> 4.0.11'
 gem 'non-stupid-digest-assets', '~> 1.0.4'
-gem 'jquery-turbolinks'
+# gem 'jquery-turbolinks'
 
 gem 'nokogiri', '~> 1.6.1'
 gem  'whenever', require: false
@@ -43,7 +43,7 @@ gem 'rails_12factor', group: :production
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
