@@ -26,8 +26,17 @@ every 1.hour do
 end
 
 #############################
-every 1.days, at: '21:00' do
+every 1.days, at: '21:10' do
   rake "clear_bamadb"
-  rake "clear_takhtegazdb"
+end
+every 1.days, at: '21:20' do
   rake "clear_tejaratdb"
+end
+every 1.days, at: '21:30' do
+  rake "clear_takhtegazdb"
+end
+
+#############################
+every 1.days, at: '22:00' do
+  rake "inactive_old_ads"
 end
