@@ -21,6 +21,8 @@ fa:
           لیست جستجوها خواهد بود.
         verified: 'این آگهی تایید شده است. '
       user_overview:
+        ad_expired_message: این آگهی منقضی شده است
+        ad_soled_message: این آگهی فروخته شده است
         created_date: زمان درج آگهی
         seller_details: مشخصات فروشنده
         updated_date: بروزرسانی

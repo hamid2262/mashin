@@ -123,9 +123,9 @@ class Ad < ActiveRecord::Base
       "tel_problem rejected"
     when 33
       "price_problem rejected"
-    when 40
+    when 4
       "sold" 
-    when 50
+    when 5
       "expired"
     end
   end
