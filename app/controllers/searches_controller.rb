@@ -3,12 +3,9 @@ class SearchesController < ApplicationController
   load_and_authorize_resource
 
   def index
-  	if params[:id]
-  		@search = Search.find(params[:id])
-  	else
-  		@search = Search.new
-  	end  	
-  	@ads = @search.ads.page(params[:page]).per_page(15)
+    @search = Search.create
+    @ads = Ad.page(params[:page]).per_page(15)
+    render "show"
   end
 
   def create
@@ -70,6 +67,7 @@ class SearchesController < ApplicationController
       value_to = "#{value_to}to"
       @search.send(value_to+'=', nil)
     end
+
     @search.save
     count = @search.count
 

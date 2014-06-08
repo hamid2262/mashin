@@ -1,0 +1,7 @@
+<%= form_tag(ajax_searches_path, method: :post, remote: true,  id: "ajax_submit") do %>
+  <%= hidden_field_tag :filter_name, "", id: "filter_name_ajax" %>
+  <%= hidden_field_tag :filter_value, "", id: "filter_value_ajax" %>
+  <%= hidden_field_tag :search_id, @search.id %>
+<% end %>
+
+<!-- , remote: true -->

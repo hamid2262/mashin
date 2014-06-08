@@ -10,7 +10,6 @@ $ ->
         if parseFloat($(this).val()) < parseFloat( current )
           $(this).remove()
 
-
   $(".select_from").change ->
     select_to = $(this).parent().parent().next().find(".select_to")
     select_to.html($(this).html())
@@ -31,18 +30,32 @@ $ ->
   $(".currencies").click ->
     $(this).select()
     value = $(this).val()
-    value = value.replace(/[^0-9]+/g, "");  
-    $(this).val( value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1/") ); 
+    value = value.replace(/[^0-9]+/g, "")  
+    $(this).val( value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1/") ) 
 
   $(".currencies").keyup ->
     value = $(this).val()
-    value = value.replace(/[^0-9]+/g, "");  
-    $(this).val( value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1/") ); 
+    value = value.replace(/[^0-9]+/g, "")  
+    $(this).val( value.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1/") ) 
 
   ###########  remove non-number chars from phones
   $(".phones").keyup ->
     value = $(this).val()
-    value = value.replace(/([^0-9 \- ,_+()])/g, "");  
-    $(this).val( value ); 
+    value = value.replace(/([^0-9 \- ,_+()])/g, "")  
+    $(this).val( value ) 
 
 
+# AJAX mainsearch AJAX  
+  $('.search_form #location_city').focusout ->
+    $(this).submitOnChange()
+  $('.search_form select').change ->
+    $(this).submitOnChange()
+
+jQuery.fn.submitOnChange = ->
+  field_name  = this.attr("name")
+  field_name  = field_name.replace("search[",'')
+  field_name  = field_name.replace("]",'')
+  field_value = this.val()
+  $("#filter_name_ajax").val(field_name)
+  $("#filter_value_ajax").val(field_value)
+  $('#ajax_submit').submit()

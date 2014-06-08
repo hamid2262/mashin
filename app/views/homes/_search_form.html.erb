@@ -1,4 +1,5 @@
-<%= simple_form_for @search, url: searches_path, method: :post, 
+<%= simple_form_for @search, url: searches_path, 
+	html: {method: :post, class: "search_form" },
 	defaults:{
 	  wrapper_html: { class: 'form-group' }, 
 	  input_html:   { class: 'form-control ' }
@@ -77,8 +78,10 @@
 					collection: ['new', 'cheap', 'expencive', 'year'].map{|s| [t("#{s}"), s]} %>
 		</div>
 	</div>
-	<%= f.submit t("search result", count:  @all_ads_count), 
-			data: { disable_with: t('searching') }, 
-			class: "btn btn-primary btn-block" %>
+	<%= link_to search_path(f.object.id), id: "main_search_submit",class: "btn btn-primary btn-block" do %>
+			<%= t("search result", count: f.object.count) %>
+	<% end %>
 <% end %>
 
+
+<%= render 'shared/search_form_ajax' %>

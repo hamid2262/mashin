@@ -5,7 +5,7 @@ class HomesController < ApplicationController
     if current_user
       redirect_to dashboard_path
     end
-    @search = Search.new
+    @search = Search.create
     @all_ads_count =Ad.all_ads_count
     @today_ad_count = Home.todays_ads_count
     @makes = Home.makes
