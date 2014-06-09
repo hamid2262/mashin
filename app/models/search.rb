@@ -10,11 +10,11 @@ class Search < ActiveRecord::Base
 
   def to_param    
     address = "#{id}-خرید-اتومبیل"
-    address = "#{address}" + "-#{make_name}".gsub(" ","-")    if make_name
+    address = "#{address}" + "-#{make_name}".gsub(" ","-")        if make_name
     address = "#{address}" + "-#{car_model_name}".gsub(" ","-")   if car_model_name
     address = "#{address}" + "-#{FUEL_ARR[fuel]}".gsub(" ","-")   if fuel and fuel!=0
     address = "#{address}" + "-#{GIRBOX_ARR[girbox ? 1 : 0]}".gsub(" ","-")  if girbox
-    address = "#{address}" + "-#{location}".gsub(" ","-")   if location.present?
+    address = "#{address}" + "-#{location}".gsub(" ","-")         if location.present?
     address
   end
 

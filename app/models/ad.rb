@@ -28,11 +28,11 @@ class Ad < ActiveRecord::Base
 
   def to_param    
     address = id
-    address = "#{address}" + "-#{make_name}"   if make_name
+    address = "#{address}" + "-#{make_name}".gsub(" ","-")       if make_name
     address = "#{address}" + "-#{car_model_name}".gsub(" ","")   if car_model_name
     address = "#{address}" + "-#{FUEL_ARR[fuel]}".gsub(" ","-")  if fuel and fuel!=0
     address = "#{address}" + "-#{GIRBOX_ARR[girbox ? 1 : 0]}".gsub(" ","-")  if girbox
-    address = "#{address}" + "-#{location}"   if location
+    address = "#{address}" + "-#{location}".gsub(" ","-")        if location
     address
   end
 
@@ -133,9 +133,9 @@ class Ad < ActiveRecord::Base
       "tel_problem rejected"
     when 33
       "price_problem rejected"
-    when 4
+    when 4, 40
       "sold" 
-    when 5
+    when 5, 50
       "expired"
     end
   end
