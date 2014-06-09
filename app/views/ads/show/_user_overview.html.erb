@@ -14,10 +14,10 @@
       <%= link_to "source", @ad.source_url, class: "source_url"  %>
     <% end %>
 
-    <% if @ad.status == 5 %>
+    <% if [5, 50].include? @ad.status %>
       <div class="ad_not_active"><%= t ".ad_expired_message" %></div>
     <% end %>
-    <% if @ad.status == 4 %>
+    <% if [4, 40].include?  @ad.status%>
       <div class="ad_not_active"><%= t ".ad_soled_message" %></div>
     <% end %>
   </div>
