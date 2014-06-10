@@ -8,23 +8,23 @@ class ApplicationController < ActionController::Base
   end
 
   def get_user_informations
-    unless session[:guest_user_country]
-      session[:guest_user_country] = request.try(:location).try(:country)
-      session[:guest_user_country] = session[:guest_user_country][0,50] if session[:guest_user_country]
-      session[:guest_user_city]    = request.try(:location).try(:city)
-      session[:guest_user_city]    = session[:guest_user_city][0,50] if session[:guest_user_city]
-    end
+    # unless session[:guest_user_country]
+    #   session[:guest_user_country] = request.try(:location).try(:country)
+    #   session[:guest_user_country] = session[:guest_user_country][0,50] if session[:guest_user_country]
+    #   session[:guest_user_city]    = request.try(:location).try(:city)
+    #   session[:guest_user_city]    = session[:guest_user_city][0,50] if session[:guest_user_city]
+    # end
     
-    unless session[:user_ip]
-      session[:user_ip] = request.try(:location).try(:ip) 
-      session[:user_ip] = session[:user_ip][0,50] if session[:user_ip]
-    end
-    req = request.try(:referer)
-    if req        
-      unless (req.include? "http://www.otoyabi." or req.include? "http://otoyabi.")
-        session[:user_referer] = req[0,250] if session[:user_referer]
-      end
-    end
+    # unless session[:user_ip]
+    #   session[:user_ip] = request.try(:location).try(:ip) 
+    #   session[:user_ip] = session[:user_ip][0,50] if session[:user_ip]
+    # end
+    # req = request.try(:referer)
+    # if req        
+    #   unless (req.include? "http://www.otoyabi." or req.include? "http://otoyabi.")
+    #     session[:user_referer] = req[0,250] if session[:user_referer]
+    #   end
+    # end
   end
 
 end

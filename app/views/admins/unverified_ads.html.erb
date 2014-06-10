@@ -18,9 +18,10 @@
       <% @ads.each do |ad| %>
         <tr>
           <td><%= link_to ad.user.try(:name) , ad.user %></td>
-          <td><%= ad_title ad %></td>
+          <td><%= link_to ad_title(ad), ad %></td>
           <td><%= ad.details %></td>
           <td><%= price_human ad.price %></td>
+          <td><%= time_ago_in_words ad.updated_at %></td>
           <td><%= t"#{ad.status_human}" %></td>
           <td><%= link_to t('verify'), verify_ads_path(id: ad.id, code: 2) %></td>
           <td><%= link_to t('info_problem'), verify_ads_path(id: ad.id, code: 30) %></td>
