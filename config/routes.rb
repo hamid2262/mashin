@@ -1,8 +1,4 @@
 Mashin::Application.routes.draw do
-
-
-  root 'homes#show'
-
   devise_for :users, :controllers => { registrations: 'users' }
   devise_scope :user do
     resources :users, only: [:show]
@@ -51,4 +47,10 @@ Mashin::Application.routes.draw do
       post "scrap" 
     end
   end
+
+  resources :topics
+  get '' => 'topics#index', constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" and r.subdomain=="home"}
+  get '' => 'topics#show',  constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" }
+
+  root 'homes#show'
 end
