@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @article.topic_id %>
+</p>
+
+<p>
+  <strong>Thumb:</strong>
+  <%= @article.thumb %>
+</p>
+
+<p>
+  <strong>Truncate:</strong>
+  <%= @article.truncate %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @article.url %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

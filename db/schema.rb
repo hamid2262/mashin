@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611211007) do
+ActiveRecord::Schema.define(version: 20140611222559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(version: 20140611211007) do
   add_index "ads", ["status", "make_id", "usage_type", "year", "price"], name: "index_ads_on_status_make_usage_year_price", using: :btree
   add_index "ads", ["status", "price", "fuel"], name: "index_ads_on_status_fuel_price", using: :btree
   add_index "ads", ["user_id"], name: "index_ads_on_user_id", using: :btree
+
+  create_table "articles", force: true do |t|
+    t.string   "title"
+    t.integer  "topic_id"
+    t.string   "thumb"
+    t.string   "truncate"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "articles", ["topic_id"], name: "index_articles_on_topic_id", using: :btree
+  add_index "articles", ["url"], name: "index_articles_on_url", using: :btree
 
   create_table "body_colors", force: true do |t|
     t.string   "name"

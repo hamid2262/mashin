@@ -6,18 +6,12 @@ Mashin::Application.routes.draw do
     get "sign_up", to: "devise/registrations#new"
   end
 
-  resource  :homes, only: [:show]
-  resource  :dashboard, only: [:show]
   resources :searches, only: [:show, :create, :index] do
     collection do
       post "ajax"
     end
   end
-  resources :car_models
-  resources :locations
-  resources :body_colors
-  resources :internal_colors
-  resources :makes
+
   resources :preferences, only: [:create, :destroy] do
     post "range_filters", on: :collection
     post "non_model_filters", on: :collection
@@ -48,7 +42,15 @@ Mashin::Application.routes.draw do
     end
   end
 
+  resource  :homes, only: [:show]
+  resource  :dashboard, only: [:show]
+  resources :car_models
+  resources :locations
+  resources :body_colors
+  resources :internal_colors
+  resources :makes
   resources :topics
+  resources :articles
   get '' => 'topics#index', constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" and r.subdomain=="home"}
   get '' => 'topics#show',  constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" }
 
