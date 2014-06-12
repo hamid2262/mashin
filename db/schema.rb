@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140611222559) do
+ActiveRecord::Schema.define(version: 20140611231824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,6 +157,13 @@ ActiveRecord::Schema.define(version: 20140611222559) do
   end
 
   add_index "preferences", ["user_id", "filter_name", "filter_id"], name: "index_preferences_on_user_id_and_filter_name_and_filter_id", using: :btree
+
+  create_table "scrap_articles", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "scraps", force: true do |t|
     t.integer  "count"

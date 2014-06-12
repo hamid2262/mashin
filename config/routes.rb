@@ -36,11 +36,8 @@ Mashin::Application.routes.draw do
     end
   end
 
-  resources :scraps, only: [:show, :index] do
-    collection do
-      post "scrap" 
-    end
-  end
+  resources :scraps, only: [:index] 
+  resources :scrap_articles, only: [:index] 
 
   resource  :homes, only: [:show]
   resource  :dashboard, only: [:show]
