@@ -1,12 +1,12 @@
 class TopicsController < ApplicationController
+  layout "application_others"
   before_action :load_topic, only: :create
-  # load_and_authorize_resource
+  load_and_authorize_resource
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   # GET /topics
   # GET /topics.json
   def index
-    raise
     @topics = Topic.all
   end
 

@@ -1,29 +1,23 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = @article.title + "otoyabi.ir" %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+<div class="panel panel-default">
+  
+  <div class="panel-heading">
+    <h2 class="panel-title"><%= @article.title %></h2>
+  </div>
+  <div class="panel-body">
+    <p><%= @article.truncate %></p>
+    <%= render 'articles/show/body' %>
+  </div>
+  <div class="panel-footer">
+    <%= link_to @article.topic.name, root_url(subdomain: @article.topic.subdomain), title: @article.topic.name %>
+  </div>
+</div>
 
-<p>
-  <strong>Topic:</strong>
-  <%= @article.topic_id %>
-</p>
+  
+  <%= @article.topic.name %>
+  <%#= @article.truncate %>
+  <%#= @article.url %>
 
-<p>
-  <strong>Thumb:</strong>
-  <%= @article.thumb %>
-</p>
-
-<p>
-  <strong>Truncate:</strong>
-  <%= @article.truncate %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @article.url %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<%#= link_to 'Edit', edit_article_path(@article) %>
+<%#= link_to 'Back', articles_path %>

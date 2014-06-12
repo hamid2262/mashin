@@ -45,6 +45,7 @@ class Ability
     can :read, Home
     can :show, Ad
     can :show, Article
+    # can :show, Topic
   end
 
 end

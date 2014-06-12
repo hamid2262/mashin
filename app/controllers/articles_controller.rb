@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  before_action :load_article, only: :create
+  layout "application_others"
+  before_action :set_topic
   load_and_authorize_resource
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
@@ -66,16 +67,11 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      @article = @topic.articles.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
       params.require(:article).permit(:title, :topic_id, :thumb, :truncate, :url)
     end
-
-    def load_article
-      @article = Article.new(car_model_params)
-    end
-
 end
