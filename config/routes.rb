@@ -48,7 +48,7 @@ Mashin::Application.routes.draw do
   resources :makes
   resources :topics
   resources :articles
-  get '' => 'topics#index', constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" and r.subdomain=="home"}
+  # get '' => 'topics#index', constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" and r.subdomain=="home"}
   get '' => 'topics#show',  constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" }
 
   root 'homes#show'
