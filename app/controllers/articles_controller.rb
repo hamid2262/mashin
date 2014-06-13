@@ -74,4 +74,8 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:title, :topic_id, :thumb, :truncate, :url)
     end
+
+    def set_topic
+      @topic = Topic.find_by(slug: params[:topic_id])
+    end
 end

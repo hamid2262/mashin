@@ -44,8 +44,8 @@ class Ability
     can [:new, :create, :show, :index, :ajax], Search
     can :read, Home
     can :show, Ad
-    can :show, Article
-    # can :show, Topic
+    can [:show, :index], Article
+    can [:show, :index], Topic
   end
 
 end

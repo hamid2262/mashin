@@ -8,7 +8,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= root_url(subdomain: "home") %>">
+        <a class="navbar-brand" href="<%= topics_path %>">
           <%= t "home" %>
         </a>
       </div>
@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav ">
           <% Topic.all.each do |topic| %>
-              <li><%= link_to topic.name, root_url(subdomain: topic.subdomain) %></li>
+              <li><%= link_to topic.name, topic_path(topic.slug) %></li>
           <% end %>
         </ul>
       </div><!--/.nav-collapse -->

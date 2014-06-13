@@ -2,19 +2,19 @@
   <% if article.thumb.present? %>
     <div class="col-xs-9">
       <span class="title">
-        <%= link_to article.title, article_url( article, subdomain: topic.subdomain), title: article.title %>
+        <%= link_to article.title, topic_article_path(topic_id: topic.slug, id: article), title: article.title %>
       </span>
       <p class="truncate"><%= truncate(article.truncate, length: 80)  %></p>
     </div>
     <div class="thumb col-xs-3">
-      <%= link_to article_url( article, subdomain: topic.subdomain), title: article.title do %>
+      <%= link_to topic_article_path(topic_id: topic.slug, id: article), title: article.title do %>
         <%= image_tag(article.thumb, size: "50", class: "pull-left", alt: article.title) %>
       <% end %>
     </div>
   <% else %>
    <div class="col-xs-12">
       <span class="title">
-        <%= link_to article.title, article_url( article, subdomain: topic.subdomain), title: article.title %>
+        <%= link_to article.title, topic_article_path(topic_id: topic.slug, id: article), title: article.title %>
       </span>
       <p class="truncate"><%= truncate(article.truncate, length: 150)  %></p>
     </div>

@@ -10,7 +10,7 @@
     <%= render 'articles/show/body' %>
   </div>
   <div class="panel-footer">
-    <%= link_to @article.topic.name, root_url(subdomain: @article.topic.subdomain), title: @article.topic.name %>
+    <%= link_to @article.topic.name, @article.topic, title: @article.topic.name %>
   </div>
 </div>
 

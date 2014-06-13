@@ -46,10 +46,11 @@ Mashin::Application.routes.draw do
   resources :body_colors
   resources :internal_colors
   resources :makes
-  resources :topics
-  resources :articles
+  resources :topics do
+    resources :articles
+  end
   # get '' => 'topics#index', constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" and r.subdomain=="home"}
-  get '' => 'topics#show',  constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" }
+  # get '' => 'topics#show',  constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" }
 
   root 'homes#show'
 end

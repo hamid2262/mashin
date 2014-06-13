@@ -24,7 +24,7 @@ private
         @article_hash[:url] = url_single
         single_ad_sweep(item)
         article = create_article
-        puts "article #{article.id} added"
+        puts "article #{article.id} added"  if article
         open(delete_path)
       end
     else

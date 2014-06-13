@@ -8,11 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
 private
-  def set_topic
-    # @topic = Topic.find(params[:id])
-    @topic = Topic.find_by!(subdomain: request.subdomain)
-  end
-
   def get_user_informations
     # unless session[:guest_user_country]
     #   session[:guest_user_country] = request.try(:location).try(:country)
