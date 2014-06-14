@@ -7,9 +7,4 @@ class Topic < ActiveRecord::Base
     slug
   end
 
-  def last_articles
-    self.articles.where.not(thumb: nil).order(updated_at: :desc).limit(50)
-  end
-
-
 end

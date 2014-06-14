@@ -3,12 +3,12 @@
     <h3 class="panel-title"><%= link_to topic.name , topic %> <%= %></h3>
   </div>
   <div class="list-group">
-    <% topic.articles.with_image.sorted.each_with_index do |article, index| %>
+    <% topic.articles.sorted.each_with_index do |article, index| %>
       <%= link_to topic_article_path(topic_id: topic.slug, id: article), class: "list-group-item #{"myhidden" if index>5}" do %>
         <%= render 'shared_others/article_in_list',topic: topic, article: article , index: index %>
       <% end %>
     <% end %>
-    <% if topic.articles.count >6 %>
+    <% if topic.articles.count >50 %>
       <a class="list-group-item show_more">
         <span class="pull-left">
           <%= t ".show_more" %> <%= topic.name %> 

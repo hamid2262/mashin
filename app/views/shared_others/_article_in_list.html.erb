@@ -5,7 +5,8 @@
       <span class="title">
         <%= article.title %>
       </span>
-      <p class="truncate"><%#= truncate(article.truncate, length: 80)  %></p>
+      <p class="time_ago small text-muted"> <%= date_human article.created_at %></p>
+      <!-- <p class="truncate"><%#= truncate(article.truncate, length: 80)  %></p> -->
     </div>
     <div class="thumb col-xs-3">
         <%= image_tag(article.thumb, size: "50", class: "pull-left", alt: article.title) %>

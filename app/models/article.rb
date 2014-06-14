@@ -13,4 +13,13 @@ class Article < ActiveRecord::Base
       "bartarinha"
     end
   end
+
+  def self.with_image
+    where(" thumb <> '' ").limit(50)
+  end
+
+  def self.sorted 
+    order(updated_at: :desc)
+  end
+
 end

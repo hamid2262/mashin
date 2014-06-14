@@ -7,11 +7,19 @@
       .list-group-item  {
         overflow: hidden;
         padding: 2px 9px 2px 2px;
+
         .title{
           font-size: 12px;
           a{
             color: #494949;
           }
+        }
+        .time_ago{
+          position: absolute;
+          left: -10px;
+          top: 38px;
+          font-size: 9px;
+          width: 80px;
         }
 //         .truncate{
 //           font-size: 10px;
