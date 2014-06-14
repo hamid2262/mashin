@@ -15,8 +15,8 @@
 
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav ">
-          <% Topic.all.each do |topic| %>
-              <li><%= link_to topic.name, topic_path(topic.slug) %></li>
+          <% Topic.order(order: :asc).each do |topic| %>
+              <li><%= link_to topic.name, topic_path(topic.slug), class: "text-nav" %></li>
           <% end %>
         </ul>
       </div><!--/.nav-collapse -->

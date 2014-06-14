@@ -1,0 +1,19 @@
+<div class="topic_list col-sm-6 col-md-4 col-lg-3">
+  <div class="topic_list_panel panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= link_to topic.name , topic %> <%= %></h3>
+    </div>
+    <div class="list-group">
+      <% topic.last_articles.each_with_index do |article, index| %>
+        <%= link_to topic_article_path(topic_id: topic.slug, id: article), class: "list-group-item #{"myhidden" if index>5}" do %>
+          <%= render 'topics/index/article',topic: topic, article: article , index: index %>
+        <% end %>
+      <% end %>
+      <a class="list-group-item show_more">
+        <span class="pull-left">
+          <%= t ".show_more" %> <%= topic.name %> 
+        </span>
+      </a>
+    </div>
+  </div>
+</div>

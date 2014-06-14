@@ -1,0 +1,28 @@
+<div id="unverified">
+<%= link_to 'New ', new_topic_path,class: "btn btn-primary" %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t "name" %></th>
+        <th><%= t "slug" %></th>
+        <th><%= t "order" %></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @topics.each do |topic| %>
+        <tr>
+          <td><%= topic.name %></td>
+          <td><%= topic.slug %></td>
+          <td><%= topic.order %></td>
+          <td><%= link_to 'Show', topic %></td>
+          <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+          <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

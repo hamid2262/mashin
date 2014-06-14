@@ -33,6 +33,7 @@ Mashin::Application.routes.draw do
       get "searches"
       get "users"
       get "unverified_ads"
+      get "topics"
     end
   end
 

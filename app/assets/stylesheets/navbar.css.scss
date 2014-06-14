@@ -1,4 +1,4 @@
-#top_navbar{
+// #top_navbar{
   .navbar-brand{
     padding: 5px !important;
     height: 30px !important;
@@ -12,17 +12,32 @@
     }    
   }
   .navbar-nav > li > a {
-    padding-top: 13px !important;
+    padding-top: 9px !important;
     padding-bottom: 6px !important;
   }
   .navbar {
     min-height:32px !important;
+    background: #457296;
     .text-nav {
-      color: #3b5b80 !important;
-      text-shadow: 0px 0px 5px #E4E4E4;
+      color: #fff !important;
       .glyphicon{
-        top: 4px;
+        top: 5px;
+        left: -2px;
       }
     }
+  }
+// }
+
+#others_top_navbar{
+  .navbar-brand{
+    color: #fff;
+    margin-top: 5px;
+    text-shadow: 0 0 2px #975656;
+    font-size: 20px;
+    margin-right: 0px;
+  }
+  .navbar-nav > li > a {
+    padding-left: 4px;
+    font-size: 12px;
   }
 }

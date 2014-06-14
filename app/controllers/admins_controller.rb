@@ -18,6 +18,10 @@ class AdminsController < ApplicationController
     @ads = @admin.unverified_ads
   end
 
+  def topics
+    @topics = Topic.order(:order).all
+  end
+
 private
   def initialize_admin
     @admin = Admin.new

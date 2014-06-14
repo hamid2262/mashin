@@ -20,39 +20,45 @@ fa:
   forget_password: رمز خود را فراموش کرده ام
   home: خانه
   how_looks: وضعیت ظاهری
+  image_problem: ایراد در عکس ها
+  image_problem rejected: رد شده- ایراد در عکس ها
   images:
     image:
       new photo: عکس جدید
     index:
       return to ad: صفحه آگهی
   incomplete: بدون عکس
+  info_problem: ایراد در اطلاعات
+  info_problem rejected: رد شده- ایراد در اطلاعات
   internalcolor: رنگ داخلی
   last_update: آخرین بروزرسانی
   miladi: میلادی
   name: نام
+  not_verified: منتظر تایید
+  price_problem: ایراد در قیمت
+  price_problem rejected: رد شده- ایراد در قیمت
   price_unit: میلیون
+  rejected: رد شده
   remember_me: مرا به خاطر بسپار
   search result: جستجو  ( %{count} مورد )
   see more: ادامه
   shamsi: شمسی
+  show_more: ادامه
   sign_in: ورود
   sign_up: ثبت نام
   sign_up_new: کاربر جدید هستید؟(ثبت نام)
   sold: فروخته شد
   status: وضعیت
   tel: تلفن تماس
-  rejected: رد شده
-  not_verified: منتظر تایید
-  price_problem: ایراد در قیمت
-  image_problem: ایراد در عکس ها
-  image_problem rejected: رد شده- ایراد در عکس ها
   tel_problem: ایراد در تلفن تماس
   tel_problem rejected: رد شده- ایراد در تلفن تماس
-  price_problem rejected: رد شده- ایراد در قیمت
-  info_problem: ایراد در اطلاعات
-  info_problem rejected: رد شده- ایراد در اطلاعات
   times: بار
   title: عنوان
+  topics:
+    index:
+      list:
+        show_more: 'ادامه مطالب '
+      topics_page_title: اتویابی، مجله اینترنتی
   updated_times: حداکثر بروزرسانی
   verify: تایید
   viewed: بازدید

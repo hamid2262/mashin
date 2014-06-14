@@ -8,7 +8,7 @@ class Topic < ActiveRecord::Base
   end
 
   def last_articles
-    self.articles.order(:updated_at).limit(50)
+    self.articles.order(updated_at: :desc).limit(50)
   end
 
 
