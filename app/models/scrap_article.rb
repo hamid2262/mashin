@@ -92,7 +92,7 @@ private
 
   def thumb item
     thumb = item.at('.thumb')
-    thumb.text if thumb.text
+    thumb.text if thumb.text.present?
   end
 
   def index_page_rows(doc)

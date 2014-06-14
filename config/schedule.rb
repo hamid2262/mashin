@@ -12,7 +12,7 @@ every 30.minutes do
   rake "scrap_takhtegaz"
 end
 
-#############################3
+############################
 every 5.minutes do
   rake "triger_bama_scrap"
 end
@@ -39,4 +39,13 @@ end
 #############################
 every 1.days, at: '22:00' do
   rake "inactive_old_ads"
+end
+
+########### articles #######
+every 1.hours do
+  rake "scrap_articles"
+end
+
+every 2.hours do
+  rake "articles_scrap_triger"
 end
