@@ -2,7 +2,7 @@ class ScrapArticlesController < ApplicationController
   load_and_authorize_resource
   def index
     if Rails.env.production?
-      system "bundle exec rake scrap_articles --trace &"
+      system "rake scrap_articles --trace 2>&1 >> #{Rails.root}/log/rake.log &"
     else
       scrap_article = ScrapArticle.new
       scrap_article.url = "http://khabarha.herokuapp.com/contents"

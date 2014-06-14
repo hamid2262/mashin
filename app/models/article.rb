@@ -6,4 +6,11 @@ class Article < ActiveRecord::Base
     "#{id}-" + "#{filterd}".gsub(" ","-")
   end
 
+  def source
+    if url.include? "varzesh3.com"
+      "varzesh3" 
+    elsif url.include? "bartarinha.ir"
+      "bartarinha"
+    end
+  end
 end

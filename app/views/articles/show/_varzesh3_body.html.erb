@@ -1,0 +1,16 @@
+<div id="varzesh3">
+  <h3 class="truncate well well-lg col-sm-10 col-sm-offset-1"><%= @article.truncate %></h3>
+  <%= link_to root_path, title: "#{@article.title} | otoyabi.com" do %>
+    <%= image_tag(@article.thumb, class: "pull-left main_image", alt: "#{@article.title} | otoyabi.com") %>
+  <% end %>
+
+  <p>
+  <% require "open-uri" %>
+
+  <% doc = Nokogiri::HTML(open(@article.url)) %>
+  <% body = doc.at('#CenterTable div') %>
+  <% body = body.to_html %>
+  <%= body.html_safe %>
+  </p>
+
+</div>

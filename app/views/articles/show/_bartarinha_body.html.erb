@@ -1,0 +1,21 @@
+<div id="bartarinha">
+  <div class="truncate well well-lg col-sm-10 col-sm-offset-1"><%= @article.truncate %>.</div>
+
+  <p>
+  <% require "open-uri" %>
+
+  <% doc = Nokogiri::HTML(open(@article.url)) %>
+  <% body = doc.at('.body') %>
+  <% body = body.to_html %>
+  <% body = body.gsub("http://bartarinha.ir", "http://otoyabi.com") if body.include? "http://bartarinha.ir"  %>
+  <% body = body.gsub!("http://www.bartarinha.ir", "http://otoyabi.com") if body.include? "http://www.bartarinha.ir" %>
+  <% body = body.gsub!("g alt=\"مجله اینترنتی برترین ها", "") if body.include?  "img alt=\"مجله اینترنتی برترین ها"%>
+  <% body = body.gsub!("g alt=\"برترین مجله", "")  if body.include? "img alt=\"برترین مجله"%>
+  <% body = body.gsub!("برترین ها", "اتویابی")  if body.include? "برترین ها"%>
+
+
+
+    <%= body.html_safe %>
+  </p>
+
+</div>
