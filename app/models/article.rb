@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
   belongs_to :topic
+  belongs_to :subtopic
 
   def to_param    
     filterd = title.delete("/(){}[]:.|/!^%$*?؟،×") 
@@ -11,6 +12,8 @@ class Article < ActiveRecord::Base
       "varzesh3" 
     elsif url.include? "bartarinha.ir"
       "bartarinha"
+    elsif url.include? "beytoote.com"
+      "beytoote"
     end
   end
 
@@ -20,6 +23,16 @@ class Article < ActiveRecord::Base
 
   def self.sorted 
     order(updated_at: :desc)
+  end
+
+  def same_subtopic_articles
+    Article.where(subtopic_id: sisters.ids).order("RANDOM()")
+  end
+
+private
+
+  def sisters
+    Subtopic.where(deligate: self.subtopic.deligate)
   end
 
 end

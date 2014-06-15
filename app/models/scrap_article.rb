@@ -33,10 +33,11 @@ private
   end
 
   def single_ad_sweep item
-    @article_hash[:title]    = title item
-    @article_hash[:thumb]    = thumb item
-    @article_hash[:topic_id] = topic_id item
-    @article_hash[:truncate] = truncate item
+    @article_hash[:title]       = title item
+    @article_hash[:thumb]       = thumb item
+    @article_hash[:topic_id]    = topic_id item
+    @article_hash[:subtopic_id] = subtopic_id item    
+    @article_hash[:truncate]    = truncate item
   end
 
   def already_exist(url_single)
@@ -58,13 +59,13 @@ private
         title:        @article_hash[:title], 
         thumb:        @article_hash[:thumb],
         topic_id:     @article_hash[:topic_id], 
+        subtopic_id:  @article_hash[:subtopic_id], 
         url:          @article_hash[:url], 
         truncate:     @article_hash[:truncate]
       )
       ad
     end
   end
-
 
   def title item
     title = item.at('.title')
@@ -74,15 +75,46 @@ private
   def topic_id item
     val = item.at('.cat1')
     if val
-      val = val.text 
+      val = val.text
       topic = Topic.find_by(name: val)
-      topic.id if topic
+      if topic
+        topic.id
+      elsif @article_hash[:url].include? "www.beytoote.com"
+        slug = @article_hash[:url].split("/")[3]
+        topic = Topic.find_by(slug: slug)
+        topic = Topic.create!(name: val, slug: slug) if topic.nil?
+        topic.deligate = topic.id
+        topic.save
+        topic.id
+      elsif @article_hash[:url].include? "www.bartarinha.ir"
+        topic = Topic.create!(name: val)
+        topic.deligate = topic.id
+        topic.save
+        topic.id
+      end
     end
   end
 
-  def cat2 item
+  def subtopic_id item
     val = item.at('.cat2')
-    val.text if val
+    if val
+      val = val.text
+      subtopic = Subtopic.find_by(name: val)
+      if subtopic
+        subtopic.id
+      elsif @article_hash[:url].include? "www.beytoote.com"
+        slug = @article_hash[:url].split("/")[4]
+        subtopic = Subtopic.create!(name: val, slug: slug, topic_id: @article_hash[:topic_id])
+        subtopic.deligate = subtopic.id
+        subtopic.save
+        subtopic.id
+      elsif @article_hash[:url].include? "www.bartarinha.ir"
+        subtopic = Subtopic.create!(name: val, topic_id: @article_hash[:topic_id])
+        subtopic.deligate = subtopic.id
+        subtopic.save
+        subtopic.id
+      end
+    end
   end
 
   def truncate item

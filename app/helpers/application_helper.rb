@@ -110,9 +110,9 @@ module ApplicationHelper
           thumb = images.first.name.url(:thumb) if images.any?
         end
       end
-
+    thumb ? alt = ad_title(ad) : alt = "اتویابی- خرید و فروش خودرو"
     thumb = IMAGES_PATH+"default_auto_thumb.gif" unless thumb
-    image_tag(thumb, class: "img-responsive")
+    image_tag(thumb, class: "img-responsive", alt: alt)
   end
 
 

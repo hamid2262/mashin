@@ -19,9 +19,9 @@
       <%= render 'shared/paginate', items: @ads %>
 
   		<% @ads.each do |ad| %>
-      <a class="search_row" href="<%= ad_path(ad) %>" >
-  			<%= render 'searches/search_list/ad', ad: ad %>
-      </a>
+        <%= link_to ad_path(ad), class: "search_row", title: "#{ad_title ad}" do %>
+    			<%= render 'searches/search_list/ad', ad: ad %>
+        <% end %>
   		<% end %>
       <%= render 'shared/paginate', items: @ads %>
     <% else %>

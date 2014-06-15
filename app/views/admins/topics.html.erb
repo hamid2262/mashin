@@ -3,7 +3,9 @@
   <table class="table">
     <thead>
       <tr>
+        <th>id</th>
         <th><%= t "name" %></th>
+        <th>deligate</th>
         <th><%= t "slug" %></th>
         <th><%= t "order" %></th>
         <th></th>
@@ -13,15 +15,27 @@
     </thead>
 
     <tbody>
-      <% @topics.each do |topic| %>
-        <tr>
+      <% @topics.ordered.each do |topic| %>
+        <%= simple_form_for topic do |f| %>
+        <tr style='<%= "color:red" unless topic.id == topic.deligate %>'>
+          <td><%= topic.id %></td>
           <td><%= topic.name %></td>
+
+        <td>
+            <%= f.input :deligate, 
+                  collection: Topic.order(:name).map{|m| ["#{m.name} --- #{m.deligate}-- id:#{m.id}",m.id]},
+                  label: false,
+                  wrapper_html:{class: "col-xs-6"}
+            %>
+        </td>
+
           <td><%= topic.slug %></td>
-          <td><%= topic.order %></td>
-          <td><%= link_to 'Show', topic %></td>
+          <td><%= f.input :order, label: false %></td>
           <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
           <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td> <%= f.submit "save" %> </td>
         </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

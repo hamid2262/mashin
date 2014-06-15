@@ -1,0 +1,27 @@
+<div id="beytoote">
+  <%#= image_tag(@article.thumb, class: " main_image", alt: "#{@article.title} | otoyabi.com") %>
+  
+  <% if @article.truncate.present? %>
+    <div class=" truncate well well-lg col-sm-10 col-sm-offset-1"><%= @article.truncate %></div>
+  <% end %>
+
+  <p>
+    <% require "open-uri" %>
+
+    <% doc = Nokogiri::HTML(open(@article.url)) %>
+    <% body = doc.at('.item-page') %>
+    <% body.at('.article-info').remove %> 
+    <% body.at('h2 a').remove %> 
+    <% body.search('img[src="/images/beytheme/logo.png"]').each {|node| node.remove} %> 
+    <% body = body.to_html %>
+    <% body = body.gsub("src=\"/images/stories/", "src=\"http://www.beytoote.com/images/stories/") if body.include? "src=\"/images/stories/"  %>
+
+    <% body = body.gsub!("http://www.bartarinha.ir", "http://otoyabi.com") if body.include? "http://www.bartarinha.ir" %>
+    <% body = body.gsub!("g alt=\"مجله اینترنتی برترین ها", "") if body.include?  "img alt=\"مجله اینترنتی برترین ها"%>
+    <% body = body.gsub!("g alt=\"برترین مجله", "")  if body.include? "img alt=\"برترین مجله"%>
+    <% body = body.gsub!("برترین ها", "اتویابی")  if body.include? "برترین ها"%>
+
+    <%= body.html_safe %>
+  </p>
+
+</div>

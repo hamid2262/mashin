@@ -1,0 +1,44 @@
+<div id="unverified">
+<%= link_to 'New ', new_topic_path,class: "btn btn-primary" %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>topic</th>
+        <th>name</th>
+        <th>deligate</th>
+        <th>deligate</th>
+        <th>slug</th>
+        <th>order</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @subtopics.each do |subtopic| %>
+        <tr>
+        <%= form_for subtopic, url: subtopic_path(subtopic.id), method: :put do |f| %>
+          <td><%= subtopic.id %></td>
+          <td><%= f.select :topic_id, Topic.all.map { |e| [e.name, e.id] }, selected: subtopic.topic_id  %></td>
+          <td><%= subtopic.name %></td>
+          <td>
+            <% if subtopic.topic %>
+              <%= f.select :deligate, subtopic.topic.subtopics.order(:name).map{|m| ["#{m.name} --- #{m.deligate}-- id:#{m.id}",m.id]}, class: "col-xs-6" %>
+            <% end %>
+          </td>
+
+          <td><%= subtopic.deligate_obj.try(:name) %></td>
+          <td><%= subtopic.slug %></td>
+          <td><%= subtopic.order %></td>
+          <td><%= link_to 'Show', subtopic_path(subtopic.id) %></td>
+          <td><%= link_to 'Edit', edit_subtopic_path(subtopic.id) %></td>
+          <td><%= link_to 'Destroy', subtopic_path(subtopic.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td> <%= f.submit "save" %> </td>
+        <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

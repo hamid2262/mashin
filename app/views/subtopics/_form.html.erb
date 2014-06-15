@@ -1,10 +1,10 @@
-<%= simple_form_for(@topic) do |f| %>
-  <% if @topic.errors.any? %>
+<%= form_for(@subtopic) do |f| %>
+  <% if @subtopic.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+      <h2><%= pluralize(@subtopic.errors.count, "error") %> prohibited this subtopic from being saved:</h2>
 
       <ul>
-      <% @topic.errors.full_messages.each do |msg| %>
+      <% @subtopic.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :topic_id %><br>
+    <%= f.text_field :topic_id %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :slug %><br>
     <%= f.text_field :slug %>
-  </div>
-  <div class="field">
-    <%= f.label :order %><br>
-    <%= f.number_field :order %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -6,7 +6,8 @@
 <% end %>
 
 <h2 class="title">
-  <%= ad_title @ad %>
+  <%=  %>
+  <%= link_to ad_title(@ad), ad_url(@ad), title: ad_title(@ad) %>
   <% if can? :edit, @ad %>
     <%= link_to t('edit'),  edit_ad_path(@ad), class: "btn btn-primary" %>
     <span class="size12 <%= @ad.status_human %>"><%= t "#{@ad.status_human}" %></span>

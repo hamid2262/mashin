@@ -1,4 +1,5 @@
 Mashin::Application.routes.draw do
+
   devise_for :users, :controllers => { registrations: 'users' }
   devise_scope :user do
     resources :users, only: [:show]
@@ -34,6 +35,7 @@ Mashin::Application.routes.draw do
       get "users"
       get "unverified_ads"
       get "topics"
+      get "subtopics"
     end
   end
 
@@ -47,6 +49,7 @@ Mashin::Application.routes.draw do
   resources :body_colors
   resources :internal_colors
   resources :makes
+  resources :subtopics
   resources :topics do
     resources :articles
   end

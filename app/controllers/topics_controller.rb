@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.order(order: :asc)
+    @topics = Topic.menus.ordered
   end
 
   # GET /topics/1
@@ -31,6 +31,7 @@ class TopicsController < ApplicationController
 
     respond_to do |format|
       if @topic.save
+        @topic.update(deligate: @topic.id)
         format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
         format.json { render action: 'show', status: :created, location: @topic }
       else
@@ -45,7 +46,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        format.html { redirect_to :back }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -66,7 +67,7 @@ class TopicsController < ApplicationController
 
   private
     def topic_params
-      params.require(:topic).permit(:name, :slug, :order)
+      params.require(:topic).permit(:name, :slug, :order, :deligate)
     end
 
     def load_topic

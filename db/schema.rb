@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614003235) do
+ActiveRecord::Schema.define(version: 20140614205502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,8 +72,10 @@ ActiveRecord::Schema.define(version: 20140614003235) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "subtopic_id"
   end
 
+  add_index "articles", ["subtopic_id"], name: "index_articles_on_subtopic_id", using: :btree
   add_index "articles", ["topic_id"], name: "index_articles_on_topic_id", using: :btree
   add_index "articles", ["url"], name: "index_articles_on_url", using: :btree
 
@@ -205,12 +207,26 @@ ActiveRecord::Schema.define(version: 20140614003235) do
 
   add_index "searches", ["user_ip"], name: "index_searches_on_user_ip", using: :btree
 
+  create_table "subtopics", force: true do |t|
+    t.integer  "topic_id"
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "deligate"
+    t.integer  "order"
+  end
+
+  add_index "subtopics", ["slug"], name: "index_subtopics_on_slug", using: :btree
+  add_index "subtopics", ["topic_id"], name: "index_subtopics_on_topic_id", using: :btree
+
   create_table "topics", force: true do |t|
     t.string   "name"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order"
+    t.integer  "deligate"
   end
 
   add_index "topics", ["order"], name: "index_topics_on_order", using: :btree

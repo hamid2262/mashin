@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+  layout "application_others", only: [:topics, :subtopics]
   before_filter :authenticate_user!
   before_filter :initialize_admin
   load_and_authorize_resource
@@ -19,7 +20,11 @@ class AdminsController < ApplicationController
   end
 
   def topics
-    @topics = Topic.order(:order).all
+    @topics = Topic.all
+  end
+
+  def subtopics
+    @subtopics = Subtopic.order(:topic_id, :deligate)
   end
 
 private

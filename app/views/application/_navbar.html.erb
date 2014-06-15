@@ -40,9 +40,9 @@
 
         <ul class="nav navbar-nav ">
           <% if user_signed_in? %>
-            <li><%= link_to t("home"), dashboard_path %></li>
-            <li><%= link_to "(#{current_user.name})#{t ".my_acount"}", current_user %></li>
-            <li><%= link_to t(".sign_out"), destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to t("home"), dashboard_path, class: "text-nav" %></li>
+            <li><%= link_to "(#{current_user.name})#{t ".my_acount"}", current_user, class: "text-nav" %></li>
+            <li><%= link_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "text-nav" %></li>
             <%#= link_to t(".dashboard"), dashboard_path %>
           <% else %>
             <%#= render 'popup_signin' %>
