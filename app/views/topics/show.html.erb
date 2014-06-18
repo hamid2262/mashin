@@ -1,18 +1,21 @@
-<p id="notice"><%= notice %></p>
+<%# @page_title = @article.title + "otoyabi.ir" %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @topic.name %>
-</p>
+<div id="topic_show" class="col-sm-8">
+  <div  class="panel panel-default">  
+    <%= link_to @topic, title: @topic.name do %>
+      <h2><%= @topic.name %></h2>
+    <% end %>
+    <div class="panel-body">
+      <% @topic.self_and_sisters_subtopics.each do |subtopic| %>
+        <%= render "topics/show/subtopic", subtopic: subtopic %>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to @topic.name, @topic, title: @topic.name %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>slug:</strong>
-  <%= @topic.slug %>
-</p>
-<p>
-  <strong>order:</strong>
-  <%= @topic.order %>
-</p>
-
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_admin_path %>
+<div id="articles_list" class="col-sm-4">
+  <%#= render 'topics/show/list', topic: @topic  %>
+</div>

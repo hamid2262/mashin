@@ -1,5 +1,6 @@
 class Subtopic < ActiveRecord::Base
   belongs_to :topic
+  has_many   :articles
 
   def to_param
     slug

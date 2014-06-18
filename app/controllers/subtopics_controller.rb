@@ -1,4 +1,5 @@
 class SubtopicsController < ApplicationController
+  layout "application_others"
   before_action :set_subtopic, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
@@ -65,7 +66,7 @@ class SubtopicsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subtopic
-      @subtopic = Subtopic.find(params[:id])
+      @subtopic = Subtopic.find_by(slug: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -13,6 +13,7 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.json
   def show
+    @articles = @topic.same_topic_articles
   end
 
   # GET /topics/new

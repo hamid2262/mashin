@@ -1,0 +1,7 @@
+<div class="col-xs-6">
+  <%= image_tag article.thumb %>
+</div>
+<div class="col-xs-6">
+  <h4><%= link_to article.title, [@topic, article] %></h4>
+  <p><%= article.truncate %></p>
+</div>

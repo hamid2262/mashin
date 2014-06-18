@@ -14,6 +14,10 @@ class Topic < ActiveRecord::Base
     Article.where(topic_id: sisters.ids)
   end
 
+  def self_and_sisters_subtopics
+    Subtopic.where(topic_id: self.sisters.ids)   
+  end
+
   def sisters
     Topic.where(deligate: self.deligate)
   end
