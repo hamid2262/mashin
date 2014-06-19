@@ -85,5 +85,13 @@
 
   #magazine_advert{
     padding: 10px 30px;
+    .article {
+      overflow: hidden;
+      padding: 2px;
+      .title{
+        margin: 15px 4px 0 0;
+        display: inline-block;
+      }
+    }
   }
 }

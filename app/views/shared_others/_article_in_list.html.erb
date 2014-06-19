@@ -5,7 +5,9 @@
       <span class="title">
         <%= truncate article.title, length: 70 %>
       </span>
-      <p class="time_ago small text-muted"> <%= date_human article.created_at %></p>
+      <% if current_user and current_user.is_admin? %>
+        <p class="time_ago small text-muted"> <%= date_human article.created_at %></p>
+      <% end %>
       <!-- <p class="truncate"><%#= truncate(article.truncate, length: 80)  %></p> -->
     </div>
     <div class="thumb col-xs-3">

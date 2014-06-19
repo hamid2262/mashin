@@ -15,4 +15,12 @@ class Home
   def self.beginning_of_today
     Time.zone.now.beginning_of_day() #- 5.days
   end
+
+  def self.last_articles
+    articles =  Article.where.not(thumb: nil).where(topic_id: 15).reverse.last(4).to_a
+    articles << Article.where.not(thumb: nil).where(topic_id: 3 ).reverse.last(4).to_a
+    articles << Article.where.not(thumb: nil).where(topic_id: 17).reverse.last(4).to_a
+    articles << Article.where.not(thumb: nil).where(topic_id: 13).reverse.last(4).to_a
+    articles.flatten.shuffle
+  end
 end

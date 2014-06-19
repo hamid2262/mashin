@@ -1,11 +1,15 @@
 <%= link_to topics_path do %>
-  <h3><%= t ".otoyabi magazine" %></h3>
-  <h4><%= t ".line1" %></h4>
+  <h3 class="small"><%= t ".otoyabi magazine" %> <%= t ".line1" %></h3>
+  
 <% end %>
 
-<!-- <div class="panel panel-default">
-  <div class="panel-body">
-    <%# article = Article.last %>
+<div class="panel panel-default">
+  <div class="list-group">
+    <% Home.last_articles.each do |article| %>
+      <%= link_to [article.topic, article], class: "article list-group-item" do %>  
+        <span class="title"><%= truncate article.title, length: 50 %></span>
+        <%= image_tag(article.thumb, size: "50", class: "pull-left", alt: article.title) %>
+      <% end %>
+    <% end %>
   </div>
 </div>
- -->
