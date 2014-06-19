@@ -57,7 +57,7 @@ private
   end
 
   def create_article
-    if @article_hash[:title] and @article_hash[:topic_id] and @article_hash[:url]
+    if @article_hash[:title] and @article_hash[:topic_id] and @article_hash[:subtopic_id] and @article_hash[:url]
       ad = Article.create!(
         title:        @article_hash[:title], 
         thumb:        @article_hash[:thumb],
@@ -115,7 +115,10 @@ private
         subtopic.id
       elsif @article_hash[:url].include? "www.beytoote.com"
         slug = @article_hash[:url].split("/")[4]
-        subtopic = Subtopic.create!(name: val, slug: slug, topic_id: @article_hash[:topic_id])
+        subtopic = Subtopic.find_or_create_by(slug: slug) do |subtopic|
+          subtopic.topic_id = @article_hash[:topic_id]
+          subtopic.name     = val
+        end
         subtopic.deligate = subtopic.id
         subtopic.save
       elsif @article_hash[:url].include? "www.bartarinha.ir"
@@ -132,7 +135,7 @@ private
       subtopic.deligate = subtopic.id
       subtopic.save
     end
-    subtopic.id # if subtopic
+    subtopic.id if subtopic
   end
 
   def truncate item
