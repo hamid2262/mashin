@@ -82,14 +82,20 @@ private
       elsif @article_hash[:url].include? "www.beytoote.com"
         slug = @article_hash[:url].split("/")[3]
         topic = Topic.find_by(slug: slug)
-        topic = Topic.create!(name: val, slug: slug) if topic.nil?
-        topic.deligate = topic.id
-        topic.save
+        if topic.nil?
+          topic = Topic.create!(name: val, slug: slug) 
+          topic.deligate = topic.id
+          topic.save
+        end
         topic.id
       elsif @article_hash[:url].include? "www.bartarinha.ir"
-        topic = Topic.create!(name: val)
-        topic.deligate = topic.id
-        topic.save
+        topic = Topic.find_by(name: name)
+        if topic.nil?
+          slug = (0...10).map { ('a'..'z').to_a[rand(26)] }.join
+          topic = Topic.create!(name: val, slug: slug) 
+          topic.deligate = topic.id
+          topic.save
+        end
         topic.id
       end
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614205502) do
+ActiveRecord::Schema.define(version: 20140619081547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(version: 20140614205502) do
     t.integer  "order"
   end
 
+  add_index "subtopics", ["name"], name: "index_subtopics_on_name", using: :btree
   add_index "subtopics", ["slug"], name: "index_subtopics_on_slug", using: :btree
   add_index "subtopics", ["topic_id"], name: "index_subtopics_on_topic_id", using: :btree
 
@@ -229,6 +230,7 @@ ActiveRecord::Schema.define(version: 20140614205502) do
     t.integer  "deligate"
   end
 
+  add_index "topics", ["name"], name: "index_topics_on_name", using: :btree
   add_index "topics", ["order"], name: "index_topics_on_order", using: :btree
   add_index "topics", ["slug"], name: "index_topics_on_slug", using: :btree
 
