@@ -1,6 +1,6 @@
 <div class="topic_list_panel panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= link_to topic.name , topic %></h3>
+    <h3 class="panel-title"><%= link_to topic.name , topic %> </h3>
   </div>
   <div class="list-group">
     <% topic.same_topic_articles.with_image.sorted.each_with_index do |article, index| %>
@@ -9,11 +9,9 @@
       <% end %>
     <% end %>
     <% if topic.same_topic_articles.count >6 %>
-      <a class="list-group-item show_more">
-        <span class="pull-left">
-          <%= t ".show_more" %> <%= topic.name %> 
-        </span>
-      </a>
+      <%= link_to topic, class: "list-group-item show_more" do %>
+        <span class=" pull-left"><%= "#{t ".show_more"} #{topic.name}" %></span>
+      <% end %>
     <% end %>
   </div>
 </div>

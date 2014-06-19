@@ -3,7 +3,7 @@
   <% if article.thumb.present? %>
     <div class="col-xs-9">
       <span class="title">
-        <%= article.title %>
+        <%= truncate article.title, length: 70 %>
       </span>
       <p class="time_ago small text-muted"> <%= date_human article.created_at %></p>
       <!-- <p class="truncate"><%#= truncate(article.truncate, length: 80)  %></p> -->

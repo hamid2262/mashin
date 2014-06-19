@@ -25,7 +25,10 @@ private
         single_ad_sweep(item)
         article = create_article
         puts "article #{article.id} added"  if article
-        open(delete_path)
+        begin
+          open(delete_path)
+        rescue
+        end
       end
     else
       @terminate = true
@@ -79,6 +82,8 @@ private
       topic = Topic.find_by(name: val)
       if topic
         topic.id
+      elsif @article_hash[:url].include? "varzesh3.com"
+        topic = Topic.create!(name: val, slug: "sports")
       elsif @article_hash[:url].include? "www.beytoote.com"
         slug = @article_hash[:url].split("/")[3]
         topic = Topic.find_by(slug: slug)
@@ -103,7 +108,7 @@ private
 
   def subtopic_id item
     val = item.at('.cat2')
-    if val
+    if val and val.text.present?
       val = val.text
       subtopic = Subtopic.find_by(name: val)
       if subtopic
@@ -113,14 +118,21 @@ private
         subtopic = Subtopic.create!(name: val, slug: slug, topic_id: @article_hash[:topic_id])
         subtopic.deligate = subtopic.id
         subtopic.save
-        subtopic.id
       elsif @article_hash[:url].include? "www.bartarinha.ir"
-        subtopic = Subtopic.create!(name: val, topic_id: @article_hash[:topic_id])
+        slug = (0...10).map { ('a'..'z').to_a[rand(26)] }.join
+        subtopic = Subtopic.create!(name: val, slug: slug, topic_id: @article_hash[:topic_id])
         subtopic.deligate = subtopic.id
         subtopic.save
-        subtopic.id
       end
+    elsif @article_hash[:url].include? "varzesh3.com"
+      subtopic = Subtopic.find_or_create_by(name: "اخبار ورزشی") do |subtopic|
+        subtopic.slug = 'news'
+        subtopic.topic_id = @article_hash[:topic_id]
+      end
+      subtopic.deligate = subtopic.id
+      subtopic.save
     end
+    subtopic.id # if subtopic
   end
 
   def truncate item

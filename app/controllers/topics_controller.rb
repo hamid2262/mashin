@@ -47,7 +47,7 @@ class TopicsController < ApplicationController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to :back }
+        format.html { redirect_to topics_admin_path }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

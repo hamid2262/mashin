@@ -10,7 +10,6 @@ task :scrap_articles => :environment do
   scrap_article = ScrapArticle.new
   scrap_article.url = "http://beytoote.herokuapp.com/contents"
   scrap_article.sweep
-  
 end
 
 desc "articles_scrap_triger"
