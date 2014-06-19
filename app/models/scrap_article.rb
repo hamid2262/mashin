@@ -1,3 +1,4 @@
+require 'open-uri'
 class ScrapArticle < ActiveRecord::Base
   has_many   :articles
 
