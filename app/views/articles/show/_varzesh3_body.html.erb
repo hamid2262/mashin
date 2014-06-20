@@ -9,8 +9,10 @@
 
   <% doc = Nokogiri::HTML(open(@article.url)) %>
   <% body = doc.at('#CenterTable div') %>
-  <% body = body.to_html %>
-  <%= body.html_safe %>
+  <% if body %> 
+    <% body = body.to_html %>
+    <%= body.html_safe %>
+  <% end %>
   </p>
 
 </div>

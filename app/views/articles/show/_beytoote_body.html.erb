@@ -10,18 +10,21 @@
 
     <% doc = Nokogiri::HTML(open(@article.url)) %>
     <% body = doc.at('.item-page') %>
-    <% body.at('.article-info').remove %> 
-    <% body.at('h2 a').remove %> 
-    <% body.search('img[src="/images/beytheme/logo.png"]').each {|node| node.remove} %> 
-    <% body = body.to_html %>
-    <% body = body.gsub("src=\"/images/stories/", "src=\"http://www.beytoote.com/images/stories/") if body.include? "src=\"/images/stories/"  %>
+    <% if body %>
+      <% body.at('.article-info').remove %> 
+      <% body.at('h2 a').remove %> 
+      <% body.search('img[src="/images/beytheme/logo.png"]').each {|node| node.remove} %> 
+      <% body = body.to_html %>
+      <% body = body.gsub("src=\"/images/stories/", "src=\"http://www.beytoote.com/images/stories/") if body.include? "src=\"/images/stories/"  %>
 
-    <% body = body.gsub!("http://www.bartarinha.ir", "http://otoyabi.com") if body.include? "http://www.bartarinha.ir" %>
-    <% body = body.gsub!("g alt=\"مجله اینترنتی برترین ها", "") if body.include?  "img alt=\"مجله اینترنتی برترین ها"%>
-    <% body = body.gsub!("g alt=\"برترین مجله", "")  if body.include? "img alt=\"برترین مجله"%>
-    <% body = body.gsub!("برترین ها", "اتویابی")  if body.include? "برترین ها"%>
+      <% body = body.gsub!("http://www.bartarinha.ir", "http://otoyabi.com") if body.include? "http://www.bartarinha.ir" %>
+      <% body = body.gsub!("g alt=\"مجله اینترنتی برترین ها", "") if body.include?  "img alt=\"مجله اینترنتی برترین ها"%>
+      <% body = body.gsub!("g alt=\"برترین مجله", "")  if body.include? "img alt=\"برترین مجله"%>
+      <% body = body.gsub!("برترین ها", "اتویابی")  if body.include? "برترین ها"%>
 
-    <%= body.html_safe %>
+      <%= body.html_safe %>
+
+    <% end %>
   </p>
 
 </div>
