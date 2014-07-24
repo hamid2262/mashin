@@ -42,10 +42,10 @@ every 1.days, at: '22:00' do
 end
 
 ########### articles #######
-every 1.hours do
-  rake "scrap_articles"
-end
+# every 1.hours do
+#   rake "scrap_articles"
+# end
 
-every 2.hours do
-  rake "articles_scrap_triger"
-end
+# every 2.hours do
+#   rake "articles_scrap_triger"
+# end
