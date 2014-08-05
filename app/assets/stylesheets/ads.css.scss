@@ -16,6 +16,11 @@
     }
     #car_details{
       left: 25%;
+      .details{
+        P{
+          line-height: 2em;
+        }
+      }
     }
   }
 }
@@ -55,6 +60,7 @@
         .big_image{
           width: 100%;
           display: none;
+          min-height: 271px;
           img{
             // width: 100%;
             margin: 0 auto;

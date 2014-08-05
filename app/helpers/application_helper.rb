@@ -101,6 +101,21 @@ module ApplicationHelper
     title.try(:html_safe)
   end
 
+  def ad_seo_title ad # title of link tags for SEO
+    if ad.user or (ad.make_id and ad.source_url and ad.source_url.include? "www.bama.ir") 
+      title = ""
+      title = ad.make_name  if ad.make_name
+      title = title + ", #{ad.car_model_name} "   if ad.car_model_name.present?     
+      title = title + ", #{appropriate_year(ad)} " if ad.year or ad.usage_type==1           
+    else
+      title = ad.title
+      title.gsub! "فروش", "" if title
+      title.gsub! "مدل", " ،" if title
+    end
+    title.try(:html_safe)
+  end
+
+
   def thumb_image ad
       if ad.thumb_img.present?          # if in other site ad has thumbnail
         thumb = ad.thumb_img        

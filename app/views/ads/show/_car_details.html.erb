@@ -14,7 +14,11 @@
     <%= two_column_title_value "body_color", @ad.body_color_name %>    
     <%= two_column_title_value "internal_color", @ad.internal_color_name %>
     <%= two_column_title_value "how_looks", damaged_human(@ad) %>
-    <%= two_column_title_value "details", @ad.details %>
+    <hr>
+    <div class="details">
+      <%= t 'details' %>:
+      <p class="small"><%= @ad.details %></p>
+    </div>
   </div>
 </div>
 

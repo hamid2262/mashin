@@ -8,7 +8,7 @@
       <% @recommended_ads.each do |ad| %>
         <div class="recommended_ad  col-sm-3 col-xs-6">
           <div class="panel panel-default">
-            <%= link_to ad, title: ad_title(ad) do %>
+            <%= link_to ad, title: ad_seo_title(ad) do %>
               <div class="panel-body">
 
                 <div class="col-sm-6">
