@@ -13,7 +13,7 @@ class Home
   end
 
   def self.beginning_of_today
-    Time.zone.now.beginning_of_day() #- 5.days
+    Time.zone.now.beginning_of_day() #- 1.days
   end
 
   def self.last_articles
@@ -23,4 +23,14 @@ class Home
     articles << Article.where.not(thumb: nil).where(topic_id: 13).reverse.last(4).to_a
     articles.flatten.shuffle
   end
+
+  def self.sample_ads
+    values = Ad.where("status = 2") 
+    values = values.where("ads.price >= ?", 30000000 )
+    values = values.where("ads.thumb_img <> ''" )
+    values = values.order("updated_at DESC")
+    values = values.limit(50)
+    values 
+  end
+
 end

@@ -82,6 +82,27 @@
     }
 
   }
+  
+  #sample_ads{
+    .panel-body {
+      padding: 6px;
+    }
+    .image{
+    }
+    p{
+      margin: 0;
+      padding-bottom: 7px;
+    }
+    .details{
+      font-size: 10px;
+    }
+    .timeago{
+      position: absolute;
+      left: 0;
+      font-size: 10px;  
+      top: 65px;    
+    }
+  }
 
   #magazine_advert{
     padding: 10px 30px;
