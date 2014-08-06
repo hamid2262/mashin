@@ -1,7 +1,7 @@
 <%= simple_form_for(@make) do |f| %>
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
+    <%= f.input :name %><br>
+    <%= f.input :slug %><br>
 
     <%= f.input :deligate, collection: Make.order(:name).map{|m| [m.name,m.id]} %>
     <%= f.input :visible, as: :boolean %>

@@ -4,6 +4,10 @@ class Make < ActiveRecord::Base
 
   scope :visible, -> { where(visible: true) }
   scope :sorted, -> { order(name: :asc) }
+  
+  def to_param    
+    slug
+  end
 
   def self.make_id(name)
     Rails.cache.fetch([:make, name, :id], expires_in: 15.hours) do 

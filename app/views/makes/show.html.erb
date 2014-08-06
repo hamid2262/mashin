@@ -5,5 +5,11 @@
   <%= @make.name %>
 </p>
 
+<% @car_models.each do |car_model| %>
+  <% if car_model.slug %>
+    <li><%= link_to car_model.name, make_car_model_path(make_id: @make.id ,id: car_model.slug) %></li>
+  <% end %>
+<% end %>
+
 <%= link_to 'Edit', edit_make_path(@make) %> |
 <%= link_to 'Back', makes_path %>

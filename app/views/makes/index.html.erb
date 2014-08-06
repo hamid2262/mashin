@@ -17,6 +17,7 @@
     <% @makes.each do |make| %>
       <tr style="background: <%= "rgb(255, 248, 161)" if make.id != make.deligate %>">
         <td><%= make.name %></td>
+        <td><%= make.slug %></td>
         <td><%= make.id %></td>
         <td >
           <%= make.deligate %> - 

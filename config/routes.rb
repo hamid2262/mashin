@@ -44,11 +44,12 @@ Mashin::Application.routes.draw do
 
   resource  :homes, only: [:show]
   resource  :dashboard, only: [:show]
-  resources :car_models
   resources :locations
   resources :body_colors
   resources :internal_colors
-  resources :makes
+  resources :makes do
+    resources :car_models
+  end
   resources :subtopics
   resources :topics do
     resources :articles

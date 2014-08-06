@@ -1,7 +1,7 @@
 class CarModelsController < ApplicationController
   before_action :load_car_model, only: :create
-  load_and_authorize_resource
   before_action :set_car_model, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /car_models
   # GET /car_models.json
@@ -66,12 +66,12 @@ class CarModelsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car_model
-      @car_model = CarModel.find(params[:id])
+      @car_model = CarModel.find_by(slug: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_model_params
-      params.require(:car_model).permit(:name, :make_id, :deligate, :visible)
+      params.require(:car_model).permit(:name, :slug, :make_id, :deligate, :visible)
     end
 
     def load_car_model

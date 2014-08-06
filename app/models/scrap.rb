@@ -26,9 +26,20 @@ private
         extract_other_fields(row)
         build_ad_other_field_record(ad)
         extract_and_build_images(ad, row)
+        extract_car_info
         open(delete_path) # just for deletation
       end
     end
+  end
+
+  def extract_car_info
+    doc = Nokogiri::HTML(open(@ad_hash[:source_url]))
+    info_path = doc.at_css("#ctl00_cphMain_SelectedAdInfo1_hlkDetailInfo")
+    if info_path
+      info_path = info_path["href"]
+      fill_car_info(info_path) 
+    end
+    raise
   end
 
   def extract_base_fields(row)
@@ -252,6 +263,32 @@ private
     l[:latitude]  = lat
     l[:longitude] = lng
     l
+  end
+
+#########################################
+  def fill_car_info info_path
+    url = info_path.split "/"
+    make_slug = url[4]
+    car_model_slug = url[5]
+    year_slug = url[6]
+    fill_make_slug make_slug
+    fill_car_model_slug car_model_slug
+  end
+
+  def fill_make_slug make_slug
+    make = Make.find_by(id: @ad_hash[:make_id]) 
+    if make and make.slug==nil
+       make.slug = make_slug
+       make.save
+    end 
+  end
+
+  def fill_car_model_slug car_model_slug
+    car_model = CarModel.find_by(id: @ad_hash[:car_model_id]) 
+    if car_model and car_model.slug==nil
+       car_model.slug = car_model_slug
+       car_model.save
+    end 
   end
 
 end

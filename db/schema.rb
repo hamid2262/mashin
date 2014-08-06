@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619081547) do
+ActiveRecord::Schema.define(version: 20140806125957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,11 +93,13 @@ ActiveRecord::Schema.define(version: 20140619081547) do
     t.datetime "updated_at"
     t.boolean  "visible",    default: true
     t.integer  "deligate"
+    t.string   "slug"
   end
 
   add_index "car_models", ["deligate"], name: "index_car_models_on_deligate", using: :btree
   add_index "car_models", ["make_id"], name: "index_car_models_on_make_id", using: :btree
   add_index "car_models", ["name"], name: "index_car_models_on_name", using: :btree
+  add_index "car_models", ["slug"], name: "index_car_models_on_slug", using: :btree
 
   create_table "image_urls", force: true do |t|
     t.integer  "ad_id"
@@ -145,10 +147,12 @@ ActiveRecord::Schema.define(version: 20140619081547) do
     t.boolean  "year_format"
     t.boolean  "visible",     default: true
     t.integer  "deligate"
+    t.string   "slug"
   end
 
   add_index "makes", ["deligate"], name: "index_makes_on_deligate", using: :btree
   add_index "makes", ["name"], name: "index_makes_on_name", using: :btree
+  add_index "makes", ["slug"], name: "index_makes_on_slug", using: :btree
 
   create_table "preferences", force: true do |t|
     t.integer  "user_id"
@@ -204,8 +208,6 @@ ActiveRecord::Schema.define(version: 20140619081547) do
     t.string   "referer"
     t.string   "user_ip"
   end
-
-  add_index "searches", ["user_ip"], name: "index_searches_on_user_ip", using: :btree
 
   create_table "subtopics", force: true do |t|
     t.integer  "topic_id"

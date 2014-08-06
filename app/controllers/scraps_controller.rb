@@ -5,8 +5,8 @@ class ScrapsController < ApplicationController
       system "rake scrap --trace 2>&1 >> #{Rails.root}/log/rake.log &"
     else
       scrap = Scrap.new
-      # scrap.url = "http://bama1.herokuapp.com/ads"
-      scrap.url = "http://takhtegaz.herokuapp.com/ads"
+      scrap.url = "http://bama1.herokuapp.com/ads"
+      # scrap.url = "http://takhtegaz.herokuapp.com/ads"
       scrap.sweep    
     end
 

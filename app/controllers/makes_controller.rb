@@ -1,7 +1,7 @@
 class MakesController < ApplicationController
   before_action :load_make, only: :create
-  load_and_authorize_resource
   before_action :set_make, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /makes
   # GET /makes.json
@@ -12,6 +12,7 @@ class MakesController < ApplicationController
   # GET /makes/1
   # GET /makes/1.json
   def show
+    @car_models = @make.car_models
   end
 
   # GET /makes/new
@@ -66,12 +67,12 @@ class MakesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_make
-      @make = Make.find(params[:id])
+      @make = Make.find_by(slug: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def make_params
-      params.require(:make).permit(:name, :year_format, :deligate)
+      params.require(:make).permit(:name, :slug,:year_format, :deligate)
     end
 
     def load_make
