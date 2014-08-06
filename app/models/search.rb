@@ -9,7 +9,7 @@ class Search < ActiveRecord::Base
 	belongs_to :user
 
   def to_param    
-    address = "#{id}-خرید-اتومبیل"
+    address = "#{id}-فروش-خودرو"
     address = "#{address}" + "-#{make_name}".gsub(" ","-")        if make_name
     address = "#{address}" + "-#{car_model_name}".gsub(" ","-")   if car_model_name
     address = "#{address}" + "-#{FUEL_ARR[fuel]}".gsub(" ","-")   if fuel and fuel!=0
