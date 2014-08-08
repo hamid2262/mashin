@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = " اتویابی - خرید و فروش خودرو #{@car_model.make.name} #{@car_model.name}"  %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @car_model.name %>
-</p>
+<div id="car_model_show">
+  <div id="search_list" class="col-sm-7 col-md-9">
+    <%= render 'shared/ads_list' %>
+  </div> 
 
-<p>
-  <strong>Make:</strong>
-  <%= @car_model.make.name %>
-</p>
+  <div id="search_bar" class="col-sm-5 col-md-3">
+    <%= render 'shared/search_form' %>
+    <%#= render 'car_models/show/car_model_list' %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_make_car_model_path(id: @car_model.slug) %> |
-<%#= link_to 'Back', car_models_path %>
+<% if can? @car_model, :edit %>
+  <%= link_to 'Edit', edit_make_car_model_path(id: @car_model.slug) %> |
+<% end %>
