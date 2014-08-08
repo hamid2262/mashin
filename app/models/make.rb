@@ -15,6 +15,11 @@ class Make < ActiveRecord::Base
     end
   end
 
+  def ads
+    @ads ||= find_ads
+  end
+
+
   def self.for_menus
     @makes ||= find_makes
   end
@@ -24,6 +29,15 @@ class Make < ActiveRecord::Base
   end
 
 private
+
+  def find_ads
+    ads = Ad.all.includes(:car_model, car_model: :make)
+    ads = ads.order("updated_at DESC") 
+    ads = ads.where("status = 2") 
+    ads = ads.where(make_id: self.id) 
+    ads
+  end
+
   def find_car_models
      self.car_models.where("id = deligate").order(name: :asc) 
   end

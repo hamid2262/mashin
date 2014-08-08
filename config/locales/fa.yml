@@ -32,6 +32,10 @@ fa:
   info_problem rejected: رد شده- ایراد در اطلاعات
   internalcolor: رنگ داخلی
   last_update: آخرین بروزرسانی
+  makes:
+    show:
+      make_list:
+        popular_makes: مدلهای محبوب خودرو
   miladi: میلادی
   name: نام
   not_verified: منتظر تایید

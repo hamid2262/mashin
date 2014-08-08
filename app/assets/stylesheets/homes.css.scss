@@ -62,25 +62,22 @@
       font-size: 21px;
       text-shadow: 1px 0px 1px #E01515;
     }
-    form.new_search {
+    .btn-link{
       float: right;
-      input{
-        color: #5C5C5C;
-        padding: 7px 9px 5px 0px;
-        transition: background .3s;
-        width: 75px;
-        text-align: right;
-        font-size: 11px;
-        &:hover {
-          background: #C7C7C7;
-          border-radius: 3px;
-          color: #424242;
-          text-shadow: 0px 0px 5px #E9E9E9;
-        }
-        
+      color: #5C5C5C;
+      padding: 7px 9px 5px 0px;
+      transition: background .3s;
+      width: 75px;
+      text-align: right;
+      font-size: 11px;
+      border: 1px solid #ECECEC;
+      &:hover {
+        background: #C7C7C7;
+        border-radius: 3px;
+        color: #424242;
+        text-shadow: 0px 0px 5px #E9E9E9;
       }
     }
-
   }
   
   #sample_ads{

@@ -1,0 +1,11 @@
+<% if @ads.any? %>
+  <%= render 'shared/paginate', items: @ads %>
+	<% @ads.each do |ad| %>
+    <%= link_to ad_path(ad), class: "search_row", title: "#{ad_seo_title ad}" do %>
+			<%= render 'shared/ads_list/ad', ad: ad %>
+    <% end %>
+	<% end %>
+  <%= render 'shared/paginate', items: @ads %>
+<% else %>
+  <p id="err_msg"><%= t".no_resault_message" %></p>
+<% end %>

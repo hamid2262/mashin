@@ -1,8 +1,8 @@
-<% @page_title = title_creator(@search)+ "- اتویابی -باما- bama - bama.ir" %>
+<% @page_title = "اتویابی - " + title_creator(@search) %>
 
 <div id="search_show">
   <div id="search_bar" class="col-sm-5 col-md-3">
-    <%= render 'search_form' %>
+    <%= render 'shared/search_form' %>
     <div class="filter_sections">
       <%= render 'searches/filters/makes' %>
       <%= render 'searches/filters/car_models' %>
@@ -15,17 +15,6 @@
 
   <div id="search_list" class="col-sm-7 col-md-9">
     <%= render 'searches/search_list/list_of_filtered' %>
-  	<% if @ads.any? %>
-      <%= render 'shared/paginate', items: @ads %>
-
-  		<% @ads.each do |ad| %>
-        <%= link_to ad_path(ad), class: "search_row", title: "#{ad_seo_title ad}" do %>
-    			<%= render 'searches/search_list/ad', ad: ad %>
-        <% end %>
-  		<% end %>
-      <%= render 'shared/paginate', items: @ads %>
-    <% else %>
-      <p id="err_msg"><%= t".no_resault_message" %></p>
-  	<% end %>
+    <%= render 'shared/ads_list' %>
   </div>
 </div>

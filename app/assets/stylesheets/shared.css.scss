@@ -1,0 +1,166 @@
+#search_show, #make_show{
+  #search_bar{
+    font-size: .8em;
+    font-weight: bold;
+    border: 1px solid #eee;
+    padding: 8px 8px 0px 8px;
+    border-radius: 3px;
+    background: rgba(247, 247, 247, 1);
+    #search_form{
+      .filter{
+        position: relative;
+        .remove_filter{
+          background-color: #FFFFFF;
+          background-image: url("https://s3-eu-west-1.amazonaws.com/otoyabi/static_files/images/remove.png");
+          background-position: 4px 4px;
+          background-repeat: no-repeat;
+          cursor: pointer;
+          height: 17px;
+          left: 18px;
+          margin-top: 4px;
+          position: absolute;
+          top: 14px;
+          width: 15px;
+        }  
+        .myhide{
+          display: none !important;
+        }    
+        .with_value{
+          -moz-appearance: none;
+          text-indent: 0.01px;
+          text-overflow: '';
+          border: 1px solid rgba(66, 139, 202, 0.54);
+          box-shadow: 1px 1px 10px rgba(108, 149, 192, 0.44);
+        }
+      }
+      input[type="submit"]{
+        height: 35px;
+      }
+      select, input{
+        padding: 0px 5px;
+        height: 25px;
+        border-radius: 1px;
+        font-size: 1.1em;
+      }
+      label{
+        margin-bottom: 0px
+      }
+    }
+    .filter_sections{
+      margin-top: 15px;
+      .panel-heading{
+        padding: 6px 15px;
+        h3{
+          font-size: 13px;
+        }
+      }
+      .filter_list_row{
+        border-bottom: 1px solid rgba(245, 245, 245, 0.88);
+        .filter_sections_badge_link {
+          padding: 0px 15px 0px 15px;
+          font-size: 10px;
+          height: 20px;
+          form{
+            input{
+              font-size: 10px;
+              padding: 3px 0;
+            }
+          }
+        }
+        // .smallHeght{
+        //   height: 21px;
+        // }
+        .badge {
+          margin-top: 2px;
+          padding: 2px 5px;
+        }
+      }
+      .show_more{
+        text-align: center;
+        width: 100%;
+        display: inline-block;
+        height: 20px;
+        background: rgba(243, 243, 243, 0.72);
+        padding: 6px 20px 18px;
+        border-top: 1px solid #E9E9E9;
+        &:hover {
+          box-shadow: 0px 0 2px #aaa;
+          background: #EEE;
+        }        
+      }
+    }
+  } //#search_bar
+  // result of search
+  #search_list{
+    font-size: .9em;
+    padding: 0 5px 0 2px;
+    a{
+      color: #696969;
+    }
+    #err_msg{
+      width: 300px;
+      margin: 71px auto;
+      font-size: 1.9em;
+      color: #6D2020;
+    }
+    .search_row{
+      display: block;
+      height: 80px;
+      padding-right: 6px;
+      background: rgba(247, 247, 247, 0.57);
+      margin: 1px;
+      border-top: 1px solid #F7F7F7;
+      border-bottom: 1px solid #EEE;
+      border-left: 1px solid #FFFFFF;
+      border-right: 1px solid #FFFFFF;
+      clear: both;
+      &:hover {
+        background: #fff;
+        border-left: 1px solid #F1F1F1;
+        border-right: 1px solid #F1F1F1;
+      }
+      
+      .search_col{
+        padding: 10px 0;
+      }    
+      .thumb-title{
+        .thumb{
+          float: right;
+          margin-left: 7px;
+          img{
+            width: 82px;
+            height: 57px;
+            border: 1px solid #e0e0e0;
+            padding: 1px;
+          }
+        }
+        .title{
+          margin-bottom: 4px;
+          overflow: hidden;
+          .title_element{
+            height: 10px;
+          }
+        }
+        .truncate{
+          color: #8A8A8A;
+        }        
+      }  
+      .date, .price, .city{
+        padding-top: 28px;
+      }
+      .date{
+        div{
+        }
+      }
+      .price{
+        .amount{
+          float: left;
+          padding-left: 4px;
+        }
+      }
+    }
+    .search_row:last-child{
+      border-bottom: 1px solid #E7E7E7;;
+    }
+  } //#search_list
+}

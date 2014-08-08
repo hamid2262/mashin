@@ -44,6 +44,8 @@ class Ability
     can [:new, :create, :show, :index, :ajax], Search
     can :read, Home
     can :show, Ad
+    can :show, Make
+    can :show, CarModel
     can [:show, :index], Article
     can [:show, :index], Topic
     can [:show, :index], Subtopic

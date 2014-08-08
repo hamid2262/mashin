@@ -1,0 +1,13 @@
+<br>
+<div id="car_model_list" class="panel panel-default">
+  <div class="panel-heading"><h3 class="panel-title"><%= t ".popular_makes" %> <%= @make.name %> </h3>
+  </div>
+  <ul class="nav nav-pills nav-stacked">
+    <% @car_models.each do |car_model| %>
+      <li>
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <%= link_to car_model.name, make_car_model_path(make_id: @make.slug ,id: car_model.slug), title: "فروش خودرو #{@make.name} #{car_model.name}" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

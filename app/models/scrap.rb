@@ -39,7 +39,6 @@ private
       info_path = info_path["href"]
       fill_car_info(info_path) 
     end
-    raise
   end
 
   def extract_base_fields(row)
