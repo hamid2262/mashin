@@ -30,6 +30,7 @@ gem 'non-stupid-digest-assets', '~> 1.0.4'
 gem 'nokogiri', '~> 1.6.1'
 gem  'whenever', require: false
 
+gem "gretel"
 gem 'dalli'
 
 # for heroku
