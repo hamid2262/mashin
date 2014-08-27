@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140806125957) do
+ActiveRecord::Schema.define(version: 20140827005023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,43 @@ ActiveRecord::Schema.define(version: 20140806125957) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "built_years", force: true do |t|
+    t.integer  "year"
+    t.integer  "make_id"
+    t.integer  "car_model_id"
+    t.string   "image"
+    t.string   "gearbox"
+    t.string   "diff"
+    t.integer  "engine_displacement"
+    t.integer  "cylinder"
+    t.integer  "soupape"
+    t.string   "power"
+    t.string   "torque"
+    t.integer  "length"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "speed"
+    t.float    "acceleration"
+    t.float    "fuel_consumption"
+    t.integer  "tank_size"
+    t.string   "tire"
+    t.string   "emission_standards"
+    t.string   "airbag"
+    t.string   "brake"
+    t.string   "tahvie_hava"
+    t.string   "seats"
+    t.string   "shisheha"
+    t.string   "ayneha"
+    t.string   "cheraghha"
+    t.string   "other_facilities"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "built_years", ["car_model_id"], name: "index_built_years_on_car_model_id", using: :btree
+  add_index "built_years", ["make_id"], name: "index_built_years_on_make_id", using: :btree
+  add_index "built_years", ["year"], name: "index_built_years_on_year", using: :btree
 
   create_table "car_models", force: true do |t|
     t.string   "name"

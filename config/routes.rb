@@ -1,5 +1,7 @@
 Mashin::Application.routes.draw do
 
+  resources :built_years
+
   devise_for :users, :controllers => { registrations: 'users' }
   devise_scope :user do
     resources :users, only: [:show]

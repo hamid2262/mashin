@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @built_year.year %>
+</p>
+
+<p>
+  <strong>Gearbox:</strong>
+  <%= @built_year.gearbox %>
+</p>
+
+<p>
+  <strong>Engine displacement:</strong>
+  <%= @built_year.engine_displacement %>
+</p>
+
+<%= link_to 'Edit', edit_built_year_path(@built_year) %> |
+<%= link_to 'Back', built_years_path %>

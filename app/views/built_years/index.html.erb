@@ -1,0 +1,31 @@
+<h1>Listing built_years</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Gearbox</th>
+      <th>Engine displacement</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @built_years.each do |built_year| %>
+      <tr>
+        <td><%= built_year.year %></td>
+        <td><%= built_year.gearbox %></td>
+        <td><%= built_year.engine_displacement %></td>
+        <td><%= link_to 'Show', built_year %></td>
+        <td><%= link_to 'Edit', edit_built_year_path(built_year) %></td>
+        <td><%= link_to 'Destroy', built_year, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Built year', new_built_year_path %>
