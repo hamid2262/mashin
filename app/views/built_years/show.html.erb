@@ -1,19 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% @page_title = " اتویابی - خرید و فروش خودرو #{@car_model.make.name} #{@car_model.name} #{@built_year.year}"  %>
+<% breadcrumb :built_year, @built_year %>
 
-<p>
-  <strong>Year:</strong>
-  <%= @built_year.year %>
-</p>
+<div id="car_model_show">
+  <div id="search_list" class="col-sm-7 col-md-9">
+    <%= render 'shared/ads_list' %>
+  </div> 
 
-<p>
-  <strong>Gearbox:</strong>
-  <%= @built_year.gearbox %>
-</p>
+  <div id="search_bar" class="col-sm-5 col-md-3">
+    <%= render 'shared/search_form' %>
+    <%#= render 'car_models/show/built_years_list' %>
+  </div>
+</div>
 
-<p>
-  <strong>Engine displacement:</strong>
-  <%= @built_year.engine_displacement %>
-</p>
-
-<%= link_to 'Edit', edit_built_year_path(@built_year) %> |
-<%= link_to 'Back', built_years_path %>
+<% if can? @car_model, :edit %>
+  <%= link_to 'Edit', edit_make_car_model_built_year_path %> |
+<% end %>

@@ -46,6 +46,7 @@ class Ability
     can :show, Ad
     can :show, Make
     can :show, CarModel
+    can :show, BuiltYear
     can [:show, :index], Article
     can [:show, :index], Topic
     can [:show, :index], Subtopic

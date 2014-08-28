@@ -1,7 +1,4 @@
 Mashin::Application.routes.draw do
-
-  resources :built_years
-
   devise_for :users, :controllers => { registrations: 'users' }
   devise_scope :user do
     resources :users, only: [:show]
@@ -50,7 +47,9 @@ Mashin::Application.routes.draw do
   resources :body_colors
   resources :internal_colors
   resources :makes do
-    resources :car_models
+    resources :car_models do
+      resources :built_years
+    end
   end
   resources :subtopics
   resources :topics do

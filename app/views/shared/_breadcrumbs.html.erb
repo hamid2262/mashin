@@ -1,0 +1,15 @@
+<% breadcrumbs do |links| %>
+  <% if links.any? %>
+    <ol class="breadcrumb">
+      <% links.each do |link| %>
+        <li class= <%= link.current? ? "active" : nil %> >
+          <% if link.current? %>
+            <%= link.text %>
+          <% else %>
+            <%= link_to link.text, link.url, title: link.title %> 
+          <% end %>
+        </li>
+      <% end %>
+    </ol>
+  <% end %>
+<% end %>

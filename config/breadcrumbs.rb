@@ -1,33 +1,23 @@
 crumb :root do
-  link "خانه", root_path
-end
-
-crumb :makes do
-  link "برند", makes_path
+  link "خانه", root_url, title: "اتویابی - سایت خرید و فروش خودرو"
 end
 
 crumb :make do |make|
-  link make.name, make_path(make)
+  link make.name, make_url(make), title: "فروش خودرو #{make.name}"
   parent :root
 end
 
 crumb :car_model do |car_model|
-  link car_model.name, make_car_model_path(id: car_model.slug)
+  link car_model.name, make_car_model_url(id: car_model.slug, make_id: car_model.make.slug), title: "فروش خودرو #{car_model.make.name} #{car_model.name} "
   parent :make, car_model.make
 end
 
-# crumb :project_issues do |project|
-#   link "Issues", project_issues_path(project)
-#   parent :project, project
-# end
+crumb :built_year do |built_year|
+  link built_year.year, make_car_model_built_year_url(id: built_year.year, make_id: built_year.car_model.make.slug, car_model_id: built_year.car_model.slug), title: "فروش خودرو #{built_year.car_model.make.name} #{built_year.car_model.name} سال #{built_year.year}"
+  parent :car_model, built_year.car_model
+end
 
-# crumb :issue do |issue|
-#   link issue.title, issue_path(issue)
-#   parent :project_issues, issue.project
-# end
-
-# If you want to split your breadcrumbs configuration over multiple files, you
-# can create a folder named `config/breadcrumbs` and put your configuration
-# files there. All *.rb files (e.g. `frontend.rb` or `products.rb`) in that
-# folder are loaded and reloaded automatically when you change them, just like
-# this file (`config/breadcrumbs.rb`).
+crumb :ad do |ad|
+  link "مشاهده جزئیات", ad_path
+  parent :built_year, ad.built_year
+end

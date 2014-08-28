@@ -1,5 +1,6 @@
 class BuiltYearsController < ApplicationController
   before_action :set_built_year, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /built_years
   # GET /built_years.json
@@ -10,6 +11,8 @@ class BuiltYearsController < ApplicationController
   # GET /built_years/1
   # GET /built_years/1.json
   def show
+    @search = Search.new
+    @ads = @built_year.ads(@car_model).page(params[:page]).per_page(15)
   end
 
   # GET /built_years/new
@@ -64,7 +67,9 @@ class BuiltYearsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_built_year
-      @built_year = BuiltYear.find(params[:id])
+      @make = Make.find_by slug: params[:make_id]
+      @car_model  = @make.car_models.where(slug: params[:car_model_id]).first
+      @built_year = @car_model.built_years.where(year: params[:id]).first
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

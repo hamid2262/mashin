@@ -13,8 +13,8 @@ class CarModelsController < ApplicationController
   # GET /car_models/1.json
   def show
     @search = Search.new
-    # @car_models = @make.car_models.where.not(slug: nil)
-    @ads = @car_model.ads.page(params[:page]).per_page(15)
+    @built_years = @car_model.built_years
+    @ads = @car_model.active_ads.page(params[:page]).per_page(15)
   end
 
   # GET /car_models/new

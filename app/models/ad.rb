@@ -36,6 +36,14 @@ class Ad < ActiveRecord::Base
     address
   end
 
+  def built_year
+    if self.year_format
+      self.car_model.built_years.where(year: self.year.year - 621).first
+    else
+      self.car_model.built_years.where(year: self.year.year).first
+    end
+  end
+
   def year_shamsi
     self.year.year if self.year
   end
