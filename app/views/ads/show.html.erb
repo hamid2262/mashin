@@ -1,5 +1,5 @@
 <% @page_title = title_creator(@ad) %>
-<% breadcrumb :ad, @ad %>
+<%# breadcrumb :ad, @ad %>
 <div id="ad_show">
   <div id="main-panel" class="panel panel-default">
     <div id="main-panel-heading" class="panel-heading">
@@ -24,6 +24,6 @@
       <%= render 'ads/show/recommended_ads' %>
     </div>
     
-      <%= render 'shared/breadcrumbs' if @ad.built_year%>
+      <%#= render 'shared/breadcrumbs' if @ad.built_year%>
   </div>
 </div>
