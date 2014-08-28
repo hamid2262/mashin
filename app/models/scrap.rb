@@ -26,7 +26,7 @@ private
         extract_other_fields(row)
         build_ad_other_field_record(ad)
         extract_and_build_images(ad, row)
-        extract_car_info
+        extract_car_info if self.url == "http://bama1.herokuapp.com/ads"
         open(delete_path) # just for deletation
       end
     end
