@@ -16,6 +16,8 @@ class ScrapCarInfo
   end
 
   def scrap
+    puts "ScrapCarInfo started"
+    @counter = 1
     url = "#{self.url}?page="
     page_num = 1
     while true
@@ -108,7 +110,11 @@ class ScrapCarInfo
           :other_facilities    => @row_hash[:other_facilities],
           :image               => @row_hash[:image]
         ) 
+        puts "+++++#{@counter} #{@row_hash[:make]} #{@row_hash[:car_model]} #{@row_hash[:year]}"
+      else
+        puts "#{@counter} #{@row_hash[:make]} #{@row_hash[:car_model]} #{@row_hash[:year]}"
       end
+      @counter = @counter + 1 
     end
   end
 
