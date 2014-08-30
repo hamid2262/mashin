@@ -26,18 +26,8 @@ private
         extract_other_fields(row)
         build_ad_other_field_record(ad)
         extract_and_build_images(ad, row)
-        # extract_car_info if self.url == "http://bama1.herokuapp.com/ads"
         open(delete_path) # just for deletation
       end
-    end
-  end
-
-  def extract_car_info
-    doc = Nokogiri::HTML(open(@ad_hash[:source_url]))
-    info_path = doc.at_css("#ctl00_cphMain_SelectedAdInfo1_hlkDetailInfo")
-    if info_path
-      info_path = info_path["href"]
-      fill_car_info(info_path) 
     end
   end
 
@@ -263,113 +253,4 @@ private
     l[:longitude] = lng
     l
   end
-
-#########################################
-  def fill_car_info info_path
-    url = info_path.split "/"
-    make_slug = url[4]
-    car_model_slug = url[5]
-    year = url[6]
-    fill_make_slug make_slug
-    fill_car_model_slug car_model_slug
-
-    if @make and @car_model 
-      build_year = BuiltYear.where(year: year, make_id: @make.id, car_model_id: @car_model.id).first      
-      fill_built_year_slug info_path, year unless build_year
-    end
-  end
-
-  def fill_make_slug make_slug
-    @make = Make.find_by(id: @ad_hash[:make_id]) 
-    if @make and @make.slug==nil
-       @make.slug = make_slug
-       @make.save
-    end 
-  end
-
-  def fill_car_model_slug car_model_slug
-    @car_model = CarModel.find_by(id: @ad_hash[:car_model_id]) 
-    if @car_model and @car_model.slug==nil
-       @car_model.slug = car_model_slug
-       @car_model.save
-    end 
-  end
-
-  def fill_built_year_slug info_path, year
-    @car_info = {}
-    doc = Nokogiri::HTML(open(info_path))
-    sweep_car_info doc
-    create_built_year year
-  end
-
-  def sweep_car_info doc
-    img =  doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_rptBrandModelYear1_ctl00_imgCarImage1")["src"]
-    @car_info[:image] =  img.sub "../../..", "http://www.bama.ir"
-
-    @car_info[:gearbox] =          doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblGirboxType1").text
-    @car_info[:diff] =             doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblDiffType1").text
-    @car_info[:engine_displacement] = doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblHajmeMotor1").text.to_i
-    @car_info[:cylinder] =         doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblSilanderNo1").text.to_i
-    @car_info[:soupape] =          doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblSupopNo1").text.to_i
-
-    @car_info[:power] =            doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblPowerV1").text
-    @car_info[:torque] =           doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblGashtavarV1").text
-
-    @car_info[:length] =           doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblLength1").text.to_i
-    @car_info[:width] =            doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblWidth1").text.to_i
-    @car_info[:height] =           doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblHeight1").text.to_i
-
-    @car_info[:speed] =            doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblMaxSorat1").text.to_i
-    @car_info[:acceleration] =     doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblShetab0To1001").text.to_f
-    
-    @car_info[:fuel_consumption] = doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblMasrafOil1").text.to_f    
-    @car_info[:tank_size] =        doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblHajmeOil1").text.to_i
-
-    @car_info[:tire] =             doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblTairSize").text
-    @car_info[:emission_standards] = doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblEmissionStandard").text
-    
-    @car_info[:airbag] =           doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblAirBack1").text
-    @car_info[:brake] =            doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblTurmooz1").text
-    @car_info[:tahvie_hava] =      doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblTahveeHava1").text
-    @car_info[:seats] =            doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblSandaly1").text
-    @car_info[:shisheha] =         doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblShisheha1").text
-    @car_info[:ayneha] =           doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblAyneha1").text
-    @car_info[:cheraghha] =        doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblCheraghha1").text
-    @car_info[:other_facilities] = doc.at_css("#ctl00_cphMain_VehicleDetailInfo1_lblOthers1").text 
-  end
-
-  def create_built_year  year
-    BuiltYear.create!(
-      year:                year,
-      make_id:             @make.id, 
-      car_model_id:        @car_model.id,
-      image:               @car_info[:image], 
-      gearbox:             @car_info[:gearbox], 
-      diff:                @car_info[:diff], 
-      engine_displacement: @car_info[:engine_displacement], 
-      cylinder:            @car_info[:cylinder], 
-      soupape:             @car_info[:soupape],
-      power:               @car_info[:power],
-      torque:              @car_info[:torque],
-      length:              @car_info[:length],
-      width:               @car_info[:width],
-      height:              @car_info[:height],
-      speed:               @car_info[:speed], 
-      acceleration:        @car_info[:acceleration], 
-      fuel_consumption:    @car_info[:fuel_consumption],
-      tank_size:           @car_info[:tank_size],
-      tire:                @car_info[:tire],
-      emission_standards:  @car_info[:emission_standards],
-      airbag:              @car_info[:airbag],
-      brake:               @car_info[:brake],
-      tahvie_hava:         @car_info[:tahvie_hava],
-      seats:               @car_info[:seats],
-      shisheha:            @car_info[:shisheha],
-      ayneha:              @car_info[:ayneha],
-      cheraghha:           @car_info[:cheraghha],
-      other_facilities:    @car_info[:other_facilities]
-    )
-  end
-
-
 end

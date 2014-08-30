@@ -55,6 +55,8 @@ Mashin::Application.routes.draw do
   resources :topics do
     resources :articles
   end
+
+  get "car_infos" => 'scrap_car_infos#index'
   # get '' => 'topics#index', constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" and r.subdomain=="home"}
   # get '' => 'topics#show',  constraints: lambda { |r| r.subdomain.present? and r.subdomain != "www" }
 
