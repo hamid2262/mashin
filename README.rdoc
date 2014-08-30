@@ -35,10 +35,10 @@ sudo apt-get install imagemagick
 
 RAILS_ENV=production bundle exec rails c
 
-pg_dump -F c -v -U postgres -h localhost mashin_production -f /tmp/backupi.psql
+pg_dump -F c -v -U postgres -h localhost mashin_production -f /home/deployer/backups/backupi.psql
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -U deploye -d mashin_development /home/hamid/Desktop/backupi.psql
 
-pg_restore --verbose --clean --no-acl --no-owner -h localhost -U mashin -d mashin_production /home/hamid/Desktop/backupi.psql
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -U deploye -d mashin_production /home/hamid/Desktop/backupi.psql
 
 RAILS_ENV=production bundle exec
 Please feel free to use a different markup language if you do not plan to run

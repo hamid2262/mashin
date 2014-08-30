@@ -13,7 +13,7 @@ class CarModelsController < ApplicationController
   # GET /car_models/1.json
   def show
     @search = Search.new
-    @built_years = @car_model.built_years
+    @built_years = @car_model.built_years.order(:year)
     @ads = @car_model.active_ads.page(params[:page]).per_page(15)
   end
 
