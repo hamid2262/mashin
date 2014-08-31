@@ -3,7 +3,7 @@ require "bundler/capistrano"
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 
-server "37.139.15.121", :web, :app, :db, primary: true
+server "178.62.42.20", :web, :app, :db, primary: true
 
 set :application, "mashin"
 set :user, "deployer"

@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: mashin_development
   pool: 5
-  username: deploye
+  username: deployer
   password: hamid
   host: localhost
 
