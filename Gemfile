@@ -28,6 +28,8 @@ gem 'non-stupid-digest-assets', '~> 1.0.4'
 # gem 'jquery-turbolinks'
 
 gem 'nokogiri', '~> 1.6.1'
+gem "htmlentities"
+gem "truncate_html"
 gem  'whenever', require: false
 
 gem "gretel"

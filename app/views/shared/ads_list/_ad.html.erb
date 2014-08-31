@@ -1,33 +1,44 @@
-<div class="thumb-title search_col col-xs-7 ">
-    <span class="pull-left">
-      <% if current_user and current_user.is_admin? %>
-        <%= ad.source_url.split("/")[2] %>
-      <% end %>
-    </span>
+<div itemscope itemtype="https://schema.org/Car">
+  <div class="thumb-title search_col col-xs-7 ">
+      <span class="pull-left">
+        <% if current_user and current_user.is_admin? %>
+          <%= ad.source_url.split("/")[2] %>
+        <% end %>
+      </span>
+    <!-- SEO -->
+        <meta itemprop="manufacturer" content=<%= ad.make.name %> >
+        <meta itemprop="model" content=<%= ad.car_model.name %> >
+        <meta itemprop="description" content=<%= ad_description ad %> >
+        <span itemscope itemtype="https://schema.org/Date">
+          <meta itemprop="releaseDate" content=<%= ad.year %> >
+        </span>
+      
+    <!--  -->
 
+    <div class="thumb">
+      <%= thumb_image ad %>
+    </div>
 
-  <div class="thumb ">
-    <%= thumb_image ad %>
+    <h2 itemprop="name" class="title">
+      <%= ad_title ad %> 
+      <span class="hidden">, <%= ad.city %></span>
+    </h2>
+    <div class="truncate small">
+      <%= truncate_details ad %>
+    </div>
   </div>
 
-  <div class="title ">
-    <%= ad_title ad %> 
+  <div class="city search_col col-xs-2 ">
+    <div><%= ad.city %></div>
   </div>
-  <div class="truncate small">
-    <%= truncate_details ad %>
+
+  <div class="date search_col col-xs-2 ">
+    <div><%= date_human ad.updated_at %></div>    
   </div>
-</div>
 
-<div class="city search_col col-xs-2 ">
-  <div><%= ad.city %></div>
-</div>
-
-<div class="date search_col col-xs-2 ">
-  <div><%= date_human ad.updated_at %></div>    
-</div>
-
-<div class="price search_col col-xs-1 ">
-  <div class="amount">
-    <%= price_human ad.price  %>
-  </div>  
+  <div class="price search_col col-xs-1 ">
+    <div class="amount">
+      <%= price_human ad.price  %>
+    </div>  
+  </div>
 </div>
