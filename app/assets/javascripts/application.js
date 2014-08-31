@@ -15,7 +15,7 @@
 //= require jquery.validate
 //= require localization/messages_fa
 //= require jquery_ujs
-//= require jquery.ui.slider
+//= require jquery-ui/slider
 
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
