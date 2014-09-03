@@ -19,14 +19,15 @@ ActiveRecord::Schema.define(version: 20140829221843) do
   create_table "ad_other_fields", force: true do |t|
     t.integer  "ad_id"
     t.string   "tel"
+    t.string   "source_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "viewed",        default: 0
     t.integer  "updated_times", default: 5
-    t.string   "source_url"
   end
 
   add_index "ad_other_fields", ["ad_id"], name: "index_ad_other_fields_on_ad_id", using: :btree
+  add_index "ad_other_fields", ["source_url"], name: "index_ad_other_fields_on_source_url", using: :btree
 
   create_table "ads", force: true do |t|
     t.integer  "user_id"
@@ -245,6 +246,8 @@ ActiveRecord::Schema.define(version: 20140829221843) do
     t.string   "referer"
     t.string   "user_ip"
   end
+
+  add_index "searches", ["user_ip"], name: "index_searches_on_user_ip", using: :btree
 
   create_table "subtopics", force: true do |t|
     t.integer  "topic_id"

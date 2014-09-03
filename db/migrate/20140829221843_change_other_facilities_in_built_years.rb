@@ -3,7 +3,7 @@ class ChangeOtherFacilitiesInBuiltYears < ActiveRecord::Migration
     change_column :built_years, :other_facilities, :text
   end
 
-  def down
-    change_column :built_years, :other_facilities, :string
-  end
+  # def down
+  #   change_column :built_years, :other_facilities, :string
+  # end
 end

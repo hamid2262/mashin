@@ -19,3 +19,63 @@ RAILS_ENV=production bundle exec
 
 ssh deployer@37.139.15.121
 RAILS_ENV=production bundle exec rake scrap_car_info
+
+Droplet
+apt-get update
+apt-get -y install curl git-core python-software-properties
+add-apt-repository ppa:nginx/stable
+apt-get update
+apt-get -y install nginx
+service nginx start
+
+add-apt-repository ppa:pitti/postgresql
+apt-get update
+apt-get install postgresql libpq-dev
+
+sudo -u postgres psql
+\password
+create user deployer with password 'hamid';
+create database mashin_production owner deployer;
+
+apt-get install postfix
+
+add-apt-repository ppa:chris-lea/node.js
+apt-get update
+ apt-get -y install nodejs
+
+adduser deployer --ingroup sudo
+su deployer
+
+curl -L https://raw.github.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash
+
+# cp to
+ nano ~/.bashrc
+
+export RBENV_ROOT="${HOME}/.rbenv"
+if [ -d "${RBENV_ROOT}" ]; then
+  export PATH="${RBENV_ROOT}/bin:${PATH}"
+  eval "$(rbenv init -)"
+fi
+
+. ~/.bashrc
+rbenv bootstrap-ubuntu-12-04
+rbenv install 2.1.2
+rbenv global 2.1.2
+ruby -v
+
+gem install bundler --no-ri --no-rdoc
+rbenv rehash
+bundle -v
+
+ssh git@github.com
+
+cap deploy:setup
+
+
+cd apps/blog/shared/config/
+~/apps/blog/shared/config$ vim database.yml
+
+
+cat ~/.ssh/id_rsa.pub | ssh deployer@178.xxx.xxx.xxx 'cat >> ~/.ssh/authorized_keys'
+
+ssh-add
