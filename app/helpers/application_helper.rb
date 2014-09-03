@@ -18,7 +18,7 @@ module ApplicationHelper
 	end
 
   def cached_makes_for_select
-    Rails.cache.fetch([:select_makes], expires_in: 120.minutes) do 
+    @cached_makes_for_select ||= #Rails.cache.fetch([:select_makes], expires_in: 1.minutes) do 
       option_groups_from_collection_for_select(
         Make.for_menus, 
         :deligated_car_models, 
@@ -26,7 +26,7 @@ module ApplicationHelper
         :id, 
         :name
       )
-    end
+    # end
   end
 
   def km_range
