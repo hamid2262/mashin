@@ -112,7 +112,7 @@ private
     flag = true if url.blank?
     ad_others = AdOtherField.where(source_url: url).first
     if ad_others
-      ad_others.ad.destroy
+      ad_others.destroy
     end
     flag
   end

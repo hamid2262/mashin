@@ -5,7 +5,7 @@
   <div class="panel-body">
     <%= two_column_title_value 5,7, "name", @ad.user.name if @ad.user %>
     <%= two_column_title_value 5,7, "location", @ad.location %>
-    <%= two_column_title_value 5,7, "contact_tel", ad_tel(@ad) %>
+    <%= two_column_title_value 5,7, "contact_tel", ad_tel(@ad) if @ad.ad_other_field %>
     <%= two_column_title_value 5,7, ".created_date", date_human(@ad.created_at) %>
     <% if @ad.updated_at - @ad.created_at > 100 %>
       <%= two_column_title_value 5,7, ".updated_date", date_human(@ad.updated_at) %>     

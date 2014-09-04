@@ -17,7 +17,10 @@ class AdsController < ApplicationController
 
   def show
     @recommended_ads = @ad.recommended_ads 4
+    begin
     @ad.view_counter_increment(current_user)
+  rescue
+  end
   end
 
   def new
