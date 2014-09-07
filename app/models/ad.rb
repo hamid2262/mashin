@@ -37,10 +37,12 @@ class Ad < ActiveRecord::Base
   end
 
   def built_year
-    if self.year_format
-      self.car_model.built_years.where(year: self.year.year - 621).first
-    else
-      self.car_model.built_years.where(year: self.year.year).first
+    if self.year
+      if self.year_format
+        self.car_model.built_years.where(year: self.year.year - 621).first
+      else
+        self.car_model.built_years.where(year: self.year.year).first
+      end
     end
   end
 
