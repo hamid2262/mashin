@@ -141,13 +141,14 @@ private
         return car_model.id  if title.include? car_model.name
       end
       car_model_name = title.gsub(make.name, "").strip
-      car_model = CarModel.find_by(name: car_model_name)
+      car_model = make.car_models.find_by(name: car_model_name)
       unless car_model
         car_model = CarModel.create(name: car_model_name, make_id: make.id)
       end    
     else
       car_model_name = row.at_css(".base_fields .car_model").text
-      car_model = CarModel.find_by(name: car_model_name)
+      make = Make.find make(row)
+      car_model = make.car_models.find_by(name: car_model_name)
       unless car_model
         car_model = CarModel.create(name: car_model_name, make_id: make(row))
       end    

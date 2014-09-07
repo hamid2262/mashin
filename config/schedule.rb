@@ -1,7 +1,7 @@
 set :output, "#{path}/log/cron.log"
 
 every 1.minutes do
-  # rake "scrap_bama"
+  rake "scrap_bama"
 end
 
 # every 3.minutes do
