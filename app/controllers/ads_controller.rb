@@ -2,7 +2,7 @@ class AdsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   before_action :load_ad, only: :create
-  load_and_authorize_resource
+  authorize_resource
 
   before_action :set_ad, only: [:verify, :show, :edit, :update, :destroy]
 
@@ -16,11 +16,15 @@ class AdsController < ApplicationController
   end
 
   def show
+    if @ad.nil?
+      redirect_to root_url 
+      return
+    end
     @recommended_ads = @ad.recommended_ads 4
     begin
-    @ad.view_counter_increment(current_user)
-  rescue
-  end
+      @ad.view_counter_increment(current_user)
+    rescue
+    end
   end
 
   def new
@@ -84,7 +88,7 @@ class AdsController < ApplicationController
 
   private
     def set_ad
-      @ad = Ad.find(params[:id])
+      @ad = Ad.find_by(id: params[:id])
     end
 
     def ad_params
