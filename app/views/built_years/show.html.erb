@@ -1,14 +1,14 @@
 <% @page_title = " اتویابی - خرید و فروش خودرو #{@car_model.make.name} #{@car_model.name} #{@built_year.year}"  %>
-<%# breadcrumb :built_year, @built_year %>
+<% breadcrumb :built_year, @built_year %>
 
-<div id="car_model_show">
+<div id="built_year_show" class="pages_with_search_form">
   <div id="search_list" class="col-sm-7 col-md-9">
     <%= render 'shared/ads_list' %>
   </div> 
 
   <div id="search_bar" class="col-sm-5 col-md-3">
     <%= render 'shared/search_form' %>
-    <%#= render 'car_models/show/built_years_list' %>
+    <%= render 'built_years/show/built_year_car_details' %>
   </div>
 </div>
 
