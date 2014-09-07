@@ -2,6 +2,9 @@ fa:
   Are you sure?: آیا از حذف این رکورد مطمین هستید؟
   actions: عملیاتها
   actived: فعال
+  application:
+    footer:
+      copyright: تمامی حقوق این سایت متعلق به سایت اتویابی می باشد.
   bodycolor: رنگ بدنه
   carmodel: مدل
   damaged: رنگ شدگی

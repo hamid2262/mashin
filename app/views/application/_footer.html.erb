@@ -1,4 +1,44 @@
 <%= render "ga" if Rails.env.production?  %>
+  
+  <% makes=["peugeot", "pride", "hyundai", "kia", "renault", "samand", "toyota", "nissan", "mvm", "mercedes-benz", "bmw", "lifan"] %>
+
+  <div id="footer">
+    <div class="container small">
+
+      <div id="sec1" class="row" >
+        <% makes.each do |make| %>
+          <% make_obj = Make.find_by(slug: make) %>
+          <div class="col-md-2 col-lg-1 list">
+            <h3 class="title">
+              <%= link_to make_obj.name, make_obj, title:  "فروش خودرو #{make_obj.name}" %>
+            </h3>
+            <ul>
+              <% make_obj.car_models.each do |car_model| %>
+                <% if car_model.slug %>
+                  <li><%= link_to car_model.name, make_car_model_path(make_id: make_obj.slug, id: car_model.slug), class: "footer_list", title:  "فروش خودرو #{make_obj.name} #{car_model.name}"  %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      </div>
+
+      <div id="sec2" class="row">
+        <p id="copyright" class="text-muted pull-right">
+          <%= t('application.footer.copyright', year: Time.now().year, href: link_to(t("site_info.title"), root_path) ).html_safe %>
+        </p>
+
+        <ul id="social" class="pull-left ">
+          <a href="http://www.facebook.com/otoyabi.ir"><li id="facebook-link" ></li></a> 
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+
+
 
 </body>
 </html>
