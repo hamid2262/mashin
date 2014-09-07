@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   
   check_authorization :unless => :devise_controller?
   before_action :get_user_informations
+  before_action :redirect_from_otoyabi_dot_ir
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
   end
@@ -28,4 +29,11 @@ private
     # end
   end
 
+  def redirect_from_otoyabi_dot_ir
+    url = request.url
+    if url.include? "otoyabi.ir"
+      new_url = url.sub "otoyabi.ir", "otoyabi.com"
+      redirect_to new_url
+    end
+  end
 end
