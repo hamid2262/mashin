@@ -26,7 +26,7 @@ class Article < ActiveRecord::Base
   end
 
   def same_subtopic_articles
-    Article.where(subtopic_id: sisters.ids).order("RANDOM()")
+    Article.where(subtopic_id: sisters.ids).order("RANDOM()").limit(30)
   end
 
 private

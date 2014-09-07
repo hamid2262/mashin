@@ -5,11 +5,10 @@
   </div>
 <% end %>
 
-<h2 class="title">
-  <%=  %>
-  <%= link_to ad_title(@ad), ad_url(@ad), title: ad_seo_title(@ad) %>
+<h1 class="title">
+  <%= ad_title(@ad) %>
   <% if can? :edit, @ad %>
     <%= link_to t('edit'),  edit_ad_path(@ad), class: "btn btn-primary" %>
     <span class="size12 <%= @ad.status_human %>"><%= t "#{@ad.status_human}" %></span>
   <% end %>        
-</h2>
+</h1>

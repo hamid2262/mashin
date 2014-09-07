@@ -18,6 +18,6 @@ crumb :built_year do |built_year|
 end
 
 crumb :ad do |ad|
-  link "مشاهده جزئیات", ad_path
+  link "مشخصات خودرو", ad_path
   parent :built_year, ad.built_year
 end

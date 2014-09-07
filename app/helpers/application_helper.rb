@@ -90,9 +90,10 @@ module ApplicationHelper
   def ad_title ad
     if ad.user or (ad.make_id and ad.source_url and ad.source_url.include? "www.bama.ir") 
       title = " "
-      title = "<span class='pull-right title_element'>#{ad.make_name}، &nbsp;</span>"  if ad.make_name
-      title = title + " <span class='pull-right title_element'>#{ad.car_model_name}،&nbsp;</span>" if ad.car_model_name.present?     
-      title = title + " <span class='pull-right title_element'>#{appropriate_year(ad) }</span> <br>" if ad.year or ad.usage_type==1           
+      title = "#{ad.make_name}،"  if ad.make_name
+      title = title + " #{ad.car_model_name}، " if ad.car_model_name.present?     
+      title = title + " #{appropriate_year(ad)}، " if ad.year or ad.usage_type==1           
+      title = title + " #{ad.location }" if ad.year or ad.usage_type==1           
     else
       title = ad.title
       title.gsub! "فروش", "" if title

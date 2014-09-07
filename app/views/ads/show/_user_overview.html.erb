@@ -1,7 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading no_background">
-    <h3 class="panel-title"><%= t ".seller_details" %></h3>
-  </div>
+  <div class="panel-heading"> <%= t ".seller_details" %> </div>
   <div class="panel-body">
     <%= two_column_title_value 5,7, "name", @ad.user.name if @ad.user %>
     <%= two_column_title_value 5,7, "location", @ad.location %>
