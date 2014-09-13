@@ -71,11 +71,13 @@ class ScrapCarInfo
   end
 
   def check_existance_and_save
-    make = Make.find_by(name: @row_hash[:make_farsi])
-    make.update_attribute(:slug, @row_hash[:make]) if make.slug.nil?
+    make = Make.find_or_create_by(name: @row_hash[:make_farsi])
+    make.update_attribute(:slug, @row_hash[:make]) # if make.slug.nil?
+    make.update_attribute(:deligate, make.id) if make.deligate.nil?
 
-    car_model = make.car_models.find_by(name: @row_hash[:car_model_farsi])
-    car_model.update_attribute(:slug, @row_hash[:car_model]) if (car_model and car_model.slug.nil?)
+    car_model = CarModel.find_or_create_by(name: @row_hash[:car_model_farsi], make_id: make.id)
+    car_model.update_attribute(:slug, @row_hash[:car_model]) # if (car_model and car_model.slug.nil?)
+    car_model.update_attribute(:deligate, car_model.id) if car_model.deligate.nil?
 
     if car_model and make
       built_year = BuiltYear.where(make_id: make.id , car_model_id: car_model.id , year: @row_hash[:year]).first 

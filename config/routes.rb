@@ -47,7 +47,9 @@ Mashin::Application.routes.draw do
   resources :body_colors
   resources :internal_colors
   resources :makes do
+    get 'scrap', on: :collection
     resources :car_models do
+      get 'scrap', on: :collection
       resources :built_years
     end
   end

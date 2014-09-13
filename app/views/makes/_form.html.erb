@@ -1,9 +1,9 @@
-<%= simple_form_for(@make) do |f| %>
+<%= simple_form_for(@make, url: make_path) do |f| %>
   <div class="field">
     <%= f.input :name %><br>
     <%= f.input :slug %><br>
 
-    <%= f.input :deligate, collection: Make.order(:name).map{|m| [m.name,m.id]} %>
+    <%= f.input :deligate, collection: Make.order(:id).map{|m| ["#{m.id} #{m.name}",m.id]} %>
     <%= f.input :visible, as: :boolean %>
 
     <%= f.label :year_format, "Year _Format" %><br>

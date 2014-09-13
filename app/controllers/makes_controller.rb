@@ -47,7 +47,7 @@ class MakesController < ApplicationController
   def update
     respond_to do |format|
       if @make.update(make_params)
-        format.html { redirect_to @make, notice: 'Make was successfully updated.' }
+        format.html { redirect_to makes_path, notice: 'Make was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -66,6 +66,11 @@ class MakesController < ApplicationController
     end
   end
 
+  def scrap
+    Make.scrap
+    redirect_to makes_path
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_make

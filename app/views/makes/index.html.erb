@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>slug</th>
       <th>id</th>
       <th>deligate</th>
       <th></th>
@@ -24,12 +25,12 @@
           <% deligate = Make.where(id: make.deligate).first %> 
           <%= deligate.name if deligate.present? %>
         </td>
-        <td><%= Ad.where(make_id: make.id).count %> </td>
+        <td><%= Ad.where(make_id: make.id, status: 2).count %> </td>
         <td><%= year_format_human make %> </td>
         <td><%= make.visible %> </td>
-        <td><%= link_to 'Show', make %></td>
-        <td><%= link_to 'Edit', edit_make_path(make) %></td>
-        <td><%= link_to 'Destroy', make, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%#= link_to 'Show', make %></td>
+        <td><%= link_to 'Edit', edit_make_path(make.id) %></td>
+        <td><%#= link_to 'Destroy', make, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
