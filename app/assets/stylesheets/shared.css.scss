@@ -1,6 +1,9 @@
 .breadcrumb>li+li:before {
   padding: 0 2px;
 }
+.breadcrumb {
+  margin-bottom: 3px;
+}
 
 #search_show, #make_show, #car_model_show, .pages_with_search_form{
   #search_bar{
@@ -111,7 +114,7 @@
       display: block;
       height: 80px;
       padding-right: 6px;
-      background: rgba(247, 247, 247, 0.57);
+      background: rgba(243, 243, 243, 0.57);
       margin: 1px;
       border-top: 1px solid #F7F7F7;
       border-bottom: 1px solid #EEE;
