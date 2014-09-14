@@ -15,6 +15,14 @@ class Make < ActiveRecord::Base
     end
   end
 
+  def deligate_obj
+    if self.deligate   
+      Make.find self.deligate 
+    else
+      self
+    end
+  end  
+
   def ads
     @ads ||= find_ads
   end
@@ -34,6 +42,10 @@ class Make < ActiveRecord::Base
     get_makes doc
   end
 
+  def popular_car_model_menu
+    self.car_models.where('id=deligate').order(:name)
+  end
+
   private
 
   def self.get_makes doc
@@ -51,9 +63,6 @@ class Make < ActiveRecord::Base
       end
     end
   end
-
-
-private
 
   def find_ads
     ads = Ad.all.includes(:car_model, car_model: :make)

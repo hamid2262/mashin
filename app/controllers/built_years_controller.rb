@@ -67,13 +67,12 @@ class BuiltYearsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_built_year
-      begin
-        @make = Make.find_by slug: params[:make_id]
-        @car_model  = @make.car_models.where(slug: params[:car_model_id]).first
-        @built_year = @car_model.built_years.where(year: params[:id]).first
-      rescue
-        redirect_to searches_path
-      end
+      @make = Make.find_by slug: params[:make_id]
+      @car_model  = @make.car_models.where(id: params[:car_model_id]).first
+      @car_model  = @make.car_models.where(slug: params[:car_model_id]).first if @car_model.nil?
+      
+      @built_year = @car_model.built_years.where(id: params[:id]).first 
+      @built_year = @car_model.built_years.where(year: params[:id]).first if @built_year.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

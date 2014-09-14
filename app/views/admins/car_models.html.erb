@@ -1,0 +1,57 @@
+<%= simple_form_for(Make.new, url: car_models_admin_path, method: :get) do |f| %>
+  <div class="row">
+    <div class="col-sm-3">
+      <%= f.input :id, label: false, collection: Make.order(:name).map{|m| ["#{m.id} = #{m.name}",m.id]} %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.submit "filter" %>
+    </div>
+    <div class="col-sm-3">
+      <%= link_to "back", car_models_admin_path %>
+    </div>
+  </div>
+<% end %>
+
+<%= render 'shared/paginate', items: @car_models %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <td>id</td>
+      <td>make.name</td>
+      <td>deligate</td>
+      <td>name</td>
+      <td>slug</td>
+      <td>visible</td>
+      <td>count</td>
+      <td>count</td>
+      <td>count</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @car_models.each do |car_model| %>
+      <% if car_model.deligate.nil? %>
+        <tr class="danger">
+      <% elsif car_model.deligate != car_model.id  %>
+        <tr class="success">
+      <% end %>
+
+        <td><%= car_model.id %></td>
+        <td><%= car_model.make.name %></td>
+        <td><%= car_model.deligate %> - <%= CarModel.find(car_model.deligate).name if car_model.deligate%></td>
+        <td><%= car_model.name %></td>
+        <td><%= link_to car_model.slug, make_car_model_path(make_id: car_model.make.slug, id: car_model.slug) if car_model.slug %></td>
+        <td><%= car_model.visible %></td>
+        <td><%= Ad.where(car_model_id: car_model.id).count %></td>
+
+        <% if car_model.make.deligate_obj.slug %>
+          <%= simple_form_for(car_model, url: make_car_model_path(make_id: car_model.make.deligate_obj.slug, id: car_model.id) ) do |f| %>
+            <td><%= f.input :deligate, label: false, collection: car_model.make.car_models.order(:id).map{|m| ["#{m.id} = #{m.name}",m.id]} %></td>
+            <td><%= f.submit %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= render 'shared/paginate', items: @car_models %>

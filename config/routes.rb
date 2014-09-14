@@ -35,6 +35,8 @@ Mashin::Application.routes.draw do
       get "unverified_ads"
       get "topics"
       get "subtopics"
+      get "car_models"
+      get 'scrap_car_info_car_models'
     end
   end
 
@@ -49,10 +51,12 @@ Mashin::Application.routes.draw do
   resources :makes do
     get 'scrap', on: :collection
     resources :car_models do
-      get 'scrap', on: :collection
+      # get 'scrap_car_info', on: :collection
       resources :built_years
     end
   end
+
+
   resources :subtopics
   resources :topics do
     resources :articles

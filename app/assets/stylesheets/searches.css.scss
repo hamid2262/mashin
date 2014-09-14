@@ -9,17 +9,17 @@
 }
 #search_show{
   #space_for_top_filter{
-    height: 33px;
+    height: 29px;
   }
   #top_filter_section{
-    border-bottom: 1px solid #E4E4E4;
+    border: 1px solid #E4E4E4;
     padding: 0px 0px 3px 1px;
     position: fixed;
     background: #f1f1f1;
     z-index: 100;
     padding: 3px 3px;
-    top: 40px;
-    margin-right: 2px;
+    top: 33px;
+    margin-right: 0px;
     margin-top: 5px;
     @media (max-width: 749px) {
       display: none;
@@ -34,7 +34,7 @@
     }
 
     @media (min-width: 1170px) { 
-      width: 838px; 
+      width: 847px; 
     }
 
     .fields{

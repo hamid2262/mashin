@@ -8,6 +8,8 @@
       <%= t"site_name" %>
     <% end %>
   </title>
+
+  <link rel="shortcut icon" href="<%= image_path "favicon.ico" %>"  >
   <meta name="LANGUAGE" content="fa" />
   <meta name="msvalidate.01" content="CC3BAF20AEC730704DC8E33BB38FAC94" />
   <meta name="google-site-verification" content="Y24KTNibeWr3ry1BSXsq8Jwc304y9eBE4o5ue8JjZro" />
@@ -18,7 +20,7 @@
   <% elsif @page_title %>
     <meta name="description" content= <%= @page_title %> >
   <% end %>
-  
+
   <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places" type="text/javascript"></script>
 
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>

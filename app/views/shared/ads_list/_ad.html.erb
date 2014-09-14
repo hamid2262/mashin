@@ -2,7 +2,7 @@
   <div class="thumb-title search_col col-xs-7 ">
       <span class="pull-left">
         <% if current_user and current_user.is_admin? %>
-          <%= ad.source_url.split("/")[2] %>
+          <%= ad.source_url.split("/")[2] if ad.source_url %>
         <% end %>
       </span>
     <!-- SEO -->

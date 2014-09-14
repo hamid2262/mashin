@@ -6,7 +6,7 @@
     <% @car_models.each do |car_model| %>
       <li>
         <span class="glyphicon glyphicon-chevron-left"></span>
-        <%= link_to car_model.name, make_car_model_path(make_id: @make.slug ,id: car_model.slug), title: "#{@make.name} #{car_model.name}" %>
+        <%= link_to car_model.name, make_car_model_path(make_id: @make.slug ,id: car_model), title: "#{@make.name} #{car_model.name}" %>
       </li>
     <% end %>
   </ul>

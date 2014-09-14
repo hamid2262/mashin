@@ -13,7 +13,7 @@ class MakesController < ApplicationController
   # GET /makes/1.json
   def show
     @search = Search.new
-    @car_models = @make.car_models.where.not(slug: nil).order(:name)
+    @car_models = @make.popular_car_model_menu
     @ads = @make.ads.page(params[:page]).per_page(15)
   end
 

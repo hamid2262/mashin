@@ -8,4 +8,5 @@ class CarModel < ActiveRecord::Base
   def active_ads
     self.ads.where(status: 2).order("updated_at DESC")
   end
+
 end
