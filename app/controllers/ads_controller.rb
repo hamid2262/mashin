@@ -11,6 +11,7 @@ class AdsController < ApplicationController
   end
 
   def verify
+    AdsNotificationMailer.ad_result(@ad, params[:code]).deliver
     @ad.verifying params[:code]
     redirect_to :back
   end
