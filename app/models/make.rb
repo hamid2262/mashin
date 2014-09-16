@@ -15,6 +15,11 @@ class Make < ActiveRecord::Base
     end
   end
 
+  def next
+    Make.where("id > ?", self.id).first
+  end
+
+
   def deligate_obj
     if self.deligate   
       Make.find self.deligate 

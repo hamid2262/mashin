@@ -9,10 +9,15 @@
     <div class="col-sm-3">
       <%= link_to "back", car_models_admin_path %>
     </div>
+
+    <% if params[:make] %>
+      <% make = Make.find params[:make][:id]  %>
+      <%= link_to "next", car_models_admin_path(make:{id: make.next.id} ) %>
+    <% end %>
   </div>
 <% end %>
 
-<%= render 'shared/paginate', items: @car_models %>
+<%= render 'shared/paginate', items: @car_models if params[:make].nil? %>
 
 <table class="table table-bordered">
   <thead>
@@ -54,4 +59,4 @@
     <% end %>
   </tbody>
 </table>
-<%= render 'shared/paginate', items: @car_models %>
+<%= render 'shared/paginate', items: @car_models if params[:make].nil? %>
