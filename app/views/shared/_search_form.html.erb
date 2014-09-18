@@ -21,7 +21,7 @@
 				<div class="input grouped_select optional form-group">
 					<%= f.label :car_model_id, t("car_model"), class: "grouped_select optional" %>
 					<%= f.select :car_model_id, 
-						cached_makes_for_select,{}, 
+						cached_makes_for_select(f.object.car_model_id),{}, 
 						{id: "car_model_id", class: "select optional form-control car_model_en"}  %>
 				</div>
 				<%= remove_filter_buttun f.object.car_model_id %>

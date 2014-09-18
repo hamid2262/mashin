@@ -13,6 +13,9 @@
     <% if params[:make] %>
       <% make = Make.find params[:make][:id]  %>
       <%= link_to "next", car_models_admin_path(make:{id: make.next.id} ) %>
+    <% else %>
+      <% make = Make.all.minimum :id  %>
+      <%= link_to "next", car_models_admin_path(make:{id: make.next.id} ) %>      
     <% end %>
   </div>
 <% end %>

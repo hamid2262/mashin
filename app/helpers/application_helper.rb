@@ -17,14 +17,15 @@ module ApplicationHelper
 	 	message.html_safe
 	end
 
-  def cached_makes_for_select
+  def cached_makes_for_select selected=nil
     @cached_makes_for_select ||= #Rails.cache.fetch([:select_makes], expires_in: 1.minutes) do 
       option_groups_from_collection_for_select(
         Make.for_menus, 
         :deligated_car_models, 
         :name, 
         :id, 
-        :name
+        :name,
+        selected
       )
     # end
   end
