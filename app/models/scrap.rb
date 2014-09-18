@@ -112,6 +112,9 @@ private
     flag = true if url.blank?
     ad_others = AdOtherField.where(source_url: url).first
     if ad_others
+      ad_others.ad.status = 6
+      ad_others.ad.save
+      ad_others.ad.image_urls.destroy_all
       ad_others.destroy
     end
     flag

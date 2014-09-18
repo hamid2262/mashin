@@ -147,6 +147,8 @@ class Ad < ActiveRecord::Base
       "sold" 
     when 5, 50
       "expired"
+     when 6
+      "dupplicate"
     end
   end
 

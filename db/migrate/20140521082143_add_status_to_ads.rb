@@ -10,6 +10,7 @@ class AddStatusToAds < ActiveRecord::Migration
     # 33:  price problem rejected
     # 4:  sold
     # 5:  expired
+    # 6:  duplicated
     remove_column :ads, :active
   end
   def down
