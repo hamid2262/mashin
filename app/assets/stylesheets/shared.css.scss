@@ -1,3 +1,25 @@
+
+.popover{
+  z-index: 10000;
+  max-width :50% ;
+  width :50% ;
+  .popover-title {
+    text-align: right;
+  }
+  .popover-content{
+    text-align: right;
+    .col-sm-6 {
+      padding-left: 0px;
+    }
+    img{
+      border: 1px solid #A5A5A5;
+      padding: 1px;
+      margin: 2px;
+      border-radius: 5px;
+    }
+  }
+}
+
 .breadcrumb>li+li:before {
   padding: 0 2px;
 }

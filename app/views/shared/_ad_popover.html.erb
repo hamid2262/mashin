@@ -1,0 +1,32 @@
+<%  
+case ad.thumb_images.size   
+when 0
+  col2_img = 0
+  col1_size = 6
+when 1
+  col2_img = 12
+  col1_size = 4
+else
+  col2_img = 6
+  col1_size = 4
+end
+%>
+
+<div id="Title-<%= ad.id %>" style="display: none;">
+   <%= ad_title(ad) %>
+</div> 
+<div id="Content-<%= ad.id %>" style="display: none;width: 600px;">
+  <div class="row">
+    <div class="col-sm-<%= col1_size %>">
+      <%= render 'ads/show/car_details', ad: ad %>
+    </div>
+
+    <div class="col-sm-8">
+      <% ad.thumb_images.each do |img| %>
+        <div class="col-sm-<%= col2_img %> ">
+          <%=  image_tag(img.url, class: "img-responsive" ) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

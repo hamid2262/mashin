@@ -21,7 +21,7 @@
 //= require jquery-fileupload/vendor/tmpl
 
 //= require bootstrap.min
-//= require underscore-min
+// require underscore-min
 //= require gmaps/google
 
 //= require_tree .
@@ -50,4 +50,26 @@ $(function() {
   $('.tooltip_bottom').tooltip();
 
   $(".validate-form").validate();
+
+
+
+  // Enabling Ad Popover on search page
+  $(".popoverData").popover({
+      html : true, 
+      container: 'body',
+      placement : "bottom",
+      trigger : "hover",
+      delay: { "hide": 50 },
+      content: function() {
+        id = $(this).data('id');
+        return $('#Content-'+id).html();
+      },
+      title: function() {
+        id = $(this).data('id');
+        return $('#Title-'+id).html();
+      }
+  });
+
+
+
 });
