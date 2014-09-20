@@ -59,7 +59,7 @@ $(function() {
       container: 'body',
       placement : "bottom",
       trigger : "hover",
-      delay: { "hide": 50 },
+      delay: { "hide": 5 },
       content: function() {
         id = $(this).data('id');
         return $('#Content-'+id).html();

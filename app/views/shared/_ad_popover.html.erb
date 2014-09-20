@@ -1,9 +1,6 @@
 <%  
 case ad.thumb_images.size   
-when 0
-  col2_img = 0
-  col1_size = 6
-when 1
+when 0..1
   col2_img = 12
   col1_size = 4
 else
@@ -15,16 +12,23 @@ end
 <div id="Title-<%= ad.id %>" style="display: none;">
    <%= ad_title(ad) %>
 </div> 
+
 <div id="Content-<%= ad.id %>" style="display: none;width: 600px;">
   <div class="row">
-    <div class="col-sm-<%= col1_size %>">
-      <%= render 'ads/show/car_details', ad: ad %>
+    <div  class="car_details_body col-sm-<%= col1_size %>">
+      <%= render 'ads/show/car_details/car_details_body', ad: ad %>
     </div>
 
     <div class="col-sm-8">
-      <% ad.thumb_images.each do |img| %>
-        <div class="col-sm-<%= col2_img %> ">
-          <%=  image_tag(img.url, class: "img-responsive" ) %>
+      <% if ad.thumb_images.present? %>
+        <% ad.thumb_images.each do |img| %>
+          <div class="col-sm-<%= col2_img %> ">
+            <%= ad_image ad, img %>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-sm-8 ">
+          <%=  image_tag IMAGES_PATH+"default_auto_big.gif", class: "img-responsive"  %>
         </div>
       <% end %>
     </div>

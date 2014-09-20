@@ -25,6 +25,7 @@
     <div id="recommended_ads-panel-body" class="panel-body">
       <%= render 'ads/show/recommended_ads' %>
     </div>
-      <%= render 'shared/breadcrumbs' if @ad.built_year %>
+    <%= render 'shared/breadcrumbs' if @ad.built_year %>
+    <%= render 'ads/show/car_model_list' %>
   </div>
 </div>

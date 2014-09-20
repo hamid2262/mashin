@@ -21,6 +21,7 @@ class AdsController < ApplicationController
       redirect_to root_url 
       return
     end
+    @make = @ad.make.deligate_obj
     @recommended_ads = @ad.recommended_ads 4
     begin
       @ad.view_counter_increment(current_user)

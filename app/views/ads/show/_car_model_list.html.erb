@@ -1,0 +1,9 @@
+<div id="car_models_list" class="panel panel-default">
+  <div class="wrapper-panel panel-body">
+    <% if @make %>
+      <% @make.deligate_obj.car_models.each do |car_model| %>
+        <%= link_to "#{@make.name} - #{car_model.name}", make_car_model_path(make_id: @make.slug, id: car_model.id), title: "#{@make.name} #{car_model.name}", class: "btn btn-link col-xs-4 col-sm-3 col-md-2"  if car_model.deligate == car_model.id %>
+      <% end %>
+    <% end %>  
+  </div>
+</div>

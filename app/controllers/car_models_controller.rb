@@ -70,6 +70,7 @@ class CarModelsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_car_model
       @make = Make.find_by slug: params[:make_id]
+      @make = Make.find_by id: params[:make_id] if @make.nil?
       @car_model = @make.car_models.where(id: params[:id]).first
       @car_model = @make.car_models.where(slug: params[:id]).first if @car_model.nil?
 

@@ -68,6 +68,7 @@ class BuiltYearsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_built_year
       @make = Make.find_by slug: params[:make_id]
+      @make = Make.find_by id: params[:make_id] if  @make.nil?
       @car_model  = @make.car_models.where(id: params[:car_model_id]).first
       @car_model  = @make.car_models.where(slug: params[:car_model_id]).first if @car_model.nil?
       
