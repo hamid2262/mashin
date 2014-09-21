@@ -9,6 +9,7 @@
   <div id="search_bar" class="col-sm-5 col-md-3">
     <%= render 'shared/search_form' %>
     <%= render 'car_models/show/built_years_list' %>
+    <%= render 'car_models/show/built_year_car_details_last' if @built_year %>
   </div>
 </div>
 

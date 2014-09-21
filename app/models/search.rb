@@ -182,8 +182,13 @@ private
     values = values.where("ads.fuel=?", fuel) if fuel.present?
     values = values.where("ads.girbox=?", girbox) if girbox != nil
     
-    values = values.where( ads:{ make_id: find_make_deligates } ) if make_id.present?
-    values = values.where( ads:{ car_model_id: find_car_model_deligates } ) if car_model_id.present? and make_id.present?   
+    if make_id.present? 
+      if car_model_id.nil?
+        values = values.where( ads:{ make_id: find_make_deligates } )
+      else
+        values = values.where( ads:{ car_model_id: find_car_model_deligates } )
+      end
+    end
     values
   end
 

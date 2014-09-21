@@ -50,7 +50,7 @@
         <td><%= car_model.name %></td>
         <td><%= link_to car_model.slug, make_car_model_path(make_id: car_model.make.slug, id: car_model.slug) if car_model.slug %></td>
         <td><%= car_model.visible %></td>
-        <td><%= Ad.where(car_model_id: car_model.id).count %></td>
+        <td><%= Ad.where(car_model_id: car_model.id, status: 2).count %></td>
 
         <% if car_model.make.deligate_obj.slug %>
           <%= simple_form_for(car_model, url: make_car_model_path(make_id: car_model.make.deligate_obj.slug, id: car_model.id) ) do |f| %>

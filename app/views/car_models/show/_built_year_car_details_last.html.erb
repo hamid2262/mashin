@@ -3,9 +3,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <%= image_tag @built_year.image, class: "pull-left" %>
-      <h1 class="panel-title">
-        <%= built_year_title @built_year %>
-      </h1>
+      <h2 class="panel-title">
+        <%= "مشخصات فنی خودرو #{@built_year.car_model.make.name} #{@built_year.car_model.name} " %>
+      </h2>
     </div>
     <div class="panel-body">
       <%= render 'built_years/show/car_details_body', built_year: @built_year %>

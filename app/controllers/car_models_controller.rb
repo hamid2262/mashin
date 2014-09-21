@@ -14,7 +14,8 @@ class CarModelsController < ApplicationController
   def show
     @search = Search.new
     @built_years = @car_model.built_years.order(:year)
-    @ads = @car_model.active_ads.page(params[:page]).per_page(15)
+    @built_year = @built_years.order(:year).last
+    @ads = @car_model.ads.page(params[:page]).per_page(15)
   end
 
   # GET /car_models/new

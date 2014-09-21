@@ -73,7 +73,7 @@ class Make < ActiveRecord::Base
     ads = Ad.all.includes(:car_model, car_model: :make)
     ads = ads.order("updated_at DESC") 
     ads = ads.where("status = 2") 
-    ads = ads.where(make_id: self.id) 
+    ads = ads.where( ads:{ make_id: find_make_deligates } )
     ads
   end
 
@@ -84,4 +84,11 @@ class Make < ActiveRecord::Base
   def self.find_makes
     Make.where("id = deligate").order(name: :asc) 
   end
+
+private
+  def find_make_deligates
+    make = Make.find id
+    Make.where(deligate: make.deligate).ids
+  end
+
 end
