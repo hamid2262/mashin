@@ -4,7 +4,7 @@
 <div id="make_show">
   <div id="search_list" class="col-sm-7 col-md-9">
     <%= render 'shared/ads_list' %>
-    <h1 class="small">فروش خودرو <%= @make.name %> <span class="pull-left"> <%= @make.slug.gsub(/[^0-9a-z ]/i, ' ').upcase %> </span> </h1>
+    <%= render 'shared/make_carmodel_year_title_below', obj: @make %>
   </div> 
 
   <div id="search_bar" class="col-sm-5 col-md-3">

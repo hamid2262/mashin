@@ -1,6 +1,6 @@
 class BuiltYearsController < ApplicationController
-  before_action :set_built_year, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  before_action :set_built_year, only: [:show, :edit, :update, :destroy, :info]
+  authorize_resource
 
   # GET /built_years
   # GET /built_years.json
@@ -62,6 +62,9 @@ class BuiltYearsController < ApplicationController
       format.html { redirect_to built_years_url }
       format.json { head :no_content }
     end
+  end
+
+  def info
   end
 
   private

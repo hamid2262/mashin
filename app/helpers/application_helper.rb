@@ -117,6 +117,9 @@ module ApplicationHelper
     title.try(:html_safe)
   end
 
+  def clean_and_upcase slug
+    slug.gsub(/[^0-9a-z ]/i, ' ').upcase  if slug
+  end
 
   def thumb_image ad
       if ad.thumb_img.present?          # if in other site ad has thumbnail

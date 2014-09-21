@@ -1,10 +1,11 @@
-<br>
-<div id="built_year_car_details">
+<% @page_title =  "مشخصات فنی " + built_year_title(@built_year) %> 
+
+<div id="built_year_car_details" class="col-sm-12 col-md-8 col-md-offset-2 ">
   <div class="panel panel-default">
     <div class="panel-heading">
       <%= image_tag @built_year.image, class: "pull-left" %>
       <h1 class="panel-title">
-        <%= link_to built_year_title(@built_year), info_make_car_model_built_year_path %>
+        مشخصات فنی <%= built_year_title(@built_year) %>
       </h1>
     </div>
     <div class="panel-body">

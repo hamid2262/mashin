@@ -1,0 +1,24 @@
+<% if obj.class.name == "BuiltYear" %>
+  <% title_fa = "#{obj.car_model.make.name} #{obj.car_model.name} #{obj.year}" %>
+  <% sl_car_model = clean_and_upcase(obj.car_model.slug) %>
+  <% sl_make = clean_and_upcase obj.car_model.make.slug %>
+  <% title_en = "#{sl_make} - #{sl_car_model} - #{obj.year}" %>
+
+<% elsif obj.class.name == "CarModel" %>
+  <% title_fa = "#{obj.make.name} #{obj.name} " %>
+  <% sl_car_model = clean_and_upcase obj.slug%>
+  <% sl_make = clean_and_upcase obj.make.slug%>
+  <% title_en = "#{sl_make} - #{sl_car_model} " %>
+
+<% elsif obj.class.name == "Make" %>
+  <% title_fa = "#{obj.name}"  %>
+  <% sl_make = clean_and_upcase obj.slug %>
+  <% title_en = "#{sl_make} " %>  
+<% end %>
+
+<h1 class="small">فروش خودرو 
+  <%= title_fa %>
+  <span class="pull-left"> 
+    <%= title_en if title_en %> 
+  </span> 
+</h1>
