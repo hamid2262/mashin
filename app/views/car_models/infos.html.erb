@@ -1,0 +1,21 @@
+<div id="infos" class="col-sm-8 col-sm-offset-2">
+  <div id="built_year_list" class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        <%= t ".title" %> 
+        <%= @car_model.make.name %> 
+        <%= @car_model.name %> 
+      </h3>
+    </div>
+    <ul class="nav nav-pills nav-stacked">
+      <% @built_years.each do |built_year| %>
+        <li>
+          <%= link_to ["info", @car_model.make, @car_model, built_year] do %>
+            <%= @make.name %> - <%= @car_model.name %> - <%= built_year.year %> 
+            <%= image_tag built_year.image, class: "pull-left" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

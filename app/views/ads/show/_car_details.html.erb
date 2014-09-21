@@ -8,6 +8,13 @@
   </div>
   <div class="panel-body">
     <%= render 'ads/show/car_details/car_details_body', ad: ad %>
+    <% if ad.built_year %>
+      <%= link_to ["info",ad.make,ad.car_model, ad.built_year], class: "btn btn-info" do %>    
+        مشخصات فنی <%= built_year_title(ad.built_year) %>
+      <% end %>
+    <% elsif ad.car_model %>  
+      <%= link_to " مشخصات فنی خودرو #{ad.make.name} #{ad.car_model.name}", ["infos", ad.make, ad.car_model] %>
+    <% end %>
   </div>
 </div>
 

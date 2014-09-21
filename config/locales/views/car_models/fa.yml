@@ -1,5 +1,7 @@
 fa:
   car_models:
+    infos:
+      title: مدلهای مختلف خودرو
     show:
       built_years_list:
         popular_makes: مدلهای متداول خودرو

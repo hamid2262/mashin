@@ -1,6 +1,6 @@
 class CarModelsController < ApplicationController
   before_action :load_car_model, only: :create
-  before_action :set_car_model, only: [:show, :edit, :update, :destroy]
+  before_action :set_car_model, only: [:show, :edit, :update, :destroy, :infos]
   authorize_resource
 
   # GET /car_models
@@ -13,7 +13,7 @@ class CarModelsController < ApplicationController
   # GET /car_models/1.json
   def show
     @search = Search.new
-    @built_years = @car_model.built_years.order(:year)
+    @built_years ||= built_years 
     @built_year = @built_years.order(:year).last
     @ads = @car_model.ads.page(params[:page]).per_page(15)
   end
@@ -67,8 +67,16 @@ class CarModelsController < ApplicationController
     end
   end
 
+  def infos
+    @built_years ||= built_years 
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
+    def built_years 
+      @car_model.built_years.order(:year)
+    end
+
     def set_car_model
       @make = Make.find_by slug: params[:make_id]
       @make = Make.find_by id: params[:make_id] if @make.nil?

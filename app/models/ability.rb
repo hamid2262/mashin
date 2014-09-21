@@ -45,7 +45,7 @@ class Ability
     can :read, Home
     can :show, Ad
     can :show, Make
-    can :show, CarModel
+    can [:show, :infos], CarModel
     can [:show, :info], BuiltYear
     can [:show, :index], Article
     can [:show, :index], Topic

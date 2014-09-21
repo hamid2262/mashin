@@ -46,6 +46,9 @@ fa:
   search result: جستجو  ( %{count} مورد )
   see more: ادامه
   shamsi: شمسی
+  shared:
+    ads_list:
+      no_resault_message: هیچ موردی یافت نشد.
   show_more: ادامه
   sign_in: ورود
   sign_up: ثبت نام

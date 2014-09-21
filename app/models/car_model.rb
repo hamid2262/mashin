@@ -5,6 +5,10 @@ class CarModel < ActiveRecord::Base
 
   scope :visible, -> { where(visible: true) }
 
+  def to_param
+    "#{id}-#{self.make.name}-#{self.name}"
+  end
+
   def deligate_obj
     if self.deligate   
       CarModel.find self.deligate 

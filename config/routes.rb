@@ -51,7 +51,7 @@ Mashin::Application.routes.draw do
   resources :makes do
     get 'scrap', on: :collection
     resources :car_models do
-      # get 'scrap_car_info', on: :collection
+      get 'infos', on: :member
       resources :built_years do
         get 'info', on: :member
       end

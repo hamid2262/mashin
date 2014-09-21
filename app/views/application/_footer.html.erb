@@ -16,6 +16,7 @@
               <% make_obj.car_models.each do |car_model| %>
                 <% if car_model.slug %>
                   <li><%= link_to car_model.name, make_car_model_path(make_id: make_obj.slug, id: car_model.id), class: "footer_list", title:  "فروش خودرو #{make_obj.name} #{car_model.name}"  %></li>
+                  <li><%= link_to car_model.name, [make_obj, car_model], class: "footer_list", title:  "فروش خودرو #{make_obj.name} #{car_model.name}"  %></li>
                 <% end %>
               <% end %>
             </ul>

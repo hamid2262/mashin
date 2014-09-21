@@ -3,7 +3,7 @@
 <div id="built_year_car_details" class="col-sm-12 col-md-8 col-md-offset-2 ">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <%= image_tag @built_year.image, class: "pull-left" %>
+      <%= image_tag @built_year.image, class: "pull-left", alt: "عکس #{built_year_title(@built_year)}" %>
       <h1 class="panel-title">
         مشخصات فنی <%= built_year_title(@built_year) %>
       </h1>
