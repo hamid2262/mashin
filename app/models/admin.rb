@@ -17,7 +17,7 @@ class Admin
   end
 
   def car_models
-    CarModel.joins(:make).order('makes.name').order('car_models.name')
+    CarModel.joins(:make).order('makes.name')
   end
 
   def self.scrap_car_info_car_models

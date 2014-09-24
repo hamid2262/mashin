@@ -21,9 +21,9 @@ class AdminsController < ApplicationController
 
   def car_models
     if params[:make]
-      @car_models = @admin.car_models.where(make_id: params[:make][:id])
+      @car_models = @admin.car_models.order(:deligate).where(make_id: params[:make][:id])
     else
-      @car_models = @admin.car_models.page(params[:page]).per_page(30)
+      @car_models = @admin.car_models.order(:deligate).page(params[:page]).per_page(30)
     end
   end
 

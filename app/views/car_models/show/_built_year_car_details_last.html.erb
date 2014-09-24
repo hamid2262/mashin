@@ -3,11 +3,11 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <%= image_tag @built_year.image, class: "pull-left" %>
-      <h2 class="panel-title">
-        <%= link_to infos_make_car_model_path do %>
+      <%= link_to infos_make_car_model_path do %>
+        <h2 class="panel-title">
           <%= "مشخصات فنی  #{@built_year.car_model.make.name} #{@built_year.car_model.name}" %>
-        <% end %>
-      </h2>
+        </h2>
+      <% end %>
     </div>
     <div class="panel-body">
       <%= render 'built_years/show/car_details_body', built_year: @built_year %>

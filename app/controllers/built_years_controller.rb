@@ -80,6 +80,7 @@ class BuiltYearsController < ApplicationController
         @built_year = @car_model.built_years.where(year: params[:id]).first if @built_year.nil?
       rescue
         redirect_to searches_path
+        return false
       end
       redirect_to searches_path if @built_year.nil?
     end

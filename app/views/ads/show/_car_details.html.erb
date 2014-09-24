@@ -9,11 +9,11 @@
   <div class="panel-body">
     <%= render 'ads/show/car_details/car_details_body', ad: ad %>
     <% if ad.built_year %>
-      <%= link_to ["info",ad.make,ad.car_model, ad.built_year], class: "btn btn-info" do %>    
+      <%= link_to info_make_car_model_built_year_path(make_id: ad.make.deligate_obj ,car_model_id: ad.car_model.deligate_obj, id: ad.built_year.year ), class: "btn btn-info" do %>
         مشخصات فنی <%= built_year_title(ad.built_year) %>
       <% end %>
     <% elsif ad.car_model and ad.make and ad.make.slug.present? %>  
-      <%= link_to " مشخصات فنی خودرو #{ad.make.name} #{ad.car_model.name}", infos_make_car_model_path(make_id: ad.make.slug, id: ad.car_model) %>
+      <%= link_to " مشخصات فنی خودرو #{ad.make.name} #{ad.car_model.name}", infos_make_car_model_path(make_id: ad.make.slug, id: ad.car_model), class: "btn btn-info"  %>
     <% end %>
   </div>
 </div>

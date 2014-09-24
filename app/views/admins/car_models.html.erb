@@ -39,7 +39,9 @@
   <tbody>
     <% @car_models.each do |car_model| %>
       <% if car_model.deligate.nil? %>
-        <tr class="danger">
+        <tr class="warning">
+      <% elsif car_model.deligate != car_model.id and car_model.deligate_obj.deligate != car_model.deligate_obj.id %>
+        <tr class="danger">      
       <% elsif car_model.deligate != car_model.id  %>
         <tr class="success">
       <% end %>
