@@ -50,9 +50,13 @@ module AdsHelper
 
   def ad_image ad, img, style=:medium
     if ad.user_id.nil?
-      image_tag img.url, class: "img-responsive", alt: "#{t"sell"} #{t"vehicle"} #{img.ad.make_name} #{img.ad.car_model_name}"
+      link_to img.url, class: "preview" do
+        image_tag img.url, class: "img-responsive", alt: "#{t"sell"} #{t"vehicle"} #{img.ad.make_name} #{img.ad.car_model_name}"
+      end
     else
-      image_tag img.name.url(style), class: "img-responsive", alt: "#{t"sell"} #{t"vehicle"} #{img.ad.make_name} #{img.ad.car_model_name}"
+      link_to img.name.url(:original), class: "preview" do
+        image_tag img.name.url(style), class: "img-responsive", alt: "#{t"sell"} #{t"vehicle"} #{img.ad.make_name} #{img.ad.car_model_name}"
+      end
     end
   end
   

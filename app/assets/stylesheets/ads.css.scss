@@ -29,6 +29,21 @@
   }
 }
 
+//  hover on big image
+#preview{
+  position:absolute;
+  // border:1px solid #ccc;
+  // background:#333;
+  // padding:1px;
+  display:none;
+  img{
+    border-radius: 6px;
+    border:1px solid #2c2c2c;
+    width: 900px;
+  }
+}
+
+
 #ad_show{
   clear: both;
   #main-panel-heading{
