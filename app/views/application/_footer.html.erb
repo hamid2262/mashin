@@ -1,22 +1,24 @@
 <%= render "ga" if Rails.env.production?  %>
   
-  <%# makes=["peugeot", "pride", "hyundai", "kia", "renault", "samand", "toyota", "nissan", "mvm", "mercedes-benz", "bmw", "lifan"] %>
+  <% makes=["peugeot", "pride", "hyundai", "kia", "renault", "samand", "toyota", "nissan", "mvm", "mercedes-benz", "bmw", "lifan"] %>
+
  
   <% cache "footer" do %>
   <div id="footer">
     <div class="container small">
 
       <div id="sec1" class="row" >
-        <% makes_list.each do |make_arr| %>
-          <% make = Make.find(make_arr[0]) %>
+        <% makes.each do |make| %>
+          <% make_obj = Make.find_by(slug: make) %>
           <div class="col-md-2 col-lg-1 list">
             <h3 class="title">
-              <%= link_to make.name, make, title:  "فروش خودرو #{make.name}" %>
+              <%= link_to make_obj.name, make_obj, title:  "فروش خودرو #{make_obj.name}" %>
             </h3>
             <ul>
-              <% make.car_models_sorted.each do |car_model_arr| %>
-                <% car_model = CarModel.find(car_model_arr[0]) %>
-                  <li><%= link_to car_model.name, make_car_model_path(id: car_model, make_id: make), class: "footer_list", title:  "فروش خودرو #{make.name} #{car_model.name}"  %></li>
+              <% make_obj.car_models.each do |car_model| %>
+                <% if car_model.slug %>
+                  <li><%= link_to car_model.name, [make_obj, car_model], class: "footer_list", title:  "فروش خودرو #{make_obj.name} #{car_model.name}"  %></li>
+                <% end %>
               <% end %>
             </ul>
           </div>
