@@ -14,7 +14,13 @@ class MakesController < ApplicationController
   def show
     @search = Search.new
     @car_models = @make.popular_car_model_menu
-    @ads = @make.ads.page(params[:page]).per_page(15)
+    if session[:search_id]
+      @search = Search.find(session[:search_id])
+      session[:search_id] = nil
+      @ads = @search.ads.page(params[:page]).per_page(15)      
+    else
+      @ads = @make.ads.page(params[:page]).per_page(15)
+    end
   end
 
   # GET /makes/new

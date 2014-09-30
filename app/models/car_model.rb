@@ -6,7 +6,7 @@ class CarModel < ActiveRecord::Base
   scope :visible, -> { where(visible: true) }
 
   def to_param
-    "#{id}-#{self.make.name}-#{self.name}"
+    "#{id}-#{fa_parametrize(self.make.name)}-#{fa_parametrize(self.name)}"
   end
 
   def deligate_obj
@@ -42,6 +42,10 @@ private
   def find_car_model_deligates
     car_model = CarModel.find self.id
     CarModel.where(deligate: car_model.deligate).ids
+  end
+
+  def fa_parametrize val
+    val.gsub(' ', '-')  if val
   end
 
 end

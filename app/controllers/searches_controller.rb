@@ -33,7 +33,22 @@ class SearchesController < ApplicationController
     respond_to do |format|
       if @search.save
         cookies[:last_search] = @search.id
-        format.html { redirect_to @search }
+        format.html { 
+          
+          if @search.car_model_id
+            make = Make.find(@search.make_id)
+            car_model = CarModel.find(@search.car_model_id)
+            session[:search_id] = @search.id
+            redirect_to  make_car_model_path(id: car_model, make_id: make)
+          elsif @search.make_id
+            make = Make.find(@search.make_id)
+            session[:search_id] = @search.id
+            redirect_to  make_path(id: make)
+         else
+            redirect_to @search 
+          end
+        }
+
         format.json { render action: 'show', status: :created, location: @search }
       else
         format.html { render action: 'index' }

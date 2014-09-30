@@ -15,7 +15,14 @@ class CarModelsController < ApplicationController
     @search = Search.new
     @built_years ||= built_years 
     @built_year = @built_years.order(:year).last
-    @ads = @car_model.ads.page(params[:page]).per_page(15)
+
+    if session[:search_id]
+      @search = Search.find(session[:search_id])
+      session[:search_id] = nil
+      @ads = @search.ads.page(params[:page]).per_page(15)      
+    else
+      @ads = @car_model.ads.page(params[:page]).per_page(15)
+    end
   end
 
   # GET /car_models/new

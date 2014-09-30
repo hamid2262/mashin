@@ -2,10 +2,21 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   check_authorization :unless => :devise_controller?
-  before_action :get_user_informations
+  # before_action :get_user_informations
   before_action :redirect_from_otoyabi_dot_ir
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message
+  end
+
+  helper_method :fa_parametrize
+  def fa_parametrize val
+    val.gsub(' ', '-')  if val
+  end
+
+  helper_method :makes_list
+  def makes_list
+    makes = Make.where("makes.id = deligate").joins(:ads).group(['makes.id'])
+    makes.order('COUNT(ads.make_id) DESC').count
   end
 
 private

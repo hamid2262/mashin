@@ -6,7 +6,7 @@ class Make < ActiveRecord::Base
   scope :sorted, -> { order(name: :asc) }
   
   def to_param    
-    slug
+    "#{id}-#{fa_parametrize(self.name)}"
   end
 
   def self.make_id(name)
@@ -51,6 +51,11 @@ class Make < ActiveRecord::Base
     self.car_models.where('id=deligate').order(:name)
   end
 
+  def car_models_sorted
+    makes = self.car_models.where("car_models.id = deligate").joins(:ads).group(['car_models.id'])
+    makes.order('COUNT(ads.car_model_id) DESC').count
+  end
+
   private
 
   def self.get_makes doc
@@ -85,10 +90,13 @@ class Make < ActiveRecord::Base
     Make.where("id = deligate").order(name: :asc) 
   end
 
-private
   def find_make_deligates
     make = Make.find id
     Make.where(deligate: make.deligate).ids
+  end
+
+  def fa_parametrize val
+    val.gsub(' ', '-')  if val
   end
 
 end
