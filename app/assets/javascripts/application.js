@@ -15,6 +15,10 @@
 //= require jquery.validate
 //= require localization/messages_fa
 //= require jquery_ujs
+
+//= require bootstrap-sprockets
+
+// require twitter/bootstrap
 //= require jquery-ui/slider
 
 //= require jquery-fileupload/basic
