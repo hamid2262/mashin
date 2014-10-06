@@ -3,15 +3,21 @@
   <span id="vehicle_count"><%= @today_ad_count %></span>
   <%= t "vehicle" %>
 </h3>
-<% @makes.each do |make| %>
-  <% make_obj = Make.find_by(name: make[0]) %>
-  <% if make_obj.slug %>
-    <%= link_to "#{make[0]} (#{make[1]})", make_obj, class: " btn btn-link", title: "فروش خودرو #{make[0]}" %>    
-  <% else %>
-    <%= form_for Search.new do |f| -%>
-      <%= f.hidden_field :make_id, value: make_obj.id %>
-      <%= f.submit "#{make[0]} (#{make[1]})",class: "btn btn-link" %>
-    <% end %>
-  <% end %>
 
+<% cache([:homes, :statistic], :expires_in => 15.minutes) do %>
+  <% Home.makes.each do |make| %>
+    <% name = make[0][0] %>
+    <% id = make[0][1] %>
+    <% slug = make[0][2] %>
+    <% size = make[1] %>
+    <% if slug.present? %>
+      <%= link_to "#{name} (#{size})", make_path(id: id), class: " btn btn-link", title: "فروش خودرو #{name}" %>    
+    <% else %>
+      <%= form_for Search.new do |f| -%>
+        <%= f.hidden_field :make_id, value: id %>
+        <%= f.submit "#{name} (#{size})",class: "btn btn-link" %>
+      <% end %>
+    <% end %>
+
+  <% end %>
 <% end %>

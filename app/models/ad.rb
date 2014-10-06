@@ -54,12 +54,6 @@ class Ad < ActiveRecord::Base
     self.year.year if self.year
   end
 
-  def self.all_ads_count
-    Rails.cache.fetch([:ads, :all_ads_count], expires_in: 5.minutes) do 
-      Ad.count
-    end
-  end
-
   def internal_color_name
     Rails.cache.fetch([:internal_color, internal_color_id, :name], expires_in: 150.minutes) do 
       internal_color.try(:name)

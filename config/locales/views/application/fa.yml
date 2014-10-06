@@ -1,0 +1,8 @@
+fa:
+  application:
+    navbar:
+      buy_car: خرید خودرو
+      my_acount: حساب من
+      sell_car: ثبت آگهی فروش
+      sign_out: خروج
+  site_name: otoyabi | خرید خودرو | فروش خودرو صفر و کارکرده

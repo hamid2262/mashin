@@ -8,7 +8,7 @@
 
  <% if ad.make.slug %>
    <%= two_column_title_value "car_model", 
-         link_to( ad.car_model.name, make_car_model_path(make_id: ad.make.deligate_obj.slug, id: ad.car_model.id),
+         link_to( ad.car_model.name, make_car_model_path(make_id: ad.make.deligate_obj, id: ad.car_model),
            title: "فروش خودرو #{ad.make.name} #{ad.car_model.name}" )%>
  <% else %>
    <%= two_column_title_value "car_model", ad.car_model.name%>
@@ -16,7 +16,7 @@
 
  <% if  ad.make.slug and ad.car_model and ad.built_year  %>
    <%= two_column_title_value "year", 
-         link_to(appropriate_year(ad), make_car_model_built_year_path(make_id: ad.make.slug, car_model_id: ad.car_model.id, id: ad.built_year.year), title: "فروش خودرو #{ad.make.name} #{ad.car_model.name} سال #{ad.built_year.year}" ) %>
+         link_to(appropriate_year(ad), make_car_model_built_year_path(make_id: ad.make, car_model_id: ad.car_model, id: ad.built_year.year), title: "فروش خودرو #{ad.make.name} #{ad.car_model.name} سال #{ad.built_year.year}" ) %>
  <% else %>
    <%= two_column_title_value "year", appropriate_year(ad) %>
  <% end %>
