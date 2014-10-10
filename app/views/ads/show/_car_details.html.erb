@@ -13,7 +13,7 @@
         مشخصات فنی <%= built_year_title(ad.built_year) %>
       <% end %>
     <% elsif ad.car_model and ad.make and ad.make.slug.present? %>  
-      <%= link_to " مشخصات فنی خودرو #{ad.make.name} #{ad.car_model.name}", infos_make_car_model_path(make_id: ad.make.slug, id: ad.car_model), class: "btn btn-info"  %>
+      <%= link_to " مشخصات فنی خودرو #{ad.make.name} #{ad.car_model.name}", infos_make_car_model_path(make_id: ad.make, id: ad.car_model), class: "btn btn-info"  %>
     <% end %>
   </div>
 </div>

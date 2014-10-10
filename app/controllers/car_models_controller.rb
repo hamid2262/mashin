@@ -87,6 +87,7 @@ class CarModelsController < ApplicationController
     def set_car_model
       @car_model = CarModel.where(id: params[:id]).first
       @car_model = CarModel.where(slug: params[:id]).first if @car_model.nil?
+      @make = @car_model.make
       redirect_to searches_path if @car_model.nil?
     end
 

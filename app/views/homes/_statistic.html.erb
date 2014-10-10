@@ -5,13 +5,13 @@
 </h3>
 
 <% cache([:homes, :statistic], :expires_in => 15.minutes) do %>
-  <% Home.makes.each do |make| %>
-    <% name = make[0][0] %>
+  <% Home.makes.each do |make| %> 
+    <% name = make[0][0] %> 
     <% id = make[0][1] %>
     <% slug = make[0][2] %>
     <% size = make[1] %>
     <% if slug.present? %>
-      <%= link_to "#{name} (#{size})", make_path(id: id), class: " btn btn-link", title: "فروش خودرو #{name}" %>    
+      <%= link_to "#{name} (#{size})", make_path(id: "#{id}-#{name}"), class: " btn btn-link", title: "فروش خودرو #{name}" %>    
     <% else %>
       <%= form_for Search.new do |f| -%>
         <%= f.hidden_field :make_id, value: id %>
