@@ -29,19 +29,22 @@
   }
 }
 
+@media (min-width: 900px) {
 //  hover on big image
-#preview{
-  position:absolute;
-  // border:1px solid #ccc;
-  // background:#333;
-  // padding:1px;
-  display:none;
-  img{
-    border-radius: 6px;
-    border:1px solid #2c2c2c;
-    width: 900px;
+  #preview{
+    position:absolute;
+    // border:1px solid #ccc;
+    // background:#333;
+    // padding:1px;
+    display:none;
+    img{
+      border-radius: 6px;
+      border:1px solid #2c2c2c;
+      width: 655px;
+    }
   }
 }
+
 
 
 #ad_show{
@@ -131,6 +134,11 @@
   } //#main-panel-body
   #recommended_ads-panel-body{
     padding: 1px 7px 7px 4px;
+    .panel-heading {
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+
     .wrapper-panel{
       padding: 0 2px;
       .recommended_ad{
