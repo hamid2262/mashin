@@ -22,6 +22,7 @@ class AdsController < ApplicationController
       return
     end
     @make = @ad.make.deligate_obj
+    redirect_if_ad_expired
     @recommended_ads = @ad.recommended_ads 4
     begin
       @ad.view_counter_increment(current_user)
@@ -128,4 +129,13 @@ class AdsController < ApplicationController
       @ad = Ad.new(ad_params)
     end
 
+    def redirect_if_ad_expired
+      if [5, 50].include? @ad.status
+        if  @ad.car_model.deligate_obj
+          redirect_to [@make, @ad.car_model.deligate_obj] 
+        else
+          redirect_to @make if @make
+        end
+      end
+    end
 end
