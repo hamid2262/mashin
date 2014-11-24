@@ -13,7 +13,7 @@ class SearchesController < ApplicationController
     if params[:search][:search_id].present?
       @old_search = Search.find params[:search][:search_id]
       @search = @old_search.dup
-      if params[:search][:remove]
+      if params[:search][:remove] # remove (x) link in search
         @search.top_filter_list_remove_link(params)
       else
         @search.dretect_search_field_from_down_filter_sections(params)

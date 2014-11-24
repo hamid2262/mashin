@@ -12,6 +12,7 @@ class BuiltYearsController < ApplicationController
   # GET /built_years/1.json
   def show
     @search = Search.new
+    @search = Search.new(make_id:@built_year.car_model.deligate_obj.make.deligate_obj.id, car_model_id: @built_year.car_model.deligate_obj.id)
     @ads = @built_year.ads(@car_model).page(params[:page]).per_page(15)
   end
 

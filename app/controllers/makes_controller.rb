@@ -3,14 +3,10 @@ class MakesController < ApplicationController
   before_action :set_make, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource
 
-  # GET /makes
-  # GET /makes.json
   def index
     @makes = Make.all.order(:name)
   end
 
-  # GET /makes/1
-  # GET /makes/1.json
   def show
     @search = Search.new
     @car_models = @make.popular_car_model_menu
@@ -19,21 +15,18 @@ class MakesController < ApplicationController
       session[:search_id] = nil
       @ads = @search.ads.page(params[:page]).per_page(15)      
     else
+      @search = Search.new(make_id:@make.deligate_obj.id)
       @ads = @make.ads.page(params[:page]).per_page(15)
     end
   end
 
-  # GET /makes/new
   def new
     @make = Make.new
   end
 
-  # GET /makes/1/edit
   def edit
   end
 
-  # POST /makes
-  # POST /makes.json
   def create
     @make = Make.new(make_params)
 
@@ -48,8 +41,6 @@ class MakesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /makes/1
-  # PATCH/PUT /makes/1.json
   def update
     respond_to do |format|
       if @make.update(make_params)
@@ -62,8 +53,6 @@ class MakesController < ApplicationController
     end
   end
 
-  # DELETE /makes/1
-  # DELETE /makes/1.json
   def destroy
     @make.destroy
     respond_to do |format|
@@ -78,12 +67,10 @@ class MakesController < ApplicationController
   end
   
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_make
       @make = Make.find_by(slug: params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def make_params
       params.require(:make).permit(:name, :slug,:year_format, :deligate)
     end

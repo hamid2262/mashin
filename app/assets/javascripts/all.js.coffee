@@ -58,4 +58,5 @@ jQuery.fn.submitOnChange = ->
   field_value = this.val()
   $("#filter_name_ajax").val(field_name)
   $("#filter_value_ajax").val(field_value)
-  $('#ajax_submit').submit()
+
+  $('#ajax_submit').submit() if $("#submit_ajax").val() != ""

@@ -19,8 +19,9 @@ class CarModelsController < ApplicationController
     if session[:search_id]
       @search = Search.find(session[:search_id])
       session[:search_id] = nil
-      @ads = @search.ads.page(params[:page]).per_page(15)      
+      @ads = @search.ads.page(params[:page]).per_page(15)    
     else
+      @search = Search.new(make_id:@car_model.deligate_obj.make.deligate_obj.id, car_model_id: @car_model.deligate_obj.id)
       @ads = @car_model.ads.page(params[:page]).per_page(15)
     end
   end

@@ -13,6 +13,8 @@
 				<%= f.association :make, 
 					label: t("make"), 
 					collection: Make.for_menus, 
+					default: f.object.make_id,
+					:prompt => "",
 					input_html: {id: "make_id", class: "form-control #{with_value_class f.object.make}"} %>
 				<%= remove_filter_buttun f.object.make_id %>
 			</div>
