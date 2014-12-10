@@ -29,7 +29,7 @@ Mashin::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.raise_delivery_errors = true
 
@@ -40,7 +40,7 @@ Mashin::Application.configure do
     domain: 'otoyabi.com',
     authentication: :plain,
     enable_starttls_auto: true,
-    user_name: 'otoyabi2@gmail.com',
+    user_name: 'otoyabi3@gmail.com',
     password: 'Ns_h9166'
   }
 

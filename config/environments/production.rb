@@ -88,12 +88,12 @@ Mashin::Application.configure do
     address: "smtp.gmail.com",
     port: 587,
     # :port => 25,
-    domain: 'otoyabi.com',
+    domain: 'gmail.com',
     authentication: :plain,
     enable_starttls_auto: true,
     # user_name: ENV['GMAIL_USER_NAME'],
     # password: ENV['GMAIL_PASSWORD']
-    user_name: 'otoyabi2@gmail.com',
+    user_name: 'otoyabi3@gmail.com',
     password: 'Ns_h9166'
   }
 
