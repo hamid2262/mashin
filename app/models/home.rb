@@ -9,11 +9,12 @@ class Home
   def self.makes
     makes = Make.where("makes.id = deligate").joins(:ads).group(['makes.name','makes.id','makes.slug'])
     makes = makes.where("ads.updated_at > ?", Home.beginning_of_today)
-    makes.order('COUNT(ads.make_id) DESC').count
+    makes = makes.order('COUNT(ads.make_id) DESC').count
+    makes
   end
 
   def self.beginning_of_today
-    Time.zone.now.beginning_of_day() #- 25.days
+    Time.zone.now.beginning_of_day() #- 1.days
   end
 
   def self.last_articles
